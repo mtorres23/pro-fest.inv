@@ -24,3 +24,20 @@ Processing by Rails::WelcomeController#index as HTML
 Completed 200 OK in 30ms (Views: 11.7ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2017-05-03 17:19:51 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (3.8ms)
+Completed 200 OK in 22ms (Views: 10.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2017-05-03 17:22:58 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Parameters: {"internal"=>true}
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/railties-5.0.2/lib/rails/templates/rails/welcome/index.html.erb (3.1ms)
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.0ms)
+
+
