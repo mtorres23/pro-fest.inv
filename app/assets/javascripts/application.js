@@ -15,5 +15,24 @@
 //= require jquery_ujs
 //= require angular/angular
 //= require angular-ui-router/release/angular-ui-router
-//= require turbolinks
+//= require_self
 //= require_tree .
+
+angular
+  .module('fifoApp', ['ui.router'])
+  .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    $stateProvider
+      .state('dashboard', {
+        url: '/',
+        component: 'dashboard'
+      });
+
+    // default fall back route
+    $urlRouterProvider.otherwise('/');
+
+    // enable HTML5 Mode for SEO
+    $locationProvider.html5Mode({
+      enabled: true,
+      requireBase: false
+    });
+  });

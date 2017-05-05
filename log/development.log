@@ -148,3 +148,94 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 200 OK in 94ms (Views: 91.6ms | ActiveRecord: 0.0ms)
 
 
+Started GET "/" for ::1 at 2017-05-05 18:15:10 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ClientController#dashboard as HTML
+Completed 401 Unauthorized in 55ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-05 18:15:10 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.9ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (75.7ms)
+Completed 500 Internal Server Error in 839ms (ActiveRecord: 25.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `current_user' for #<#<Class:0x007f885f8838c8>:0x007f885e85bd88>):
+    4:     <title>Fifo</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:   </head>
+    9: 
+   10:   <body>
+  
+app/assets/javascripts/components/dashboard/dashboard.js.erb:13:in `_evaluate_template'
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb___633054208565411581_70111808569720'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (18.4ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.0ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (179.6ms)
+Started GET "/" for ::1 at 2017-05-05 18:18:44 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ClientController#dashboard as HTML
+Completed 401 Unauthorized in 48ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-05 18:18:45 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (3.1ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (60.9ms)
+Started GET "/" for ::1 at 2017-05-05 18:18:46 -0400
+Processing by ClientController#dashboard as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-05 18:18:46 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.6ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (16.9ms)
+Completed 200 OK in 817ms (Views: 811.7ms | ActiveRecord: 0.0ms)
+
+
+Completed 200 OK in 2666ms (Views: 2630.4ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-05 18:18:51 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.2ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/registrations/new.html.erb within layouts/application (16.6ms)
+Completed 200 OK in 117ms (Views: 115.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2017-05-05 18:19:05 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"bA4hb2587w5Jk3EVfjiSiKr+L/1NsqaHvXF5j7uVJY0Tl9u53/ixUZD//fb9doTr5hUfvySdmz5CakBxLpj4Xg==", "user"=>{"email"=>"hkarambizi@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (30.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "hkarambizi@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (17.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "hkarambizi@gmail.com"], ["encrypted_password", "$2a$11$wXoetLtnvXTmKM9M0dX/7eYzYAG7VAdCGR3blmkB8OASvFHK15yE."], ["created_at", 2017-05-05 22:19:06 UTC], ["updated_at", 2017-05-05 22:19:06 UTC]]
+  [1m[35m (20.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (34.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", 2017-05-05 22:19:06 UTC], ["last_sign_in_at", 2017-05-05 22:19:06 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["updated_at", 2017-05-05 22:19:06 UTC], ["id", 1]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 598ms (ActiveRecord: 105.8ms)
+
+
+Started GET "/" for ::1 at 2017-05-05 18:19:06 -0400
+Processing by ClientController#dashboard as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering client/dashboard.html.erb
+  Rendered client/dashboard.html.erb (638.7ms)
+Completed 200 OK in 672ms (Views: 651.7ms | ActiveRecord: 2.3ms)
+
+

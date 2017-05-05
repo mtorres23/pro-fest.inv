@@ -1,0 +1,6 @@
+{:uriI"”file://app/assets/javascripts/components/dashboard/dashboard.html?type=text/html&id=1d470dfcb18b771c3440eec5e299f3089776f2e7ada87f5dae31b6f56da0057f:ET:load_pathI"app/assets/javascripts;T:filenameI"?app/assets/javascripts/components/dashboard/dashboard.html;T:	nameI"#components/dashboard/dashboard;T:logical_pathI"(components/dashboard/dashboard.html;T:content_typeI"text/html;T:sourceI"5<h1>{{ $ctrl.message }}</h1>
+<p>JK! tee hee!</p>;T:metadata{	:dependencieso:Set:
+@hash}
+I"environment-version;TTI"environment-paths;TTI"rails-env;TTI"2processors:type=text/html&file_type=text/html;TTI"Mfile-digest://app/assets/javascripts/components/dashboard/dashboard.html;TTF:charsetI"
+utf-8;F:digest"%ÂÖİ0ÅP7ÿlÿB«Á)ç`Ì*×jÕl,l!Ó:lengthi5:dependencies_digest"%Ä—j7Ì‹jí°Ë13¬ˆ“„X»"™¾%\r”b5:idI"E1d470dfcb18b771c3440eec5e299f3089776f2e7ada87f5dae31b6f56da0057f;F:
+mtimel+úY
