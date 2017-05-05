@@ -1,0 +1,26 @@
+{
+  "name": "fifo",
+  "version": "1.0.0",
+  "description": "Enterprise event inventory manager",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mtorres23/pro-fest.inv.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mtorres23/pro-fest.inv/issues"
+  },
+  "homepage": "https://github.com/mtorres23/pro-fest.inv#readme",
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.0-rc.1"
+  }
+}

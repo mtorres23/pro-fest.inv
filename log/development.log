@@ -126,3 +126,25 @@ puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
   Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
   Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (55.1ms)
   Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (640.4ms)
+Started GET "/" for ::1 at 2017-05-05 17:46:33 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (39.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ClientController#dashboard as HTML
+Completed 401 Unauthorized in 93ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-05 17:46:34 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.9ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (179.7ms)
+Completed 200 OK in 21745ms (Views: 21661.4ms | ActiveRecord: 47.4ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-05 17:47:23 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.3ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/registrations/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 94ms (Views: 91.6ms | ActiveRecord: 0.0ms)
+
+

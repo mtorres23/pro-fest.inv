@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>fifo</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+  </head>
+
+  <body>
+    <nav>
+      <% if user_signed_in? %>
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>
+        <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>
+      <% end %>
+    </nav>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <h1>fifo's Front end</h1>
+
+    <ui-view></ui-view>
+  </body>
+</html>
