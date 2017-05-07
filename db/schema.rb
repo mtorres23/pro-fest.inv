@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505232127) do
+ActiveRecord::Schema.define(version: 20170507041810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "location_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "clients", force: :cascade do |t|
     t.string   "company_id"
@@ -31,10 +39,13 @@ ActiveRecord::Schema.define(version: 20170505232127) do
     t.text     "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "admin_id"
     t.integer  "prev_year_event_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.date     "start_date"
+    t.date     "end_date"
+    t.integer  "client_id"
+    t.integer  "admin_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -50,6 +61,9 @@ ActiveRecord::Schema.define(version: 20170505232127) do
     t.string   "images"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "location_id"
+    t.integer  "qty"
+    t.integer  "order_id"
   end
 
   create_table "locations", force: :cascade do |t|
@@ -57,12 +71,14 @@ ActiveRecord::Schema.define(version: 20170505232127) do
     t.text     "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "admin_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.string   "access_code"
     t.integer  "current_order_id"
     t.integer  "prev_order_id"
+    t.string   "email"
+    t.integer  "admin_id"
+    t.integer  "event_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -98,8 +114,9 @@ ActiveRecord::Schema.define(version: 20170505232127) do
     t.boolean  "is_event_admin"
     t.boolean  "is_crew"
     t.boolean  "is_tent_manager"
-    t.string   "event_id"
-    t.string   "client_id"
+    t.integer  "location_id"
+    t.integer  "client_id"
+    t.integer  "event_id"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

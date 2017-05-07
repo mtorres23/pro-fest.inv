@@ -1,5 +1,6 @@
 class Location < ApplicationRecord
 	belongs_to :event
-	has_many :orders
-	has_many :items, through: :orders
+	has_many :orders, through: :categories
+	
+	has_many :users
 end
