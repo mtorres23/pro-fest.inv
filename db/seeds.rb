@@ -25,12 +25,12 @@
 # 	end
 # end
 
-Client.delete_all
-Event.delete_all
-Location.delete_all
-Item.delete_all
-Category.delete_all
-Order.delete_all
+Client.destroy_all
+Event.destroy_all
+Location.destroy_all
+Item.destroy_all
+Category.destroy_all
+Order.destroy_all
 
 
 Client.create!(id: 1, company_id: '0058', access_key: 0000, address: '1825 MacArthur Blvd NW, Atlanta, GA 30318', latitude: '', longitude: '')
