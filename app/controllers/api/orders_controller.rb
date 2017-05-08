@@ -20,7 +20,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def show
-    @orders = Order.find_by(params[:id])
+    @orders = Order.find(params[:id])
   end
 
 

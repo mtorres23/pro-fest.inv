@@ -3,5 +3,6 @@
 
 
 <% @orders.each do |order|  %>
-  <h3> <%= order.content %> </h3>
+
+  <h3> <%= link_to order.content, api_order_path(order.id) %> </h3>
 <% end %>
