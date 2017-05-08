@@ -1,7 +1,7 @@
 <h1>API/Orders#NEW</h1>
 
 
-<%= form_for @orders do |f| %>
+<%= form_for :orders, url: api_orders_path do |f| %>
 <div>
   <div class="input-field">
     <%= f.label :content %>
@@ -9,12 +9,7 @@
     <%= f.text_field :content %>
     <br>
   </div>
-  <div class="input-field">
-    <%= f.label :type %>
-    <br>
-    <%= f.text_field :type %>
-    <br>
-  </div>
+
 
   <button class='btn' action='<%= f.submit  %>'>Create Order
   </button>

@@ -13,20 +13,21 @@ class Api::OrdersController < ApplicationController
   def create
     puts "create"
     puts @orders
-    order = Order.create(order_params)
+    order = Order.new(order_params)
     order.save
 
     redirect_to api_orders_path
   end
 
   def show
+    @orders = Order.find_by(params[:id])
   end
 
 
   private
 
   def order_params
-    params.require(:order).permit(:content, :verified_by, :delivery_date, :total_price, :total_amount, :type)
+    params.require(:orders).permit(:content).merge(:category_id => 1)
 
     end
 
