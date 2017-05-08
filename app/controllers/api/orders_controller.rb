@@ -23,6 +23,16 @@ class Api::OrdersController < ApplicationController
     @orders = Order.find(params[:id])
   end
 
+  def update
+    @orders = Order.find(params[:id])
+    @orders.update(order_params)
+    redirect_to api_orders_path
+  end
+
+  def edit
+    @orders = Order.find(params[:id])
+  end
+
 
   private
 
