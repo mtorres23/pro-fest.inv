@@ -2322,3 +2322,22 @@ Processing by LocationsController#new as HTML
 Completed 200 OK in 54ms (Views: 49.5ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/locations/new" for ::1 at 2017-05-08 17:30:10 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LocationsController#new as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/new.html.erb within layouts/application
+  Rendered locations/_form.html.erb (21.7ms)
+  Rendered locations/new.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 434ms (Views: 379.5ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/locations/new" for ::1 at 2017-05-08 17:30:14 -0400
+Processing by LocationsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/new.html.erb within layouts/application
+  Rendered locations/_form.html.erb (4.2ms)
+  Rendered locations/new.html.erb within layouts/application (7.5ms)
+Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.4ms)
+
+
