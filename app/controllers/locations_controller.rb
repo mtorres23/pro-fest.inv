@@ -9,7 +9,6 @@ class LocationsController < ApplicationController
 
   def create
     @location = Location.new(location_params)
-    binding.pry
     if @location.save
       flash[:success] = "Location added!"
       redirect_to root_path

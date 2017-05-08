@@ -7348,3 +7348,53 @@ Processing by LocationsController#new as HTML
 Completed 200 OK in 29ms (Views: 25.6ms | ActiveRecord: 0.4ms)
 
 
+Started GET "/locations" for ::1 at 2017-05-08 17:54:43 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (1.6ms)[0m  [1m[34mSELECT "locations".* FROM "locations" ORDER BY created_at DESC[0m
+  Rendered collection of locations/_location.html.erb [4 times] (1.3ms)
+  Rendered locations/index.html.erb within layouts/application (23.3ms)
+Completed 200 OK in 435ms (Views: 365.9ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/locations/4" for ::1 at 2017-05-08 17:54:45 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `title' for nil:NilClass):
+    1: <header><h1 class="display-4"><%= @location.title %></h1></header>
+    2: 
+    3: <p>Address: <%= @location.address %></p>
+    4: <p>Coordinates: <%= @location.latitude %> <%= @location.longitude %></p>
+  
+app/views/locations/show.html.erb:1:in `_app_views_locations_show_html_erb__3211347128139609707_70273316947600'
+  Rendering /Users/michaeltorres/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/michaeltorres/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/michaeltorres/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.9ms)
+  Rendering /Users/michaeltorres/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/michaeltorres/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/michaeltorres/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/michaeltorres/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/michaeltorres/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (78.6ms)
+Started GET "/locations/new" for ::1 at 2017-05-08 17:55:38 -0400
+Processing by LocationsController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/new.html.erb within layouts/application
+  Rendered locations/_form.html.erb (18.1ms)
+  Rendered locations/new.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 47ms (Views: 43.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/locations" for ::1 at 2017-05-08 17:55:54 -0400
+Processing by LocationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"huWP0FHEOj/oCiR/tUzaH4QwXe5E/pjda5mdXZaXb7RovbS8KWstyhvHoRxWhpkD22pLAdh3mxjuLOXSMc3F7w==", "location"=>{"title"=>"yolo", "admin_id"=>"", "address"=>"atlanta, georgia", "latitude"=>"", "longitude"=>""}, "commit"=>"Add!"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: admin_id, address
