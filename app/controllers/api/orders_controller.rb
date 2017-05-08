@@ -24,8 +24,10 @@ class Api::OrdersController < ApplicationController
   end
 
   def update
-    @orders = Order.find(params[:id])
-    @orders.update(order_params)
+    order = Order.find(params[:id])
+    binding.pry
+    order.update(order_params)
+    binding.pry
     redirect_to api_orders_path
   end
 
@@ -37,7 +39,7 @@ class Api::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:orders).permit(:content).merge(:category_id => 1)
+    params.require(:order).permit(:content).merge(:category_id => 1)
 
     end
 
