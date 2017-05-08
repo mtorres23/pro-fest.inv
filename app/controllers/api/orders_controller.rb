@@ -5,7 +5,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def new
-    @orders = Order.new
+    @order = Order.new
 
     render :new
   end
@@ -25,9 +25,7 @@ class Api::OrdersController < ApplicationController
 
   def update
     order = Order.find(params[:id])
-    binding.pry
     order.update(order_params)
-    binding.pry
     redirect_to api_orders_path
   end
 
