@@ -1,0 +1,11 @@
+<h3>api/orders#edit</h3>
+
+<div>
+    <%= form_for @orders, url: api_order_path(id: @orders.id) do |f| %>
+    <%= f.label :content %>
+    <br>
+    <%= f.text_field :content %>
+    <button class='btn' action='<%= f.submit  %>'>Update Order
+    </button>
+    <% end %>
+</div>

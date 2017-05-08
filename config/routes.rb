@@ -4,11 +4,15 @@ Rails.application.routes.draw do
 
 namespace :api do
     resources :clients, :events, :locations, :categories, :orders, :items
+
   end
+
+
 
 resources :clients, :events, :locations, :categories, :orders, :items
 
   root to: 'client#dashboard'
 get '*path', to: 'client#dashboard'
+
 
 end
