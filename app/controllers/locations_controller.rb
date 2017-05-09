@@ -15,11 +15,13 @@ class LocationsController < ApplicationController
     else
        render 'new'
   end
-end
 
-  def show
-    @location = Location.find(params[:id])
   end
+  
+    def show
+    @location = Location.find(params[:id])
+    end
+  
 
 
   private
