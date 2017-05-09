@@ -13014,3 +13014,61 @@ Processing by Devise::RegistrationsController#edit as HTML
 Completed 200 OK in 71ms (Views: 67.7ms | ActiveRecord: 0.6ms)
 
 
+Started GET "/api/orders" for ::1 at 2017-05-09 19:36:40 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (21.2ms)
+Completed 200 OK in 539ms (Views: 496.1ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-09 19:36:42 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (23.9ms)
+Completed 200 OK in 90ms (Views: 85.9ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-09 19:36:48 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ECh3OYd0kyG5w3BY2eqeg5/lXmuVcwwV5qWlnZxAid4lgwNj42qMS8rpGXQr2Dh9lsxuxQ6NcIvsPIGawgYL2w==", "order"=>{"content"=>"time zone test"}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "time zone test"], ["category_id", 1], ["created_at", 2017-05-09 23:36:48 UTC], ["updated_at", 2017-05-09 23:36:48 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 39ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-09 19:36:48 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 81ms (Views: 77.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders/3" for ::1 at 2017-05-09 19:36:51 -0400
+Processing by Api::OrdersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering api/orders/show.html.erb within layouts/application
+  Rendered api/orders/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 58ms (Views: 51.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-09 19:37:41 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 44ms (Views: 41.0ms | ActiveRecord: 0.6ms)
+
+

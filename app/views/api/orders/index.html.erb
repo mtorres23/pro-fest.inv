@@ -1,8 +1,9 @@
 
 <%= link_to "New Order", new_api_order_path , class: 'btn btn-primary btn-lg' %>
 
-
+<div class = 'orders-index'>
 <% @orders.each do |order|  %>
-
-  <h3> <%= link_to order.content, api_order_path(order.id) %> </h3>
+  <h5></h5>
+  <h5> <%= link_to order.content, api_order_path(order.id) %> <%=order.created_at.strftime("%I:%M %p") %></h5>
 <% end %>
+</div>
