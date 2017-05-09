@@ -42,6 +42,7 @@ gem 'walmart_open'
 gem 'data-confirm-modal'
 gem 'geocoder'
 gem 'stocker'
+gem "simple_calendar", "~> 2.0"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
