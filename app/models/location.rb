@@ -1,6 +1,6 @@
 class Location < ApplicationRecord
 	belongs_to :event, optional: true
-	has_many :users
+	has_many :users, :foreign_key => :admin_id
 	has_many :categories
 	has_many :orders, through: :categories
 	has_many :items, through: :orders

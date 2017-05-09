@@ -10726,3 +10726,1335 @@ Completed 200 OK in 57ms (Views: 52.0ms | ActiveRecord: 1.5ms)
 >>>>>>> f1be1a3c114e109e4c9ad5f530f91bb20f7e9158
 
 
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1006908589982888040);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1006908589982888040)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/locations" for ::1 at 2017-05-09 16:47:31 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (1.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [3 times] (3.0ms)
+  Rendered locations/index.html.erb within layouts/application (49.1ms)
+Started GET "/locations" for ::1 at 2017-05-09 16:47:34 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [3 times] (1.1ms)
+  Rendered locations/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 3030ms (Views: 2821.1ms | ActiveRecord: 16.5ms)
+
+
+Completed 200 OK in 929ms (Views: 920.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 16:50:26 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [3 times] (27.6ms)
+  Rendered locations/index.html.erb within layouts/application (32.0ms)
+Completed 500 Internal Server Error in 83ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `user' for #<Location:0x007fd60d232478>
+Did you mean?  users):
+    1: <li>
+    2:   <%= link_to location.title, location_path(location) %>
+    3:   visited by <strong><%= location.user.first_name %></strong>
+    4: </li>
+  
+app/views/locations/_location.html.erb:3:in `_app_views_locations__location_html_erb__3081524072250520490_70278660052660'
+app/views/locations/index.html.erb:8:in `_app_views_locations_index_html_erb___1381004100215242416_70278660199080'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (11.4ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (184.0ms)
+Started GET "/locations" for ::1 at 2017-05-09 16:50:46 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (1.0ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."location_id" = $1[0m  [["location_id", 1]]
+  Rendered collection of locations/_location.html.erb [3 times] (154.0ms)
+  Rendered locations/index.html.erb within layouts/application (162.1ms)
+Completed 500 Internal Server Error in 189ms (ActiveRecord: 3.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `first_name' for nil:NilClass):
+    1: <li>
+    2:   <%= link_to location.title, location_path(location) %>
+    3:   visited by <strong><%= location.users[0].first_name %></strong>
+    4: </li>
+  
+app/views/locations/_location.html.erb:3:in `_app_views_locations__location_html_erb__3081524072250520490_70278661044740'
+app/views/locations/index.html.erb:8:in `_app_views_locations_index_html_erb___1381004100215242416_70278661099960'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (225.5ms)
+Started GET "/locations" for ::1 at 2017-05-09 16:51:23 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (5.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [3 times] (15.4ms)
+  Rendered locations/index.html.erb within layouts/application (25.1ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 6.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `user' for #<Location:0x007fd60dcb0d78>
+Did you mean?  users):
+    1: <li>
+    2:   <%= link_to location.title, location_path(location) %>
+    3:   visited by <strong><%= location.user.email %></strong>
+    4: </li>
+  
+app/views/locations/_location.html.erb:3:in `_app_views_locations__location_html_erb__3081524072250520490_70278665558840'
+app/views/locations/index.html.erb:8:in `_app_views_locations_index_html_erb___1381004100215242416_70278661646720'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (272.5ms)
+Started GET "/locations" for ::1 at 2017-05-09 16:51:57 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [3 times] (15.9ms)
+  Rendered locations/index.html.erb within layouts/application (28.1ms)
+Completed 500 Internal Server Error in 53ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `user' for #<Location:0x007fd60de7a5c8>
+Did you mean?  users):
+    1: <li>
+    2:   <%= link_to location.title, location_path(location) %>
+    3:   visited by <strong><%= location.user %></strong>
+    4: </li>
+  
+app/views/locations/_location.html.erb:3:in `_app_views_locations__location_html_erb__3081524072250520490_70278666503500'
+app/views/locations/index.html.erb:8:in `_app_views_locations_index_html_erb___1381004100215242416_70278666552500'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (198.7ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" ORDER BY "locations"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mLocation Load (1.1ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1006908589982888040);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1006908589982888040)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "locations" SET "updated_at" = $1, "admin_id" = $2 WHERE "locations"."id" = $3[0m  [["updated_at", 2017-05-09 20:58:50 UTC], ["admin_id", 1], ["id", 1]]
+  [1m[35m (66.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "locations" SET "updated_at" = $1, "admin_id" = $2 WHERE "locations"."id" = $3[0m  [["updated_at", 2017-05-09 20:58:50 UTC], ["admin_id", 1], ["id", 2]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "locations" SET "updated_at" = $1, "admin_id" = $2 WHERE "locations"."id" = $3[0m  [["updated_at", 2017-05-09 20:58:50 UTC], ["admin_id", 1], ["id", 4]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/locations" for ::1 at 2017-05-09 17:03:44 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [3 times] (40.6ms)
+  Rendered locations/index.html.erb within layouts/application (73.9ms)
+Completed 500 Internal Server Error in 242ms (ActiveRecord: 13.3ms)
+
+
+  
+ActionView::Template::Error (undefined method `user' for #<Location:0x007fe07bed9988>
+Did you mean?  users):
+    1: <li>
+    2:   <%= link_to location.title, location_path(location) %>
+    3:   visited by <strong><%= location.user.first_name %></strong>
+    4: </li>
+  
+app/views/locations/_location.html.erb:3:in `_app_views_locations__location_html_erb__2202974675587108993_70301064236000'
+app/views/locations/index.html.erb:8:in `_app_views_locations_index_html_erb___1138044160468050501_70301086793020'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (15.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (12.2ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (207.9ms)
+Started GET "/locations" for ::1 at 2017-05-09 17:13:03 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.6ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [3 times] (15.6ms)
+  Rendered locations/index.html.erb within layouts/application (39.8ms)
+Completed 200 OK in 3251ms (Views: 3181.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:15:56 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 539ms (Views: 531.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:16:17 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (5.6ms)
+Completed 200 OK in 171ms (Views: 162.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:16:38 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (5.3ms)
+Completed 200 OK in 134ms (Views: 126.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:17:29 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 228ms (Views: 220.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/locations/new" for ::1 at 2017-05-09 17:17:50 -0400
+Processing by LocationsController#new as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/new.html.erb within layouts/application
+  Rendered locations/_form.html.erb (636.2ms)
+  Rendered locations/new.html.erb within layouts/application (641.1ms)
+Completed 200 OK in 811ms (Views: 733.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:18:37 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 142ms (Views: 135.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:18:45 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (8.3ms)
+Completed 200 OK in 135ms (Views: 129.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:19:14 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (7.2ms)
+Completed 200 OK in 113ms (Views: 105.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:19:33 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 101ms (Views: 90.5ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:21:05 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (6.3ms)
+Completed 200 OK in 131ms (Views: 122.8ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:21:24 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (5.9ms)
+Completed 200 OK in 132ms (Views: 125.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:21:40 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (6.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 138ms (Views: 125.6ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:22:50 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (1.0ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 115ms (Views: 107.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/locations/1" for ::1 at 2017-05-09 17:22:59 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.6ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 203ms (Views: 107.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/locations/new" for ::1 at 2017-05-09 17:23:36 -0400
+Processing by LocationsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/new.html.erb within layouts/application
+  Rendered locations/_form.html.erb (6.0ms)
+  Rendered locations/new.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 120ms (Views: 113.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/locations" for ::1 at 2017-05-09 17:23:57 -0400
+Processing by LocationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vhtnid/dMLTpFQpHR6WLoY2mTS97Nc9fjh+OgXK3fiby4NQZZUh3+I/nbPW9xPw370iGohJvA9mH5GIM05PpKw==", "location"=>{"title"=>"Company Truck", "admin_id"=>"1", "address"=>"Piedmont Park, Atlanta, GA", "latitude"=>"", "longitude"=>""}, "commit"=>"Add!"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: admin_id
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (27.0ms)[0m  [1m[32mINSERT INTO "locations" ("title", "latitude", "longitude", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Company Truck"], ["latitude", 33.7859245], ["longitude", -84.3748308], ["created_at", 2017-05-09 21:23:58 UTC], ["updated_at", 2017-05-09 21:23:58 UTC]]
+  [1m[35m (13.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/locations
+Completed 302 Found in 1125ms (ActiveRecord: 44.3ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:23:58 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 104ms (Views: 97.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/locations/new" for ::1 at 2017-05-09 17:24:08 -0400
+Processing by LocationsController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/new.html.erb within layouts/application
+  Rendered locations/_form.html.erb (4.8ms)
+  Rendered locations/new.html.erb within layouts/application (9.4ms)
+Completed 200 OK in 173ms (Views: 154.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:24:53 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 108ms (Views: 101.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:25:17 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (5.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (9.7ms)
+Completed 200 OK in 129ms (Views: 116.1ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:28:04 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 103ms (Views: 95.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/locations/1" for ::1 at 2017-05-09 17:28:06 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 111ms (Views: 101.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/locations/1" for ::1 at 2017-05-09 17:28:09 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 88ms (Views: 82.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/locations/1" for ::1 at 2017-05-09 17:28:21 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 105ms (Views: 97.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/locations/1" for ::1 at 2017-05-09 17:28:23 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 124ms (Views: 117.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/locations/1" for ::1 at 2017-05-09 17:29:37 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 167ms (Views: 159.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/locations/1/edit" for ::1 at 2017-05-09 17:29:41 -0400
+Processing by LocationsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/edit.html.erb within layouts/application
+  Rendered locations/_form.html.erb (4.7ms)
+  Rendered locations/edit.html.erb within layouts/application (13.9ms)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 1.7ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <%= form_for @location do |f| %>
+    2:   <fieldset class="form-group">
+    3:     <%= f.label :title %>
+    4:     <%= f.text_field :title, class: "form-control" %>
+  
+app/views/locations/_form.html.erb:1:in `_app_views_locations__form_html_erb___598820785039562726_70301105244040'
+app/views/locations/edit.html.erb:3:in `_app_views_locations_edit_html_erb__4179059766587118013_70301096719940'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (11.4ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (165.2ms)
+Started GET "/locations/1/edit" for ::1 at 2017-05-09 17:31:18 -0400
+Processing by LocationsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/edit.html.erb within layouts/application
+  Rendered locations/_form.html.erb (4.3ms)
+  Rendered locations/edit.html.erb within layouts/application (874.2ms)
+Completed 500 Internal Server Error in 974ms (ActiveRecord: 11.3ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `location' for #<#<Class:0x007fe081a06c98>:0x007fe081a05870>
+Did you mean?  @location):
+    4: 
+    5: <%= link_to 'Show', @location %> |
+    6: <%= link_to 'Back', locations_path %> |
+    7: <td><%= link_to 'Destroy', location, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  
+app/views/locations/edit.html.erb:7:in `_app_views_locations_edit_html_erb__4179059766587118013_70301112089420'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (12.2ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (166.9ms)
+Started GET "/locations/1/edit" for ::1 at 2017-05-09 17:33:36 -0400
+Processing by LocationsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/edit.html.erb within layouts/application
+  Rendered locations/_form.html.erb (7.4ms)
+  Rendered locations/edit.html.erb within layouts/application (52.4ms)
+Completed 200 OK in 545ms (Views: 449.4ms | ActiveRecord: 11.2ms)
+
+
+Started DELETE "/locations/1" for ::1 at 2017-05-09 17:33:49 -0400
+Processing by LocationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"khMohCuo74tZ7cjCj2mbkLSInKsqLFrN1LSRFk12Qyve6JsUkT2oxz8frnB1COwG1mZXJkN2lkvdT32b7FLUJg==", "id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.6ms)
+
+
+  
+NoMethodError (undefined method `destroy' for nil:NilClass):
+  
+app/controllers/locations_controller.rb:49:in `destroy'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.7ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (165.6ms)
+Started DELETE "/locations/1" for ::1 at 2017-05-09 17:35:09 -0400
+Processing by LocationsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"khMohCuo74tZ7cjCj2mbkLSInKsqLFrN1LSRFk12Qyve6JsUkT2oxz8frnB1COwG1mZXJkN2lkvdT32b7FLUJg==", "id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/locations
+Completed 302 Found in 84ms (ActiveRecord: 13.0ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:35:09 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 274ms (Views: 256.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/locations/2" for ::1 at 2017-05-09 17:35:50 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 176ms (Views: 98.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/locations/2/edit" for ::1 at 2017-05-09 17:35:52 -0400
+Processing by LocationsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (2.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering locations/edit.html.erb within layouts/application
+  Rendered locations/_form.html.erb (3.7ms)
+  Rendered locations/edit.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 197ms (Views: 120.4ms | ActiveRecord: 4.3ms)
+
+
+Started PATCH "/locations/2" for ::1 at 2017-05-09 17:36:11 -0400
+Processing by LocationsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IxNoNVDQN8Ba1amhJROtk9qC35Pu3G1MNYXOT0fSXu1v6Nul6kVwjDwnzxPfctoFuGwUHoeGoco8fiLC5vbJ4A==", "location"=>{"title"=>"warehouse", "admin_id"=>"1", "address"=>"1825 MacArthur Blvd Atlanta GA", "latitude"=>"", "longitude"=>""}, "commit"=>"Add!", "id"=>"2"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameter: admin_id
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "locations" SET "latitude" = $1, "longitude" = $2, "updated_at" = $3 WHERE "locations"."id" = $4[0m  [["latitude", 33.814073], ["longitude", -84.44759599999999], ["updated_at", 2017-05-09 21:36:12 UTC], ["id", 2]]
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/locations/2
+Completed 302 Found in 837ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/locations/2" for ::1 at 2017-05-09 17:36:12 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (1.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 94ms (Views: 84.2ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2017-05-09 17:37:42 -0400
+Processing by ClientController#dashboard as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering client/dashboard.html.erb
+  Rendered client/dashboard.html.erb (144.3ms)
+Completed 200 OK in 173ms (Views: 147.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/edit" for ::1 at 2017-05-09 17:37:47 -0400
+Processing by Devise::RegistrationsController#edit as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/registrations/edit.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/registrations/edit.html.erb within layouts/application (78.4ms)
+Completed 200 OK in 230ms (Views: 226.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-09 17:40:17 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (18.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (36.7ms)
+Completed 200 OK in 148ms (Views: 99.8ms | ActiveRecord: 22.0ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2017-05-09 17:40:23 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"S7sZLQOgAfr5ZGwlbeyqUrv0j9d2QkCPEuUPbSobS3QHQKq9uTVGtp+WCpeXjd3E2RpEWh8YjAkbHuPgiz/ceQ=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 30ms (ActiveRecord: 1.1ms)
+
+
+Started GET "/" for ::1 at 2017-05-09 17:40:23 -0400
+Processing by ClientController#dashboard as HTML
+Completed 401 Unauthorized in 8ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-09 17:40:23 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.3ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (37.3ms)
+Completed 200 OK in 166ms (Views: 161.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-05-09 17:40:28 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"fhmgHt7wHF1P+yjR/TTXMB/TL7GSneDWmDDgLs2BXeF7+l+E2LUbiXovyBecrK+JmuX8xSUrk7RHv4/VcDbMFg==", "user"=>{"email"=>"hkarambizi@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (13.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "hkarambizi@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", 2017-05-09 21:40:28 UTC], ["updated_at", 2017-05-09 21:40:28 UTC], ["id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["sign_in_count", 2], ["current_sign_in_at", 2017-05-09 21:40:28 UTC], ["updated_at", 2017-05-09 21:40:28 UTC], ["id", 1]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 337ms (ActiveRecord: 18.8ms)
+
+
+Started GET "/" for ::1 at 2017-05-09 17:40:28 -0400
+Processing by ClientController#dashboard as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering client/dashboard.html.erb
+  Rendered client/dashboard.html.erb (71.2ms)
+Completed 200 OK in 81ms (Views: 74.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 17:40:34 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (1.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered locations/index.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 192ms (Views: 115.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/events" for ::1 at 2017-05-09 17:40:41 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered simple_calendar/_month_calendar.html.erb (13.1ms)
+  [1m[36mEvent Load (4.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+Started GET "/events" for ::1 at 2017-05-09 17:40:41 -0400
+  Rendered events/index.html.erb within layouts/application (74.9ms)
+Completed 200 OK in 203ms (Views: 129.5ms | ActiveRecord: 37.1ms)
+
+
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered simple_calendar/_month_calendar.html.erb (10.3ms)
+  [1m[36mEvent Load (1.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (17.7ms)
+Completed 200 OK in 116ms (Views: 107.3ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/events" for ::1 at 2017-05-09 17:45:17 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered events/index.html.erb within layouts/application (77.3ms)
+Completed 500 Internal Server Error in 117ms (ActiveRecord: 1.4ms)
+
+
+  
+ActionView::Template::Error (Missing partial events/_month_calendar, application/_month_calendar with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/hkarambizi/Desktop/WDI/pro-fest.inv/app/views"
+  * "/Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views"
+  * "/Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/rails-chat-0.0.1/app/views"
+  * "/Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views"
+):
+    2: 
+    3: <h1>Events</h1>
+    4: 
+    5: <%= render 'month_calendar', events: @events %>
+    6: 
+    7: <%= month_calendar(attribute: :start_date) do |date| %>
+    8:   <%= date %>
+  
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301079709260'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (154.4ms)
+Started GET "/events" for ::1 at 2017-05-09 17:46:05 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered events/_month_calendar.html.erb (4.8ms)
+  Rendered events/index.html.erb within layouts/application (8.9ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 2.4ms)
+
+
+  
+ActionView::Template::Error (calendar requires a block):
+    1: <div class="simple-calendar">
+    2:   <div class="calendar-heading">
+    3:     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+    4:     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    5:     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    6:   </div>
+  
+app/views/events/_month_calendar.html.erb:3:in `_app_views_events__month_calendar_html_erb___1135224415944285126_70301078816680'
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301087993120'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.5ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (16.9ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (176.0ms)
+Started GET "/events" for ::1 at 2017-05-09 17:57:23 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered events/_month_calendar.html.erb (4.2ms)
+  Rendered events/index.html.erb within layouts/application (13.1ms)
+Completed 500 Internal Server Error in 76ms (ActiveRecord: 4.9ms)
+
+
+  
+ActionView::Template::Error (calendar requires a block):
+    1: <div class="simple-calendar">
+    2:   <div class="calendar-heading">
+    3:     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+    4:     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    5:     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    6:   </div>
+  
+app/views/events/_month_calendar.html.erb:3:in `_app_views_events__month_calendar_html_erb___1135224415944285126_70301096107000'
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301104551640'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (9.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (148.9ms)
+Started GET "/events" for ::1 at 2017-05-09 17:58:27 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered events/_month_calendar.html.erb (5.4ms)
+  Rendered events/index.html.erb within layouts/application (9.3ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (calendar requires a block):
+    1: <div class="simple-calendar">
+    2:   <div class="calendar-heading">
+    3:     <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
+    4:     <span class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></span>
+    5:     <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
+    6:   </div>
+  
+app/views/events/_month_calendar.html.erb:3:in `_app_views_events__month_calendar_html_erb___1135224415944285126_70301080469060'
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301088717620'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (22.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (167.2ms)
+Started GET "/events" for ::1 at 2017-05-09 17:59:09 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (44.3ms)
+Completed 500 Internal Server Error in 64ms (ActiveRecord: 3.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `my_related_model' for #<Event:0x007fe080ef61a0>):
+    2: 
+    3: <h1>Events</h1>
+    4: 
+    5: <%= month_calendar events: @events do |date, events| %>
+    6:   <%= date %>
+    7: 
+    8:   <% events.each do |event| %>
+  
+app/models/event.rb:13:in `start_time'
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301098314240'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.2ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (150.5ms)
+Started GET "/events" for ::1 at 2017-05-09 17:59:56 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (33.3ms)
+Completed 500 Internal Server Error in 133ms (ActiveRecord: 1.9ms)
+
+
+  
+ActionView::Template::Error (undefined method `start' for #<Event:0x007fe081881418>):
+    2: 
+    3: <h1>Events</h1>
+    4: 
+    5: <%= month_calendar events: @events do |date, events| %>
+    6:   <%= date %>
+    7: 
+    8:   <% events.each do |event| %>
+  
+app/models/event.rb:13:in `start_time'
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301111451120'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.6ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (148.7ms)
+Started GET "/events" for ::1 at 2017-05-09 18:09:01 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered events/index.html.erb within layouts/application (2.2ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 0.7ms)
+
+
+  
+SyntaxError (/Users/hkarambizi/Desktop/WDI/pro-fest.inv/app/views/events/index.html.erb:5: syntax error, unexpected keyword_do_block, expecting keyword_end
+bute: :start_date), :events do |date, event| @output_buffer.
+                              ^
+/Users/hkarambizi/Desktop/WDI/pro-fest.inv/app/views/events/index.html.erb:5: syntax error, unexpected '|', expecting '='
+ate), :events do |date, event| @output_buffer.safe_append='
+                              ^
+/Users/hkarambizi/Desktop/WDI/pro-fest.inv/app/views/events/index.html.erb:47: syntax error, unexpected keyword_ensure, expecting end-of-input
+          ensure
+                ^):
+  
+app/views/events/index.html.erb:5: syntax error, unexpected keyword_do_block, expecting keyword_end
+app/views/events/index.html.erb:5: syntax error, unexpected '|', expecting '='
+app/views/events/index.html.erb:47: syntax error, unexpected keyword_ensure, expecting end-of-input
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (15.9ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (185.8ms)
+Started GET "/events" for ::1 at 2017-05-09 18:10:56 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (19.3ms)
+Completed 500 Internal Server Error in 42ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `start' for #<Event:0x007fe07efd6018>):
+    2: 
+    3: <h1>Events</h1>
+    4: 
+    5: <%= month_calendar events: @events do |date, events| %>
+    6:   <%= date %>
+    7: 
+    8:   <% events.each do |event| %>
+  
+app/models/event.rb:13:in `start_time'
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301111059520'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (22.2ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (164.0ms)
+Started GET "/events" for ::1 at 2017-05-09 18:11:12 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (40.6ms)
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 2.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `start_time' for #<Event:0x007fe07fb1b310>
+Did you mean?  start_date):
+    2: 
+    3: <h1>Events</h1>
+    4: 
+    5: <%= month_calendar events: @events do |date, events| %>
+    6:   <%= date %>
+    7: 
+    8:   <% events.each do |event| %>
+  
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301096476680'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.4ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.4ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (152.9ms)
+Started GET "/events" for ::1 at 2017-05-09 18:14:18 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (3.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered events/index.html.erb within layouts/application (6.4ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 3.2ms)
+
+
+  
+ActionView::Template::Error (month_calendar requires a block):
+    2: 
+    3: <h1>Events</h1>
+    4: 
+    5: <%= binding.pry month_calendar events: @events do |date, events| %>
+    6:   <%= date %>
+    7: 
+    8:   <% events.each do |event| %>
+  
+app/views/events/index.html.erb:5:in `_app_views_events_index_html_erb__1030773942670538630_70301103942680'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.2ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (151.8ms)
+Started GET "/events" for ::1 at 2017-05-09 18:14:56 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/events" for ::1 at 2017-05-09 18:26:37 -0400
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (15.9ms)
+  [1m[36mEvent Load (4.2ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (100.5ms)
+Completed 200 OK in 741241ms (Views: 490.6ms | ActiveRecord: 13.8ms)
+
+
+Started GET "/events" for ::1 at 2017-05-09 18:27:18 -0400
+Processing by EventsController#index as HTML
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (26.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (13.6ms)
+  [1m[36mEvent Load (12.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (49.3ms)
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (8.4ms)
+  [1m[36mEvent Load (20.1ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (80.8ms)
+Completed 200 OK in 219ms (Views: 151.0ms | ActiveRecord: 13.5ms)
+
+
+Completed 200 OK in 448ms (Views: 369.2ms | ActiveRecord: 46.2ms)
+
+
+Started GET "/events" for ::1 at 2017-05-09 18:28:31 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (10.1ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (32.1ms)
+Completed 200 OK in 407ms (Views: 398.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/events/new" for ::1 at 2017-05-09 18:28:35 -0400
+Processing by EventsController#new as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (64.2ms)
+  Rendered events/new.html.erb within layouts/application (79.5ms)
+Completed 200 OK in 353ms (Views: 268.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/events/2" for ::1 at 2017-05-09 18:28:47 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 121ms (Views: 84.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/events" for ::1 at 2017-05-09 18:28:52 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (9.5ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (29.4ms)
+Completed 200 OK in 139ms (Views: 123.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/events/2" for ::1 at 2017-05-09 18:28:55 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 92ms (Views: 82.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/events/2/edit" for ::1 at 2017-05-09 18:28:57 -0400
+Processing by EventsController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/edit.html.erb within layouts/application
+  Rendered events/_form.html.erb (8.1ms)
+  Rendered events/edit.html.erb within layouts/application (12.6ms)
+Completed 200 OK in 129ms (Views: 104.2ms | ActiveRecord: 1.6ms)
+
+
+Started PATCH "/events/2" for ::1 at 2017-05-09 18:29:20 -0400
+Processing by EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DrqDrSPL5rOSIjXdGfEowrFF21jf5IomrY+26MQZapFidvlNAr4+0DntBfBTtAAPK2XQ2Qcxh+9Ly0+x3N4Jlw==", "event"=>{"title"=>"WDI 9 Graduation (fifo unveiling!)", "start_date"=>"13 May, 2017", "end_date"=>"13 May, 2017", "address"=>"General Assembly Atlanta", "latitude"=>"33.7719459", "longitude"=>"-84.366527", "admin_id"=>"1", "prev_year_event_id"=>""}, "commit"=>"Update Event", "id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Unpermitted parameters: admin_id, prev_year_event_id
+  [1m[35m (3.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "events" SET "start_date" = $1, "end_date" = $2, "latitude" = $3, "longitude" = $4, "updated_at" = $5 WHERE "events"."id" = $6[0m  [["start_date", Sat, 13 May 2017], ["end_date", Sat, 13 May 2017], ["latitude", 33.772993], ["longitude", -84.366288], ["updated_at", 2017-05-09 22:29:22 UTC], ["id", 2]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 1282ms (ActiveRecord: 12.1ms)
+
+
+Started GET "/events/2" for ::1 at 2017-05-09 18:29:22 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (1.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 112ms (Views: 103.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/events" for ::1 at 2017-05-09 18:29:27 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (10.1ms)
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (22.8ms)
+Completed 200 OK in 167ms (Views: 147.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/orders" for ::1 at 2017-05-09 18:29:48 -0400
+  
+ActionController::RoutingError (uninitialized constant OrdersController):
+  
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:268:in `const_get'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:268:in `block in constantize'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `each'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `inject'
+activesupport (5.0.2) lib/active_support/inflector/methods.rb:266:in `constantize'
+actionpack (5.0.2) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:44:in `controller'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:30:in `serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.2) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.2) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.2) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.2) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.2) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.2) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.2) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.0) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.2) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.2) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.2) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.2) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.2) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.2) lib/rails/engine.rb:522:in `call'
+puma (3.8.2) lib/puma/configuration.rb:224:in `call'
+puma (3.8.2) lib/puma/server.rb:600:in `handle_request'
+puma (3.8.2) lib/puma/server.rb:435:in `process_client'
+puma (3.8.2) lib/puma/server.rb:299:in `block in run'
+puma (3.8.2) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered collection of /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_route.html.erb [121 times] (116.0ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/routes/_table.html.erb (11.2ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.8ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (407.0ms)
+Started GET "/order" for ::1 at 2017-05-09 18:29:56 -0400
+Processing by ClientController#dashboard as HTML
+  Parameters: {"path"=>"order"}
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering client/dashboard.html.erb
+  Rendered client/dashboard.html.erb (74.1ms)
+Completed 200 OK in 98ms (Views: 77.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-09 18:29:59 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.9ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (29.2ms)
+Completed 200 OK in 152ms (Views: 111.6ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-09 18:30:02 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 129ms (Views: 124.7ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-09 18:30:33 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pPmh17MuIChfw2wTSzSnEDYB0mvVkYES2lQVY+7IjbbINds3klv4S/QMXD4BcY/drCHZ6g1EjNs8EOw69g/usA==", "order"=>{"content"=>"BX-2 Needs 2 bags of ice and a charger for my tablet, Thanks!"}}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (30.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (65.3ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "BX-2 Needs 2 bags of ice and a charger for my tablet, Thanks!"], ["category_id", 1], ["created_at", 2017-05-09 22:30:33 UTC], ["updated_at", 2017-05-09 22:30:33 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 161ms (ActiveRecord: 104.6ms)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "orders_pkey"
+DETAIL:  Key (id)=(1) already exists.
+: INSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"):
+  
+app/controllers/api/orders_controller.rb:17:in `create'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.9ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (164.4ms)
+Started POST "/api/orders" for ::1 at 2017-05-09 18:30:44 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"pPmh17MuIChfw2wTSzSnEDYB0mvVkYES2lQVY+7IjbbINds3klv4S/QMXD4BcY/drCHZ6g1EjNs8EOw69g/usA==", "order"=>{"content"=>"BX-2 Needs 2 bags of ice and a charger for my tablet, Thanks!"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "BX-2 Needs 2 bags of ice and a charger for my tablet, Thanks!"], ["category_id", 1], ["created_at", 2017-05-09 22:30:44 UTC], ["updated_at", 2017-05-09 22:30:44 UTC]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 16ms (ActiveRecord: 5.9ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-09 18:30:44 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 151ms (Views: 143.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-09 18:30:48 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 90ms (Views: 85.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-09 18:31:09 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"CUFR3xqu6irmjFrR6S8f1whJ46au3SXeYcMp+7VygkhljSs/O9sySU1DavyjajcakmnoJ3YIKBeHh9CirbXhTg==", "order"=>{"content"=>"BX-2 also needs two cases of Dasani!"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "BX-2 also needs two cases of Dasani!"], ["category_id", 1], ["created_at", 2017-05-09 22:31:09 UTC], ["updated_at", 2017-05-09 22:31:09 UTC]]
+  [1m[35m (45.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 58ms (ActiveRecord: 48.1ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-09 18:31:09 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (7.1ms)
+Completed 200 OK in 171ms (Views: 162.7ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/api/orders/2" for ::1 at 2017-05-09 18:31:14 -0400
+Processing by Api::OrdersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/orders/show.html.erb within layouts/application
+  Rendered api/orders/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 180ms (Views: 105.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/orders/2/edit" for ::1 at 2017-05-09 18:31:17 -0400
+Processing by Api::OrdersController#edit as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering api/orders/edit.html.erb within layouts/application
+  Rendered api/orders/edit.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 161ms (Views: 85.9ms | ActiveRecord: 1.5ms)
+
+
+Started PATCH "/api/orders/2" for ::1 at 2017-05-09 18:31:20 -0400
+Processing by Api::OrdersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZbgqHYLLn4kq1CIeLnNec0Wfc2zUAfGynE19xYa7pdkJdFD9o75H6oEbEjNkNna+37947QzU/Ht6CYScnnzG3w==", "order"=>{"content"=>"BX-2 Needs 2 bags of ice and a charger for my tablet, Thanks!"}, "id"=>"2"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (1.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (2.6ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 22ms (ActiveRecord: 7.0ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-09 18:31:20 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 145ms (Views: 136.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-09 18:32:21 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (7.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (7.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 139ms (Views: 119.0ms | ActiveRecord: 15.1ms)
+
+
