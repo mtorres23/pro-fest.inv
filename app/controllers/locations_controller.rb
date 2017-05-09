@@ -15,12 +15,20 @@ class LocationsController < ApplicationController
     else
       render 'new'
     end
+  end
 
     def show
     @location = Location.find(params[:id])
   end
 
-  end
+
+
+  # def destroy
+  #   @location.destroy
+  #   respond_to do |format|
+  #   format.html {redirect_to locations_url, notice: "Location"}
+  # end
+
 
   private
 
