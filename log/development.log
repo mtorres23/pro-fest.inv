@@ -8751,3 +8751,55 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 189ms (Views: 181.7ms | ActiveRecord: 1.8ms)
 
 
+Started GET "/locations" for ::1 at 2017-05-09 16:29:52 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (1.1ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [2 times] (1.3ms)
+  Rendered locations/index.html.erb within layouts/application (67.4ms)
+Completed 200 OK in 6976ms (Views: 1956.5ms | ActiveRecord: 12.4ms)
+
+
+Started GET "/locations/new" for ::1 at 2017-05-09 16:30:03 -0400
+Processing by LocationsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/new.html.erb within layouts/application
+  Rendered locations/_form.html.erb (166.0ms)
+  Rendered locations/new.html.erb within layouts/application (173.9ms)
+Completed 200 OK in 285ms (Views: 264.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/locations" for ::1 at 2017-05-09 16:30:29 -0400
+Processing by LocationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nQiW6TDPE9OBo2zA15mluQcoShAcvju4PVXqeFJSoSHR8yV5ilpUn+dRCnIt+NIvZcaBnXXk9z40rgb183Y2LA==", "location"=>{"title"=>"Pool", "admin_id"=>"1", "address"=>"466 Connally St SE", "latitude"=>"", "longitude"=>""}, "commit"=>"Add!"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: admin_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (69.6ms)[0m  [1m[32mINSERT INTO "locations" ("title", "latitude", "longitude", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["title", "Pool"], ["latitude", 33.7420138], ["longitude", -84.38134989999999], ["created_at", 2017-05-09 20:30:35 UTC], ["updated_at", 2017-05-09 20:30:35 UTC]]
+  [1m[35m (25.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/locations
+Completed 302 Found in 5579ms (ActiveRecord: 96.1ms)
+
+
+Started GET "/locations" for ::1 at 2017-05-09 16:30:35 -0400
+Processing by LocationsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering locations/index.html.erb within layouts/application
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered collection of locations/_location.html.erb [3 times] (1.0ms)
+  Rendered locations/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 5953ms (Views: 215.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/locations/4" for ::1 at 2017-05-09 16:30:47 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 295ms (Views: 100.6ms | ActiveRecord: 1.0ms)
+
+
