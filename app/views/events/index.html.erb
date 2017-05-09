@@ -2,9 +2,11 @@
 
 <h1>Events</h1>
 
-<%= month_calendar(attribute: :start_date) do |date| %>
+<%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %>
   <%= date %>
 <% end %>
+
+<%= link_to 'Add New Event', new_event_path, class: 'btn btn-primary btn-lg' %>
 
 <table>
   <thead>
