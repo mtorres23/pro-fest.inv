@@ -5,6 +5,34 @@
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application' %>
+
+    <style>
+
+    html {
+      background: no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+           #map {
+
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: 100vh;
+
+    /* Set up positioning */
+    position: center fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    }
+
+        </style>
+
+
   </head>
 
   <body>
@@ -15,9 +43,31 @@
         <p class="alert alert-danger"><%= alert %></p>
     <% end %>
     <%= yield %>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
-                                           async defer></script>
 
+    <div id="map"></div>
+        <script>
+          function initMap() {
+            <% if @location %>
+            var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
+            <% else %>
+
+            var target = {lat: 33.7490, lng: -84.3880};
+            <% end %>
+
+
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 20,
+              center: target
+            });
+            var marker = new google.maps.Marker({
+              position: target,
+              map: map
+            });
+          }
+        </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
+                                async defer></script>
 
   </body>
 </html>

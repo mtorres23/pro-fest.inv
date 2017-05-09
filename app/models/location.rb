@@ -6,10 +6,12 @@ class Location < ApplicationRecord
 	has_many :items, through: :orders
 
 
-	attr_accessor :raw_address
+	attr_accessor :address
 
 geocoded_by :address
 after_validation :geocode
+
+
 
 
 end
