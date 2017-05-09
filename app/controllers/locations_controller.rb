@@ -19,7 +19,7 @@ class LocationsController < ApplicationController
   def show
     @location = Location.find(params[:id])
   end
-  
+
   def edit
     @location = Location.find(params[:id])
   end
@@ -58,5 +58,6 @@ class LocationsController < ApplicationController
   def location_params
     return params.require(:location).permit(:title, :address, :latitude, :longitude)
     # .merge(:event_id => params[:event_id])
+    end
   end
 end
