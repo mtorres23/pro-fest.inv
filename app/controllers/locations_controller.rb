@@ -1,6 +1,6 @@
 class LocationsController < ApplicationController
   def index
-    @locations = Location.order('created_at DESC')
+    @locations = Location.all
   end
 
   def new
@@ -8,8 +8,8 @@ class LocationsController < ApplicationController
   end
 
   def create
-    @location = Location.new(location_params)
-    if @location.save
+    location = Location.new(location_params)
+    if location.save
       flash[:success] = "Location added!"
       redirect_to locations_path
     else
@@ -25,6 +25,7 @@ class LocationsController < ApplicationController
   private
 
   def location_params
-    params.require(:location).permit(:title, :address, :latitude, :longitude, :visited_by)
+    params.require(:location).permit(:title, :address, :latitude, :longitude)
+    # .merge(:event_id => params[:event_id])
   end
 end
