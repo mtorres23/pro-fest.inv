@@ -6,9 +6,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+
   </head>
 
   <body ng-app="fifoApp">
+
     <nav>
       <% if user_signed_in? %>
         <%= link_to 'Home', root_path %>
@@ -24,5 +27,7 @@
     <h1>fifo's Front end</h1>
 
     <ui-view></ui-view>
+
+
   </body>
 </html>

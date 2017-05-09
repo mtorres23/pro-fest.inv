@@ -1,6 +1,5 @@
 class LocationsController < ApplicationController
   def index
-    binding.pry
     @locations = Location.all
   end
 
@@ -10,7 +9,6 @@ class LocationsController < ApplicationController
 
   def create
     location = Location.new(location_params)
-    binding.pry
     if location.save
       flash[:success] = "Location added!"
       redirect_to locations_path
