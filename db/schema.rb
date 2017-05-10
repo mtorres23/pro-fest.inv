@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20170509135831) do
     t.text     "content"
     t.integer  "created_by"
     t.integer  "verified_by"
-    t.date "delivery_date"
+    t.datetime "delivery_date"
     t.float    "total_price"
     t.integer  "total_amount"
     t.integer  "category_id"

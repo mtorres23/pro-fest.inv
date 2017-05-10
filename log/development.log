@@ -14416,3 +14416,355 @@ Processing by Api::OrdersController#index as HTML
 Completed 200 OK in 59ms (Views: 55.6ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/api/orders" for ::1 at 2017-05-10 13:50:09 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (7.3ms)
+Completed 200 OK in 57ms (Views: 52.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 13:50:21 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (13.7ms)
+  [1m[36mEvent Load (0.9ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (38.5ms)
+Completed 200 OK in 100ms (Views: 84.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 13:51:41 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (6.9ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `strftime' for nil:NilClass):
+    19:           <td><%= link_to order.content, api_order_path(order.id) %></td>
+    20:           <td><%=order.created_at.strftime("%D  %I:%M %p") %></td>
+    21:           <td><%=order.updated_at.strftime("%D %I:%M %p") %></td>
+    22:           <td><%=order.delivery_date.strftime%></td>
+    23:         </tr>
+    24:         <% end %>
+    25:     </tbody>
+  
+app/views/api/orders/index.html.erb:22:in `block in _app_views_api_orders_index_html_erb___3381664585776393808_70170563660380'
+app/views/api/orders/index.html.erb:17:in `_app_views_api_orders_index_html_erb___3381664585776393808_70170563660380'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (65.9ms)
+Started GET "/events" for ::1 at 2017-05-10 13:52:15 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (8.4ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (23.6ms)
+Completed 200 OK in 100ms (Views: 62.9ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 13:54:14 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (23.3ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 529ms (Views: 477.6ms | ActiveRecord: 8.1ms)
+
+
+Started GET "/events/new" for ::1 at 2017-05-10 13:54:17 -0400
+Processing by EventsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (27.2ms)
+  Rendered events/new.html.erb within layouts/application (29.6ms)
+Completed 200 OK in 108ms (Views: 104.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/events" for ::1 at 2017-05-10 13:54:28 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"IiagpTjSH7p3grpNZxdXLGf2oq95Tp1v/vCpICbeLs0YtZ2LFP+H2biB4YjdLsPNinMnI2OFLfVvb4hR8u4Dww==", "event"=>{"title"=>"asdads", "start_date"=>"1 May, 2017", "end_date"=>"9 May, 2017", "address"=>"", "latitude"=>"", "longitude"=>"", "admin_id"=>"", "prev_year_event_id"=>""}, "commit"=>"Create Event"}
+  [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: admin_id, prev_year_event_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.9ms)[0m  [1m[32mINSERT INTO "events" ("title", "start_date", "end_date", "admin_id", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "asdads"], ["start_date", Mon, 01 May 2017], ["end_date", Tue, 09 May 2017], ["admin_id", "1"], ["created_at", 2017-05-10 17:54:28 UTC], ["updated_at", 2017-05-10 17:54:28 UTC], ["client_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 11.8ms)
+
+
+  
+ActiveRecord::RecordNotUnique (PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "events_pkey"
+DETAIL:  Key (id)=(1) already exists.
+: INSERT INTO "events" ("title", "start_date", "end_date", "admin_id", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"):
+  
+app/controllers/events_controller.rb:32:in `block in create'
+app/controllers/events_controller.rb:31:in `create'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (79.2ms)
+Started GET "/events" for ::1 at 2017-05-10 13:54:49 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.7ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 62ms (Views: 58.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 13:55:18 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (18.8ms)
+Completed 200 OK in 107ms (Views: 71.9ms | ActiveRecord: 10.3ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 13:55:27 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 60ms (Views: 55.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 13:55:37 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vcquuEWqJ95Y0jHhKFbKj0Fw1KbmAne1F+xK0Xd3EOKHWZOWaYe/vZfRaiSSb15urPVRKvzJxy+Gc2ugo0c97A==", "order"=>{"content"=>"testtttt", "delivery_date"=>"16 May, 2017"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "orders" ("content", "delivery_date", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "testtttt"], ["delivery_date", 2017-05-16 04:00:00 UTC], ["category_id", 1], ["created_at", 2017-05-10 17:55:37 UTC], ["updated_at", 2017-05-10 17:55:37 UTC]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 23ms (ActiveRecord: 6.2ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 13:55:37 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (2.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 89ms (Views: 82.4ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 13:56:05 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `strfrtime' for nil:NilClass):
+    19:           <td><%= link_to order.content, api_order_path(order.id) %></td>
+    20:           <td><%=order.created_at.strftime("%D  %I:%M %p") %></td>
+    21:           <td><%=order.updated_at.strftime("%D %I:%M %p") %></td>
+    22:           <td><%=order.delivery_date.strfrtime("%D")%></td>
+    23:         </tr>
+    24:         <% end %>
+    25:     </tbody>
+  
+app/views/api/orders/index.html.erb:22:in `block in _app_views_api_orders_index_html_erb__3776869381408577032_70341797357320'
+app/views/api/orders/index.html.erb:17:in `_app_views_api_orders_index_html_erb__3776869381408577032_70341797357320'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (75.8ms)
+Started GET "/api/orders" for ::1 at 2017-05-10 13:59:06 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 101ms (Views: 65.5ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 14:00:16 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 91ms (Views: 56.7ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/events/new" for ::1 at 2017-05-10 14:00:32 -0400
+Processing by EventsController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (3.9ms)
+  Rendered events/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 77ms (Views: 52.8ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/events" for ::1 at 2017-05-10 14:00:42 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yVftTtxHAAaO1mHp5QPFxu2utCCfYISNsSNoIdhcQuXzxNBg8GqYZUHVOixfOlEnACsxrIWrNBcgvElQDGxv6w==", "event"=>{"title"=>"asda", "start_date"=>"1 May, 2017", "end_date"=>"15 May, 2017", "address"=>"", "latitude"=>"", "longitude"=>"", "admin_id"=>"", "prev_year_event_id"=>""}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: admin_id, prev_year_event_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "events" ("title", "start_date", "end_date", "admin_id", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "asda"], ["start_date", Mon, 01 May 2017], ["end_date", Mon, 15 May 2017], ["admin_id", "1"], ["created_at", 2017-05-10 18:00:43 UTC], ["updated_at", 2017-05-10 18:00:43 UTC], ["client_id", 1]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/2
+Completed 302 Found in 36ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/events/2" for ::1 at 2017-05-10 14:00:43 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  Rendered events/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 74ms (Views: 68.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:00:47 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (10.8ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (18.3ms)
+Completed 200 OK in 114ms (Views: 110.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:02:26 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.7ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (22.6ms)
+Completed 200 OK in 95ms (Views: 65.2ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:03:48 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.5ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (13.8ms)
+Completed 200 OK in 70ms (Views: 65.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:03:56 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (9.3ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (15.5ms)
+Completed 200 OK in 66ms (Views: 61.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:04:07 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.4ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 72ms (Views: 66.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:04:23 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.2ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (12.7ms)
+Completed 200 OK in 68ms (Views: 62.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:04:25 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (8.2ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 73ms (Views: 69.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:04:33 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.0ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 63ms (Views: 57.9ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:05:04 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.4ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (13.5ms)
+Completed 200 OK in 67ms (Views: 62.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:05:11 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (15.2ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (20.7ms)
+Completed 200 OK in 74ms (Views: 67.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:05:20 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.3ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (13.1ms)
+Completed 200 OK in 64ms (Views: 58.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/events" for ::1 at 2017-05-10 14:05:26 -0400
+Processing by EventsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (7.2ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  Rendered events/index.html.erb within layouts/application (13.3ms)
+Completed 200 OK in 73ms (Views: 66.4ms | ActiveRecord: 0.9ms)
+
+
