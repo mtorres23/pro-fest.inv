@@ -23,12 +23,12 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
-        <td><%= link_to location.title, location %></td>
+        <td><%= link_to location.title, event_location_path %></td>
         <td><%= location.access_code %></td>
         <td><%= location.address%></td>
         <td><%= location.latitude %></td>
         <td><%= location.longitude %></td>
-        <td><%= location.admin_id %></td>
+        <td><%= location.event.title %></td>
         <td><%= location.current_order_id %></td>
         <td><%= location.prev_order_id %></td>
       </tr>

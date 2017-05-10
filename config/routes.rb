@@ -25,7 +25,7 @@ get '/clients/:client_id/items' => 'items#client_items', as: 'items_by_client'
 # Location Routes
 # route to get all current items in a specific location    
 get '/locations/:location_id/items' => 'items#location_items', as: 'location_items'
-
+post '/events/:event_id/locations' => 'locations#create', as: 'create_location'
 
   root to: 'clients#show'
 get '*path', to: 'clients#show'

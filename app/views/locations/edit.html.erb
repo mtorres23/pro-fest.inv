@@ -2,6 +2,6 @@
 
 <%= render 'form', location: @location %>
 
-<%= link_to 'Show', @location %> |
-<%= link_to 'Back', locations_path %> |
-<%= link_to 'Destroy', @location, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= link_to 'Show', event_location_path(@event, @location) %> |
+<%= link_to 'Back To Event', event_location_path(@event, @location) %> |
+<%= link_to 'Destroy', event_location_path(@event, @location), method: :delete, data: { confirm: 'Are you sure?' } %>

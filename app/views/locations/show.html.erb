@@ -3,5 +3,5 @@
 <p>Address: <%= @location.address %></p>
 <p>Coordinates: <%= @location.latitude %> <%= @location.longitude %></p>
 
-<%= link_to 'Edit', edit_location_path(@location) %> |
-<%= link_to 'Back', locations_path %>
+<%= link_to 'Edit', edit_event_location_path(event_id: @location.event_id, id: @location.id) %> |
+<%= link_to 'Back', event_path(@event) %>
