@@ -13310,3 +13310,548 @@ Processing by Api::OrdersController#show as HTML
 Completed 200 OK in 51ms (Views: 46.8ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/api/orders/16" for ::1 at 2017-05-10 12:28:32 -0400
+Processing by Api::OrdersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering api/orders/show.html.erb within layouts/application
+  Rendered api/orders/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 53ms (Views: 46.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/orders/16" for ::1 at 2017-05-10 12:28:57 -0400
+Processing by Api::OrdersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering api/orders/show.html.erb within layouts/application
+  Rendered api/orders/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 49ms (Views: 44.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/orders/16" for ::1 at 2017-05-10 12:29:25 -0400
+Processing by Api::OrdersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering api/orders/show.html.erb within layouts/application
+  Rendered api/orders/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 56ms (Views: 51.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders/16" for ::1 at 2017-05-10 12:29:53 -0400
+Processing by Api::OrdersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering api/orders/show.html.erb within layouts/application
+  Rendered api/orders/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 50ms (Views: 45.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders/16" for ::1 at 2017-05-10 12:31:00 -0400
+Processing by Api::OrdersController#show as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering api/orders/show.html.erb within layouts/application
+  Rendered api/orders/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 49ms (Views: 45.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/orders/16/edit" for ::1 at 2017-05-10 12:31:02 -0400
+Processing by Api::OrdersController#edit as HTML
+  Parameters: {"id"=>"16"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  Rendering api/orders/edit.html.erb within layouts/application
+  Rendered api/orders/edit.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 68ms (Views: 63.6ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/api/orders/16" for ::1 at 2017-05-10 12:31:17 -0400
+Processing by Api::OrdersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"8nb3/vGYlQ9s5+AxY9vbidwYCBbWso+bEvfGYk1SpWvI5crQ3bUNbKPku/TZ4k9oMZ2Nmsx5PwGDaOcTmWKIZQ==", "order"=>{"content"=>"It's working again. Update still works."}, "id"=>"16"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" WHERE "orders"."id" = $1 LIMIT $2[0m  [["id", 16], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[33mUPDATE "orders" SET "content" = $1, "updated_at" = $2 WHERE "orders"."id" = $3[0m  [["content", "It's working again. Update still works."], ["updated_at", 2017-05-10 16:31:17 UTC], ["id", 16]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 36ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:31:17 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 52ms (Views: 48.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:33:07 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 52ms (Views: 46.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:34:00 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (337.4ms)
+Completed 500 Internal Server Error in 350ms (ActiveRecord: 0.9ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `order' for #<#<Class:0x007fa3b2cfd408>:0x007fa3b2b62008>
+Did you mean?  @orders):
+    10: 
+    11: <div class ='wrapper'>
+    12:   <table class = 'centered'>
+    13:     <%= link_to order.content, api_order_path(order.id) %>
+    14:       <td></td>
+    15:   </table>
+    16: </div>
+  
+app/views/api/orders/index.html.erb:13:in `_app_views_api_orders_index_html_erb___3381664585776393808_70170527341420'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.6ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (80.7ms)
+Started GET "/api/orders" for ::1 at 2017-05-10 12:34:23 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (406.5ms)
+Completed 500 Internal Server Error in 419ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `order' for #<#<Class:0x007fa3b2cfd408>:0x007fa3b2d69f40>
+Did you mean?  @orders):
+    10: 
+    11: <div class ='wrapper'>
+    12:   <table class = 'centered'>
+    13:     <td><%= link_to order.content, api_order_path(order.id) %></td>
+    14:       <td></td>
+    15:   </table>
+    16: </div>
+  
+app/views/api/orders/index.html.erb:13:in `_app_views_api_orders_index_html_erb___3381664585776393808_70170528404840'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (64.9ms)
+Started GET "/api/orders" for ::1 at 2017-05-10 12:34:53 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  Rendered api/orders/index.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/Users/danmilo/project4/pro-fest.inv/app/views/api/orders/index.html.erb:18: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/api/orders/index.html.erb:18: syntax error, unexpected keyword_ensure, expecting keyword_end
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (66.3ms)
+Started GET "/api/orders" for ::1 at 2017-05-10 12:35:07 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.6ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 56ms (Views: 52.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:35:30 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 50ms (Views: 43.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:38:51 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  Rendered api/orders/index.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.4ms)
+
+
+  
+SyntaxError (/Users/danmilo/project4/pro-fest.inv/app/views/api/orders/index.html.erb:29: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/api/orders/index.html.erb:29: syntax error, unexpected keyword_ensure, expecting keyword_end
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (63.6ms)
+Started GET "/api/orders" for ::1 at 2017-05-10 12:39:02 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.2ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 43ms (Views: 38.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:39:22 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  Rendered api/orders/index.html.erb within layouts/application (0.9ms)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 0.3ms)
+
+
+  
+SyntaxError (/Users/danmilo/project4/pro-fest.inv/app/views/api/orders/index.html.erb:25: unknown regexp options - tr
+/Users/danmilo/project4/pro-fest.inv/app/views/api/orders/index.html.erb:26: syntax error, unexpected '<'
+        <% end );@output_buffer.safe_ap
+         ^
+/Users/danmilo/project4/pro-fest.inv/app/views/api/orders/index.html.erb:31: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^):
+  
+app/views/api/orders/index.html.erb:25: unknown regexp options - tr
+app/views/api/orders/index.html.erb:26: syntax error, unexpected '<'
+app/views/api/orders/index.html.erb:31: syntax error, unexpected keyword_ensure, expecting keyword_end
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.1ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (63.6ms)
+Started GET "/api/orders" for ::1 at 2017-05-10 12:39:33 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 52ms (Views: 47.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:40:00 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 60ms (Views: 54.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:47:07 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 5309ms (Views: 5304.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:47:48 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 4379ms (Views: 4372.9ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:47:59 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 68ms (Views: 64.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:01 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JOJhZgyDEpjOpIbf9iVMgSL/lVkWM4QFN1dFIq0yAVgecVxIIK6K+wGn3RpMHNhgz3oQ1Qz4NJ+myGRTeQIsVg==", "order"=>{"content"=>"dgdfgs"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dgdfgs"], ["category_id", 1], ["created_at", 2017-05-10 16:48:01 UTC], ["updated_at", 2017-05-10 16:48:01 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 8ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:01 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 72ms (Views: 68.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:48:02 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 77ms (Views: 75.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:04 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nv63RIdMySr+VqlGnQwX6VpMjQpjakM9CmwTufwbGnmkbYpqq2FRSTFV8oMnNYMIt8kIhnmh86eb8zLIKCs3dw==", "order"=>{"content"=>"sdfgdsfgdsg"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sdfgdsfgdsg"], ["category_id", 1], ["created_at", 2017-05-10 16:48:04 UTC], ["updated_at", 2017-05-10 16:48:04 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 9ms (ActiveRecord: 2.1ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:04 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 73ms (Views: 69.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:48:05 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 50ms (Views: 47.5ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:06 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XrBenInj2kBSZCPFR1f/qIEIE06G6KBncJbzIoTKZpdkI2Oypc5CI51neAD9bmtJbI2WwpwjEP3hCdJTUPpLmQ==", "order"=>{"content"=>"dsfgdfgdsgf"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "dsfgdfgdsgf"], ["category_id", 1], ["created_at", 2017-05-10 16:48:06 UTC], ["updated_at", 2017-05-10 16:48:06 UTC]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 9ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:06 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 68ms (Views: 63.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:48:07 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 56ms (Views: 53.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:09 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"V5JiMoznE20VAOddSFb0242S4pBm+opD33O3g3/j6W9tAV8coMqLDtoDvJjyb2A6YBdnHHwxOtlO7Jbyq9PEYQ==", "order"=>{"content"=>"sdfgdsgfdsgf"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sdfgdsgfdsgf"], ["category_id", 1], ["created_at", 2017-05-10 16:48:09 UTC], ["updated_at", 2017-05-10 16:48:09 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 7ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:09 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 61ms (Views: 57.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:48:09 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 58ms (Views: 56.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:11 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EtiRGowISjpufNGmivFg9hHpGp8E8kMMSSfrNX7xhzgoS6w0oCXSWaF/imMwyPQX/GyfEx4585bYuMpEqsGqNg==", "order"=>{"content"=>"asdfsfdsafd"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "asdfsfdsafd"], ["category_id", 1], ["created_at", 2017-05-10 16:48:11 UTC], ["updated_at", 2017-05-10 16:48:11 UTC]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 10ms (ActiveRecord: 2.4ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:11 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.7ms)
+Completed 200 OK in 61ms (Views: 55.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:48:14 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 52ms (Views: 50.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:16 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"LYEMBy6+Dw0pFghuIQhpV8yqTrXYC2a7Uu9GDBdycjsXEjEpApOXbuYVU6ubMf22IS/LOcLA1iHDcGd9w0JfNQ==", "order"=>{"content"=>"sdfasfdsafd"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sdfasfdsafd"], ["category_id", 1], ["created_at", 2017-05-10 16:48:16 UTC], ["updated_at", 2017-05-10 16:48:16 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 7ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:16 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 62ms (Views: 59.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:48:18 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 55ms (Views: 52.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:21 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eM/RdCJgcR+EVQyZW2a8XCUYQUoWOT+NLi92QkEHhAZCXOxaDk3pfEtWV1zhXyi9yJ3Exgzyjxe/sFczlTepCA==", "order"=>{"content"=>"sdfasfdasfd"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sdfasfdasfd"], ["category_id", 1], ["created_at", 2017-05-10 16:48:21 UTC], ["updated_at", 2017-05-10 16:48:21 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 9ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:21 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 61ms (Views: 56.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:48:22 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 62ms (Views: 58.9ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:24 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xqZIlveSBnxKubg64vMeD+Zg/Jjf70l0hi1hYVfc+kv8NXW427+eH4W64/9YyoruC+V5FMUk+e4XskAQg+zXRQ==", "order"=>{"content"=>"sdfasfasdf"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sdfasfasdf"], ["category_id", 1], ["created_at", 2017-05-10 16:48:24 UTC], ["updated_at", 2017-05-10 16:48:24 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 9ms (ActiveRecord: 2.5ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:24 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 61ms (Views: 57.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/orders/new" for ::1 at 2017-05-10 12:48:25 -0400
+Processing by Api::OrdersController#new as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/new.html.erb within layouts/application
+  Rendered api/orders/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 53ms (Views: 50.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/orders" for ::1 at 2017-05-10 12:48:27 -0400
+Processing by Api::OrdersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mOWHfB74o3XF2AsszAV+CXfSgp0yKHvY5oa8eU5IadqidrpSMtU7FgrbUOl2POromlcHESjjy0J3GZ0ImnhE1A==", "order"=>{"content"=>"sdfsadfasfd"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["content", "sdfsadfasfd"], ["category_id", 1], ["created_at", 2017-05-10 16:48:27 UTC], ["updated_at", 2017-05-10 16:48:27 UTC]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/api/orders
+Completed 302 Found in 9ms (ActiveRecord: 2.0ms)
+
+
+Started GET "/api/orders" for ::1 at 2017-05-10 12:48:27 -0400
+Processing by Api::OrdersController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering api/orders/index.html.erb within layouts/application
+  [1m[36mOrder Load (0.3ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  Rendered api/orders/index.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 60ms (Views: 56.9ms | ActiveRecord: 0.6ms)
+
+

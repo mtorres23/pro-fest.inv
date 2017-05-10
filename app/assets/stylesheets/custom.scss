@@ -6,6 +6,8 @@ $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
 
 
-.orders-index {
-  text-align: center;
+.orders-wrapper {
+  height: 50vh;
+  width: 100vw;
+  overflow: scroll;
 }
