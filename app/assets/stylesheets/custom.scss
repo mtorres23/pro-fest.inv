@@ -4,3 +4,12 @@
 $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
+
+
+.orders-wrapper {
+  height: 50vh;
+  width: 100vw;
+  overflow: scroll;
+  border: 3px solid black;
+  margin-bottom: 10px;
+}
