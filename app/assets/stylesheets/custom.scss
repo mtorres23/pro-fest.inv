@@ -10,4 +10,6 @@ $secondary-color: color("yellow", "base") !default;
   height: 50vh;
   width: 100vw;
   overflow: scroll;
+  border: 3px solid black;
+  margin-bottom: 10px;
 }
