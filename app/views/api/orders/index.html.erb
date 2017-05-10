@@ -1,8 +1,0 @@
-
-<%= link_to "New Order", new_api_order_path , class: 'btn btn-primary btn-lg' %>
-
-
-<% @orders.each do |order|  %>
-
-  <h3> <%= link_to order.content, api_order_path(order.id) %> </h3>
-<% end %>

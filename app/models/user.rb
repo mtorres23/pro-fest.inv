@@ -5,5 +5,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
  	belongs_to :client
- 	belongs_to :location 
+ 	belongs_to :location, optional: true
 end
