@@ -1,5 +1,4 @@
-class Api::OrdersController < ApplicationController
-  # GET /api/orders
+class OrdersController < ApplicationController
   def index
     @orders = Order.all
   end
@@ -17,7 +16,7 @@ class Api::OrdersController < ApplicationController
     order = Order.new(order_params)
     order.save
 
-    redirect_to api_orders_path
+    redirect_to orders_path
   end
 
   def show
@@ -27,7 +26,7 @@ class Api::OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params)
-    redirect_to api_orders_path
+    redirect_to orders_path
   end
 
   def edit
@@ -38,7 +37,7 @@ class Api::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:content, :delivery_date).merge(:category_id => 1)
+    params.require(:order).permit(:content).merge(:category_id => 1)
 
     end
 

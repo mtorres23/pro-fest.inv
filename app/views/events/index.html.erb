@@ -6,7 +6,7 @@
   <%= date %>
 <% end %>
 
-<%= link_to 'Add New Event', new_event_path, class: 'btn btn-primary btn-lg' %>
+<%= link_to 'Add New Event', new_client_event_path(client_id: @client.id), class: 'btn btn-primary btn-lg' %>
 
 <table>
   <thead>
@@ -34,9 +34,9 @@
         <td><%= event.longitude %></td>
         <td><%= event.admin_id %></td>
         <td><%= event.prev_year_event_id %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', event_path(event.id) %></td>
+        <td><%= link_to 'Edit', edit_event_path(event.id) %></td>
+        <td><%= link_to 'Destroy', event_path(event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
