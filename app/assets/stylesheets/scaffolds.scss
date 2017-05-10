@@ -4,7 +4,7 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  margin: 33px;
+  margin: 0 auto;;
 }
 
 p, ol, ul, td {
@@ -12,6 +12,16 @@ p, ol, ul, td {
   font-size: 13px;
   line-height: 18px;
   margin: 33px;
+}
+
+.columnbgrnd {
+  background: #5B616A;
+}
+
+.sideLinks {
+  max-width: 100%;
+  width: 500px;
+  background: #FCF7F8
 }
 
 pre {

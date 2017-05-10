@@ -7,20 +7,38 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-
   </head>
 
   <body ng-app="fifoApp">
+    <div class = "row">
+        <div class = "col s3 columnbgrnd" style="height: 100vh;">
+            <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
-    <nav>
-      <% if user_signed_in? %>
-        <%= link_to 'Home', root_path %>,
-        <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>,
-        <%= link_to 'Orders', api_orders_path, target: '_self' %>,
-        <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>,
-        <%= link_to 'Location', new_location_path, target: '_self' %>
-      <% end %>
-    </nav>
+
+            <ul>
+              <li class="waves-effect waves-light btn sideLinks">
+                <%= link_to 'Home', root_path %>
+              </li>
+              <li class="waves-effect waves-light btn sideLinks Edit">
+                <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>
+              </li>
+              <li class="waves-effect waves-light btn sideLinks Orders">
+                <%= link_to 'Orders', api_orders_path, target: '_self' %>
+              </li>
+              <li class="waves-effect waves-light btn sideLinks signout">
+                <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>
+              </li>
+              <li class="waves-effect waves-light btn sideLinks Location">
+                <%= link_to 'Location', new_location_path, target: '_self' %>
+              </li>
+            </ul>
+        </div>
+
+
+        <div class = "col s9 red" style="height: 100vh;">
+
+        </div>
+    </div>
 
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
@@ -32,4 +50,3 @@
 
   </body>
 </html>
-
