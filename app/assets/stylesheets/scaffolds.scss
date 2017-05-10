@@ -4,7 +4,7 @@ body {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  margin: 33px;
+  margin: 0 auto;;
 }
 
 p, ol, ul, td {
@@ -12,6 +12,16 @@ p, ol, ul, td {
   font-size: 13px;
   line-height: 18px;
   margin: 33px;
+}
+
+.columnbgrnd {
+  background: #5B616A;
+}
+
+.sideLinks {
+  max-width: 100%;
+  width: 500px;
+  background: #FCF7F8
 }
 
 pre {
@@ -86,4 +96,19 @@ div {
 
 label {
   display: block;
+}
+
+#footer .icons {
+		color: #aaaaaa;
+    display: inline;
+}
+
+#footer .copyright {
+		color: #aaaaaa;
+		font-family: "Raleway", Helvetica, sans-serif;
+		font-size: 0.8em;
+		font-weight: 450;
+		letter-spacing: 0.25em;
+		text-transform: uppercase;
+    text-align: center;
 }
