@@ -7,28 +7,164 @@
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
 
-
   </head>
 
   <body ng-app="fifoApp">
+    <div class="row">
+      <div class="col s3 columnbgrnd" style="height: 100vh;">
+        <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
-    <nav>
-      <% if user_signed_in? %>
-        <%= link_to 'Home', root_path %>,
-        <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>,
-        <%= link_to 'Orders', new_client_event_location_category_order_path, target: '_self' %>,
-        <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>,
-        <%= link_to 'Location', new_client_event_location_path, target: '_self' %>
-      <% end %>
-    </nav>
+        <ul>
+          <li class="waves-effect waves-light btn sideLinks">
+            <%= link_to 'Home', root_path %>
+          </li>
+          <li class="waves-effect waves-light btn sideLinks Edit">
+            <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>
+          </li>
+          <li>
+            <a class="waves-effect waves-light btn sideLinks orders" href="#modal1">Orders</a>
+          </li>
+        <li class="waves-effect waves-light btn sideLinks signout">
+          <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>
+        </li>
+        <li>
+        <a class="waves-effect waves-light btn sideLinks locations" href="#locations-modal">Locations</a>
+        </li>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
 
-    <h1>fifo's Front end</h1>
+      </ul>
+    </div>
 
-    <ui-view></ui-view>
+    <div class="col s9 black" style="height: 100vh;"></div>
+  </div>
+
+  <!-- Modal Trigger -->
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+      <%= link_to "New Order", new_api_order_path , class: 'btn btn-primary btn-lg' %>
+
+      <div class='orders-wrapper'>
+        <table class='centered'>
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Order Created</th>
+              <th>Processed at</th>
+              <th>Delivery Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @orders.each do |order|  %>
+            <tr>
+              <td><%= link_to order.content, api_order_path(order.id) %></td>
+              <td><%=order.created_at.strftime("%D  %I:%M %p") %></td>
+              <td><%=order.updated_at.strftime("%D %I:%M %p") %></td>
+              <td><%=order.delivery_date%></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
 
-  </body>
+  <div id="locations-modal" class="modal bottom-sheet">
+    <div class="modal-content">
+      <header><h1 class="display-4">Locations</h1></header>
+
+      <%= link_to 'Add location', new_location_path, class: 'btn btn-primary btn-lg' %>
+
+      <div class="card">
+        <div class="container">
+
+      		<table class="centered highlighted">
+        			<thead>
+          <tr>
+            <th>Title</th>
+            <th>Access Code</th>
+            <th>Address</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+            <th>Admin</th>
+            <th>Current Order</th>
+            <th>Last Order</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @locations.each do |location| %>
+            <tr>
+              <td><%= link_to location.title, location %></td>
+              <td><%= location.access_code %></td>
+              <td><%= location.address%></td>
+              <td><%= location.latitude %></td>
+              <td><%= location.longitude %></td>
+              <td><%= location.admin_id %></td>
+              <td><%= location.current_order_id %></td>
+              <td><%= location.prev_order_id %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+        </div>
+      </div>
+
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+
+
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+
+  <ui-view></ui-view>
+
+  <section id="footer">
+    <ul class="icons">
+      <li>
+        <a href="https://github.com/hkarambizi" class="fa-github-square">
+          <span class="label">Harry Karambizi
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a href="https://github.com/mtorres23" class="fa-github-square">
+          <span class="label">Michael Torres</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/ddmilo" class="fa-github-square">
+          <span class="label">Dan Mil</span>
+        </a>
+      </li>
+    </ul>
+
+    <p class="copyright">&copy; FiFo 2017</p>
+  </section>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+      $('.modal').modal();
+    });
+  </script>
+
+</body>
 </html>

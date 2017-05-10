@@ -1,0 +1,27 @@
+
+<%= link_to "New Order", new_api_order_path , class: 'btn btn-primary btn-lg' %>
+
+
+<div class ='orders-wrapper'>
+  <table class = 'centered'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Order Created</th>
+        <th>Processed at</th>
+        <th>Delivery Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order|  %>
+        <tr>
+          <td><%= link_to order.content, api_order_path(order.id) %></td>
+          <td><%=order.created_at.strftime("%D  %I:%M %p") %></td>
+          <td><%=order.updated_at.strftime("%D %I:%M %p") %></td>
+          <td><%=order.delivery_date%></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

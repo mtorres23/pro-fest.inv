@@ -27,7 +27,7 @@ class LocationsController < ApplicationController
   def show
     @location = @event.locations.find(params[:id])
   end
-  
+
   def edit
     @location = @event.locations.find(params[:id])
   end

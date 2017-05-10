@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module Fifo
   class Application < Rails::Application
+    config.time_zone = 'Eastern Time (US & Canada)'
   	config.assets.paths << Rails.root.join('node_modules')
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
