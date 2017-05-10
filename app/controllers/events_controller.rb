@@ -4,7 +4,9 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    @client = Client.find(params[:client_id])
+    @events = @client.events
+
   end
 
   # GET /events/1

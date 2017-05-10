@@ -12950,3 +12950,124 @@ Completed 200 OK in 89ms (Views: 68.8ms | ActiveRecord: 4.9ms)
 >>>>>>> 39c2a5878d1e434a364a92e36335c392e8178003
 
 
+Started GET "/api/orders" for ::1 at 2017-05-09 18:42:15 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ClientController#dashboard as HTML
+  Parameters: {"path"=>"api/orders"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering client/dashboard.html.erb
+  Rendered client/dashboard.html.erb (6655.7ms)
+Completed 500 Internal Server Error in 6774ms (ActiveRecord: 11.0ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `api_orders_path' for #<#<Class:0x007ff53da7fa78>:0x007ff53db0ebb0>
+Did you mean?  api_clients_path):
+    16:       <% if user_signed_in? %>
+    17:         <%= link_to 'Home', root_path %>,
+    18:         <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>,
+    19:         <%= link_to 'Orders', api_orders_path, target: '_self' %>,
+    20:         <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>,
+    21:         <%= link_to 'Location', new_location_path, target: '_self' %>
+    22:       <% end %>
+  
+app/views/client/dashboard.html.erb:19:in `_app_views_client_dashboard_html_erb__2838732761591038007_70345639372540'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (32.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.9ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (235.9ms)
+Started GET "/" for ::1 at 2017-05-09 18:50:04 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ClientController#dashboard as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering client/dashboard.html.erb
+  Rendered client/dashboard.html.erb (1351.8ms)
+Completed 500 Internal Server Error in 1459ms (ActiveRecord: 6.2ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"api/orders"} missing required keys: [:category_id, :client_id, :event_id, :location_id]):
+    16:       <% if user_signed_in? %>
+    17:         <%= link_to 'Home', root_path %>,
+    18:         <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>,
+    19:         <%= link_to 'Orders', new_api_client_event_location_category_order_path, target: '_self' %>,
+    20:         <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>,
+    21:         <%= link_to 'Location', new_client_event_location_path, target: '_self' %>
+    22:       <% end %>
+  
+app/views/client/dashboard.html.erb:19:in `_app_views_client_dashboard_html_erb__2885040499665899643_70272918044800'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (17.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (167.1ms)
+Started GET "/events" for ::1 at 2017-05-09 18:54:39 -0400
+Processing by ClientController#dashboard as HTML
+  Parameters: {"path"=>"events"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering client/dashboard.html.erb
+Started GET "/events" for ::1 at 2017-05-09 18:54:40 -0400
+  Rendered client/dashboard.html.erb (466.3ms)
+Completed 500 Internal Server Error in 528ms (ActiveRecord: 4.8ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"api/orders", :path=>"events"} missing required keys: [:category_id, :client_id, :event_id, :location_id]):
+    16:       <% if user_signed_in? %>
+    17:         <%= link_to 'Home', root_path %>,
+    18:         <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>,
+    19:         <%= link_to 'Orders', new_api_client_event_location_category_order_path, target: '_self' %>,
+    20:         <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>,
+    21:         <%= link_to 'Location', new_client_event_location_path, target: '_self' %>
+    22:       <% end %>
+  
+app/views/client/dashboard.html.erb:19:in `_app_views_client_dashboard_html_erb__2885040499665899643_70272931699020'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (11.1ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (5.9ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (152.2ms)
+Processing by ClientController#dashboard as HTML
+  Parameters: {"path"=>"events"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering client/dashboard.html.erb
+  Rendered client/dashboard.html.erb (125.2ms)
+Completed 500 Internal Server Error in 178ms (ActiveRecord: 4.9ms)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"new", :controller=>"api/orders", :path=>"events"} missing required keys: [:category_id, :client_id, :event_id, :location_id]):
+    16:       <% if user_signed_in? %>
+    17:         <%= link_to 'Home', root_path %>,
+    18:         <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>,
+    19:         <%= link_to 'Orders', new_api_client_event_location_category_order_path, target: '_self' %>,
+    20:         <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>,
+    21:         <%= link_to 'Location', new_client_event_location_path, target: '_self' %>
+    22:       <% end %>
+  
+app/views/client/dashboard.html.erb:19:in `_app_views_client_dashboard_html_erb__2885040499665899643_70272909861960'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (31.9ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (15.6ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (181.0ms)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1006908589982888040);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (24.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1006908589982888040)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m

@@ -5,6 +5,7 @@ class Api::OrdersController < ApplicationController
   end
 
   def new
+    @client = Client.find(params[:client_id])
     @order = Order.new
 
     render :new
