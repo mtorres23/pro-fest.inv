@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
     order = Order.find(params[:id])
     order.update(order_params)
 
-    redirect_to event_location_orders_path
+    redirect_to location_orders_path
   end
 
   def edit

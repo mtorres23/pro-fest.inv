@@ -1,7 +1,26 @@
 
 <%= link_to "New Order", new_event_location_order_path(event_id: @location.event_id, location_id: @location.id), class: 'btn btn-primary btn-lg' %>
 
-<% @orders.each do |order|  %>
 
-  <h3> <%=link_to order.content, event_location_order_path(event_id: @location.event_id, location_id: @location.id, id: order.id)%> </h3>
-<% end %>
+
+<div class ='orders-wrapper'>
+  <table class = 'centered'>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Order Created</th>  
+        <th>Delivery Date</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @orders.each do |order|  %>
+        <tr>
+          <td><%=link_to order.content, event_location_order_path(event_id: @location.event_id, location_id: @location.id, id: order.id)%></td>
+          <td><%=order.created_at.strftime("%D  %I:%M %p") %></td>
+          <td><%=order.delivery_date%></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
