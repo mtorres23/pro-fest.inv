@@ -27959,3 +27959,243 @@ Processing by EventsController#index as HTML
 Completed 200 OK in 58ms (Views: 49.6ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/clients/1/events" for ::1 at 2017-05-11 17:12:01 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (3.4ms)
+Completed 200 OK in 71ms (Views: 64.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 17:12:54 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 62ms (Views: 54.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/clients/1/events/new" for ::1 at 2017-05-11 17:13:06 -0400
+Processing by EventsController#new as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/new.html.erb within layouts/application
+  Rendered events/_form.html.erb (44.0ms)
+  Rendered events/new.html.erb within layouts/application (46.6ms)
+Completed 200 OK in 91ms (Views: 84.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/events" for ::1 at 2017-05-11 17:13:17 -0400
+Processing by EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hrLQcZo6+aIPhUkWzU/PNHxHpIA9Qxpy5kbIPrkHofceU5KGKQ1QKgZKBL90OOQ1F4/hajTdlKC4KFT1l+tW0g==", "event"=>{"title"=>"populate", "start_date"=>"", "end_date"=>"", "address"=>"", "latitude"=>"", "longitude"=>"", "admin_id"=>"", "prev_year_event_id"=>""}, "commit"=>"Create Event"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameters: admin_id, prev_year_event_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "events" ("title", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "populate"], ["created_at", 2017-05-11 21:13:17 UTC], ["updated_at", 2017-05-11 21:13:17 UTC], ["client_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/4
+Completed 302 Found in 16ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/events/4" for ::1 at 2017-05-11 17:13:17 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 66ms (Views: 57.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/events/4/locations/new" for ::1 at 2017-05-11 17:13:21 -0400
+Processing by LocationsController#new as HTML
+  Parameters: {"event_id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering locations/new.html.erb within layouts/application
+  Rendered locations/_form.html.erb (3.0ms)
+  Rendered locations/new.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 54ms (Views: 46.8ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/events/4/locations" for ::1 at 2017-05-11 17:13:30 -0400
+Processing by LocationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"keqNkc2qGrSecltAQ3OA90eVVrK6CNe3mtvIvXyznBAJC89mfp2zPJe9Fun6BKv2LF0TWLOWWWXEtVR2Ul9rNQ==", "location"=>{"title"=>"popopop", "admin_id"=>"", "address"=>"", "latitude"=>"", "longitude"=>""}, "commit"=>"Add!", "event_id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+Unpermitted parameter: admin_id
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "locations" ("title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["title", "popopop"], ["created_at", 2017-05-11 21:13:30 UTC], ["updated_at", 2017-05-11 21:13:30 UTC], ["event_id", 4]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/events/4/locations/4
+Completed 302 Found in 24ms (ActiveRecord: 5.1ms)
+
+
+Started GET "/events/4/locations/4" for ::1 at 2017-05-11 17:13:30 -0400
+Processing by LocationsController#show as HTML
+  Parameters: {"event_id"=>"4", "id"=>"4"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (2.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."event_id" = $1 AND "locations"."id" = $2 LIMIT $3[0m  [["event_id", 4], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."event_id" = $1 AND "locations"."id" = $2 LIMIT $3[0m  [["event_id", 4], ["id", 4], ["LIMIT", 1]]
+  Rendering locations/show.html.erb within layouts/application
+  Rendered locations/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 84ms (Views: 67.3ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/events/4" for ::1 at 2017-05-11 17:13:34 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 62ms (Views: 53.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 17:13:36 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  [1m[36mEvent Load (0.2ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 55ms (Views: 48.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/clients/1/events/4" for ::1 at 2017-05-11 17:13:41 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"client_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 60ms (Views: 52.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/clients/1/events/4" for ::1 at 2017-05-11 17:14:08 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"client_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 55ms (Views: 48.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/clients/1/events/4" for ::1 at 2017-05-11 17:14:46 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"client_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 67ms (Views: 58.8ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/clients/1/events/4" for ::1 at 2017-05-11 17:14:57 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"client_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 60ms (Views: 52.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/clients/1/events/4" for ::1 at 2017-05-11 17:15:09 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"client_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.3ms)
+Completed 200 OK in 56ms (Views: 47.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/clients/1/events/4" for ::1 at 2017-05-11 17:15:31 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"client_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 57ms (Views: 49.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/clients/1/events/4" for ::1 at 2017-05-11 17:15:45 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"client_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 68ms (Views: 58.4ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/clients/1/events/4" for ::1 at 2017-05-11 17:16:33 -0400
+Processing by EventsController#show as HTML
+  Parameters: {"client_id"=>"1", "id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "events".* FROM "events" WHERE "events"."client_id" = $1 AND "events"."id" = $2 LIMIT $3[0m  [["client_id", 1], ["id", 4], ["LIMIT", 1]]
+  Rendering events/show.html.erb within layouts/application
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT "locations".* FROM "locations" WHERE "locations"."event_id" = $1[0m  [["event_id", 4]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered events/show.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 67ms (Views: 60.0ms | ActiveRecord: 1.2ms)
+
+

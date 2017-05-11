@@ -1,3 +1,5 @@
+
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -40,8 +42,14 @@
   <%= @event.prev_year_event_id %>
 </p>
 
+
+
+
+
 <div class="card">
   <div class="container">
+
+
 
     <table class="centered highlighted">
         <thead>
@@ -71,14 +79,13 @@
         <td><%= location.prev_order_id %></td>
       </tr>
     <% end %>
+
   </tbody>
 </table>
-
+  <%= link_to 'Add Location', new_event_location_path(@event), class: 'btn btn-success btn-lg' %>
 <br>
   </div>
 </div>
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', client_events_path(@event.client) %>
-
-<%= link_to 'Add Location', new_event_location_path(@event), class: 'btn btn-success btn-lg' %>
