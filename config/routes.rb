@@ -14,7 +14,13 @@ Rails.application.routes.draw do
     end
 
 # Custom Routes
-# Order Routes
+
+    #Modal Routes
+# route to view all client's events in the modal
+get '/clients/:client_id/events#modal1' => 'events#index', as: 'client_events_modal'
+# route to view a specific client's event in the modal
+get '/clients/:client_id/events/:event_id#modal1' => 'events#show', as: 'client_event_modal'
+    # Order Routes
 # route to view details from a specific order
 get '/locations/:location_id/orders/:order_id' => 'order#show', as: 'order'
 
@@ -23,12 +29,12 @@ get '/locations/:location_id/orders/:order_id' => 'order#show', as: 'order'
 get '/clients/:client_id/items' => 'items#client_items', as: 'items_by_client'
 
 # Location Routes
-# route to get all current items in a specific location    
+# route to get all current items in a specific location
 get '/locations/:location_id/items' => 'items#location_items', as: 'location_items'
 post '/events/:event_id/locations' => 'locations#create', as: 'create_location'
 
-  root to: 'clients#show'
-get '*path', to: 'clients#show'
+  root to: 'clients#dashboard'
+get '*path', to: 'clients#dashboard'
 
 
 end
