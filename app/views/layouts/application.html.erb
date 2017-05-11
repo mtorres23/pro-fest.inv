@@ -9,25 +9,22 @@
 
     <style>
 
-    html {
-      background: no-repeat center center fixed;
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-    }
+        html {
+              background: no-repeat center center fixed;
+              -webkit-background-size: cover;
+              -moz-background-size: cover;
+             -o-background-size: cover;
+              background-size: cover;
+              }
 
-           #map {
+    #map {
 
     /* Set up proportionate scaling */
-    width: 100vw;
-    height: 100vh;
-
+    width: 90vw;
+    height: 90vh;
     /* Set up positioning */
-
-
-
-    }
+    z-index: -1
+  }
 
         </style>
 
@@ -36,12 +33,13 @@
   <body>
 
 
-    <body ng-app="fifoApp">
+    <body>
       <div class="row">
         <div class="col s3 columnbgrnd" style="height: 100vh;">
           <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
           <ul>
+          <% if user_signed_in? %>
             <li class="waves-effect waves-light btn sideLinks">
               <%= link_to 'Home', root_path %>
             </li>
@@ -58,8 +56,10 @@
           <a class="waves-effect waves-light btn sideLinks locations" href="#locations-modal">Locations</a>
           </li>
           <li class="waves-effect waves-light btn sideLinks Events">
-            <%= link_to 'Events', client_events_path(client_id: current_user.client_id), data: { target: "#modal1"} %>
+            <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger' %>
           </li>
+          <% end %>
+      
 
         </ul>
           <section id="footer">
@@ -90,9 +90,10 @@
       <div class="col s9" style="height: 100vh;">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-        <%= yield %>
-      </div>
-    </div>
+
+        <div id="map"></div>
+
+     
 
     <!-- Modal Trigger -->
 
@@ -102,7 +103,7 @@
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
-
+            <%= yield %>
       </div>
       <div class="modal-footer">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
@@ -117,26 +118,27 @@
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
-
       </div>
       <div class="modal-footer">
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
       </div>
     </div>
 
+   </div>
+    </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 
     <script>
-      $(document).ready(function () {
-        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();
-        // $('#modal1').modal('open');
-        function openModal() {
-          $('#modal1').modal('open');
-        }
+      
+        $('#modal1').modal('open');
+  
+        
       });
     </script>
 
@@ -149,32 +151,27 @@
     <% if alert %>
         <p class="alert alert-danger"><%= alert %></p>
     <% end %>
-    <%= yield %>
 
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
-                                           async defer></script>
 <script>
 $('.datepicker').pickadate({
 selectMonths: true, // Creates a dropdown to control month
 selectYears: 15 // Creates a dropdown of 15 years to control year
 });
 </script>
-
-    <div id="map"></div>
         <script>
           function initMap() {
             <% if @location %>
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
+            <% elsif @event %>
+            var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
             <% else %>
-
-            var target = {lat: 33.7490, lng: -84.3880};
+            var target = {<%= @client.latitude %>, lng: <%= @client.longitude %>}
             <% end %>
-
 
             var map = new google.maps.Map(document.getElementById('map'), {
               zoom: 20,
@@ -184,11 +181,9 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
               position: target,
               map: map
             });
-          }
+          };
         </script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
-                                async defer></script>
-
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
+                                           async defer></script>
   </body>
 </html>

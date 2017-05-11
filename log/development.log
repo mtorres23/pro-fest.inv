@@ -20364,3 +20364,1011 @@ Completed 200 OK in 81ms (Views: 74.7ms | ActiveRecord: 1.1ms)
 
 
 >>>>>>> 404da30616f4940c4c846909629d7d762092f74d
+  [1m[35m (29.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1006908589982888040);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (26.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (22.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1006908589982888040)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2017-05-11 00:04:29 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (1.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (19.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  [1m[36mOrder Load (19.7ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[36mLocation Load (18.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered clients/dashboard.html.erb within layouts/application (7178.3ms)
+Completed 200 OK in 7524ms (Views: 7212.3ms | ActiveRecord: 70.4ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:06:29 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  [1m[36mOrder Load (0.8ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[36mLocation Load (0.7ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered clients/dashboard.html.erb within layouts/application (223.4ms)
+Completed 200 OK in 315ms (Views: 267.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:06:33 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (62.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (169.5ms)
+  [1m[36mEvent Load (12.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (268.4ms)
+Completed 200 OK in 704ms (Views: 380.6ms | ActiveRecord: 88.9ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:10:48 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (21.5ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (85.7ms)
+Completed 200 OK in 865ms (Views: 695.2ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:11:00 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  Rendered clients/dashboard.html.erb within layouts/application (265.4ms)
+Completed 200 OK in 356ms (Views: 293.7ms | ActiveRecord: 11.4ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:12:52 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  Rendered clients/dashboard.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 294ms (Views: 285.7ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:14:47 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (4.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  Rendered clients/dashboard.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 114ms (Views: 103.5ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:20:08 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  Rendered clients/dashboard.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 269ms (Views: 260.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:21:23 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (42.6ms)
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (72.7ms)
+Completed 200 OK in 424ms (Views: 403.7ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:22:26 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  Rendered clients/dashboard.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 120ms (Views: 111.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:24:26 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  Rendered clients/dashboard.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 92ms (Views: 85.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/clients/1/events%23modal1" for ::1 at 2017-05-11 00:24:30 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (17.4ms)
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 131ms (Views: 117.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:30:55 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  Rendered clients/dashboard.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 228ms (Views: 222.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/clients/1/events%23modal1" for ::1 at 2017-05-11 00:31:08 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (20.0ms)
+  [1m[36mEvent Load (1.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (46.2ms)
+Completed 200 OK in 170ms (Views: 137.0ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:31:30 -0400
+Processing by ClientsController#dashboard as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/dashboard.html.erb within layouts/application
+  Rendered clients/dashboard.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 98ms (Views: 92.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:31:34 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (13.6ms)
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (25.7ms)
+Completed 200 OK in 145ms (Views: 134.1ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:49:21 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (13.9ms)
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (38.9ms)
+Completed 200 OK in 1346ms (Views: 1327.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:49:51 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (12.8ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (23.7ms)
+Completed 200 OK in 632ms (Views: 621.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:50:39 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (13.9ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (24.2ms)
+Completed 200 OK in 617ms (Views: 607.5ms | ActiveRecord: 1.3ms)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2017-05-11 00:50:52 -0400
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7RF/PovJdUrFQ05/yFrO16Er6L7j9v8MvcBQibcPoqKB3QXeqrytKW6MflKCH+YaOwvjPzsj8sVbhKnQr8jBpA=="}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (45.9ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", nil], ["updated_at", 2017-05-11 04:50:52 UTC], ["id", 1]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 109ms (ActiveRecord: 49.2ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 00:50:53 -0400
+Processing by ClientsController#dashboard as HTML
+Completed 401 Unauthorized in 12ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 00:50:53 -0400
+Processing by Devise::SessionsController#new as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `client_id' for nil:NilClass):
+  
+app/controllers/application_controller.rb:12:in `set_client'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (10.4ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (10.6ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (290.4ms)
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:51:44 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `client_id' for nil:NilClass):
+  
+app/controllers/events_controller.rb:77:in `set_client'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (38.7ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (174.3ms)
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:52:46 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `client_id' for nil:NilClass):
+  
+app/controllers/events_controller.rb:77:in `set_client'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.4ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (144.7ms)
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:55:04 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `client_id' for nil:NilClass):
+  
+app/controllers/events_controller.rb:78:in `set_client'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (153.2ms)
+Started GET "/clients/1/events" for ::1 at 2017-05-11 00:55:42 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `client_id' for nil:NilClass):
+  
+app/controllers/events_controller.rb:78:in `set_client'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (166.5ms)
+Started GET "/clients/1" for ::1 at 2017-05-11 00:55:59 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 401 Unauthorized in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 00:55:59 -0400
+Processing by Devise::SessionsController#new as HTML
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `client_id' for nil:NilClass):
+  
+app/controllers/application_controller.rb:12:in `set_client'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (176.1ms)
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:00:18 -0400
+Processing by Devise::SessionsController#new as HTML
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `client_id' for nil:NilClass):
+  
+app/controllers/application_controller.rb:12:in `set_client'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (156.2ms)
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:02:50 -0400
+Processing by Devise::SessionsController#new as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `client_id' for nil:NilClass):
+  
+app/controllers/application_controller.rb:12:in `set_client'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.6ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (146.6ms)
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:04:00 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.0ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (91.2ms)
+Completed 500 Internal Server Error in 385ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `client_id' for nil:NilClass):
+    55:           <a class="waves-effect waves-light btn sideLinks locations" href="#locations-modal">Locations</a>
+    56:           </li>
+    57:           <li class="waves-effect waves-light btn sideLinks Events">
+    58:             <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-button' %>
+    59:           </li>
+    60: 
+    61:         </ul>
+  
+app/views/layouts/application.html.erb:58:in `_app_views_layouts_application_html_erb___2205500957015006505_70262846147620'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.2ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (162.3ms)
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:05:24 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (15.9ms)
+Completed 200 OK in 149ms (Views: 147.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:14:22 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (15.6ms)
+Completed 200 OK in 272ms (Views: 269.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:19:11 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.6ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 433ms (Views: 431.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:24:52 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (16.1ms)
+Completed 200 OK in 518ms (Views: 515.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:25:39 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (19.9ms)
+Completed 200 OK in 131ms (Views: 129.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:28:09 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (15.3ms)
+Completed 200 OK in 291ms (Views: 289.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:29:08 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.6ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (22.4ms)
+Completed 200 OK in 303ms (Views: 301.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:29:33 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.5ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (16.0ms)
+Completed 200 OK in 137ms (Views: 135.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 01:44:53 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.0ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (26.6ms)
+Completed 200 OK in 496ms (Views: 494.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 02:19:18 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.9ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (37.8ms)
+Completed 200 OK in 725ms (Views: 722.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 02:20:38 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (17.0ms)
+Completed 200 OK in 554ms (Views: 551.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 02:20:46 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.5ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (20.3ms)
+Completed 200 OK in 387ms (Views: 384.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 02:20:53 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.1ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (54.1ms)
+Completed 200 OK in 333ms (Views: 330.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 02:21:24 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.0ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (21.9ms)
+Completed 200 OK in 130ms (Views: 128.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 02:24:04 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.8ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (53.7ms)
+Completed 200 OK in 13746ms (Views: 13744.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-11 02:24:29 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/registrations/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (1.7ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/registrations/new.html.erb within layouts/application (20.1ms)
+Completed 200 OK in 155ms (Views: 152.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-11 02:26:20 -0400
+Processing by Devise::SessionsController#new as HTML
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/shared/_links.html.erb (2.1ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/devise-4.2.1/app/views/devise/sessions/new.html.erb within layouts/application (20.0ms)
+Completed 200 OK in 529ms (Views: 527.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-05-11 02:26:27 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NhIVswLRLSRpiRDlrKYKq9DYK6a329RB78EqajU5YPeMEbZ2lsqL3zCDpvCQQVEQUnlqoRDcMXyBuPsuhBtwNQ==", "user"=>{"email"=>"hkarambizi@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Log in"}
+  [1m[36mUser Load (9.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "hkarambizi@gmail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "remember_created_at" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["remember_created_at", 2017-05-11 06:26:28 UTC], ["updated_at", 2017-05-11 06:26:28 UTC], ["id", 1]]
+  [1m[35m (26.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["sign_in_count", 3], ["current_sign_in_at", 2017-05-11 06:26:28 UTC], ["last_sign_in_at", 2017-05-09 21:40:28 UTC], ["updated_at", 2017-05-11 06:26:28 UTC], ["id", 1]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/clients/1
+Completed 302 Found in 968ms (ActiveRecord: 41.3ms)
+
+
+Started GET "/clients/1" for ::1 at 2017-05-11 02:26:28 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (68.1ms)
+Completed 200 OK in 160ms (Views: 97.7ms | ActiveRecord: 10.7ms)
+
+
+Started GET "/clients/1" for ::1 at 2017-05-11 02:26:30 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (90.5ms)
+Completed 200 OK in 135ms (Views: 125.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:26:56 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (17.1ms)
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (51.4ms)
+Completed 200 OK in 32789ms (Views: 161.7ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:27:37 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (17.6ms)
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (29.7ms)
+Completed 200 OK in 9322ms (Views: 127.4ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/clients/1" for ::1 at 2017-05-11 02:28:14 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (145.1ms)
+Completed 200 OK in 226ms (Views: 202.5ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/clients/1" for ::1 at 2017-05-11 02:28:16 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (134.6ms)
+Completed 200 OK in 181ms (Views: 171.5ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:28:20 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (12.4ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (29.0ms)
+Completed 200 OK in 13324ms (Views: 107.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:33:41 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:33:58 -0400
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (16.4ms)
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (33.4ms)
+Completed 200 OK in 39950ms (Views: 13594.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:34:21 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (18.4ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (90.8ms)
+Completed 200 OK in 449ms (Views: 290.7ms | ActiveRecord: 17.8ms)
+
+
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (29.1ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (140.4ms)
+Completed 200 OK in 543ms (Views: 315.2ms | ActiveRecord: 31.6ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:34:26 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.9ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (12.8ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (24.7ms)
+Completed 200 OK in 211ms (Views: 197.6ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:34:36 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (16.6ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (31.8ms)
+Completed 200 OK in 170ms (Views: 156.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:40:12 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (20.9ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (47.4ms)
+Completed 200 OK in 594ms (Views: 573.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:40:21 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (2.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (17.4ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (32.3ms)
+Completed 200 OK in 221ms (Views: 207.4ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:40:28 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (16.7ms)
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (28.4ms)
+Completed 200 OK in 130ms (Views: 119.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:40:38 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (41.7ms)
+  [1m[36mEvent Load (0.8ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (57.4ms)
+Completed 200 OK in 201ms (Views: 185.2ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:40:51 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (16.3ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (31.0ms)
+Completed 200 OK in 200ms (Views: 185.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:40:58 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (14.9ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (29.3ms)
+Completed 200 OK in 169ms (Views: 156.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:41:30 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (13.8ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (25.0ms)
+Completed 200 OK in 132ms (Views: 119.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:47:22 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (11.8ms)
+  [1m[36mEvent Load (3.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (39.0ms)
+Completed 200 OK in 540ms (Views: 504.4ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:48:52 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (11.3ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (25.1ms)
+Completed 200 OK in 142ms (Views: 126.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:48:57 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (12.2ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (24.4ms)
+Completed 200 OK in 134ms (Views: 120.6ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:53:43 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (16.8ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (28.2ms)
+Completed 500 Internal Server Error in 150ms (ActiveRecord: 1.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `exists?' for nil:NilClass):
+    168:         <script>
+    169: 
+    170:           function initMap() {
+    171:             <% if @location.exists? %>
+    172:             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
+    173:             <% elsif @event.exists? %>
+    174:             var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+  
+app/views/layouts/application.html.erb:171:in `_app_views_layouts_application_html_erb___2205500957015006505_70262856197480'
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (23.1ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (185.7ms)
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:54:59 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (14.0ms)
+  [1m[36mEvent Load (0.3ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (24.7ms)
+Completed 200 OK in 126ms (Views: 111.6ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:57:13 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (13.7ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (24.6ms)
+Completed 200 OK in 126ms (Views: 117.1ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:57:24 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (37.5ms)
+  [1m[36mEvent Load (0.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (64.6ms)
+Completed 200 OK in 181ms (Views: 169.5ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 02:58:52 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (4.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (27.1ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (52.7ms)
+Completed 200 OK in 566ms (Views: 531.0ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 03:00:31 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (1.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (12.2ms)
+  [1m[36mEvent Load (1.7ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (42.1ms)
+Completed 200 OK in 267ms (Views: 241.6ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 03:00:37 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.9ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (14.5ms)
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (36.4ms)
+Completed 200 OK in 364ms (Views: 350.2ms | ActiveRecord: 3.4ms)
+
+
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT  "events".* FROM "events" ORDER BY "events"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (1.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[33mUPDATE "clients" SET "latitude" = $1, "longitude" = $2, "updated_at" = $3 WHERE "clients"."id" = $4[0m  [["latitude", 33.7481796], ["longitude", -84.3778592], ["updated_at", 2017-05-11 07:04:46 UTC], ["id", 1]]
+  [1m[35m (62.1ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/clients/1/events" for ::1 at 2017-05-11 03:05:45 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (117.0ms)
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (146.8ms)
+Completed 200 OK in 2546ms (Views: 2327.5ms | ActiveRecord: 17.4ms)
+
+
+Started GET "/clients/1" for ::1 at 2017-05-11 03:06:17 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (63.5ms)
+Completed 200 OK in 112ms (Views: 94.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/clients/1" for ::1 at 2017-05-11 03:06:19 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (105.7ms)
+Completed 200 OK in 149ms (Views: 140.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/clients/1/events" for ::1 at 2017-05-11 03:06:27 -0400
+Processing by EventsController#index as HTML
+  Parameters: {"client_id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering events/index.html.erb within layouts/application
+  Rendered /Users/hkarambizi/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/simple_calendar-2.2.5/app/views/simple_calendar/_month_calendar.html.erb (13.6ms)
+  [1m[36mEvent Load (2.6ms)[0m  [1m[34mSELECT "events".* FROM "events" WHERE "events"."client_id" = $1[0m  [["client_id", 1]]
+  Rendered events/index.html.erb within layouts/application (42.3ms)
+Completed 200 OK in 226ms (Views: 201.2ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/clients/1" for ::1 at 2017-05-11 03:07:42 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (16796.9ms)
+Completed 200 OK in 16896ms (Views: 16882.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/clients/1" for ::1 at 2017-05-11 03:08:01 -0400
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (4.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/show.html.erb within layouts/application
+  Rendered clients/show.html.erb within layouts/application (183.9ms)
+Completed 200 OK in 339ms (Views: 264.7ms | ActiveRecord: 6.4ms)
+
+

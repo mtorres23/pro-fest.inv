@@ -18,6 +18,7 @@
 //= require_self
 //= require_tree .
 
+
 angular
   .module('fifoApp', ['ui.router']);
   // .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
