@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require materialize
 //= require jquery
 //= require jquery_ujs
+//= require materialize
 //= require angular/angular
 //= require angular-ui-router/release/angular-ui-router
 //= require_self

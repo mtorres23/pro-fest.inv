@@ -1,6 +1,7 @@
 class ClientController < ApplicationController
   before_action :authenticate_user!
   before_action :set_client
+  
   def dashboard
     @orders = Order.all
     @locations = @client.events.locations

@@ -127,10 +127,6 @@
    </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-
     <script>
         $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -152,11 +148,7 @@
         <p class="alert alert-danger"><%= alert %></p>
     <% end %>
 
-<script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
 <script>
 $('.datepicker').pickadate({
 selectMonths: true, // Creates a dropdown to control month
@@ -164,15 +156,16 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 });
 </script>
         <script>
-          function initMap() {
+          
+            function initMap() {
             <% if @location %>
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
             <% elsif @event %>
             var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
             <% else %>
-            var target = {<%= @client.latitude %>, lng: <%= @client.longitude %>}
+            var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>}
             <% end %>
-
+            console.log(target);
             var map = new google.maps.Map(document.getElementById('map'), {
               zoom: 20,
               center: target
