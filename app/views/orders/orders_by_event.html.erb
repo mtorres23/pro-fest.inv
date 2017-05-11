@@ -4,5 +4,5 @@
 
 <% @orders.each do |order|  %>
 
-  <h3> <%=order.content%> </h3>
+  <h3> <%=link_to order.content, event_location_order_path(event_id: @event.id, location_id: @location.id, id: order.id)%> </h3>
 <% end %>

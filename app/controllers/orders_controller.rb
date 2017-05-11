@@ -1,14 +1,23 @@
 class OrdersController < ApplicationController
   before_action :set_client
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:orders_by_event,:edit, :update, :destroy]
 
 
-  def index
-    @orders = Order.all
+  def orders_by_client
+    @orders = @client.orders
+  end
+
+  def orders_by_event
+    @orders = @event.orders
+    @locations = @event.locations
+  end
+
+  def orders_by_location
+    @location = Location.find(params[:location_id])
+    @orders = @location.orders
   end
 
   def new
-    @client = Client.find(params[:client_id])
     @order = Order.new
 
     render :new
@@ -20,7 +29,7 @@ class OrdersController < ApplicationController
     order = Order.new(order_params)
     order.save
 
-    redirect_to orders_path
+    redirect_to event_location_orders_path
   end
 
   def show
@@ -30,7 +39,8 @@ class OrdersController < ApplicationController
   def update
     order = Order.find(params[:id])
     order.update(order_params)
-    redirect_to orders_path
+
+    redirect_to event_location_orders_path
   end
 
   def edit

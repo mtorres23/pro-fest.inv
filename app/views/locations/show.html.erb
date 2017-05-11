@@ -5,3 +5,5 @@
 
 <%= link_to 'Edit', edit_event_location_path(event_id: @location.event_id, id: @location.id) %> |
 <%= link_to 'Back', event_path(@event) %>
+
+<%= link_to 'Orders',location_orders_path(@location.id) %>
