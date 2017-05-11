@@ -36,6 +36,112 @@
   <body>
 
 
+    <body ng-app="fifoApp">
+      <div class="row">
+        <div class="col s3 columnbgrnd" style="height: 100vh;">
+          <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
+
+          <ul>
+            <li class="waves-effect waves-light btn sideLinks">
+              <%= link_to 'Home', root_path %>
+            </li>
+            <li class="waves-effect waves-light btn sideLinks Edit">
+              <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>
+            </li>
+            <li>
+              <a class="waves-effect waves-light btn sideLinks orders" href="#modal1">Orders</a>
+            </li>
+          <li class="waves-effect waves-light btn sideLinks signout">
+            <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>
+          </li>
+          <li>
+          <a class="waves-effect waves-light btn sideLinks locations" href="#locations-modal">Locations</a>
+          </li>
+          <li class="waves-effect waves-light btn sideLinks Events">
+            <%= link_to 'Events', client_events_path(client_id: current_user.client_id), data: { target: "#modal1"} %>
+          </li>
+
+        </ul>
+          <section id="footer">
+            <ul class="icons">
+              <li>
+                <a href="https://github.com/hkarambizi" class="fa-github-square">
+                  <span class="label">Harry Karambizi
+                  </span>
+                </a>
+              </li>
+
+              <li>
+                <a href="https://github.com/mtorres23" class="fa-github-square">
+                  <span class="label">Michael Torres</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/ddmilo" class="fa-github-square">
+                  <span class="label">Dan Milo</span>
+                </a>
+              </li>
+            </ul>
+
+            <p class="copyright">&copy; FiFo 2017</p>
+          </section>
+      </div>
+
+      <div class="col s9" style="height: 100vh;">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </div>
+
+    <!-- Modal Trigger -->
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal bottom-sheet">
+      <div class="modal-header">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
+      </div>
+      <div class="modal-content">
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+      </div>
+    </div>
+
+
+
+
+    <div id="modal2" class="modal bottom-sheet">
+      <div class="modal-header">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
+      </div>
+      <div class="modal-content">
+
+      </div>
+      <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
+      </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+    <script>
+      $(document).ready(function () {
+        // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
+        // $('#modal1').modal('open');
+        function openModal() {
+          $('#modal1').modal('open');
+        }
+      });
+    </script>
+
+    </body>
+
 
     <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
