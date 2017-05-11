@@ -20,10 +20,11 @@
     #map {
 
     /* Set up proportionate scaling */
-    width: 90vw;
+    width: 74vw;
     height: 90vh;
+
     /* Set up positioning */
-    z-index: -1
+
   }
 
         </style>
@@ -35,6 +36,7 @@
 
     <body>
       <div class="row">
+        <div class = "nav-wrapper">
         <div class="col s3 columnbgrnd" style="height: 100vh;">
           <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
@@ -46,20 +48,14 @@
             <li class="waves-effect waves-light btn sideLinks Edit">
               <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>
             </li>
-            <li>
-              <a class="waves-effect waves-light btn sideLinks orders" href="#modal1">Orders</a>
+            <li class="waves-effect waves-light btn sideLinks Events">
+              <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger'  %>
             </li>
           <li class="waves-effect waves-light btn sideLinks signout">
             <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>
           </li>
-          <li>
-          <a class="waves-effect waves-light btn sideLinks locations" href="#locations-modal">Locations</a>
-          </li>
-          <li class="waves-effect waves-light btn sideLinks Events">
-            <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger' %>
-          </li>
           <% end %>
-      
+
 
         </ul>
           <section id="footer">
@@ -87,13 +83,14 @@
           </section>
       </div>
 
+
       <div class="col s9" style="height: 100vh;">
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
 
         <div id="map"></div>
 
-     
+
 
     <!-- Modal Trigger -->
 
@@ -105,9 +102,7 @@
       <div class="modal-content">
             <%= yield %>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-      </div>
+    
     </div>
 
 
@@ -119,9 +114,7 @@
       </div>
       <div class="modal-content">
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-      </div>
+
     </div>
 
    </div>
@@ -131,10 +124,12 @@
         $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();
-      
+
+
+
         $('#modal1').modal('open');
-  
-        
+
+
       });
     </script>
 
@@ -156,7 +151,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 });
 </script>
         <script>
-          
+
             function initMap() {
             <% if @location %>
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
