@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   before_action :set_event
   before_action :set_location, only: [:show, :edit, :update, :destroy]
-  
+
   def index
     @locations = @event.locations.all
   end
@@ -12,7 +12,7 @@ class LocationsController < ApplicationController
 
   def create
     @location = @event.locations.new(location_params)
-    
+
     respond_to do |format|
       if @location.save
         format.html { redirect_to event_location_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully created.' }
@@ -40,7 +40,7 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(location_params)
-        format.html { redirect_to @location, notice: 'Location was successfully updated.' }
+        format.html { redirect_to event_location_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully updated.' }
         format.json { render :show, status: :ok, location: @location }
       else
         format.html { render :edit }

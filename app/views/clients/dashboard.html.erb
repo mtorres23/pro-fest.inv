@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
   <head>
     <title>fifo</title>
@@ -30,20 +30,44 @@
         <li>
         <a class="waves-effect waves-light btn sideLinks locations" href="#locations-modal">Locations</a>
         </li>
+        <li class="waves-effect waves-light btn sideLinks Events">
+          <%= link_to 'Events', client_events_path(client_id: current_user.client_id)%>
+        </li>
 
 
       </ul>
+        <section id="footer">
+          <ul class="icons">
+            <li>
+              <a href="https://github.com/hkarambizi" class="fa-github-square">
+                <span class="label">Harry Karambizi
+                </span>
+              </a>
+            </li>
+
+            <li>
+              <a href="https://github.com/mtorres23" class="fa-github-square">
+                <span class="label">Michael Torres</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/ddmilo" class="fa-github-square">
+                <span class="label">Dan Milo</span>
+              </a>
+            </li>
+          </ul>
+
+          <p class="copyright">&copy; FiFo 2017</p>
+        </section>
     </div>
 
     <div class="col s9 black" style="height: 100vh;"></div>
   </div>
 
-  <!-- Modal Trigger -->
 
-  <!-- Modal Structure -->
   <div id="modal1" class="modal bottom-sheet">
     <div class="modal-content">
-      <%= link_to "New Order", new_api_order_path , class: 'btn btn-primary btn-lg' %>
+
 
       <div class='orders-wrapper'>
         <table class='centered'>
@@ -59,7 +83,7 @@
           <tbody>
             <% @orders.each do |order|  %>
             <tr>
-              <td><%= link_to order.content, api_order_path(order.id) %></td>
+              <td><%=order.content %></td>
               <td><%=order.created_at.strftime("%D  %I:%M %p") %></td>
               <td><%=order.updated_at.strftime("%D %I:%M %p") %></td>
               <td><%=order.delivery_date%></td>
@@ -79,7 +103,6 @@
     <div class="modal-content">
       <header><h1 class="display-4">Locations</h1></header>
 
-      <%= link_to 'Add location', new_location_path, class: 'btn btn-primary btn-lg' %>
 
       <div class="card">
         <div class="container">
@@ -102,7 +125,7 @@
         <tbody>
           <% @locations.each do |location| %>
             <tr>
-              <td><%= link_to location.title, location %></td>
+              <td><%= location.title%></td>
               <td><%= location.access_code %></td>
               <td><%= location.address%></td>
               <td><%= location.latitude %></td>
@@ -131,40 +154,16 @@
 
   <ui-view></ui-view>
 
-  <section id="footer">
-    <ul class="icons">
-      <li>
-        <a href="https://github.com/hkarambizi" class="fa-github-square">
-          <span class="label">Harry Karambizi
-          </span>
-        </a>
-      </li>
-
-      <li>
-        <a href="https://github.com/mtorres23" class="fa-github-square">
-          <span class="label">Michael Torres</span>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/ddmilo" class="fa-github-square">
-          <span class="label">Dan Mil</span>
-        </a>
-      </li>
-    </ul>
-
-    <p class="copyright">&copy; FiFo 2017</p>
-  </section>
-
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/core.js"></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 
   <script>
     $(document).ready(function () {
-      // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+
       $('.modal').modal();
     });
   </script>
 
 </body>
-</html>
+</html> -->
