@@ -41,6 +41,7 @@ gem 'rails-chat'
 gem 'walmart_open'
 gem 'data-confirm-modal'
 gem 'geocoder'
+gem 'reverse_geocoder'
 gem 'stocker'
 gem "simple_calendar", "~> 2.0"
 # Use Capistrano for deployment

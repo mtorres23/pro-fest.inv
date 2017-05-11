@@ -159,6 +159,7 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    reverse_geocoder (0.0.1)
     rspec-core (3.6.0)
       rspec-support (~> 3.6.0)
     rspec-expectations (3.6.0)
@@ -251,6 +252,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.2)
   rails-chat
+  reverse_geocoder
   rspec-rails
   sass-rails (~> 5.0)
   simple_calendar (~> 2.0)

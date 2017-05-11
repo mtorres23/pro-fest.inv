@@ -59,7 +59,7 @@
             <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger' %>
           </li>
           <% end %>
-      
+
 
         </ul>
           <section id="footer">
@@ -93,7 +93,7 @@
 
         <div id="map"></div>
 
-     
+
 
     <!-- Modal Trigger -->
 
@@ -131,10 +131,10 @@
         $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();
-      
+
         $('#modal1').modal('open');
-  
-        
+
+
       });
     </script>
 
@@ -156,7 +156,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 });
 </script>
         <script>
-          
+
             function initMap() {
             <% if @location %>
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
@@ -166,15 +166,21 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
             var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>}
             <% end %>
             console.log(target);
+
             var map = new google.maps.Map(document.getElementById('map'), {
               zoom: 20,
               center: target
             });
             var marker = new google.maps.Marker({
+              draggable: true,
               position: target,
               map: map
             });
-          };
+//             google.maps.event.addListener(marker, 'Event', function (event) {
+//             document.getElementById("lat").value = this.getPosition().lat();
+//             document.getElementById("lng").value = this.getPosition().lng();
+// });
+        }
         </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
                                            async defer></script>
