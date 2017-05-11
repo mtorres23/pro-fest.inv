@@ -1,8 +1,8 @@
 
-<%= link_to "New Order", new_order_path , class: 'btn btn-primary btn-lg' %>
+<%= link_to "New Order", new_event_location_order_path , class: 'btn btn-primary btn-lg' %>
 
 
 <% @orders.each do |order|  %>
 
-  <h3> <%= link_to order.content, order_path(order.id) %> </h3>
+  <h3> <%=order.content%> </h3>
 <% end %>

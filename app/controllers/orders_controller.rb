@@ -1,4 +1,8 @@
 class OrdersController < ApplicationController
+  before_action :set_client
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+
+
   def index
     @orders = Order.all
   end
@@ -36,9 +40,18 @@ class OrdersController < ApplicationController
 
   private
 
+  def set_event
+    @event = @client.events.find(params[:id])
+  end
+
+
   def order_params
     params.require(:order).permit(:content).merge(:category_id => 1)
+  end
 
-    end
+  def set_client
+    @client = Client.find(current_user.client_id)
+  end
+
 
 end
