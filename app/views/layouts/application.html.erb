@@ -30,8 +30,7 @@
 
   </head>
 
-  <body>
-
+<% if current_user %>
 
     <body>
       <div class="row">
@@ -88,8 +87,12 @@
       </div>
 
       <div class="col s9" style="height: 100vh;">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <% if notice %>
+             <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
 
         <div id="map"></div>
 
@@ -138,17 +141,6 @@
       });
     </script>
 
-    </body>
-
-
-    <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
-
-
 <script>
 $('.datepicker').pickadate({
 selectMonths: true, // Creates a dropdown to control month
@@ -156,7 +148,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 });
 </script>
         <script>
-          
+          <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
             function initMap() {
             <% if @location %>
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
@@ -175,8 +167,12 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
               map: map
             });
           };
+          <% end %>
         </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
                                            async defer></script>
+  <% else %>
+  <%= yield %>
+  <% end %>                                       
   </body>
 </html>

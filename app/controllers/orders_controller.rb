@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  
   def index
     @orders = Order.all
   end
@@ -37,7 +38,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:content).merge(:category_id => 1)
+    params.require(:order).permit(:content, :delivery_date).merge(:category_id => 1)
 
     end
 
