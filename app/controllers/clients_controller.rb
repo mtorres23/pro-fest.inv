@@ -2,7 +2,6 @@ class ClientsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_client, only: [:dashboard, :show, :edit, :update, :destroy]
 
-
   def dashboard
     @orders = Order.all
     @locations = Location.all
@@ -67,7 +66,13 @@ class ClientsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
+      if current_user && current_user.is_event_admin?
       @client = Client.find(current_user.client_id)
+      elsif current_user && current_user.is_crew?
+      @client = Client.find(current_user.client_id)
+      else
+      redirect_to home_page
+    end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

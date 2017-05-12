@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170510172805) do
+ActiveRecord::Schema.define(version: 20170511161916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -127,6 +127,8 @@ ActiveRecord::Schema.define(version: 20170510172805) do
     t.boolean  "is_tent_manager"
     t.integer  "location_id",            default: 2
     t.integer  "client_id"
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
