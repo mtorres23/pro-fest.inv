@@ -34,6 +34,8 @@ get '/locations/:location_id/items' => 'items#location_items', as: 'location_ite
 post '/events/:event_id/locations' => 'locations#create', as: 'create_location'
 get '/locations/:location_id/orders' => 'orders#orders_by_location', as: 'location_orders'
 
+post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_order'
+
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
 
   root to: 'clients#dashboard'
