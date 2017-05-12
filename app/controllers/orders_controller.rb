@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_client
+  before_action :set_location, except: [:orders_by_client, :orders_by_event]
   before_action :set_event, only: [:orders_by_event,:edit, :update, :destroy]
 
 
@@ -18,7 +19,7 @@ class OrdersController < ApplicationController
   end
 
   def new
-    @order = Order.new
+    @order = @location.orders.new
 
     render :new
   end
@@ -26,37 +27,43 @@ class OrdersController < ApplicationController
   def create
     puts "create"
     puts @orders
-    order = Order.new(order_params)
+
+    order = @location.orders.new(order_params)
+
     order.save
 
-    redirect_to event_location_orders_path
+
+    redirect_to location_orders_path
   end
 
   def show
-    @orders = Order.find(params[:id])
+    @order = @location.orders.find(params[:id])
   end
 
   def update
-    order = Order.find(params[:id])
+    order = @location.orders.find(params[:id])
     order.update(order_params)
 
     redirect_to location_orders_path
   end
 
   def edit
-    @orders = Order.find(params[:id])
+    @order = @location.orders.find(params[:id])
   end
 
 
   private
 
   def set_event
-    @event = @client.events.find(params[:id])
+    @event = Event.find(params[:event_id])
   end
 
+  def set_location
+    @location = Location.find(params[:location_id])
+  end
 
   def order_params
-    params.require(:order).permit(:content).merge(:category_id => 1)
+    params.require(:order).permit(:content, :role)
   end
 
   def set_client

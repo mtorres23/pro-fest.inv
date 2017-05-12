@@ -37,7 +37,7 @@ get '/locations/:location_id/orders' => 'orders#orders_by_location', as: 'locati
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
 
   root to: 'clients#dashboard'
-get '*path', to: 'clients#dashboard'
+
 
 
 end

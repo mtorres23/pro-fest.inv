@@ -1,8 +1,7 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:dashboard, :show, :edit, :update, :destroy]
 
-  def index
-  end
+  
 
 
   def dashboard

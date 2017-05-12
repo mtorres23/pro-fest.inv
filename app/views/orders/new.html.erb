@@ -3,6 +3,11 @@
 
 <%= form_for :order, url: event_location_orders_path do |f| %>
 <div>
+  <div class="form_row">
+      <%= f.label :role %>
+      <%= f.select(:role, options_for_select(order_types), :required => true) %>
+  </div>
+
   <div class="input-field">
     <%= f.label :content %>
     <br>
@@ -10,10 +15,7 @@
     <br>
   </div>
 
-  <div class="field">
-    <%= f.label :delivery_date %>
-    <%= f.text_field :delivery_date, class: "datepicker"%>
-  </div>
+
 
 
 
@@ -21,3 +23,9 @@
   </button>
   <% end %>
 </div>
+
+<!-- <<script>
+$(document).ready(function() {
+ $('select').material_select();
+});
+</script> -->

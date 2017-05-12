@@ -15,6 +15,7 @@
               -moz-background-size: cover;
              -o-background-size: cover;
               background-size: cover;
+
               }
 
     #map {
@@ -40,7 +41,7 @@
         <div class="col s3 columnbgrnd" style="height: 100vh;">
           <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
-          <ul>
+          <ul class="slide-out">
           <% if user_signed_in? %>
             <li class="waves-effect waves-light  sideLinks">
               <%= link_to 'Home', root_path, class: 'btn sideLinks'%>
@@ -54,6 +55,14 @@
           <li class="waves-effect waves-light sideLinks  signout">
             <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self', class: 'btn sideLinks' %>
           </li>
+          <% else %>
+            <li class="waves-effect waves-light sideLinks  signup">
+            <%= link_to 'Sign Up' , new_user_registration_path, class: 'btn sideLinks' %>
+            </li>
+            <li class="waves-effect waves-light sideLinks  signin">
+            <%= link_to 'Sign In' ,  new_user_session_path, class: 'btn sideLinks' %>
+            </li>
+
           <% end %>
 
 
@@ -100,6 +109,7 @@
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
+
             <%= yield %>
       </div>
 
