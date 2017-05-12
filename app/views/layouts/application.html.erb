@@ -25,7 +25,6 @@
     height: 90vh;
 
     /* Set up positioning */
-
   }
 
         </style>
@@ -138,6 +137,13 @@
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();
 
+        $('#modal1').modal('open');
+
+
+      });
+    </script>
+
+
 
 
         $('#modal1').modal('open');
@@ -154,6 +160,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 </script>
         <script>
 
+
           <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
             function initMap() {
             <% if @location %>
@@ -164,6 +171,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
             var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>}
             <% end %>
             console.log(target);
+
             var map = new google.maps.Map(document.getElementById('map'), {
               zoom: 20,
               center: target
@@ -172,8 +180,34 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
               position: target,
               map: map
             });
+
+            function createInfoWindow(text){
+            var infowindow = new google.maps.InfoWindow({
+              content: text
+            });
+            return infowindow;
+          }
+          var info = createInfoWindow("Congratulations!");
+            google.maps.event.addListener(marker, 'click', function() {
+            info.open(map,marker);
+            });
+            var markerTwo = new google.maps.Marker({
+              position: target,
+              map: map,
+              draggable: true
+            });
+            function createInfoWindow(text){
+            var infowindow = new google.maps.InfoWindow({
+              content: text
+            });
+            return infowindow;
+          }
+          var info = createInfoWindow("Congratulations!");
+            google.maps.event.addListener(markerTwo, 'click', function() {
+            info.open(map,markerTwo);
+            });
+        }
           };
-          <% end %>
         </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
                                            async defer></script>
