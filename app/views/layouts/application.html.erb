@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <style>
 
@@ -31,7 +32,7 @@
 
   </head>
 
-<% if current_user %>
+
 
     <body>
       <div class="row">
@@ -40,7 +41,8 @@
           <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
           <ul class="slide-out">
-          <% if user_signed_in? %>
+    <% if user_signed_in? %>
+
             <li class="waves-effect waves-light sideLinks">
               <%= link_to 'Home', root_path, class: 'btn sideLinks'%>
             </li>
@@ -66,34 +68,40 @@
             <%= link_to 'Sign In' ,  new_user_session_path, class: 'btn sideLinks' %>
             </li>
 
-          <% end %>
+            <% end %>
 
 
 
-        </ul>
-          <section id="footer">
-            <ul class="icons">
-              <li>
-                <a href="https://github.com/hkarambizi" class="fa-github-square">
-                  <span class="label">Harry Karambizi
-                  </span>
-                </a>
-              </li>
 
-              <li>
-                <a href="https://github.com/mtorres23" class="fa-github-square">
-                  <span class="label">Michael Torres</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/ddmilo" class="fa-github-square">
-                  <span class="label">Dan Milo</span>
-                </a>
-              </li>
-            </ul>
+        </ul class="text-muted">
+          <div class="footer">
 
-            <p class="copyright">&copy; FiFo 2017</p>
+            <section id="footer">
+              <ul class="icons text-muted">
+                <p>The FiFo Team:</p>
+                <li class="center">
+                  <a href="https://github.com/hkarambizi" class=""><i class="fa fa-github" aria-hidden="true"></i>
+                    <span class="label">Harry Karambizi
+                    </span>
+                  </a>
+                </li>
+
+                <li class="center">
+                  <a href="https://github.com/mtorres23" class=""><i class="fa fa-github" aria-hidden="true"></i>
+                    <span class="label">Michael Torres</span>
+                  </a>
+                </li>
+                <li class="center">
+                  <a href="https://github.com/ddmilo" class=""><i class="fa fa-github" aria-hidden="true"></i>
+                    <span class="label">Dan Milo</span>
+                  </a>
+                </li>
+              </ul>
+                <p class="copyright text-muted">&copy; FiFo 2017</p>
+
+
           </section>
+      </div>
       </div>
     </div> <!--bottom of nav wrapper-->
 
@@ -109,13 +117,25 @@
         <div id="map"></div> <!--map end-->
 
 
+<script>
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>
 
+<script>
+setTimeout(function(){$(".carousel").click()}, 1);
+</script>
 
 
     <!-- Modal 1 -->
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-header">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
+
+        <div class="modal-action modal-close waves-effect waves-green btn-flat">Exit</a>
+
+        <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
+
       </div>
       <div class="modal-content">
 
@@ -151,6 +171,7 @@
 
 
 
+
 <div id="form">
       <table>
       <tr><td>Location Title:</td> <td><input type='text' id=‘title’/> </td> </tr>
@@ -163,12 +184,17 @@
     </div>
     <div id="message">Location saved</div>
 
-  <% else %>
-  <%= yield %>
-  <% end %>
-    <script>
+   
       
 
+<script>
+$('.datepicker').pickadate({
+selectMonths: true, // Creates a dropdown to control month
+selectYears: 15 // Creates a dropdown of 15 years to control year
+});
+</script>
+
+<script>
       var map;
       var marker;
       var infowindow;
@@ -176,8 +202,10 @@
 
     <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
 
+  
             function initMap() {
             <% if @event && @location && @client %>
+
             var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
             <% elsif @client && @location %>
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
@@ -232,14 +260,12 @@ if (responseCode == 200 && data.length <= 1) {
   <% end %>
     </script>
 
-<script>
-$('.datepicker').pickadate({
-selectMonths: true, // Creates a dropdown to control month
-selectYears: 15 // Creates a dropdown of 15 years to control year
-});
-</script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap" async defer></script>
- 
+    
+   <% else %>
+  <%= yield %>
   <% end %>
+ 
+
   </body>
 </html>
