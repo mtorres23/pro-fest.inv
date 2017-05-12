@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
   def create
     puts "create"
-    puts @orders
+    puts @order
 
     order = @location.orders.new(order_params)
 
@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
 
   def order_params
 
-    params.require(:order).permit(:content, :role)
+    params.require(:order).permit(:content).merge(:category_id => 1)
   end
 
   def set_client
