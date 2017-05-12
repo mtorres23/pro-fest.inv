@@ -8,6 +8,7 @@ class LocationsController < ApplicationController
   end
 
   def new
+    @event = @client.events.find(params[:event_id])
     @location = @event.locations.new
   end
 
