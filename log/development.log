@@ -35016,3 +35016,102 @@ Migrating to AddLatitudeAndLongitudeToUsers (20170511161916)
   [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1006908589982888040)[0m
   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for ::1 at 2017-05-11 21:43:52 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home_pages/home.html.erb within layouts/application
+  Rendered home_pages/home.html.erb within layouts/application (2.1ms)
+Completed 500 Internal Server Error in 98ms (ActiveRecord: 9.0ms)
+
+
+  
+SyntaxError (/Users/danmilo/project4/pro-fest.inv/app/views/layouts/application.html.erb:220: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^
+/Users/danmilo/project4/pro-fest.inv/app/views/layouts/application.html.erb:222: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/layouts/application.html.erb:220: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/layouts/application.html.erb:222: syntax error, unexpected end-of-input, expecting keyword_end
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (88.4ms)
+Started GET "/" for ::1 at 2017-05-11 21:46:57 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home_pages/home.html.erb within layouts/application
+  Rendered home_pages/home.html.erb within layouts/application (0.4ms)
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.8ms)
+
+
+  
+SyntaxError (/Users/danmilo/project4/pro-fest.inv/app/views/layouts/application.html.erb:214: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^
+/Users/danmilo/project4/pro-fest.inv/app/views/layouts/application.html.erb:216: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/layouts/application.html.erb:214: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/layouts/application.html.erb:216: syntax error, unexpected end-of-input, expecting keyword_end
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (74.6ms)
+Started GET "/" for ::1 at 2017-05-11 21:46:58 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home_pages/home.html.erb within layouts/application
+  Rendered home_pages/home.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.8ms)
+
+
+  
+SyntaxError (/Users/danmilo/project4/pro-fest.inv/app/views/layouts/application.html.erb:214: syntax error, unexpected keyword_ensure, expecting keyword_end
+          ensure
+                ^
+/Users/danmilo/project4/pro-fest.inv/app/views/layouts/application.html.erb:216: syntax error, unexpected end-of-input, expecting keyword_end):
+  
+app/views/layouts/application.html.erb:214: syntax error, unexpected keyword_ensure, expecting keyword_end
+app/views/layouts/application.html.erb:216: syntax error, unexpected end-of-input, expecting keyword_end
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (8.1ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (85.1ms)
+Started GET "/" for ::1 at 2017-05-11 22:04:35 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home_pages/home.html.erb within layouts/application
+  Rendered home_pages/home.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 7939ms (Views: 7931.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for ::1 at 2017-05-11 22:05:23 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home_pages/home.html.erb within layouts/application
+  Rendered home_pages/home.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 88ms (Views: 82.5ms | ActiveRecord: 0.8ms)
+
+
