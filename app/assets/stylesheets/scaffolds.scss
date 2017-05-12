@@ -21,7 +21,7 @@ p, ol, ul, td {
 .sideLinks {
   max-width: 100%;
   width: 500px;
-  background: #FCF7F8
+  background: #FCF7F8;
 }
 
 pre {
@@ -112,4 +112,34 @@ label {
 		letter-spacing: 0.25em;
 		text-transform: uppercase;
     text-align: center;
+}
+
+.indexEvent {
+  text-align: center;
+  color: #5582C1;
+  box-shadow:  0 5px #E0DFE9;
+  border-radius: 20px;
+}
+
+.modal-header {
+  background: #FCF7F8;
+}
+
+.addNewevent {
+  text-align: right;
+  padding-bottom: 35px;
+  border-radius: 18px;
+  background-color: #FCF7F8;
+}
+
+.newEventpage {
+  text-align: center;
+  background-color: #EFEAEA;
+  color: #5582C1;
+  box-shadow:  0 5px #E0DFE9;
+  border-radius: 20px;
+}
+
+#carousel {
+
 }

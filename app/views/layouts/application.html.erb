@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <style>
 
@@ -69,19 +70,19 @@
           <section id="footer">
             <ul class="icons">
               <li>
-                <a href="https://github.com/hkarambizi" class="fa-github-square">
+                <a href="https://github.com/hkarambizi" class="Git1"><i class="fa fa-github" aria-hidden="true"></i>
                   <span class="label">Harry Karambizi
                   </span>
                 </a>
               </li>
 
               <li>
-                <a href="https://github.com/mtorres23" class="fa-github-square">
+                <a href="https://github.com/mtorres23" class="Git"><i class="fa fa-github" aria-hidden="true"></i>
                   <span class="label">Michael Torres</span>
                 </a>
               </li>
               <li>
-                <a href="https://github.com/ddmilo" class="fa-github-square">
+                <a href="https://github.com/ddmilo" class="Git"><i class="fa fa-github" aria-hidden="true"></i>
                   <span class="label">Dan Milo</span>
                 </a>
               </li>
@@ -106,13 +107,21 @@
         </div> <!--map end-->
 
 
+<script>
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>
 
+<script>
+setTimeout(function(){$(".carousel").click()}, 1);
+</script>
 
 
     <!-- Modal 1 -->
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-header">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
+        <div class="modal-action modal-close waves-effect waves-green btn-flat">Exit</a>
       </div>
       <div class="modal-content">
 
@@ -120,7 +129,7 @@
       </div>
 
     </div> <!--bottom of modal1-->
-
+  
 
 
     <!--modal2-->
