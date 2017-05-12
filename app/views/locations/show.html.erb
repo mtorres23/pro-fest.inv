@@ -1,9 +1,12 @@
-<header><h1 class="display-4"><%= @location.title %></h1></header>
+<%= link_to 'Edit', edit_event_location_path(event_id: @location.event_id, id: @location.id), class: ' btn waves-effect waves-light' %>
+<%= link_to 'Back', event_path(@event), class: ' btn waves-effect waves-light' %>
+
+
+<%= link_to 'Orders',location_orders_path(@location.id), class: 'right btn waves-effect waves-light' %>
+
+<header><h1 class="display-4 center"><%= @location.title %></h1></header>
+
+<hr>
 
 <p>Address: <%= @location.address %></p>
 <p>Coordinates: <%= @location.latitude %> <%= @location.longitude %></p>
-
-<%= link_to 'Edit', edit_event_location_path(event_id: @location.event_id, id: @location.id) %> |
-<%= link_to 'Back', event_path(@event) %>
-
-<%= link_to 'Orders',location_orders_path(@location.id) %>
