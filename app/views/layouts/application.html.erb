@@ -6,6 +6,7 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
     <style>
 
@@ -65,6 +66,7 @@
 
 
 
+
         </ul class="text-muted">
           <div class="footer">
 
@@ -72,24 +74,25 @@
               <ul class="icons text-muted">
                 <p>The FiFo Team:</p>
                 <li class="center">
-                  <a href="https://github.com/hkarambizi" class="fa-github-square">
+                  <a href="https://github.com/hkarambizi" class=""><i class="fa fa-github" aria-hidden="true"></i>
                     <span class="label">Harry Karambizi
                     </span>
                   </a>
                 </li>
 
                 <li class="center">
-                  <a href="https://github.com/mtorres23" class="fa-github-square">
+                  <a href="https://github.com/mtorres23" class=""><i class="fa fa-github" aria-hidden="true"></i>
                     <span class="label">Michael Torres</span>
                   </a>
                 </li>
                 <li class="center">
-                  <a href="https://github.com/ddmilo" class="fa-github-square">
+                  <a href="https://github.com/ddmilo" class=""><i class="fa fa-github" aria-hidden="true"></i>
                     <span class="label">Dan Milo</span>
                   </a>
                 </li>
               </ul>
                 <p class="copyright text-muted">&copy; FiFo 2017</p>
+
 
           </section>
       </div>
@@ -110,13 +113,25 @@
         </div> <!--map end-->
 
 
+<script>
+$(document).ready(function(){
+    $('.carousel').carousel();
+  });
+</script>
 
+<script>
+setTimeout(function(){$(".carousel").click()}, 1);
+</script>
 
 
     <!-- Modal 1 -->
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-header">
+
+        <div class="modal-action modal-close waves-effect waves-green btn-flat">Exit</a>
+
         <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
+
       </div>
       <div class="modal-content">
 

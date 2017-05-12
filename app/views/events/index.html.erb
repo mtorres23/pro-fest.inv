@@ -1,15 +1,18 @@
 <p id="notice"><%= notice %></p>
 
+
 <%= link_to 'Add New Event', new_client_event_path(client_id: @client.id), class: 'btn waves-effect waves-light' %>
 <hr>
 
+
+
+<div class="z-depth-1 indexEvent">
 <h1>Events</h1>
+</div>
 
 
 
-
-
-<table>
+<!-- <table>
   <thead>
     <tr>
       <th>Title</th>
@@ -26,7 +29,7 @@
 
   <tbody>
     <% @events.each do |event| %>
-    
+
       <tr>
         <td><%= event.title %></td>
         <td><%= event.start_date %></td>
@@ -42,7 +45,16 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+</table> -->
+
+<div class="carousel">
+  <% @events.each do |event| %>
+    <a class="carousel-item" href="/clients/<%= @client.id %>/events/<%= event.id %>"><%= event.title %><img src="http://imageshack.com/a/img924/5798/pln0OT.png"></a>
+    <% end %>
+    <a class="carousel-item" href="#">Verizon Wireless Amphitheatre<img src="http://imageshack.com/a/img922/8954/sqNDhI.jpg"></a>
+    <a class="carousel-item" href="#">Shaky Beats<img src="http://imageshack.com/a/img922/7828/R33rnW.jpg"></a>
+
+  </div>
 
 <br>
 
