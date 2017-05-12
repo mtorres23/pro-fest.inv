@@ -1,7 +1,7 @@
 <h3>orders#edit</h3>
 
 <div>
-    <%= form_for @orders, url: order_path(id: @orders.id) do |f| %>
+    <%= form_for @orders, url: event_location_order_path(id: @orders.id) do |f| %>
     <%= f.label :content %>
     <br>
     <%= f.text_field :content %>

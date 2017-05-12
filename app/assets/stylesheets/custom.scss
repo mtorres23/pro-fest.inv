@@ -6,6 +6,7 @@ $secondary-color: color("yellow", "base") !default;
 @import 'materialize';
 
 
+
 .orders-wrapper {
   height: 50vh;
   width: 100vw;
@@ -22,4 +23,28 @@ $secondary-color: color("yellow", "base") !default;
 #modal2 {
 	min-height: 50%;
 	max-height: 80%;
+}
+
+.columnbgrnd {
+  background-color: #E9E8EE;
+  border: 2px solid black;
+  margin-bottom: 0;
+
+}
+
+.s9 {
+  background-color: #E9E8EE;
+}
+
+.modal {
+  background-color: #E9E8EE;
+}
+
+#modal1 img {
+  background-image: url('<img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">');
+}
+
+
+select {
+  display: inherit;
 }

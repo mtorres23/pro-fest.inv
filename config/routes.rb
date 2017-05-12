@@ -38,6 +38,12 @@ get '/clients/:client_id/items' => 'items#client_items', as: 'items_by_client'
 # route to get all current items in a specific location
 get '/locations/:location_id/items' => 'items#location_items', as: 'location_items'
 post '/events/:event_id/locations' => 'locations#create', as: 'create_location'
+get '/locations/:location_id/orders' => 'orders#orders_by_location', as: 'location_orders'
+
+post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_order'
+
+get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
+
 
   root to: 'home_pages#home'
 get '*path', to: 'home_pages#home'

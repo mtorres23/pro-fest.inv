@@ -2,9 +2,7 @@
 
 <h1>Events</h1>
 
-<%= month_calendar(attribute: :start_date, end_attribute: :end_date) do |date| %>
-  <%= date %>
-<% end %>
+
 
 <%= link_to 'Add New Event', new_client_event_path(client_id: @client.id), class: 'btn btn-primary btn-lg' %>
 
@@ -44,7 +42,6 @@
 
 <br>
 
-<%= link_to 'New Event', new_event_path %>
 
-<a class="waves-effect waves-light btn sideLinks orders" href="#modal1">Orders</a>
-
+<!-- 
+<a class="waves-effect waves-light btn sideLinks orders" href="#modal1">Orders</a> -->
