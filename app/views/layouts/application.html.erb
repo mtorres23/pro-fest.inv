@@ -41,10 +41,16 @@
           <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
           <ul class="slide-out">
-          <% if user_signed_in? %>
-            <li class="waves-effect waves-light  sideLinks">
+    <% if user_signed_in? %>
+
+            <li class="waves-effect waves-light sideLinks">
               <%= link_to 'Home', root_path, class: 'btn sideLinks'%>
             </li>
+            <% if current_user.is_event_admin? || current_user.is_crew? %>
+            <li class="waves-effect waves-light sideLinks">
+            <li><%= link_to "Items", client_items_path(client_id: current_user.client_id), class: 'btn sideLinks' %></li>
+            </li>
+            <% end %>
             <li class="waves-effect waves-light sideLinks">
               <%= link_to 'Edit account', edit_user_registration_path, target: '_self', class: 'btn sideLinks' %>
             </li>
@@ -62,7 +68,7 @@
             <%= link_to 'Sign In' ,  new_user_session_path, class: 'btn sideLinks' %>
             </li>
 
-          <% end %>
+            <% end %>
 
 
 
@@ -108,9 +114,7 @@
             <p class="alert alert-danger"><%= alert %></p>
         <% end %>
 
-        <div id="map">
-
-        </div> <!--map end-->
+        <div id="map"></div> <!--map end-->
 
 
 <script>
@@ -167,6 +171,22 @@ setTimeout(function(){$(".carousel").click()}, 1);
 
 
 
+
+<div id="form">
+      <table>
+      <tr><td>Location Title:</td> <td><input type='text' id=‘title’/> </td> </tr>
+      <tr><td>Type:</td> <td><select id='type'> +
+                 <option value='bar' SELECTED>bar</option>
+                 <option value=‘storage’>storage</option>
+                 </select> </td></tr>
+                 <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
+      </table>
+    </div>
+    <div id="message">Location saved</div>
+
+   
+      
+
 <script>
 $('.datepicker').pickadate({
 selectMonths: true, // Creates a dropdown to control month
@@ -174,66 +194,78 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 });
 </script>
 
-
 <script>
+      var map;
+      var marker;
+      var infowindow;
+      var messagewindow;
 
+    <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
+
+  
             function initMap() {
-            <% if @location %>
-            var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
-            <% else if @event %>
+            <% if @event && @location && @client %>
+
             var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+            <% elsif @client && @location %>
+            var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
             <% else %>
             var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>};
             <% end %>
             console.log(target);
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: target,
+          zoom: 20
+        });
+      
+    
 
-            var map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 20,
-              center: target
-            });
-          }
-            var marker = new google.maps.Marker({
-              position: target,
-              map: map
-            });
-          }
-
-            function createInfoWindow(text){
-            var infowindow = new google.maps.InfoWindow({
-              content: text
-            });
-            return infowindow;
-          }
-          var info = createInfoWindow("Congratulations!");
-            google.maps.event.addListener(marker, 'click', function() {
-            info.open(map,marker);
-            });
-          }
-            var markerTwo = new google.maps.Marker({
-              position: target,
-              map: map,
-              draggable: true
-            });
-          }
-            function createInfoWindow(text){
-            var infowindow = new google.maps.InfoWindow({
-              content: text
-            });
-            return infowindow;
-          }
-          var info = createInfoWindow("Congratulations!");
-            google.maps.event.addListener(markerTwo, 'click', function() {
-            info.open(map,markerTwo);
-          });
-        }
-
-</script>
+       infowindow = new google.maps.InfoWindow({
+          content: document.getElementById('form')
+        });
 
 
+       messagewindow = new google.maps.InfoWindow({
+          content: document.getElementById('message')
+        });
+
+  google.maps.event.addListener(map, 'click', function(event) {
+          marker = new google.maps.Marker({
+            position: event.latLng,
+            map: map,
+            draggable: true})
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map, marker);
+          });
+        };
+      
+  <% if @event %>
+      function saveData() {
+        var latLng = marker.getPosition();
+        var title = escape(document.getElementById('title').value);
+        var lat = latLng.lat();
+        var lng = latLng.lng();  
+    var url = 'events/<%= @event.id %>/locations';
+    
+    $.post(url, { title: title, latitude: lat, longitude: log}).done(function( data ) {
+      alert( "Data Loaded: " + data );
+if (responseCode == 200 && data.length <= 1) {
+            infowindow.close();
+            messagewindow.open(map, marker);
+          }
+        });
+      }
+  <% end %>
+    </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap" async defer></script>
-
+    
+   <% else %>
+  <%= yield %>
   <% end %>
+ 
 
   </body>
 </html>

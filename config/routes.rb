@@ -1,11 +1,6 @@
 Rails.application.routes.draw do
-  get 'home_pages/home'
 
-  get 'home_pages/about'
-
-  get 'home_pages/faqs'
-
-  devise_for :users
+   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
     resources :clients do
@@ -19,9 +14,16 @@ Rails.application.routes.draw do
       end
     end
 
-# Custom Routes
 
-    #Modal Routes
+# Custom Routes
+ # Home Routes
+  get 'home' => 'home_pages#home'
+
+  get 'about' => 'home_pages#about'
+
+  get 'faqs' => 'home_pages#faqs'
+
+    # Modal Routes
 # route to view all client's events in the modal
 get '/clients/:client_id/events#modal1' => 'events#index', as: 'client_events_modal'
 # route to view a specific client's event in the modal
@@ -45,8 +47,8 @@ post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_orde
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
 
 
-  root to: 'home_pages#home'
-get '*path', to: 'home_pages#home'
+  root to: 'clients#dashboard'
+get '*path', to: 'clients#dashboard'
 
 
 end

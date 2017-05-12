@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_user!
   protect_from_forgery with: :exception
   before_action :set_client
-  before_action :authenticate_user!
+ 
 
 def set_client
   client =  Client.first

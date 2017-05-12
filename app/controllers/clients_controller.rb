@@ -1,83 +1,83 @@
 class ClientsController < ApplicationController
-  before_action :set_client, only: [:dashboard, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!
+  before_action :set_client, only: [:dashboard, :show, :edit, :update, :users, :items]
+  before_action :redirect_unless_admin, except: [:dashboard, :users, :items]
 
   def dashboard
-    @orders = Order.all
-    @locations = Location.all
+    @orders = @client.orders
+    @locations = @client.locations
+    @events = @client.events
+    @items = @client.items
   end
 
-  def show
+# GET /clients/:id/users
+  def users
+    @users = @client.users
   end
 
-  # GET /events/new
+# GET /clients/:id/items
+  def items
+    @items = @client.items
+  end
+
+  # GET /clients/new
   def new
-    @event = Event.new
+    @client = Client.new
   end
 
-  # GET /events/1/edit
+  # GET /clients/1/edit
   def edit
-    @event = Event.find(params[:id])
   end
 
-  # POST /events
-  # POST /events.json
+  # POST /clients
+  # POST /clients.json
   def create
-    @event = Event.new(event_params)
+    @client = current_user.clients.new(client_params)
 
     respond_to do |format|
-      if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
-        format.json { render :show, status: :created, location: @event }
+      if @client.save
+        format.html { redirect_to @client, notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: @client }
       else
         format.html { render :new }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /events/1
-  # PATCH/PUT /events/1.json
+  # PATCH/PUT /clients/1
+  # PATCH/PUT /clients/1.json
   def update
-    @event = Event.find(params[:id])
+    @client = current_user.clients.find(params[:id])
 
     respond_to do |format|
-      if @event.update_attributes(event_params)
-        format.html { redirect_to @event, notice: 'Event was successfully updated.' }
-        format.json { render :show, status: :ok, location: @event }
+      if @client.update_attributes(client_params)
+        format.html { redirect_to @client, notice: 'Event was successfully updated.' }
+        format.json { render :show, status: :ok, location: @client }
       else
         format.html { render :edit }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+        format.json { render json: @client.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /events/1
-  # DELETE /events/1.json
-  def destroy
-   @event = Event.find(params[:id])
-    @event.destroy
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
     def set_client
-      if current_user && current_user.is_event_admin?
       @client = Client.find(current_user.client_id)
-      elsif current_user && current_user.is_crew?
-      @client = Client.find(current_user.client_id)
-      else
-      redirect_to home_page
     end
+    
+    def redirect_unless_admin
+      unless user_signed_in? && current_user.id === current_user.client.admin_id
+        redirect_to :dashboard
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
       return params.require(:client)
       .permit(:company_id, :access_key, :address, :latitude, :longitude)
-      .merge(:admin_id => current_user.id, :client_id => 1)
+      .merge(:admin_id => current_user.id)
     end
 end
