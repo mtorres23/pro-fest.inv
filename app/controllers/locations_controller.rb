@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  before_action :set_client
   before_action :set_event
   before_action :set_location, only: [:show, :edit, :update, :destroy]
 
@@ -63,8 +64,12 @@ class LocationsController < ApplicationController
 
   private
 
+  def set_client
+    @client = Client.find(current_user.client_id)
+  end
+
   def set_event
-      @event = Event.find(params[:event_id])
+      @event = @client.events.find(params[:event_id])
   end
 
   def set_location

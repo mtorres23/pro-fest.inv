@@ -15,13 +15,15 @@
               -moz-background-size: cover;
              -o-background-size: cover;
               background-size: cover;
+
               }
 
     #map {
 
     /* Set up proportionate scaling */
-    width: 90vw;
+    width: 74vw;
     height: 90vh;
+
     /* Set up positioning */
   }
 
@@ -29,34 +31,36 @@
 
   </head>
 
-  <body>
-
+<% if current_user %>
 
     <body>
       <div class="row">
+        <div class = "nav-wrapper">
         <div class="col s3 columnbgrnd" style="height: 100vh;">
           <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
-          <ul>
+          <ul class="slide-out">
           <% if user_signed_in? %>
-            <li class="waves-effect waves-light btn sideLinks">
-              <%= link_to 'Home', root_path %>
+            <li class="waves-effect waves-light  sideLinks">
+              <%= link_to 'Home', root_path, class: 'btn sideLinks'%>
             </li>
-            <li class="waves-effect waves-light btn sideLinks Edit">
-              <%= link_to 'Edit account', edit_user_registration_path, target: '_self' %>
+            <li class="waves-effect waves-light sideLinks">
+              <%= link_to 'Edit account', edit_user_registration_path, target: '_self', class: 'btn sideLinks' %>
             </li>
-            <li>
-              <a class="waves-effect waves-light btn sideLinks orders" href="#modal1">Orders</a>
+            <li class="waves-effect waves-light sideLinks Events">
+              <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger', class: 'btn sideLinks'  %>
             </li>
-          <li class="waves-effect waves-light btn sideLinks signout">
-            <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self' %>
+          <li class="waves-effect waves-light sideLinks  signout">
+            <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self', class: 'btn sideLinks' %>
           </li>
-          <li>
-          <a class="waves-effect waves-light btn sideLinks locations" href="#locations-modal">Locations</a>
-          </li>
-          <li class="waves-effect waves-light btn sideLinks Events">
-            <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger' %>
-          </li>
+          <% else %>
+            <li class="waves-effect waves-light sideLinks  signup">
+            <%= link_to 'Sign Up' , new_user_registration_path, class: 'btn sideLinks' %>
+            </li>
+            <li class="waves-effect waves-light sideLinks  signin">
+            <%= link_to 'Sign In' ,  new_user_session_path, class: 'btn sideLinks' %>
+            </li>
+
           <% end %>
 
 
@@ -86,9 +90,14 @@
           </section>
       </div>
 
+
       <div class="col s9" style="height: 100vh;">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <% if notice %>
+             <p class="alert alert-success"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+            <p class="alert alert-danger"><%= alert %></p>
+        <% end %>
 
         <div id="map"></div>
 
@@ -102,11 +111,10 @@
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
+
             <%= yield %>
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-      </div>
+
     </div>
 
 
@@ -118,9 +126,7 @@
       </div>
       <div class="modal-content">
       </div>
-      <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Submit</a>
-      </div>
+
     </div>
 
    </div>
@@ -137,16 +143,14 @@
       });
     </script>
 
-    </body>
 
 
-    <% if notice %>
-        <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-        <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
 
+        $('#modal1').modal('open');
+
+
+      });
+    </script>
 
 <script>
 $('.datepicker').pickadate({
@@ -156,6 +160,8 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 </script>
         <script>
 
+
+          <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
             function initMap() {
             <% if @location %>
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
@@ -174,6 +180,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
               position: target,
               map: map
             });
+
             function createInfoWindow(text){
             var infowindow = new google.maps.InfoWindow({
               content: text
@@ -200,8 +207,12 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
             info.open(map,markerTwo);
             });
         }
+          };
         </script>
       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap"
                                            async defer></script>
+  <% else %>
+  <%= yield %>
+  <% end %>
   </body>
 </html>
