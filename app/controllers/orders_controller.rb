@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+
   before_action :set_client
   before_action :set_location, except: [:orders_by_client, :orders_by_event]
   before_action :set_event, only: [:orders_by_event,:edit, :update, :destroy]
@@ -63,12 +64,14 @@ class OrdersController < ApplicationController
   end
 
   def order_params
+
     params.require(:order).permit(:content, :role)
   end
 
   def set_client
     @client = Client.find(current_user.client_id)
   end
+
 
 
 end

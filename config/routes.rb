@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'home_pages/home'
+
+  get 'home_pages/about'
+
+  get 'home_pages/faqs'
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -38,8 +44,9 @@ post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_orde
 
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
 
-  root to: 'clients#dashboard'
 
+  root to: 'home_pages#home'
+get '*path', to: 'home_pages#home'
 
 
 end
