@@ -31,7 +31,7 @@
 
   </head>
 
-<% if current_user %>
+
 
     <body>
       <div class="row">
@@ -65,30 +65,34 @@
 
 
 
-        </ul>
-          <section id="footer">
-            <ul class="icons">
-              <li>
-                <a href="https://github.com/hkarambizi" class="fa-github-square">
-                  <span class="label">Harry Karambizi
-                  </span>
-                </a>
-              </li>
+        </ul class="text-muted">
+          <div class="footer">
 
-              <li>
-                <a href="https://github.com/mtorres23" class="fa-github-square">
-                  <span class="label">Michael Torres</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://github.com/ddmilo" class="fa-github-square">
-                  <span class="label">Dan Milo</span>
-                </a>
-              </li>
-            </ul>
+            <section id="footer">
+              <ul class="icons text-muted">
+                <p>The FiFo Team:</p>
+                <li class="center">
+                  <a href="https://github.com/hkarambizi" class="fa-github-square">
+                    <span class="label">Harry Karambizi
+                    </span>
+                  </a>
+                </li>
 
-            <p class="copyright">&copy; FiFo 2017</p>
+                <li class="center">
+                  <a href="https://github.com/mtorres23" class="fa-github-square">
+                    <span class="label">Michael Torres</span>
+                  </a>
+                </li>
+                <li class="center">
+                  <a href="https://github.com/ddmilo" class="fa-github-square">
+                    <span class="label">Dan Milo</span>
+                  </a>
+                </li>
+              </ul>
+                <p class="copyright text-muted">&copy; FiFo 2017</p>
+
           </section>
+      </div>
       </div>
     </div> <!--bottom of nav wrapper-->
 
@@ -112,7 +116,7 @@
     <!-- Modal 1 -->
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-header">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
+        <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
       </div>
       <div class="modal-content">
 
@@ -154,14 +158,14 @@ selectMonths: true, // Creates a dropdown to control month
 selectYears: 15 // Creates a dropdown of 15 years to control year
 });
 </script>
+
+
 <script>
 
-
-          <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
             function initMap() {
             <% if @location %>
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
-            <% elsif @event %>
+            <% else if @event %>
             var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
             <% else %>
             var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>};
@@ -172,10 +176,12 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
               zoom: 20,
               center: target
             });
+          }
             var marker = new google.maps.Marker({
               position: target,
               map: map
             });
+          }
 
             function createInfoWindow(text){
             var infowindow = new google.maps.InfoWindow({
@@ -187,11 +193,13 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
             google.maps.event.addListener(marker, 'click', function() {
             info.open(map,marker);
             });
+          }
             var markerTwo = new google.maps.Marker({
               position: target,
               map: map,
               draggable: true
             });
+          }
             function createInfoWindow(text){
             var infowindow = new google.maps.InfoWindow({
               content: text
@@ -201,14 +209,16 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
           var info = createInfoWindow("Congratulations!");
             google.maps.event.addListener(markerTwo, 'click', function() {
             info.open(map,markerTwo);
-            });
+          });
         }
-          };
+
 </script>
+
+
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap" async defer></script>
-  <% else %>
-  <%= yield %>
+
   <% end %>
-  <% end %>
+
   </body>
 </html>

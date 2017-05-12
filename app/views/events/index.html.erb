@@ -1,10 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<%= link_to 'Add New Event', new_client_event_path(client_id: @client.id), class: 'btn waves-effect waves-light' %>
+<hr>
+
 <h1>Events</h1>
 
 
 
-<%= link_to 'Add New Event', new_client_event_path(client_id: @client.id), class: 'btn btn-primary btn-lg' %>
+
 
 <table>
   <thead>
@@ -23,6 +26,7 @@
 
   <tbody>
     <% @events.each do |event| %>
+    
       <tr>
         <td><%= event.title %></td>
         <td><%= event.start_date %></td>
@@ -32,9 +36,9 @@
         <td><%= event.longitude %></td>
         <td><%= event.admin_id %></td>
         <td><%= event.prev_year_event_id %></td>
-        <td><%= link_to 'Show', client_event_path(client_id: event.client_id, id: event.id), data: {target: "#modal2"} %></td>
-        <td><%= link_to 'Edit', edit_event_path(event.id) %></td>
-        <td><%= link_to 'Destroy', event_path(event.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', client_event_path(client_id: event.client_id, id: event.id), data: {target: "#modal2"}, class: 'btn small waves-effect waves-light' %></td>
+        <td><%= link_to 'Edit', edit_event_path(event.id), class: 'btn small waves-effect waves-light yellow darken-1' %></td>
+        <td><%= link_to 'Delete', event_path(event.id), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn small waves-effect waves-light red' %></td>
       </tr>
     <% end %>
   </tbody>
@@ -43,5 +47,5 @@
 <br>
 
 
-<!-- 
+<!--
 <a class="waves-effect waves-light btn sideLinks orders" href="#modal1">Orders</a> -->
