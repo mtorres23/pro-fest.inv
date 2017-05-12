@@ -1,24 +1,28 @@
 # README
+Project-Fin
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+FiFo-First in, First out
 
-Things you may want to cover:
+App Overview
 
-* Ruby version
+Fifo is an app developed to aid In the functionality of events for PremierEvents. As an admin you are able to Create new events for a set location. Admins are also able to check current inventory for said event as well as update and delete current inventory. As a user, you are able to check current inventory as well as communicate with an admin about current inventory.
 
-* System dependencies
+Heroku link:
 
-* Configuration
 
-* Database creation
+Stretch Goals/ Future Features
+Allow admins to drag and drop a google maps pin on a selected location and update it with their current address.
 
-* Database initialization
+Erd's:
 
-* How to run the test suite
+WireFrames:
 
-* Services (job queues, cache servers, search engines, etc.)
+Technologies Used:
+Languages - HTML5, CSS3, Sass, Ruby on Rails, Jquery, Javascript, CoffeeScript
+Design - Google Fonts, Bootstrap, Font Awesome
+Authentication - Devise
 
-* Deployment instructions
-
-* ...
+Contributors:
+Harry Karambizi(https://github.com/hkarambizi)
+Michael Torres(https://github.com/mtorres23)
+Dan Milo(https://github.com/ddmilo)
