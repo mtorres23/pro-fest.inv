@@ -21,7 +21,7 @@
 # 		origin_item = Item.find_or_create_by(location_id: origin.id)
 # 		destination_item = Item.find_or_create_by(location_id: destination.id)
 # 		destination_item.qty = destination_item.qty + item.qty
-# 		origin_item.qty = origin_item.qty - item.qty 
+# 		origin_item.qty = origin_item.qty - item.qty
 # 	end
 # end
 
@@ -42,9 +42,4 @@ Category.create!(id: 1, name: 'beverages', location_id: 1)
 Order.create(id: 1, content: 'hello', category_id: 1)
 Item.create!(id: 1, title: 'Bud Light', qty: 50, order_id: 1)
 
-
-
-
-
-
-
+User.create!(id:1, client_id: 1, email: 'test@mail.com', password: 'password')

@@ -35,7 +35,7 @@ gem 'pry'
 gem 'materialize-rails', '~> 0.97.5.2'
 gem 'materialize-sass', '~> 0.98.2'
 gem 'devise'
-gem 'angular_rails_csrf'
+
 gem 'httparty'
 gem 'rails-chat'
 gem 'walmart_open'

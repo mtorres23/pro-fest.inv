@@ -37750,3 +37750,1220 @@ Completed 200 OK in 58ms (Views: 53.1ms | ActiveRecord: 0.8ms)
   [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = $1[0m  [["id", 1]]
   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT  "orders".* FROM "orders" ORDER BY "orders"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Load (5.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mClient Load (1.0ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[31mDELETE FROM "clients" WHERE "clients"."id" = $1[0m  [["id", 1]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (3.7ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.3ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = $1[0m  [["id", 47]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "clients" ("id", "company_id", "access_key", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["company_id", "0058"], ["access_key", 0], ["address", "1825 MacArthur Blvd NW, Atlanta, GA 30318"], ["created_at", 2017-05-13 07:02:47 UTC], ["updated_at", 2017-05-13 07:02:47 UTC]]
+  [1m[35m (5.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "events" ("id", "title", "latitude", "longitude", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["title", "Music Midtown"], ["latitude", 33.7859245], ["longitude", -84.3748308], ["created_at", 2017-05-13 07:02:48 UTC], ["updated_at", 2017-05-13 07:02:48 UTC], ["client_id", 1]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["title", "HQ"], ["created_at", 2017-05-13 07:02:48 UTC], ["updated_at", 2017-05-13 07:02:48 UTC], ["event_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["title", "warehouse"], ["created_at", 2017-05-13 07:02:48 UTC], ["updated_at", 2017-05-13 07:02:48 UTC], ["event_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("id", "name", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "beverages"], ["location_id", 1], ["created_at", 2017-05-13 07:02:48 UTC], ["updated_at", 2017-05-13 07:02:48 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "orders" ("id", "content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["content", "hello"], ["category_id", 1], ["created_at", 2017-05-13 07:02:48 UTC], ["updated_at", 2017-05-13 07:02:48 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "items" ("id", "title", "created_at", "updated_at", "qty", "order_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["title", "Bud Light"], ["created_at", 2017-05-13 07:02:48 UTC], ["updated_at", 2017-05-13 07:02:48 UTC], ["qty", 50], ["order_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dm@mail.com"], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "clients" WHERE "clients"."id" = $1[0m  [["id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEvent Load (0.6ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "clients" ("id", "company_id", "access_key", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["company_id", "0058"], ["access_key", 0], ["address", "1825 MacArthur Blvd NW, Atlanta, GA 30318"], ["created_at", 2017-05-13 07:04:29 UTC], ["updated_at", 2017-05-13 07:04:29 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "events" ("id", "title", "latitude", "longitude", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["title", "Music Midtown"], ["latitude", 33.7859245], ["longitude", -84.3748308], ["created_at", 2017-05-13 07:04:29 UTC], ["updated_at", 2017-05-13 07:04:29 UTC], ["client_id", 1]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["title", "HQ"], ["created_at", 2017-05-13 07:04:29 UTC], ["updated_at", 2017-05-13 07:04:29 UTC], ["event_id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["title", "warehouse"], ["created_at", 2017-05-13 07:04:29 UTC], ["updated_at", 2017-05-13 07:04:29 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("id", "name", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "beverages"], ["location_id", 1], ["created_at", 2017-05-13 07:04:29 UTC], ["updated_at", 2017-05-13 07:04:29 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("id", "content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["content", "hello"], ["category_id", 1], ["created_at", 2017-05-13 07:04:29 UTC], ["updated_at", 2017-05-13 07:04:29 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "items" ("id", "title", "created_at", "updated_at", "qty", "order_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["title", "Bud Light"], ["created_at", 2017-05-13 07:04:29 UTC], ["updated_at", 2017-05-13 07:04:29 UTC], ["qty", 50], ["order_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dm@mail.com"], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "clients" WHERE "clients"."id" = $1[0m  [["id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEvent Load (0.5ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrder Load (0.5ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "clients" ("id", "company_id", "access_key", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["company_id", "0058"], ["access_key", 0], ["address", "1825 MacArthur Blvd NW, Atlanta, GA 30318"], ["created_at", 2017-05-13 07:05:06 UTC], ["updated_at", 2017-05-13 07:05:06 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "events" ("id", "title", "latitude", "longitude", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["title", "Music Midtown"], ["latitude", 33.7859245], ["longitude", -84.3748308], ["created_at", 2017-05-13 07:05:07 UTC], ["updated_at", 2017-05-13 07:05:07 UTC], ["client_id", 1]]
+  [1m[35m (2.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["title", "HQ"], ["created_at", 2017-05-13 07:05:07 UTC], ["updated_at", 2017-05-13 07:05:07 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["title", "warehouse"], ["created_at", 2017-05-13 07:05:07 UTC], ["updated_at", 2017-05-13 07:05:07 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "categories" ("id", "name", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "beverages"], ["location_id", 1], ["created_at", 2017-05-13 07:05:07 UTC], ["updated_at", 2017-05-13 07:05:07 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "orders" ("id", "content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["content", "hello"], ["category_id", 1], ["created_at", 2017-05-13 07:05:07 UTC], ["updated_at", 2017-05-13 07:05:07 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "items" ("id", "title", "created_at", "updated_at", "qty", "order_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["title", "Bud Light"], ["created_at", 2017-05-13 07:05:07 UTC], ["updated_at", 2017-05-13 07:05:07 UTC], ["qty", 50], ["order_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "dm@mail.com"], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (2.3ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 2], ["email", "dm@mail.com"], ["encrypted_password", "$2a$11$EYE0gKamVktK9pdh164.uefk2TCOE5y/ZIWOI/gEIGVMqq9OXYsLS"], ["created_at", 2017-05-13 07:05:07 UTC], ["updated_at", 2017-05-13 07:05:07 UTC], ["client_id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for ::1 at 2017-05-15 08:43:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (5.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (4.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 55ms (ActiveRecord: 9.1ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-15 08:43:04 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (24.5ms)
+Completed 200 OK in 585ms (Views: 566.9ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:43:08 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (9.9ms)
+Completed 200 OK in 81ms (Views: 77.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:48:34 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (28.5ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `{:client_id=>"1"}' for #<User:0x007fcba1e79a68>
+Did you mean?  client_id=):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field client_id: "1" %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256285632740'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256285632740'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.2ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (85.9ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:49:18 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.6ms)
+
+
+  
+SyntaxError (/Users/danmilo/project4/pro-fest.inv/app/views/devise/registrations/new.html.erb:7: syntax error, unexpected '=', expecting ')'
+=( f.hidden_field :client_id = 1 );@output_buffer.safe_appen
+                              ^):
+  
+app/views/devise/registrations/new.html.erb:7: syntax error, unexpected '=', expecting ')'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.6ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (71.2ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:49:30 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (15.4ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `{:client_id=>1}' for #<User:0x007fcb9cd024f0>
+Did you mean?  client_id=):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field client_id:  1 %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256242967280'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256242967280'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (66.6ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:49:32 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (19.7ms)
+Completed 500 Internal Server Error in 37ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `{:client_id=>1}' for #<User:0x007fcba3db5bc0>
+Did you mean?  client_id=):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field client_id:  1 %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256302062360'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256302062360'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (66.5ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:49:44 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (6.1ms)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `1' for #<User:0x007fcba23b1f30>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field client_id=  1 %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256288431320'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256288431320'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.5ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (68.6ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:49:55 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (5.3ms)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `1' for #<User:0x007fcb9cee3418>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field client_id=  '1' %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256243952820'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256243952820'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (67.7ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:50:08 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `1' for #<User:0x007fcba3e169e8>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field @client_id= 1  %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256302268840'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256302268840'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (66.4ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:50:13 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (5.5ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.8ms)
+
+
+  
+ActionView::Template::Error (undefined method `1' for #<User:0x007fcb9e190ae8>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field @client_id= "1"  %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256303239860'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256303239860'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (68.0ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:50:29 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered devise/registrations/new.html.erb within layouts/application (30.2ms)
+Completed 500 Internal Server Error in 48ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `#<Client:0x007fcb9cf80a88>' for #<User:0x007fcb9e0ead50>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field @client_id= Client.first  %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256253405220'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256253405220'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (66.8ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:50:42 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered devise/registrations/new.html.erb within layouts/application (29.9ms)
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 0.7ms)
+
+
+  
+ActionView::Template::Error (undefined method `#<Client:0x007fcba3e2e020>' for #<User:0x007fcba25a29c0>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field client_id= Client.first  %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256289448440'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256289448440'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.5ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (74.9ms)
+Started GET "/" for ::1 at 2017-05-15 08:50:51 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-15 08:50:51 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 67ms (Views: 64.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:50:53 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered devise/registrations/new.html.erb within layouts/application (37.0ms)
+Completed 500 Internal Server Error in 56ms (ActiveRecord: 0.6ms)
+
+
+  
+ActionView::Template::Error (undefined method `#<Client:0x007fcba262dae8>' for #<User:0x007fcba265d2c0>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field client_id= Client.first  %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256289822300'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256289822300'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (14.3ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (87.3ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:51:10 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered devise/registrations/new.html.erb within layouts/application (8.4ms)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for #<Client:0x007fcba4837198>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field :client_id, Client.first  %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256259365260'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256259365260'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.2ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (67.1ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:52:31 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered devise/registrations/new.html.erb within layouts/application (8.3ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 5.2ms)
+
+
+  
+ActionView::Template::Error (undefined method `merge' for #<Client:0x007fcba3f59198>):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6: 
+    7:     <%= f.hidden_field :client_id, Client.first  %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256259428920'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256259428920'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.4ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (69.0ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:53:13 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 66ms (Views: 62.4ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 08:53:23 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ROODFI/Gto5/+vb0PdLffmpgVuk/mticBLoP3zN4Jrj49Mw8a8IQgjC9rauMorElxO8LDnsoaE+nQJjVNRVnCw==", "user"=>{"client_id"=>"1", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (3.7ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.5ms)
+Completed 200 OK in 242ms (Views: 53.0ms | ActiveRecord: 5.7ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 08:54:15 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ROODFI/Gto5/+vb0PdLffmpgVuk/mticBLoP3zN4Jrj49Mw8a8IQgjC9rauMorElxO8LDnsoaE+nQJjVNRVnCw==", "user"=>{"client_id"=>"1", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (5.0ms)
+Completed 500 Internal Server Error in 176ms (ActiveRecord: 1.1ms)
+
+
+  
+ActionView::Template::Error (undefined method `empty?' for nil:NilClass):
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6:     <%= f.label :client_id %><br />
+    7:     <%= f.select :client_id %>
+    8:   </div>
+    9: 
+   10:   <div class="field">
+  
+app/views/devise/registrations/new.html.erb:7:in `block in _app_views_devise_registrations_new_html_erb__496349366912926921_70256258808080'
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256258808080'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (74.4ms)
+Started GET "/users/sign_up" for ::1 at 2017-05-15 08:56:00 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 56ms (Views: 53.5ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 08:56:15 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DNFDRNKpi9q7sfloQLNueoUB/ivvk+wHIjebJR+uePqwxgxsNq0t1vT2ojfxwwAhK46jzKshXNSBzQwvGcM5SQ==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 215ms (Views: 59.5ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 08:56:30 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QBkEgwfzziWd7qaeRrmFt1rC7qObj3LCNdlz7eFqdq38Dkur4/doKdKp/cH3yevs9E2zRN89whGWI+Tn5wc3Hg==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 212ms (Views: 57.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 08:59:18 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QBkEgwfzziWd7qaeRrmFt1rC7qObj3LCNdlz7eFqdq38Dkur4/doKdKp/cH3yevs9E2zRN89whGWI+Tn5wc3Hg==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.5ms)
+Completed 200 OK in 232ms (Views: 57.7ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 08:59:24 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"HMbaHv5DpTF6r9lCnH+bQQPlUHm75Cx3hdMhYwL7yyWg0ZU2GkcDPTXogh0tD/UarWoNnv9WnKQmKbZpBJaKlg==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+Unpermitted parameter: client_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 232ms (Views: 63.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 08:59:38 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DPHDLlCVXQwhGya2M6sIKC5ZCyXZH76GsAOgjuPAs2Ww5owGtJH7AG5cfemC22ZzgNZWwp2tDlUT+TeE5a3y1g==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+Unpermitted parameter: client_id
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.1ms)
+Completed 200 OK in 220ms (Views: 67.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2017-05-15 09:06:52 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 19ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-15 09:06:52 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 81ms (Views: 61.0ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-15 09:06:56 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.6ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 82ms (Views: 79.2ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 09:07:04 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UrCBIqEGVgIaEf5uPY3ry/boG7iz1SPunHGyBY3B4u3up84KRQLwDlVWpTGM/YWQWGdGX/dnkz0/iyUPi6yjXg==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 213ms (Views: 59.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-15 09:12:20 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 112ms (Views: 75.6ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/" for ::1 at 2017-05-15 09:12:24 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-15 09:12:24 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 63ms (Views: 59.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2017-05-15 09:12:27 -0400
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mClient Load (0.9ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.7ms)
+Completed 200 OK in 78ms (Views: 72.6ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 09:12:36 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+56nWbrx3slyQkq8OliwyM+wEPuTtpFnubS1NPZzsVFHiehxXvV4xT0FEeOLKN6TYT9NHNcEIbQaTiI+8B7w4g==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.8ms)
+Completed 200 OK in 219ms (Views: 66.8ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 09:13:25 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+56nWbrx3slyQkq8OliwyM+wEPuTtpFnubS1NPZzsVFHiehxXvV4xT0FEeOLKN6TYT9NHNcEIbQaTiI+8B7w4g==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (372.1ms)
+Completed 500 Internal Server Error in 556ms (ActiveRecord: 1.5ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<#<Class:0x007fcb9cd440a8>:0x007fcba3c1ce30>
+Did you mean?  @user):
+    1: <h2>Sign up</h2>
+    2: 
+    3: <%= form_for(user, as: user, url: registration_path(resource_name)) do |f| %>
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6:     <%= f.hidden_field :client_id %>
+  
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256301530360'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.5ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (83.3ms)
+Started POST "/users" for ::1 at 2017-05-15 09:13:41 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+56nWbrx3slyQkq8OliwyM+wEPuTtpFnubS1NPZzsVFHiehxXvV4xT0FEeOLKN6TYT9NHNcEIbQaTiI+8B7w4g==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (461.3ms)
+Completed 500 Internal Server Error in 633ms (ActiveRecord: 1.2ms)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `user' for #<#<Class:0x007fcb9cd440a8>:0x007fcba3c1beb8>
+Did you mean?  @user):
+    1: <h2>Sign up</h2>
+    2: 
+    3: <%= form_for(@user, as: user, url: registration_path(resource_name)) do |f| %>
+    4:   <%= devise_error_messages! %>
+    5:   <div class="field">
+    6:     <%= f.hidden_field :client_id %>
+  
+app/views/devise/registrations/new.html.erb:3:in `_app_views_devise_registrations_new_html_erb__496349366912926921_70256301233120'
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/danmilo/.rbenv/versions/2.4.1/lib/ruby/gems/2.4.0/gems/actionpack-5.0.2/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (75.6ms)
+Started POST "/users" for ::1 at 2017-05-15 09:13:50 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+56nWbrx3slyQkq8OliwyM+wEPuTtpFnubS1NPZzsVFHiehxXvV4xT0FEeOLKN6TYT9NHNcEIbQaTiI+8B7w4g==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.2ms)
+Completed 200 OK in 217ms (Views: 60.9ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 09:13:59 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xKJ2R284MOFd+JKHF+DVdsRHXRvz00SXPLiXAVQhK2J4tTlvizyW7RK/ydimkLstasgA/Ldh9ESfQgALUkxq0Q==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (1.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.0ms)
+Completed 200 OK in 237ms (Views: 70.4ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 09:15:01 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xKJ2R284MOFd+JKHF+DVdsRHXRvz00SXPLiXAVQhK2J4tTlvizyW7RK/ydimkLstasgA/Ldh9ESfQgALUkxq0Q==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (3.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (5.8ms)
+Completed 200 OK in 262ms (Views: 61.3ms | ActiveRecord: 11.4ms)
+
+
+Started POST "/users" for ::1 at 2017-05-15 09:15:07 -0400
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2e6Y4LskaPJgakw7p4ejIWWp7K/6SsNntN1rHxsj9KVl+dfIXyDO/i8tF2QW9816yyaxSL74c7QXJ/wVHU61Fg==", "user"=>{"client_id"=>"", "email"=>"test@mail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "client_id"=>"1", "commit"=>"Sign up"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Unpermitted parameter: client_id
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.8ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 219ms (Views: 66.4ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (5.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mClient Load (0.7ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[31mDELETE FROM "clients" WHERE "clients"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEvent Load (5.3ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.4ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (0.3ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (4.1ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrder Load (3.8ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.4ms)[0m  [1m[32mINSERT INTO "clients" ("id", "company_id", "access_key", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["company_id", "0058"], ["access_key", 0], ["address", "1825 MacArthur Blvd NW, Atlanta, GA 30318"], ["created_at", 2017-05-15 21:00:17 UTC], ["updated_at", 2017-05-15 21:00:17 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "events" ("id", "title", "latitude", "longitude", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["title", "Music Midtown"], ["latitude", 33.7859245], ["longitude", -84.3748308], ["created_at", 2017-05-15 21:00:18 UTC], ["updated_at", 2017-05-15 21:00:18 UTC], ["client_id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["title", "HQ"], ["created_at", 2017-05-15 21:00:18 UTC], ["updated_at", 2017-05-15 21:00:18 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["title", "warehouse"], ["created_at", 2017-05-15 21:00:18 UTC], ["updated_at", 2017-05-15 21:00:18 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "categories" ("id", "name", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "beverages"], ["location_id", 1], ["created_at", 2017-05-15 21:00:18 UTC], ["updated_at", 2017-05-15 21:00:18 UTC]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.1ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("id", "content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["content", "hello"], ["category_id", 1], ["created_at", 2017-05-15 21:00:18 UTC], ["updated_at", 2017-05-15 21:00:18 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "items" ("id", "title", "created_at", "updated_at", "qty", "order_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["title", "Bud Light"], ["created_at", 2017-05-15 21:00:18 UTC], ["updated_at", 2017-05-15 21:00:18 UTC], ["qty", 50], ["order_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (3.9ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 2], ["email", "test@mail.com"], ["encrypted_password", "$2a$11$yyeq/iMD8f1pgiJdVA5N/eYLGPS8ZMG1TjhLd.c942MbnVnxI44uS"], ["created_at", 2017-05-15 21:00:18 UTC], ["updated_at", 2017-05-15 21:00:18 UTC], ["client_id", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Started GET "/" for ::1 at 2017-05-15 17:00:20 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 401 Unauthorized in 41ms (ActiveRecord: 7.6ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2017-05-15 17:00:21 -0400
+Processing by Devise::SessionsController#new as HTML
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (9.6ms)
+Completed 200 OK in 136ms (Views: 107.5ms | ActiveRecord: 4.4ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-05-15 17:01:39 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jCJfAaK8GisWzfc1AhmpeKKPZqqiiF/VbKPj3EmyeXQwNRApRri8J1mKrGqzaccjDAA7TeY67wbPWXTWT984xw==", "user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mClient Load (0.6ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.4ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 13ms (ActiveRecord: 1.8ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jCJfAaK8GisWzfc1AhmpeKKPZqqiiF/VbKPj3EmyeXQwNRApRri8J1mKrGqzaccjDAA7TeY67wbPWXTWT984xw==", "user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.0ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 212ms (Views: 64.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/sign_in" for ::1 at 2017-05-15 17:01:45 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YtzVgZXmpAR3VTAf0hgLRK6iUHWRaIdaLX3nTPt57Ebey5qpceICCDgSa0BjaGUfAC0NktXaN4mOh3BG/RSt9Q==", "user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+Completed 401 Unauthorized in 3ms (ActiveRecord: 0.8ms)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YtzVgZXmpAR3VTAf0hgLRK6iUHWRaIdaLX3nTPt57Ebey5qpceICCDgSa0BjaGUfAC0NktXaN4mOh3BG/RSt9Q==", "user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (0.9ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (4.1ms)
+Completed 200 OK in 181ms (Views: 53.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mClient Load (0.8ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "clients" WHERE "clients"."id" = $1[0m  [["id", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.8ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (1.2ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.5ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrder Load (0.9ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "clients" ("id", "company_id", "access_key", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["company_id", "0058"], ["access_key", 0], ["address", "1825 MacArthur Blvd NW, Atlanta, GA 30318"], ["created_at", 2017-05-15 21:02:36 UTC], ["updated_at", 2017-05-15 21:02:36 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "events" ("id", "title", "latitude", "longitude", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["title", "Music Midtown"], ["latitude", 33.7859245], ["longitude", -84.3748308], ["created_at", 2017-05-15 21:02:36 UTC], ["updated_at", 2017-05-15 21:02:36 UTC], ["client_id", 1]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["title", "HQ"], ["created_at", 2017-05-15 21:02:36 UTC], ["updated_at", 2017-05-15 21:02:36 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["title", "warehouse"], ["created_at", 2017-05-15 21:02:36 UTC], ["updated_at", 2017-05-15 21:02:36 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.3ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "categories" ("id", "name", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "beverages"], ["location_id", 1], ["created_at", 2017-05-15 21:02:36 UTC], ["updated_at", 2017-05-15 21:02:36 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "orders" ("id", "content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["content", "hello"], ["category_id", 1], ["created_at", 2017-05-15 21:02:36 UTC], ["updated_at", 2017-05-15 21:02:36 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "items" ("id", "title", "created_at", "updated_at", "qty", "order_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["title", "Bud Light"], ["created_at", 2017-05-15 21:02:36 UTC], ["updated_at", 2017-05-15 21:02:36 UTC], ["qty", 50], ["order_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 2], ["email", "test@mail.com"], ["encrypted_password", "$2a$11$xO8HjVyElooBMcjyALJdQem1B4Hqp8HbB9Pm5SU54x5OBmgQ44F6u"], ["created_at", 2017-05-15 21:02:36 UTC], ["updated_at", 2017-05-15 21:02:36 UTC], ["client_id", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT "clients".* FROM "clients"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "clients" WHERE "clients"."id" = $1[0m  [["id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEvent Load (0.4ms)[0m  [1m[34mSELECT "events".* FROM "events"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "events" WHERE "events"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mLocation Load (0.5ms)[0m  [1m[34mSELECT "locations".* FROM "locations"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[31mDELETE FROM "locations" WHERE "locations"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mItem Load (0.4ms)[0m  [1m[34mSELECT "items".* FROM "items"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "items" WHERE "items"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCategory Load (0.4ms)[0m  [1m[34mSELECT "categories".* FROM "categories"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "categories" WHERE "categories"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mOrder Load (0.4ms)[0m  [1m[34mSELECT "orders".* FROM "orders"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "orders" WHERE "orders"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "clients" ("id", "company_id", "access_key", "address", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["company_id", "0058"], ["access_key", 0], ["address", "1825 MacArthur Blvd NW, Atlanta, GA 30318"], ["created_at", 2017-05-15 21:03:04 UTC], ["updated_at", 2017-05-15 21:03:04 UTC]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "events" ("id", "title", "latitude", "longitude", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["id", 1], ["title", "Music Midtown"], ["latitude", 33.7859245], ["longitude", -84.3748308], ["created_at", 2017-05-15 21:03:04 UTC], ["updated_at", 2017-05-15 21:03:04 UTC], ["client_id", 1]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["title", "HQ"], ["created_at", 2017-05-15 21:03:04 UTC], ["updated_at", 2017-05-15 21:03:04 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "locations" ("id", "title", "created_at", "updated_at", "event_id") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 2], ["title", "warehouse"], ["created_at", 2017-05-15 21:03:04 UTC], ["updated_at", 2017-05-15 21:03:04 UTC], ["event_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mLocation Load (0.2ms)[0m  [1m[34mSELECT  "locations".* FROM "locations" WHERE "locations"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "categories" ("id", "name", "location_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["name", "beverages"], ["location_id", 1], ["created_at", 2017-05-15 21:03:04 UTC], ["updated_at", 2017-05-15 21:03:04 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCategory Load (0.2ms)[0m  [1m[34mSELECT  "categories".* FROM "categories" WHERE "categories"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "orders" ("id", "content", "category_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["id", 1], ["content", "hello"], ["category_id", 1], ["created_at", 2017-05-15 21:03:04 UTC], ["updated_at", 2017-05-15 21:03:04 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "items" ("id", "title", "created_at", "updated_at", "qty", "order_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["title", "Bud Light"], ["created_at", 2017-05-15 21:03:04 UTC], ["updated_at", 2017-05-15 21:03:04 UTC], ["qty", 50], ["order_id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "users" ("id", "email", "encrypted_password", "created_at", "updated_at", "client_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["id", 1], ["email", "test@mail.com"], ["encrypted_password", "$2a$11$dduGBGBgDXI2woqL4rcze.utcxWqx5MzoV0JzHUrE2bYj57yNBf9C"], ["created_at", 2017-05-15 21:03:05 UTC], ["updated_at", 2017-05-15 21:03:05 UTC], ["client_id", 1]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/users/sign_in" for ::1 at 2017-05-15 17:03:10 -0400
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/QrPpl54jSEUmgoYriB2j9YynY5aNgEJXqy7cHvOKrVBHYCOunwrLVvdUUcfUBjUeL3AaR6Esdr9Vix6faNrBg==", "user"=>{"email"=>"test@mail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "test@mail.com"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (5.1ms)[0m  [1m[33mUPDATE "users" SET "current_sign_in_at" = $1, "last_sign_in_at" = $2, "current_sign_in_ip" = $3, "last_sign_in_ip" = $4, "sign_in_count" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["current_sign_in_at", 2017-05-15 21:03:10 UTC], ["last_sign_in_at", 2017-05-15 21:03:10 UTC], ["current_sign_in_ip", "::1/128"], ["last_sign_in_ip", "::1/128"], ["sign_in_count", 1], ["updated_at", 2017-05-15 21:03:10 UTC], ["id", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 157ms (ActiveRecord: 6.8ms)
+
+
+Started GET "/" for ::1 at 2017-05-15 17:03:10 -0400
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home_pages/home.html.erb within layouts/application
+  Rendered home_pages/home.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 60ms (Views: 54.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for ::1 at 2017-05-15 17:05:18 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePagesController#home as HTML
+  [1m[36mClient Load (0.5ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" ORDER BY "clients"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT  "clients".* FROM "clients" WHERE "clients"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering home_pages/home.html.erb within layouts/application
+  Rendered home_pages/home.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 593ms (Views: 533.5ms | ActiveRecord: 7.0ms)
+
+

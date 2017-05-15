@@ -7,7 +7,5 @@ class User < ApplicationRecord
  	belongs_to :client
  	belongs_to :location, optional: true
 
- 	geocoded_by :ip_address,
-  :latitude => :latitude, :longitude => :longitude
-after_validation :geocode
+
 end

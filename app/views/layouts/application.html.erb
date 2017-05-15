@@ -107,6 +107,7 @@
         <% if alert %>
             <p class="alert alert-danger"><%= alert %></p>
         <% end %>
+        
 
         <div id="map">
 
@@ -127,12 +128,11 @@ setTimeout(function(){$(".carousel").click()}, 1);
     <!-- Modal 1 -->
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-header">
-
-        <div class="modal-action modal-close waves-effect waves-green btn-flat">Exit</a>
-
         <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
-      </div>
+
+
+
       <div class="modal-content">
 
             <%= yield %>
