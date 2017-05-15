@@ -1,4 +1,4 @@
-![fifo logo](app/assets/images/fifo-logo-black (1).png)
+![fifo logo](https://github.com/mtorres23/pro-fest.inv/blob/master/app/assets/images/fifo-logo-black%20(1).png)
 
 # fifo 
 ## "First In, First Out"
@@ -40,7 +40,7 @@ As a Tent Manager, users are able to:
 
 ## ERD
 This diagram represents our models used and the relationships between each entity.
-![fifo ERD](app/assets/images/ERD Fest INV.png)
+![fifo ERD](https://github.com/mtorres23/pro-fest.inv/blob/master/app/assets/images/ERD%20Fest%20INV.png)
 
 ## WireFrames
 
