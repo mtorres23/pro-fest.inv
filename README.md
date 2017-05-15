@@ -1,4 +1,4 @@
-[fifo logo](app/assets/images/fifo-logo-black (1).png)
+![fifo logo](app/assets/images/fifo-logo-black (1).png)
 
 # fifo 
 ## "First In, First Out"
@@ -29,9 +29,9 @@ As a Tent Manager, users are able to:
 
 ## Team
 
-Harry Karambizi - Full Stack Developer
-Michael Torres - Full Stack Developer
-Dan Milo - Full Stack Developer
+* Harry Karambizi - Full Stack Developer
+* Michael Torres - Full Stack Developer
+* Dan Milo - Full Stack Developer
 
 
 
@@ -40,7 +40,7 @@ Dan Milo - Full Stack Developer
 
 ## ERD
 This diagram represents our models used and the relationships between each entity.
-[fifo ERD](app/assets/images/ERD Fest INV.png)
+![fifo ERD](app/assets/images/ERD Fest INV.png)
 
 ## WireFrames
 
@@ -54,16 +54,16 @@ We made created a shared Trello Board with User Stories created in our Wireframe
 Click to see our Public [Trello Board](https://trello.com/b/26zBNfqr/festival-inventory)
 
 ## Technologies Used:
-Languages - HTML5, CSS3, Sass, Ruby on Rails, Jquery, Javascript, CoffeeScript
-Design - Google Fonts, Bootstrap, Materialise, Font Awesome, Mockingbird Wireframes
-Authentication - Devise
-Google Maps API
+* Languages - HTML5, CSS3, Sass, Ruby on Rails, Jquery, Javascript, CoffeeScript
+* Design - Google Fonts, Bootstrap, Materialise, Font Awesome, Mockingbird Wireframes
+* Authentication/Authorization - Devise
+* Google Maps API
 
 ## Future Iteration
 * A possible future iteration would be to then build an integrated POS system to automatically track and update inventory as products get sold to eliminate any need for counting.
 * Allow admins to drag and drop a google maps pin on a selected location.
 
 Contributors:
-[Harry Karambizi](https://github.com/hkarambizi)
-[Michael Torres](https://github.com/mtorres23)
-[Dan Milo](https://github.com/ddmilo)
+* [Harry Karambizi](https://github.com/hkarambizi)
+* [Michael Torres](https://github.com/mtorres23)
+* [Dan Milo](https://github.com/ddmilo)
