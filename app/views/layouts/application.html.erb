@@ -107,7 +107,7 @@
         <% if alert %>
             <p class="alert alert-danger"><%= alert %></p>
         <% end %>
-        
+
 
         <div id="map">
 
@@ -176,75 +176,23 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 
 
 <script>
+function initMap() {
+    var uluru = {lat: 33.7490, lng: -84.3880};
+    var map = new google.maps.Map(document.getElementById('map'), {
+      zoom: 4,
+      center: uluru
+    });
+    var marker = new google.maps.Marker({
+      position: uluru,
+      map: map
+    });
+  }
+
+</script>
 
 
-     var map;
-     var marker;
-     var infowindow;
-     var messagewindow;
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAp_DVRyDIGCjmbru6UbDuKqpCIvnwMnBA&callback=initMap" async defer></script>
 
-   <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
-
-           function initMap() {
-           <% if @event && @client %>
-           var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
-           <% elsif @client && @location %>
-           var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
-           <% else %>
-           var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>};
-           <% end %>
-           console.log(target);
-       map = new google.maps.Map(document.getElementById('map'), {
-         center: target,
-         zoom: 20
-       });
-
-
-
-      infowindow = new google.maps.InfoWindow({
-         content: document.getElementById('form')
-       });
-
-
-      messagewindow = new google.maps.InfoWindow({
-         content: document.getElementById('message')
-       });
-
- google.maps.event.addListener(map, 'click', function(event) {
-         marker = new google.maps.Marker({
-           position: event.latLng,
-           map: map,
-           draggable: true})
-   });
-
-   google.maps.event.addListener(marker, 'click', function() {
-           infowindow.open(map, marker);
-         });
-       };
-
- <% if @event %>
-     function saveData() {
-       var latLng = marker.getPosition();
-       var title = escape(document.getElementById('title').value);
-       var lat = latLng.lat();
-       var lng = latLng.lng();
-   var url = 'events/<%= @event.id %>/locations';
-
-   $.post(url, { title: title, latitude: lat, longitude: log}).done(function( data ) {
-     alert( "Data Loaded: " + data );
-if (responseCode == 200 && data.length <= 1) {
-           infowindow.close();
-           messagewindow.open(map, marker);
-         }
-       });
-     }
- <% end %>
-   </script>
-
-
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap" async defer></script>
-
-  <% end %>
 
   </body>
 </html>
