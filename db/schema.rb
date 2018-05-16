@@ -41,11 +41,11 @@ ActiveRecord::Schema.define(version: 20170512003400) do
     t.text     "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.string   "admin_id"
     t.integer  "prev_year_event_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.integer  "client_id"
+    t.integer  "admin_id"
   end
 
   create_table "items", force: :cascade do |t|
