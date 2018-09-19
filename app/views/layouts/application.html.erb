@@ -195,61 +195,78 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 </script>
 
 <script>
+
+// Initializing variables
+
       var map;
       var marker;
-      var infowindow;
+      var locationInfoWindow;
       var messagewindow;
 
+// Check if the logged in user is an admin or a tent manager
     <% if current_user || current_user && current_user.is_tent_manager? %> // NOTE: add the conditional checking for event admin status
 
-  
+  // Initializes the map
             function initMap() {
+            // Checking if this map is for an avent
             <% if @event && @location && @client %>
 
             var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+            console.log("Displaying Current Event location at: " + target);
+            // Checking if this is just account location setup
             <% elsif @client && @location %>
+
             var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
+            console.log("Displaying Current location at: " + target);
+            // Checking if this is the home screen
             <% else %>
             var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>};
+            console.log("Displaying Client location at: " + target);
             <% end %>
-            console.log(target);
+
+        // MAP    
         map = new google.maps.Map(document.getElementById('map'), {
           center: target,
           zoom: 20
         });
       
-    
-
-       infowindow = new google.maps.InfoWindow({
+       // Info Window for Form
+       locationInfoWindow = new google.maps.InfoWindow({
           content: document.getElementById('form')
         });
 
-
+      // Info Window for Message
        messagewindow = new google.maps.InfoWindow({
           content: document.getElementById('message')
         });
 
+      // Event 
   google.maps.event.addListener(map, 'click', function(event) {
           marker = new google.maps.Marker({
             position: event.latLng,
             map: map,
             draggable: true})
+          // Add Event Listener to marker when created.
+          google.maps.event.addListener(marker, 'click', function() {
+            locationInfoWindow.open(map, marker);
+          });
     });
 
-    google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-          });
-        };
+
+
+
+     
       
   <% if @event %>
       function saveData() {
+
         var latLng = marker.getPosition();
         var title = escape(document.getElementById('title').value);
-        var lat = latLng.lat();
-        var lng = latLng.lng();  
+        var mlat = latLng.lat();
+        var mlng = latLng.lng();  
     var url = 'events/<%= @event.id %>/locations';
     
-    $.post(url, { title: title, latitude: lat, longitude: log}).done(function( data ) {
+    $.post(url, { title: title, latitude: mlat, longitude: mlng}).done(function( data ) {
       alert( "Data Loaded: " + data );
 if (responseCode == 200 && data.length <= 1) {
             infowindow.close();
@@ -257,6 +274,7 @@ if (responseCode == 200 && data.length <= 1) {
           }
         });
       }
+};
   <% end %>
     </script>
 
