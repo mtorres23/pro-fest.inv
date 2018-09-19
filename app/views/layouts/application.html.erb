@@ -132,7 +132,7 @@ setTimeout(function(){$(".carousel").click()}, 1);
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-header">
 
-        <div class="modal-action modal-close waves-effect waves-green btn-flat">Exit</a>
+        <div class="modal-action modal-close waves-effect waves-green btn-flat"><a>Exit</a>
 
         <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
 
@@ -200,7 +200,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
       var infowindow;
       var messagewindow;
 
-    <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
+    <% if current_user || current_user && current_user.is_tent_manager? %> // NOTE: add the conditional checking for event admin status
 
   
             function initMap() {
@@ -260,7 +260,7 @@ if (responseCode == 200 && data.length <= 1) {
   <% end %>
     </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap" async defer></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhF2K8TKtEZ04zw7i3FMKQLwvv-bWC79g&callback=initMap"></script>
     
    <% else %>
   <%= yield %>
