@@ -7,6 +7,11 @@ class LocationsController < ApplicationController
     @locations = @event.locations.all
   end
 
+  def index_as_json
+    @locations = @event.locations.all
+    render json: @locations 
+  end
+
   def new
     puts @event
     puts params[:event_id]

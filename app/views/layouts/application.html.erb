@@ -279,20 +279,40 @@ var icons = {
 
     // Add Event Listener to button
       locationSubmit.addEventListener('click', saveData);
-     
+  
+      var eventLocURL = '/events/<%= @event.id %>/locations';
 
-      function loadData() {
-        $("#modal1").close();
+      $(document).ready(function loadData() {
+       
   // TO-DO: Send Array of Locations To the array to create a marker for each!
-        var savedLocations = <%= @event.locations.to_a %>;
 
-        savedLocations.forEach(function(loc){
-          var markerLoc = new google.maps.Marker({
-            position: { lat: loc.latitude, lng: loc.longitude },
-            title: loc.title
+      var savedLocations = $.ajax({
+          url: '/api' + eventLocURL,
+          method: 'GET',
+          dataType: 'json',
+        }).then(function(data){
+            data.forEach(function(loc){
+              // debugger;
+              var markerLoc = new google.maps.Marker({
+              position: { lat: loc.latitude, lng: loc.longitude },
+              title: loc.title
           })
+          console.log(markerLoc.position)
+          console.log(markerLoc.title + " found at " + markerLoc.position.lat());
+          });
         })
-      }
+
+        // map['center'] = target;
+        
+        // {
+        //   lat: <%= @event.latitude %>,
+        //   lng: <%= @event.longitude %>
+        // }
+      })
+
+
+      
+
 
       function saveData() {
       // To-Do: access marker properties and send save 
@@ -306,7 +326,7 @@ var icons = {
         var url = '/events/<%= @event.id %>/locations';
       
         $.ajax({
-          url: url, 
+          url: eventLocURL, 
           method: 'POST',
           dataType: 'json',
           data: {
@@ -341,7 +361,7 @@ var icons = {
   
 
   <% end %>
-};
+// };
 
     </script>
 

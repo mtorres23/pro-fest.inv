@@ -41,6 +41,7 @@ get '/clients/:client_id/items' => 'items#client_items', as: 'items_by_client'
 get '/locations/:location_id/items' => 'items#location_items', as: 'location_items'
 post '/events/:event_id/locations' => 'locations#create', as: 'create_location'
 get '/locations/:location_id/orders' => 'orders#orders_by_location', as: 'location_orders'
+get 'api/events/:event_id/locations' => 'locations#index_as_json', as: 'locations_api_index'
 
 post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_order'
 
