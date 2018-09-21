@@ -208,7 +208,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
   // Initializes the map
             function initMap() {
             // Checking if this map is for an avent
-            <% if @event && @location && @client %>
+            <% if @event && @client %>
 
             var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
             console.log("Displaying Current Event location at: " + target);
@@ -256,11 +256,43 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 // Set Submit button to a variable. NOTE: use jQuery
 var locationSubmit = document.getElementById('location-submit');
 
-// Add Event Listener to button
-locationSubmit.addEventListener('click', saveData);
-     
+
+
+// CUSTOM MARKER DATA
+//
+var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+var icons = {
+  parking: {
+    icon: iconBase + 'parking_lot_maps.png'
+      },
+  library: {
+    icon: iconBase + 'library_maps.png'
+      },
+  info: {
+    icon: iconBase + 'info-i_maps.png'
+      }
+  };
+
+
       
   <% if @event %>
+
+    // Add Event Listener to button
+      locationSubmit.addEventListener('click', saveData);
+     
+
+      function loadData() {
+        $("#modal1").close();
+  // TO-DO: Send Array of Locations To the array to create a marker for each!
+        var savedLocations = <%= @event.locations.to_a %>;
+
+        savedLocations.forEach(function(loc){
+          var markerLoc = new google.maps.Marker({
+            position: { lat: loc.latitude, lng: loc.longitude },
+            title: loc.title
+          })
+        })
+      }
 
       function saveData() {
       // To-Do: access marker properties and send save 
@@ -299,21 +331,29 @@ locationSubmit.addEventListener('click', saveData);
       } // saveData END
 
       // To-Do: Create Multi Locations before saving AND Save All Locations into an event locations array
-      // OR Create Markers on a map, drag them all over and then save an array of markers to the event locations.  
+      // OR Create Markers on a map, drag them all over and then save an array of markers to the event locations. 
+
+
+      // EDIT Location on MAP: Highlighted Icon and zoom, draggable w/Form and Save 
 
     }; // initMap END
 
   
 
   <% end %>
+};
+
     </script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhF2K8TKtEZ04zw7i3FMKQLwvv-bWC79g&callback=initMap"></script>
     
    <% else %>
+  };
   <%= yield %>
   <% end %>
- 
+ };
+
+ };
 
   </body>
 </html>
