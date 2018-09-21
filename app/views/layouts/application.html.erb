@@ -266,30 +266,44 @@ locationSubmit.addEventListener('click', saveData);
       // To-Do: access marker properties and send save 
 
         var latLng = marker.getPosition();
-        var title = escape(document.getElementById('title').value);
+        var title = document.getElementById('title').value;
         var mlat = latLng.lat();
         var mlng = latLng.lng();  
 
 
         var url = '/events/<%= @event.id %>/locations';
-    
-        $.post(url, { 
+      
+        $.ajax({
+          url: url, 
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            location: {
                 title: title, 
                 latitude: mlat, 
                 longitude: mlng
-                }).done(function(data) {
-            alert( "Data Loaded: " + data );
-            
-            if (responseCode == 200 && data.length > 0) {
-              infowindow.close();
+                }
+            }
+          }).success(function(data, response) {
+          
+            // See what data is coming back
+            console.log(data.id + ": " + response);
+
+            // Close modal once successfully saved
+            if (response === 'success' && data.location) {
+              locationInfoWindow.close();
               messagewindow.open(map, marker);
             }
+          })
+      
+      } // saveData END
 
-          });
+      // To-Do: Create Multi Locations before saving AND Save All Locations into an event locations array
+      // OR Create Markers on a map, drag them all over and then save an array of markers to the event locations.  
 
-        } // saveData END
+    }; // initMap END
 
-      }; // initMap END
+  
 
   <% end %>
     </script>

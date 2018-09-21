@@ -20,7 +20,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.save
         format.html { redirect_to event_location_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully created.' }
-        format.json { render :show, status: :created, location: @location }
+        format.json { render json: @location, status: :created } # Redirect Maybe?
       else
         format.html { render :new }
         format.json { render json: @location.errors, status: :unprocessable_entity }
