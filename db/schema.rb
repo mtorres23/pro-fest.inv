@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512003400) do
+ActiveRecord::Schema.define(version: 20180921112530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20170512003400) do
     t.string   "email"
     t.integer  "admin_id"
     t.integer  "event_id"
+    t.string   "loc_type"
   end
 
   create_table "orders", force: :cascade do |t|

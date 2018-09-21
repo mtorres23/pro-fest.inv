@@ -17,10 +17,14 @@
   <fieldset class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
-  </fieldset>
-
+  
   <h4>Enter either address or coordinates</h4>
 
+    <div class="form-control">
+    <%= f.label :loc_type, "Type" %><br />
+    <%= f.select :loc_type, options_for_select(["bar","storage"], "bar") %>
+  </div>
+  </fieldset>
 
   <%= f.submit 'Add!', class: 'btn btn-primary' %>
 <% end %>

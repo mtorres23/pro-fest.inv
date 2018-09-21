@@ -5,8 +5,8 @@
 <%= link_to 'Orders',location_orders_path(@location.id), class: 'right btn waves-effect waves-light' %>
 
 <header><h1 class="display-4 center"><%= @location.title %></h1></header>
-
 <hr>
+<h4 class="display-4 center"><%= @location.loc_type %></h4>
 
 <p>Address: <%= @location.address %></p>
 <p>Coordinates: <%= @location.latitude %> <%= @location.longitude %></p>
