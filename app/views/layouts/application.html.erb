@@ -290,7 +290,7 @@ locationSubmit.addEventListener('click', saveData);
             console.log(data.id + ": " + response);
 
             // Close modal once successfully saved
-            if (response === 'success' && data.location) {
+            if (response === 'success') {
               locationInfoWindow.close();
               messagewindow.open(map, marker);
             }
