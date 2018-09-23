@@ -2,7 +2,7 @@
 <%= link_to 'Back', event_path(@event), class: ' btn waves-effect waves-light' %>
 
 
-<%= link_to 'Orders',location_orders_path(@location.id), class: 'right btn waves-effect waves-light' %>
+<%= link_to 'Orders',event_location_orders_path(event_id: @location.event_id, id: @location.id), class: 'right btn waves-effect waves-light' %>
 
 <header><h1 class="display-4 center"><%= @location.title %></h1></header>
 <hr>
