@@ -21,8 +21,10 @@ $secondary-color: color("yellow", "base") !default;
 }
 
 #modal2 {
-	min-height: 50%;
-	max-height: 80%;
+  display: block;
+  z-index: 1005;
+  min-height: 20%;
+  max-height: 20%;
 }
 
 .columnbgrnd {

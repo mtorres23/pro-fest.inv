@@ -40,7 +40,7 @@
         <div class = "nav-wrapper">
         <div class="col s3 columnbgrnd" style="height: 100vh;" >
           <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px" >
-          <a id="map-toggle" class="waves-effect waves-light btn-large"><i class="material-icons right">map</i>map</a>
+          <a id="map-toggle" class="waves-effect waves-light btn"><i class="material-icons right">map</i>map</a>
           <ul class="slide-out">
     <% if user_signed_in? %>
 
@@ -118,25 +118,12 @@
         <div id="map"></div> <!--map end-->
 
 
-<script>
-$(document).ready(function(){
-    $('.carousel').carousel();
-  });
-</script>
-
-<script>
-setTimeout(function(){$(".carousel").click()}, 1);
-</script>
 
 
     <!-- Modal 1 -->
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-header">
-
-        <div class="modal-action modal-close waves-effect waves-green btn-flat"><a>Exit</a>
-
-        <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
-        </div>
+          <a class="modal-action modal-close waves-effect waves-green btn"><i class="material-icons">map</i></a>
       </div>
       <div class="modal-content">
         <%= yield %>
@@ -149,7 +136,7 @@ setTimeout(function(){$(".carousel").click()}, 1);
     <!--modal2-->
     <div id="modal2" class="modal bottom-sheet">
       <div class="modal-header">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
 
@@ -172,6 +159,7 @@ setTimeout(function(){$(".carousel").click()}, 1);
          
          if ($modal1.open) {
             $modal1.modal('close');
+            $modal2.modal('open');
           } else {
             $modal1.modal('open');
           }
@@ -372,7 +360,7 @@ var locationSubmit = document.getElementById('location-submit');
   
   <% end %>
 // TO-DO: FIGURE OUT HOW TO RE-FACTOR/MODULARIZE SCRIPTS TO FIX 'Unexpected Input' Errors }.
-
+};
     </script>
 
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhF2K8TKtEZ04zw7i3FMKQLwvv-bWC79g&callback=initMap"></script>
@@ -384,7 +372,6 @@ var locationSubmit = document.getElementById('location-submit');
  };
 
  };
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
   </body>
 </html>
