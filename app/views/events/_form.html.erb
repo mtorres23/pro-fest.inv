@@ -42,8 +42,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :admin_id %>
-    <%= f.text_field :admin_id %>
+    <%= f.label :admin_id %><br />
+    <%= f.select :admin_id, options_for_select(User.all.map{|user|[user.id]}) %>
   </div>
 
   <div class="field">
@@ -58,6 +58,11 @@
 <script>
   $('.datepicker').pickadate({
 selectMonths: true, // Creates a dropdown to control month
-selectYears: 15 // Creates a dropdown of 15 years to control year});
-
+selectYears: 15 // Creates a dropdown of 15 years to control year
+});
+</script>
+<script>
+$(document).ready(function() {
+ $('select').material_select();
+});
 </script>

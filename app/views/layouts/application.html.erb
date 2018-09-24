@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
 
@@ -29,7 +30,7 @@
   }
 
         </style>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   </head>
 
 
@@ -37,9 +38,9 @@
     <body>
       <div class="row">
         <div class = "nav-wrapper">
-        <div class="col s3 columnbgrnd" style="height: 100vh;">
-          <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
-
+        <div class="col s3 columnbgrnd" style="height: 100vh;" >
+          <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px" >
+          <a id="map-toggle" class="waves-effect waves-light btn-large"><i class="material-icons right">map</i>map</a>
           <ul class="slide-out">
     <% if user_signed_in? %>
 
@@ -135,11 +136,10 @@ setTimeout(function(){$(".carousel").click()}, 1);
         <div class="modal-action modal-close waves-effect waves-green btn-flat"><a>Exit</a>
 
         <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
-
+        </div>
       </div>
       <div class="modal-content">
-
-            <%= yield %>
+        <%= yield %>
       </div>
 
     </div> <!--bottom of modal1-->
@@ -152,6 +152,7 @@ setTimeout(function(){$(".carousel").click()}, 1);
         <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
+
       </div>
 
     </div> <!--bottom of modal2-->
@@ -163,8 +164,23 @@ setTimeout(function(){$(".carousel").click()}, 1);
         $(document).ready(function(){
     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal').modal();
-
+        var $modal1 = $('#modal1');
+        var $modal2 = $('#modal2');
         $('#modal1').modal('open');
+
+        var toggleMap = function() {
+         
+         if ($modal1.open) {
+            $modal1.modal('close');
+          } else {
+            $modal1.modal('open');
+          }
+          
+        };
+
+        $('#map-toggle').on('click', function(){
+          toggleMap();
+        });
 
       });
     </script>
@@ -210,7 +226,7 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
             // Checking if this map is for an avent
             <% if @event && @client %>
 
-            var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
+            var target = {lat: <%= @event.latitude || @client.latitude %>, lng: <%= @event.longitude || @client.longitude %>};
             console.log("Displaying Current Event location at: " + target);
             // Checking if this is just account location setup
             <% elsif @client && @location %>
@@ -285,7 +301,7 @@ var locationSubmit = document.getElementById('location-submit');
       $(document).ready(function loadData() {
        
   // TO-DO: Send Array of Locations To the array to create a marker for each!
-
+      var mapMarkers = [];
       var savedLocations = $.ajax({
           url: '/api' + eventLocURL,
           method: 'GET',
@@ -293,25 +309,20 @@ var locationSubmit = document.getElementById('location-submit');
         }).then(function(data){
             data.forEach(function(loc){
               // debugger;
+              var locLatlng = new google.maps.LatLng(loc.latitude, loc.longitude);
               var markerLoc = new google.maps.Marker({
-              position: { lat: loc.latitude, lng: loc.longitude },
-              title: loc.title
+              position: locLatlng,
+              title: loc.title,
+              map: map,
+              draggable: false
           })
-          console.log(markerLoc.position)
-          console.log(markerLoc.title + " found at " + markerLoc.position.lat());
+          console.dir(loc);
+          console.log(markerLoc.title + " found at " + markerLoc.position);
+          mapMarkers.push(markerLoc);
+          console.log(mapMarkers);
           });
         })
-
-        // map['center'] = target;
-        
-        // {
-        //   lat: <%= @event.latitude %>,
-        //   lng: <%= @event.longitude %>
-        // }
-      })
-
-
-      
+      }) // end loadData
 
 
       function saveData() {
@@ -359,9 +370,8 @@ var locationSubmit = document.getElementById('location-submit');
     }; // initMap END
 
   
-
   <% end %>
-// };
+// TO-DO: FIGURE OUT HOW TO RE-FACTOR/MODULARIZE SCRIPTS TO FIX 'Unexpected Input' Errors }.
 
     </script>
 
@@ -374,6 +384,7 @@ var locationSubmit = document.getElementById('location-submit');
  };
 
  };
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
   </body>
 </html>
