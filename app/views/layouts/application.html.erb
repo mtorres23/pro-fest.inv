@@ -147,34 +147,6 @@
   </div><!--bottom of viewport-->
 </div><!--end of col row-->
 
-    <script>
-        $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal').modal();
-        var $modal1 = $('#modal1');
-        var $modal2 = $('#modal2');
-        $('#modal1').modal('open');
-
-        var toggleMap = function() {
-         
-         if ($modal1.open) {
-            $modal1.modal('close');
-            $modal2.modal('open');
-          } else {
-            $modal1.modal('open');
-          }
-          
-        };
-
-        $('#map-toggle').on('click', function(){
-          toggleMap();
-        });
-
-      });
-    </script>
-
-
-
 
 <div id="form">
       <table>
@@ -189,15 +161,7 @@
     <div id="message">Location saved</div>
 
    
-      
-
-<script>
-$('.datepicker').pickadate({
-selectMonths: true, // Creates a dropdown to control month
-selectYears: 15 // Creates a dropdown of 15 years to control year
-});
-</script>
-
+    
 <script>
 // Initializing variables
 
@@ -259,23 +223,6 @@ selectYears: 15 // Creates a dropdown of 15 years to control year
 
 // Set Submit button to a variable. NOTE: use jQuery
 var locationSubmit = document.getElementById('location-submit');
-
-
-
-// CUSTOM MARKER DATA
-//
-// var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
-// var icons = {
-//   parking: {
-//     icon: iconBase + 'parking_lot_maps.png'
-//       },
-//   library: {
-//     icon: iconBase + 'library_maps.png'
-//       },
-//   info: {
-//     icon: iconBase + 'info-i_maps.png'
-//       }
-//   };
 
 
       
