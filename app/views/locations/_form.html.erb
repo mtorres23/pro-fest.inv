@@ -1,3 +1,7 @@
+<div class="modal-options" id="map-toggle">
+  <a href="#" >Find on the map <%= image_tag('marker.png') %></a>
+</div>
+
 <%= form_for [@event,@location] do |f| %>
   <% if @location.errors.any? %>
     <div id="error_explanation">
@@ -13,12 +17,14 @@
   <fieldset class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
-  </fieldset>
-
+  
   <h4>Enter either address or coordinates</h4>
-<div class="col-sm-8">
-  <a href="#modal1" id="find-on-map">Find on the map <%= image_tag('marker.png') %></a>
-</div>
+
+    <div class="form-control">
+    <%= f.label :loc_type, "Type" %><br />
+    <%= f.select :loc_type, options_for_select(["bar","storage"], "bar") %>
+  </div>
+  </fieldset>
 
   <%= f.submit 'Add!', class: 'btn btn-primary' %>
 <% end %>

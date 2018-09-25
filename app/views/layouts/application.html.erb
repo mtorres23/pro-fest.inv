@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
     <style>
 
@@ -29,7 +30,7 @@
   }
 
         </style>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   </head>
 
 
@@ -37,9 +38,9 @@
     <body>
       <div class="row">
         <div class = "nav-wrapper">
-        <div class="col s3 columnbgrnd" style="height: 100vh;">
-          <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
-
+        <div class="col s3 columnbgrnd" style="height: 100vh;" >
+          <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px" >
+          <a id="map-toggle" class="waves-effect waves-light btn"><i class="material-icons right">map</i>map</a>
           <ul class="slide-out">
     <% if user_signed_in? %>
 
@@ -73,7 +74,7 @@
 
 
 
-        </ul class="text-muted">
+        </ul>
           <div class="footer">
 
             <section id="footer">
@@ -117,29 +118,15 @@
         <div id="map"></div> <!--map end-->
 
 
-<script>
-$(document).ready(function(){
-    $('.carousel').carousel();
-  });
-</script>
-
-<script>
-setTimeout(function(){$(".carousel").click()}, 1);
-</script>
 
 
     <!-- Modal 1 -->
     <div id="modal1" class="modal bottom-sheet">
       <div class="modal-header">
-
-        <div class="modal-action modal-close waves-effect waves-green btn-flat">Exit</a>
-
-        <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">
-
+          <a class="modal-action modal-close waves-effect waves-green btn"><i class="material-icons">map</i></a>
       </div>
       <div class="modal-content">
-
-            <%= yield %>
+        <%= yield %>
       </div>
 
     </div> <!--bottom of modal1-->
@@ -149,9 +136,10 @@ setTimeout(function(){$(".carousel").click()}, 1);
     <!--modal2-->
     <div id="modal2" class="modal bottom-sheet">
       <div class="modal-header">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
+        <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
+
       </div>
 
     </div> <!--bottom of modal2-->
@@ -159,113 +147,224 @@ setTimeout(function(){$(".carousel").click()}, 1);
   </div><!--bottom of viewport-->
 </div><!--end of col row-->
 
-    <script>
-        $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-        $('.modal').modal();
-
-        $('#modal1').modal('open');
-
-      });
-    </script>
-
-
-
 
 <div id="form">
       <table>
-      <tr><td>Location Title:</td> <td><input type='text' id=‘title’/> </td> </tr>
+      <tr><td>Location Title:</td> <td><input type='text' id='title'/> </td> </tr>
       <tr><td>Type:</td> <td><select id='type'> +
                  <option value='bar' SELECTED>bar</option>
                  <option value=‘storage’>storage</option>
                  </select> </td></tr>
-                 <tr><td></td><td><input type='button' value='Save' onclick='saveData()'/></td></tr>
+                 <tr><td></td><td><input id='location-submit' type='button' value='Save'/></td>
+                <td><input id='location-undo' type='button' value='Undo'/></td></tr>
       </table>
     </div>
     <div id="message">Location saved</div>
 
    
-      
-
+    
 <script>
-$('.datepicker').pickadate({
-selectMonths: true, // Creates a dropdown to control month
-selectYears: 15 // Creates a dropdown of 15 years to control year
-});
-</script>
+// Initializing variables
 
-<script>
       var map;
       var marker;
-      var infowindow;
+      var locationInfoWindow;
       var messagewindow;
 
-    <% if current_user && current_user.is_event_admin? || current_user && current_user.is_tent_manager? %>
+// Check if the logged in user is an admin or a tent manager
+    <% if current_user || current_user && current_user.is_tent_manager? %> // NOTE: add the conditional checking for event admin status
 
-  
-            function initMap() {
-            <% if @event && @location && @client %>
+  // Initializes the map
+        function initMap() {
+        // Checking if this map is for an avent
+        <% if @event && @client %>
 
-            var target = {lat: <%= @event.latitude %>, lng: <%= @event.longitude %>};
-            <% elsif @client && @location %>
-            var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
-            <% else %>
-            var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>};
-            <% end %>
-            console.log(target);
+        var target = {lat: <%= @event.latitude || @client.latitude %>, lng: <%= @event.longitude || @client.longitude %>};
+        console.log("Displaying Current Event location at: " + target);
+        // Checking if this is just account location setup
+        <% elsif @client && @location %>
+
+        var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
+        console.log("Displaying Current location at: " + target);
+        // Checking if this is the home screen
+        <% else %>
+        var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>};
+        console.log("Displaying Client location at: " + target);
+        <% end %>
+
+        // MAP    
         map = new google.maps.Map(document.getElementById('map'), {
           center: target,
           zoom: 20
         });
       
-    
-
-       infowindow = new google.maps.InfoWindow({
+       // Info Window for Form
+       locationInfoWindow = new google.maps.InfoWindow({
           content: document.getElementById('form')
         });
 
-
+      // Info Window for Message
        messagewindow = new google.maps.InfoWindow({
           content: document.getElementById('message')
         });
+      // Custom Marker
+      var locIcon = {
+          url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new google.maps.Size(20, 32),
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(0, 32)
+        };
 
-  google.maps.event.addListener(map, 'click', function(event) {
-          marker = new google.maps.Marker({
-            position: event.latLng,
-            map: map,
-            draggable: true})
-    });
 
-    google.maps.event.addListener(marker, 'click', function() {
-            infowindow.open(map, marker);
-          });
-        };
+      // Events 
+        google.maps.event.addListener(map, 'click', function(event) {
+                marker = new google.maps.Marker({
+                  position: event.latLng,
+                  map: map,
+                  icon: locIcon,
+                  animation: google.maps.Animation.DROP,
+                  draggable: true})
+                // Add Event Listener to marker when created.
+                google.maps.event.addListener(marker, 'click', function() {
+                  locationInfoWindow.open(map, marker);
+                  
+                });
+                google.maps.event.addListener(marker, 'dblclick', function() {
+                  console.dir(locationInfoWindow);
+                  console.dir(marker);
+                  marker.setMap(null);
+                  
+                });
+          });
+
+// TO-DO: Create mechanism to remove marker with undo button (maybe by using index)
+        function undoMarker(){
+          console.log(marker);
+        }
+
+        // Set Submit button to a variable. NOTE: use jQuery
+        var locationSubmit = document.getElementById('location-submit');
+
+        // Set Submit button to a variable. NOTE: use jQuery
+        var locationUndo = document.getElementById('location-undo');
+
+        // Undo marker add
+        locationUndo.addEventListener('click', undoMarker());
+
       
   <% if @event %>
+
+    // Add Event Listener to button
+      locationSubmit.addEventListener('click', saveData);
+  
+      var eventLocURL = '/events/<%= @event.id %>/locations';
+
+      $(document).ready(function loadData() {
+       
+  // TO-DO: Send Array of Locations To the array to create a marker for each!
+      var mapMarkers = [];
+      var attachTitle = function(marker, title) {
+        var infowindow = new google.maps.InfoWindow({
+          content: title
+        });
+
+        marker.addListener('click', function() {
+          infowindow.open(marker.get('map'), marker);
+        });
+      }
+
+      var savedLocations = $.ajax({
+          url: '/api' + eventLocURL,
+          method: 'GET',
+          dataType: 'json',
+        }).then(function(data){
+            data.forEach(function(loc){
+              // debugger;
+              var locLatlng = new google.maps.LatLng(loc.latitude, loc.longitude);
+              var markerLoc = new google.maps.Marker({
+              position: locLatlng,
+              label: {
+                text: loc.title,
+                color: 'white',
+                fontSize: '32px',
+                fontWeight: 'bold'
+              },
+              map: map,
+              draggable: false
+          })
+          attachTitle(markerLoc, loc.title);
+          console.log(markerLoc.label + " found at " + markerLoc.position);
+          mapMarkers.push(markerLoc);
+          console.log(mapMarkers);
+          });
+        })
+      }) // end loadData
+
+
       function saveData() {
+      // To-Do: access marker properties and send save 
+
         var latLng = marker.getPosition();
-        var title = escape(document.getElementById('title').value);
-        var lat = latLng.lat();
-        var lng = latLng.lng();  
-    var url = 'events/<%= @event.id %>/locations';
-    
-    $.post(url, { title: title, latitude: lat, longitude: log}).done(function( data ) {
-      alert( "Data Loaded: " + data );
-if (responseCode == 200 && data.length <= 1) {
-            infowindow.close();
-            messagewindow.open(map, marker);
-          }
-        });
-      }
-  <% end %>
+        var title = document.getElementById('title').value;
+        var mlat = latLng.lat();
+        var mlng = latLng.lng();  
+
+
+        var url = '/events/<%= @event.id %>/locations';
+      
+        $.ajax({
+          url: eventLocURL, 
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            location: {
+                title: title, 
+                latitude: mlat, 
+                longitude: mlng
+                }
+            }
+          }).success(function(data, response) {
+          
+            // See what data is coming back
+            console.log(data.id + ": " + response);
+
+            // Close modal once successfully saved
+            if (response === 'success') {
+              locationInfoWindow.close();
+              messagewindow.open(map, marker);
+            }
+          })
+      
+      } // saveData END
+
+      // To-Do: Create Multi Locations before saving AND Save All Locations into an event locations array
+      // OR Create Markers on a map, drag them all over and then save an array of markers to the event locations. 
+
+
+      // EDIT Location on MAP: Highlighted Icon and zoom, draggable w/Form and Save 
+
+    }; // initMap END if @event exists
+
+  <% else %> // if @event
+    }; // initMap END if NO @event exists
+
+  <% end %> // if @event
+// TO-DO: FIGURE OUT HOW TO RE-FACTOR/MODULARIZE SCRIPTS TO FIX 'Unexpected Input' Errors }.
+
     </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ&callback=initMap" async defer></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhF2K8TKtEZ04zw7i3FMKQLwvv-bWC79g&callback=initMap"></script>
     
-   <% else %>
+    };
+
   <%= yield %>
-  <% end %>
- 
+  <% end %> // if current_user
+ };
+
+ };
 
   </body>
 </html>

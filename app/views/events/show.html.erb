@@ -6,10 +6,10 @@
 <div class = 'event-show'>
 <p id="notice"><%= notice %></p>
 
-<p>
+<h3>
   <strong>Title:</strong>
   <%= @event.title %>
-</p>
+</h3>
 
 <p>
   <strong>Start date:</strong>
@@ -63,11 +63,11 @@
         <thead>
     <tr>
       <th>Title</th>
-      <th>Access Code</th>
+      <th>Type</th>
       <th>Address</th>
       <th>Latitude</th>
       <th >Longitude</th>
-      <th>Admin</th>
+      <th>Event</th>
       <th>Current Order</th>
       <th>Last Order</th>
       <th colspan="3"></th>
@@ -79,7 +79,7 @@
     <% @event.locations.each do |location| %>
       <tr>
         <td><%= link_to location.title, event_location_path(event_id: @event.id, id: location.id) %></td>
-        <td><%= location.access_code %></td>
+        <td><%= location.loc_type %></td>
         <td><%= location.address%></td>
         <td><%= location.latitude %></td>
         <td><%= location.longitude %></td>

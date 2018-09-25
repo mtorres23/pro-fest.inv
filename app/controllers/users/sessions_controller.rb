@@ -19,9 +19,9 @@ class Users::SessionsController < Devise::SessionsController
   # # protected
 
   # # # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   @user = User.find_by(email: params[:user][:email])
-  #   @user_location = Location.find(@user.location_id)
-  #   devise_parameter_sanitizer.permit(:sign_in).merge(location_id: @user.location_id)
-  # end
+  def configure_sign_in_params
+    @user = User.find_by(email: params[:user][:email])
+    @user_location = Location.find(@user.location_id)
+    devise_parameter_sanitizer.permit(:sign_in).merge(location_id: @user.location_id)
+  end
 end

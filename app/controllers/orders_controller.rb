@@ -4,6 +4,10 @@ class OrdersController < ApplicationController
   before_action :set_location, except: [:orders_by_client, :orders_by_event]
   before_action :set_event, only: [:orders_by_event,:edit, :update, :destroy]
 
+  def index
+    @orders = @event.orders
+    @locations = @event.locations
+  end
 
   def orders_by_client
     @orders = @client.orders
@@ -28,13 +32,17 @@ class OrdersController < ApplicationController
   def create
     puts "create"
     puts @orders
-
-    order = @location.orders.new(order_params)
-
-    order.save
-
-
-    redirect_to location_orders_path
+    @order = @location.orders.new(order_params)
+    binding.pry
+      respond_to do |format|
+        if @order.save
+          format.html { redirect_to order_path(location_id: @location.id, id: @order.id ), notice: 'Order was successfully created.' }
+          format.json { render json: @order, status: :created } # Redirect Maybe?
+        else
+          format.html { render :new }
+          format.json { render json: @order.errors, status: :unprocessable_entity }
+        end
+      end
   end
 
   def show
@@ -65,7 +73,7 @@ class OrdersController < ApplicationController
 
   def order_params
 
-    params.require(:order).permit(:content, :role)
+    params.require(:order).permit(:content, :role, :category_id, :origin_id, :destination_id)
   end
 
   def set_client

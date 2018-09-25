@@ -7,7 +7,14 @@ class LocationsController < ApplicationController
     @locations = @event.locations.all
   end
 
+  def index_as_json
+    @locations = @event.locations.all
+    render json: @locations 
+  end
+
   def new
+    puts @event
+    puts params[:event_id]
     @event = @client.events.find(params[:event_id])
     @location = @event.locations.new
   end
@@ -18,7 +25,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.save
         format.html { redirect_to event_location_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully created.' }
-        format.json { render :show, status: :created, location: @location }
+        format.json { render json: @location, status: :created } # Redirect Maybe?
       else
         format.html { render :new }
         format.json { render json: @location.errors, status: :unprocessable_entity }
@@ -78,6 +85,6 @@ class LocationsController < ApplicationController
   end
 
   def location_params
-    return params.require(:location).permit(:title, :address, :latitude, :longitude)
+    return params.require(:location).permit(:title, :loc_type, :address, :latitude, :longitude)
   end
 end
