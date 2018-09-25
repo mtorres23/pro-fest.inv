@@ -43,7 +43,7 @@
 
   <div class="field">
     <%= f.label :admin_id %><br />
-    <%= f.select :admin_id, options_for_select(User.all.map{|user|[user.id]}) %>
+    <%= f.select :admin_id, options_for_select(User.all.map{|user|[user.id]}), :class => 'input-field' %>
   </div>
 
   <div class="field">
