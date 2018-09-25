@@ -1,6 +1,6 @@
-<div class="modal-options" id="map-toggle">
-  <a href="#" >Find on the map <%= image_tag('marker.png') %></a>
-</div>
+<%# <div class="modal-options"> %>
+  
+<%# </div> %>
 
 <%= form_for [@event,@location] do |f| %>
   <% if @location.errors.any? %>
@@ -26,5 +26,6 @@
   </div>
   </fieldset>
 
-  <%= f.submit 'Add!', class: 'btn btn-primary' %>
+  <%= f.submit 'Add!', class: 'btn btn-primary' %> 
 <% end %>
+<button class="waves-effect btn-lg modal-action modal-close">Find on the map<%= image_tag('marker.png', :class => "map-toggle") %></button>

@@ -16,7 +16,7 @@ var toggleMap = function() {
   
 };
 
-$('#map-toggle').on('click', function(){
+$('.map-toggle').on('click', function(){
   toggleMap();
 });
 
