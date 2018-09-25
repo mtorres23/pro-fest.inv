@@ -46,7 +46,7 @@ get 'api/events/:event_id/locations' => 'locations#index_as_json', as: 'location
 post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_order'
 
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
-
+get '/events/:event_id/locations/update' => 'locations#update', as: 'locations_update'
 
   root to: 'clients#dashboard'
 get '*path', to: 'clients#dashboard'
