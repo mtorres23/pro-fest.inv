@@ -237,6 +237,16 @@
        
   // TO-DO: Send Array of Locations To the array to create a marker for each!
       var mapMarkers = [];
+      var attachTitle = function(marker, title) {
+        var infowindow = new google.maps.InfoWindow({
+          content: title
+        });
+
+        marker.addListener('click', function() {
+          infowindow.open(marker.get('map'), marker);
+        });
+      }
+
       var savedLocations = $.ajax({
           url: '/api' + eventLocURL,
           method: 'GET',
@@ -251,7 +261,7 @@
               map: map,
               draggable: false
           })
-          console.dir(loc);
+          attachTitle(markerLoc, loc.title);
           console.log(markerLoc.title + " found at " + markerLoc.position);
           mapMarkers.push(markerLoc);
           console.log(mapMarkers);
