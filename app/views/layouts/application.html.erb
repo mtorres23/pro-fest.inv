@@ -232,8 +232,15 @@
                   locationInfoWindow.open(map, marker);
                   
                 });
+                google.maps.event.addListener(marker, 'dblclick', function() {
+                  console.dir(locationInfoWindow);
+                  console.dir(marker);
+                  marker.setMap(null);
+                  
+                });
           });
 
+// TO-DO: Create mechanism to remove marker with undo button (maybe by using index)
         function undoMarker(){
           console.log(marker);
         }
@@ -279,7 +286,12 @@
               var locLatlng = new google.maps.LatLng(loc.latitude, loc.longitude);
               var markerLoc = new google.maps.Marker({
               position: locLatlng,
-              label: loc.title,
+              label: {
+                text: loc.title,
+                color: 'white',
+                fontSize: '32px',
+                fontWeight: 'bold'
+              },
               map: map,
               draggable: false
           })
