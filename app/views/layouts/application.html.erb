@@ -155,7 +155,8 @@
                  <option value='bar' SELECTED>bar</option>
                  <option value=‘storage’>storage</option>
                  </select> </td></tr>
-                 <tr><td></td><td><input id='location-submit' type='button' value='Save'/></td></tr>
+                 <tr><td></td><td><input id='location-submit' type='button' value='Save'/></td>
+                <td><input id='location-undo' type='button' value='Undo'/></td></tr>
       </table>
     </div>
     <div id="message">Location saved</div>
@@ -206,12 +207,25 @@
        messagewindow = new google.maps.InfoWindow({
           content: document.getElementById('message')
         });
+      // Custom Marker
+      var locIcon = {
+          url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          // This marker is 20 pixels wide by 32 pixels high.
+          size: new google.maps.Size(20, 32),
+          // The origin for this image is (0, 0).
+          origin: new google.maps.Point(0, 0),
+          // The anchor for this image is the base of the flagpole at (0, 32).
+          anchor: new google.maps.Point(0, 32)
+        };
 
-      // Event 
+
+      // Events 
         google.maps.event.addListener(map, 'click', function(event) {
                 marker = new google.maps.Marker({
                   position: event.latLng,
                   map: map,
+                  icon: locIcon,
+                  animation: google.maps.Animation.DROP,
                   draggable: true})
                 // Add Event Listener to marker when created.
                 google.maps.event.addListener(marker, 'click', function() {
@@ -220,10 +234,18 @@
                 });
           });
 
+        function undoMarker(){
+          console.log(marker);
+        }
 
         // Set Submit button to a variable. NOTE: use jQuery
         var locationSubmit = document.getElementById('location-submit');
 
+        // Set Submit button to a variable. NOTE: use jQuery
+        var locationUndo = document.getElementById('location-undo');
+
+        // Undo marker add
+        locationUndo.addEventListener('click', undoMarker());
 
       
   <% if @event %>
@@ -257,12 +279,12 @@
               var locLatlng = new google.maps.LatLng(loc.latitude, loc.longitude);
               var markerLoc = new google.maps.Marker({
               position: locLatlng,
-              title: loc.title,
+              label: loc.title,
               map: map,
               draggable: false
           })
           attachTitle(markerLoc, loc.title);
-          console.log(markerLoc.title + " found at " + markerLoc.position);
+          console.log(markerLoc.label + " found at " + markerLoc.position);
           mapMarkers.push(markerLoc);
           console.log(mapMarkers);
           });
