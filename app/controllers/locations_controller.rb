@@ -6,10 +6,16 @@ class LocationsController < ApplicationController
   def index
     @locations = @event.locations.all
   end
-
+# GET api/events/:event_id/locations
   def index_as_json
     @locations = @event.locations.all
     render json: @locations 
+  end
+
+  # GET /locations/update
+  def map_edit
+    @locations = @event.locations.all
+    render json: @locations
   end
 
   def new
@@ -40,6 +46,7 @@ class LocationsController < ApplicationController
   def edit
     @location = @event.locations.find(params[:id])
   end
+
 
 
  # PATCH/PUT /locations/1
