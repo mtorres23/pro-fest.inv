@@ -28,6 +28,17 @@ $('.map-add').on('click', function(){
   toggleMap();
   alert("title: " + locTitle);
   alert("type: " + locType);
+
+  // Drop a large pin on the map at the center of the map...
+
+      // Open the infowindow and populate the form with the form data
+
+      
+});
+
+// Edit on map
+$('.map-edit').on('click', function(){
+
 });
 
 });

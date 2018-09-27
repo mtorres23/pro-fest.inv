@@ -1,7 +1,7 @@
 <h1>Editing Location</h1>
 
 <%= render 'form', location: @location %>
-<button class="waves-effect btn-lg modal-action modal-close">Find on the map<%= image_tag('marker.png', :class => "map-toggle") %></button>
+<button class="waves-effect btn-lg modal-action map-edit">Find on the map<%= image_tag('marker.png', :class => "map-edit") %></button>
 <%= link_to 'Show', event_location_path(@event, @location) %> |
 <%= link_to 'Back To Event', event_location_path(@event, @location) %> |
 <%= link_to 'Destroy', event_location_path(@event, @location), method: :delete, data: { confirm: 'Are you sure?' } %>
