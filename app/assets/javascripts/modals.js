@@ -9,7 +9,7 @@ $('#modal1').openModal();
 var toggleMap = function() {
  
  if ($modal1.open) {
-    $modal1.modal('close');
+    $modal1.closeModal();
     $modal2.openModal();
   } else {
     $modal1.openModal();
@@ -19,6 +19,15 @@ var toggleMap = function() {
 
 $('.map-toggle').on('click', function(){
   toggleMap();
+});
+
+// Add on map
+$('.map-add').on('click', function(){
+  var locTitle = $('#location_title').val();
+  var locType = $('#location_loc_type').val();
+  toggleMap();
+  alert("title: " + locTitle);
+  alert("type: " + locType);
 });
 
 });
