@@ -253,37 +253,54 @@
         var locationUndo = document.getElementById('location-undo');
 
         // Undo marker add
-        locationUndo.addEventListener('click', undoMarker());
+        locationUndo.addEventListener('click', undoMarker);
 
       
   <% if @event %>
 
     // Add Event Listener to button
-      locationSubmit.addEventListener('click', saveData);
+      locationSubmit.addEventListener('click', saveMarkerLocation);
   
       var eventLocURL = '/events/<%= @event.id %>/locations';
+      var mapMarkers = [];
+      function fetchMapLocations() {
+      return $.ajax({
+          url: '/api' + eventLocURL,
+          method: 'GET',
+          dataType: 'json',
+        })
+      }
 
       $(document).ready(function loadData() {
        
   // TO-DO: Send Array of Locations To the array to create a marker for each!
-      var mapMarkers = [];
+      // var mapMarkers = [];
+      var targetMarker;
       var attachTitle = function(marker, title) {
         var infowindow = new google.maps.InfoWindow({
-          content: title
+          content: title + '<br><button id="move" class="btn" onclick="moveMarker()">Move</button>'
         });
 
         marker.addListener('click', function() {
+          if(infowindow) {
+            infowindow.close();
+          }
           infowindow.open(marker.get('map'), marker);
+          targetMarker = marker;
+
         });
+
+        marker.addListener('dragend', updateMapLocations); // Updates map on marker drag. To-do: create and edit/save button and toggle draggability
+
+        moveMarker = function() {
+          targetMarker.draggable = true;
+          console.dir(targetMarker);
+        }
       }
 
-      var savedLocations = $.ajax({
-          url: '/api' + eventLocURL,
-          method: 'GET',
-          dataType: 'json',
-        }).then(function(data){
-            data.forEach(function(loc){
-              // debugger;
+// setMarker takes in a location and creates a mapMarker object and pushes to the global array of mapMarkers
+      setMarker = function(loc){
+              
               var locLatlng = new google.maps.LatLng(loc.latitude, loc.longitude);
               var markerLoc = new google.maps.Marker({
               position: locLatlng,
@@ -294,32 +311,60 @@
                 fontWeight: 'bold'
               },
               map: map,
-              draggable: false
+              draggable: true
           })
           attachTitle(markerLoc, loc.title);
-          console.log(markerLoc.label + " found at " + markerLoc.position);
-          mapMarkers.push(markerLoc);
-          console.log(mapMarkers);
-          });
+          console.log(`${markerLoc.label.text} found at ${markerLoc.position}`);
+          mapMarkers.push({
+            id: loc.id,
+            markObj: markerLoc
+            });
+        console.log(mapMarkers);
+          }
+
+       // FetchMapLocations returns a promise and then each location gets transformed into a mapMarker object
+      fetchMapLocations().then(function(data){
+            data.forEach(setMarker);
         })
+
       }) // end loadData
      
-     // Callback for /locations/map_edit
-     function editMapLocations(data) {
-        alert(data);
-      };
+     // Fired when dragging location markers
+     function updateMapLocations() {
+       mapMarkers.forEach(function(obj) {
+          $.ajax({
+            url: eventLocURL + '/' + obj.id,
+            method: 'PATCH',
+            dataType: 'json',
+            data: {
+            location: { 
+                latitude: obj.markObj.getPosition().lat(), 
+                longitude: obj.markObj.getPosition().lng()
+                }
+            },
+            success: function(data, response) {
+          
+            // See what data is coming back
+            console.log(data.id + ": " + data.title + ": " + response);
 
-      function saveData() {
-      // To-Do: access marker properties and send save 
+            // Close modal once successfully saved
+            if (response === 'success') {
+              console.log("updated!")
+            }
+          }
+          })
+         })
+       };
 
-        var latLng = marker.getPosition();
-        var title = document.getElementById('title').value;
+        
+
+    
+      function postMapLocation(title, loc) {
+        console.log(mapMarkers[1].getPosition().lat());
+        console.dir(loc);
+        var latLng = loc.getPosition();
         var mlat = latLng.lat();
-        var mlng = latLng.lng();  
-
-
-        var url = '/events/<%= @event.id %>/locations';
-      
+        var mlng = latLng.lng(); 
         $.ajax({
           url: eventLocURL, 
           method: 'POST',
@@ -334,15 +379,23 @@
             success: function(data, response) {
           
             // See what data is coming back
-            console.log(data.id + ": " + response);
+            console.log(data.id + ": " + data.title + ": " + response);
 
             // Close modal once successfully saved
             if (response === 'success') {
               locationInfoWindow.close();
-              messagewindow.open(map, marker);
+              messagewindow.open(map, loc);
             }
           }
         })
+
+      }
+      function saveMarkerLocation() {
+      // To-Do: access marker properties and send save
+        
+        var title = document.getElementById('title').value;
+        var url = '/events/<%= @event.id %>/locations';
+        postMapLocation(title, marker);
       } // saveData END
 
       // To-Do: Create Multi Locations before saving AND Save All Locations into an event locations array

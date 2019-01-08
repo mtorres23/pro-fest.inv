@@ -56,8 +56,9 @@ class LocationsController < ApplicationController
 
     respond_to do |format|
       if @location.update_attributes(location_params)
-        format.html { redirect_to event_location_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully updated.' }
-        format.json { render :show, status: :ok, location: @location }
+        puts "This is what is firing"
+        #format.html { redirect_to event_locations_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully updated.' }
+        format.json { render json: @location, status: :ok, location: event_location_url(@location) }
       else
         format.html { render :edit }
         format.json { render json: @location.errors, status: :unprocessable_entity }
