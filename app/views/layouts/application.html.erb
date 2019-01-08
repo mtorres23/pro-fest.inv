@@ -330,8 +330,8 @@
                 latitude: mlat, 
                 longitude: mlng
                 }
-            }
-          }).success(function(data, response) {
+            },
+            success: function(data, response) {
           
             // See what data is coming back
             console.log(data.id + ": " + response);
@@ -341,8 +341,8 @@
               locationInfoWindow.close();
               messagewindow.open(map, marker);
             }
-          })
-      
+          }
+        })
       } // saveData END
 
       // To-Do: Create Multi Locations before saving AND Save All Locations into an event locations array
