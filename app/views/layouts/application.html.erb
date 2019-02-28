@@ -50,7 +50,7 @@
             </li>
             <% if current_user.is_event_admin? || current_user.is_crew? %>
             <li class="waves-effect waves-light sideLinks">
-            <li><%= link_to "Items", client_items_path(client_id: current_user.client_id), class: 'btn sideLinks' %></li>
+            <%= link_to "Items", client_items_path(client_id: current_user.client_id), class: 'btn sideLinks' %>
             </li>
             <% end %>
             <li class="waves-effect waves-light sideLinks">
@@ -161,7 +161,12 @@
       </table>
     </div>
     <div id="message">Location saved</div>
-
+<div id="options">
+  <br>
+    <button id="move" class="btn">Move</button>
+    <br>
+    <button id="location-delete" class="btn">Remove</button>
+  </div>
    
     
 <script>
@@ -208,6 +213,11 @@
        messagewindow = new google.maps.InfoWindow({
           content: document.getElementById('message')
         });
+    var options = document.getElementById('options');
+      var infowindow = new google.maps.InfoWindow({
+          content: options
+        });
+
       // Custom Marker
       var locIcon = {
           url: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
@@ -245,7 +255,9 @@
         function undoMarker(){
           console.log(marker);
         }
-
+        function locationRemove(){
+          console.log(marker);
+        }
         // Set Submit button to a variable. NOTE: use jQuery
         var locationSubmit = document.getElementById('location-submit');
 
@@ -254,6 +266,12 @@
 
         // Undo marker add
         locationUndo.addEventListener('click', undoMarker);
+
+          // Set Submit button to a variable. NOTE: use jQuery
+        var locationDelete = document.getElementById('location-delete');
+
+        // Undo marker add
+        locationDelete.addEventListener('click', locationRemove);
 
       
   <% if @event %>
@@ -276,10 +294,11 @@
   // TO-DO: Send Array of Locations To the array to create a marker for each!
       // var mapMarkers = [];
       var targetMarker;
+      
       var attachTitle = function(marker, title) {
-        var infowindow = new google.maps.InfoWindow({
-          content: title + '<br><button id="move" class="btn" onclick="moveMarker()">Move</button>'
-        });
+        
+
+      
 
         marker.addListener('click', function() {
           if(infowindow) {
@@ -293,8 +312,14 @@
         marker.addListener('dragend', updateMapLocations); // Updates map on marker drag. To-do: create and edit/save button and toggle draggability
 
         moveMarker = function() {
-          targetMarker.draggable = true;
-          console.dir(targetMarker);
+          
+          if(targetMarker.draggable === true){
+            targetMarker.draggable = false;
+          } else { 
+            targetMarker.draggable = true;
+          }
+          
+          console.dir(targetMarker.draggable);
         }
       }
 
@@ -360,7 +385,10 @@
 
     
       function postMapLocation(title, loc) {
-        console.log(mapMarkers[1].getPosition().lat());
+        if (mapMarkers.length){
+          console.log(mapMarkers[1].getPosition().lat());
+        }
+        
         console.dir(loc);
         var latLng = loc.getPosition();
         var mlat = latLng.lat();
@@ -392,10 +420,16 @@
       }
       function saveMarkerLocation() {
       // To-Do: access marker properties and send save
-        
-        var title = document.getElementById('title').value;
+        try {
+          var title = document.getElementById('title').value;
         var url = '/events/<%= @event.id %>/locations';
-        postMapLocation(title, marker);
+        } catch(err){
+          throw err;
+        } finally {
+          postMapLocation(title, marker);
+        }
+        
+        
       } // saveData END
 
       // To-Do: Create Multi Locations before saving AND Save All Locations into an event locations array
