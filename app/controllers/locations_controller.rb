@@ -32,6 +32,13 @@ class LocationsController < ApplicationController
   end
 
   def create
+    if params[:location][:latitude] == nil
+      params[:location][:latitude] = @event.latitude
+      puts 'Setting Location Coordinates to Event coords'
+    end
+    if params[:location][:longitude] == nil
+      params[:location][:longitude] = @event.longitude
+    end
     @location = @event.locations.new(location_params)
 
     respond_to do |format|
@@ -58,12 +65,19 @@ class LocationsController < ApplicationController
  # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
+    if params[:location][:latitude] == nil
+      params[:location][:latitude] = @event.latitude
+      puts 'Setting Location Coordinates to Event coords'
+    end
+    if params[:location][:longitude] == nil
+      params[:location][:longitude] = @event.longitude
+    end
     @location = @event.locations.find(params[:id])
 
     respond_to do |format|
       if @location.update_attributes(location_params)
         puts "This is what is firing"
-        #format.html { redirect_to event_locations_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully updated.' }
+        format.html { redirect_to event_locations_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully updated.' }
         format.json { render json: @location, status: :ok, location: event_location_url(@location) }
       else
         format.html { render :edit }

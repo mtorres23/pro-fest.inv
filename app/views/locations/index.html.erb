@@ -1,6 +1,6 @@
 <header><h1 class="display-4">Locations</h1></header>
 
-<%= link_to 'Add location', new_location_path, class: 'btn btn-primary btn-lg' %>
+<%= link_to 'Add location', new_event_location_path, class: 'btn btn-primary btn-lg' %>
 
 <div class="card">
   <div class="container">
@@ -23,7 +23,7 @@
   <tbody>
     <% @locations.each do |location| %>
       <tr>
-        <td><%= link_to location.title, event_location_path %></td>
+        <td><%= link_to location.title, event_location_path(id: location.id ) %></td>
         <td><%= location.access_code %></td>
         <td><%= location.address%></td>
         <td><%= location.latitude %></td>
