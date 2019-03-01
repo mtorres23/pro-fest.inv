@@ -1,7 +1,7 @@
 class LocationsController < ApplicationController
   before_action :set_client
   before_action :set_event
-  before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :set_location, only: [:location_json, :show, :edit, :update, :destroy]
 
   def index
     @locations = @event.locations.all
@@ -10,6 +10,12 @@ class LocationsController < ApplicationController
   def index_as_json
     @locations = @event.locations.all
     render json: @locations 
+  end
+
+  # GET api/events/:event_id/locations/:id
+  def location_json
+    @location = @event.locations.find(params[:id])
+    render json: @location
   end
 
   # GET /locations/update

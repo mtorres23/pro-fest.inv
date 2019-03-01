@@ -163,7 +163,7 @@
     <div id="message">Location saved</div>
 <div id="options">
   <br>
-    <button id="move" class="btn">Move</button>
+    <button id="move" name="move-marker" class="btn">Move</button>
     <br>
     <button id="location-delete" class="btn">Remove</button>
   </div>
@@ -237,7 +237,7 @@
                   map: map,
                   icon: locIcon,
                   animation: google.maps.Animation.DROP,
-                  draggable: true})
+                  draggable: false})
                 // Add Event Listener to marker when created.
                 google.maps.event.addListener(marker, 'click', function() {
                   locationInfoWindow.open(map, marker);
@@ -256,7 +256,7 @@
           console.log(marker);
         }
         function locationRemove(){
-          console.log(marker);
+          console.log(marker.getPosition().lat());
         }
         // Set Submit button to a variable. NOTE: use jQuery
         var locationSubmit = document.getElementById('location-submit');
@@ -273,6 +273,8 @@
         // Undo marker add
         locationDelete.addEventListener('click', locationRemove);
 
+        var locationMoveEl = document.getElementById('move');
+
       
   <% if @event %>
 
@@ -281,9 +283,18 @@
   
       var eventLocURL = '/events/<%= @event.id %>/locations';
       var mapMarkers = [];
+
       function fetchMapLocations() {
       return $.ajax({
           url: '/api' + eventLocURL,
+          method: 'GET',
+          dataType: 'json',
+        })
+      }
+      
+      function fetchLocationById(id) {
+        return $.ajax({
+          url: '/api' + eventLocURL + '/' + id,
           method: 'GET',
           dataType: 'json',
         })
@@ -295,10 +306,10 @@
       // var mapMarkers = [];
       var targetMarker;
       
-      var attachTitle = function(marker, title) {
+      var attachOptions = function(marker) {
         
 
-      
+      // Map marker needs to 
 
         marker.addListener('click', function() {
           if(infowindow) {
@@ -306,65 +317,134 @@
           }
           infowindow.open(marker.get('map'), marker);
           targetMarker = marker;
+          var move = infowindow.content.children.namedItem('move-marker');
+          move.addEventListener('click', moveMarker);
 
         });
 
         marker.addListener('dragend', updateMapLocations); // Updates map on marker drag. To-do: create and edit/save button and toggle draggability
 
-        moveMarker = function() {
-          
+// getMarker(targetMarker) - using targetMarker, find marker data to perform front and back end updates.
+ var getMarker = function(clickedMarker) {
+          // find marker obj in marker array
+        var matchMarkerObj = function(obj) {
+            if(obj.gmObj === clickedMarker){
+              return obj;
+            }
+        }
+        var targetObj = mapMarkers.find(matchMarkerObj);
+        return targetObj;
+  };
+
+  // Event Listeners for moveMarker and deleteMarker
+        var moveMarker = function() {
+          var dragStatus;
           if(targetMarker.draggable === true){
-            targetMarker.draggable = false;
+            dragStatus = false;
           } else { 
-            targetMarker.draggable = true;
+            dragStatus = true;
           }
-          
-          console.dir(targetMarker.draggable);
+
+          var match = getMarker(targetMarker);
+          targetMarker.setMap(null);
+          var index = findDuplicate(mapMarkers, match);
+          replaceInArray(mapMarkers, mapMarkers[index], match);
+          console.log(mapMarkers);
+          // fetch location data by id
+             fetchLocationById(match.id).then(function(data){
+                setMarker(data, true);
+            })
+
+          // remove marker from current place in global Array of markers
+
+          // create a new marker with the same marker data
         }
       }
 
-// setMarker takes in a location and creates a mapMarker object and pushes to the global array of mapMarkers
-      setMarker = function(loc){
-              
-              var locLatlng = new google.maps.LatLng(loc.latitude, loc.longitude);
-              var markerLoc = new google.maps.Marker({
-              position: locLatlng,
+// ----- Helper methods -----
+
+  // googleLatLng(data) - create a google maps latlng position with location's lat and long
+    var googleLatLng = function(data) {
+      return new google.maps.LatLng(data.latitude, data.longitude);
+    };
+  // locationMarker(drag) - generate Static Map Marker (drag is a boolean representing draggable)
+    var locationMarker = function(data, drag) {
+      return new google.maps.Marker({
+              position: googleLatLng(data),
               label: {
-                text: loc.title,
+                text: data.title,
                 color: 'white',
                 fontSize: '32px',
                 fontWeight: 'bold'
               },
               map: map,
-              draggable: true
+              draggable: drag
           })
-          attachTitle(markerLoc, loc.title);
-          console.log(`${markerLoc.label.text} found at ${markerLoc.position}`);
-          mapMarkers.push({
-            id: loc.id,
-            markObj: markerLoc
-            });
-        console.log(mapMarkers);
+    };
+
+
+// replaces already existing marker by ID in array
+  var replaceInArray = function(arr, old, newObj){
+    console.log(newObj);
+            var i = arr.indexOf(old);
+            delete arr[i];
+            arr.splice(i, 1, newObj);
+            return arr;
           }
 
-       // FetchMapLocations returns a promise and then each location gets transformed into a mapMarker object
+// findDuplicate(arr, obj) - searches for same id and returns the existing
+var findDuplicate = function(arr, obj) {
+  console.log(obj);
+  var iterator = arr.entries();
+    for (let entry of iterator) {
+      if(entry[1].id === obj.id){
+        return entry[0];
+      };
+    }
+  };
+  
+  // storeMarkerIdInObject() - returns a new marker object with loc.id and markerObj
+    var storeMarkerIdInObject = function(data, marker) {
+      return {
+        id: data.id,
+        gmObj: marker
+      }
+    };
+  // indexMarkers() - store new marker Obj in global array
+    var indexMarker = function(obj){
+      
+      mapMarkers.push(obj);
+    }
+
+// ----- END Helpers -----
+
+
+// setMarker takes in a location and creates a mapMarker object and pushes to the global array of mapMarkers
+      setMarker = function(loc, drag){
+        var draggable = drag ? drag === true : false;
+        // using location data from database, create a new gmMarker
+          var markerLoc = locationMarker(loc, draggable);
+          attachOptions(markerLoc);
+          console.log(`${markerLoc.label.text} found at ${markerLoc.position}`);
+          indexMarker(storeMarkerIdInObject(loc, markerLoc));
+          console.log(mapMarkers);
+          };
+
+// FetchMapLocations returns a promise and then each location gets transformed into a mapMarker object
       fetchMapLocations().then(function(data){
             data.forEach(setMarker);
         })
 
       }) // end loadData
-     
-     // Fired when dragging location markers
-     function updateMapLocations() {
-       mapMarkers.forEach(function(obj) {
+     var updateLocation = function(obj) {
           $.ajax({
             url: eventLocURL + '/' + obj.id,
             method: 'PATCH',
             dataType: 'json',
             data: {
             location: { 
-                latitude: obj.markObj.getPosition().lat(), 
-                longitude: obj.markObj.getPosition().lng()
+                latitude: obj.gmObj.getPosition().lat(), 
+                longitude: obj.gmObj.getPosition().lng()
                 }
             },
             success: function(data, response) {
@@ -378,7 +458,34 @@
             }
           }
           })
-         })
+         };
+
+     // Fired when dragging location markers
+     function updateMapLocations() {
+          mapMarkers.forEach(updateLocation);
+//        mapMarkers.forEach(function(obj) {
+//           $.ajax({
+//             url: eventLocURL + '/' + obj.id,
+//             method: 'PATCH',
+//             dataType: 'json',
+//             data: {
+//             location: { 
+//                 latitude: obj.gmObj.getPosition().lat(), 
+//                 longitude: obj.gmObj.getPosition().lng()
+//                 }
+//             },
+//             success: function(data, response) {
+          
+//             // See what data is coming back
+//             console.log(data.id + ": " + data.title + ": " + response);
+
+//             // Close modal once successfully saved
+//             if (response === 'success') {
+//               console.log("updated!")
+//             }
+//           }
+//           })
+//          })
        };
 
         
