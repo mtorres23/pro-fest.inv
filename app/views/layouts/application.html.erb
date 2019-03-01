@@ -305,12 +305,49 @@
   // TO-DO: Send Array of Locations To the array to create a marker for each!
       // var mapMarkers = [];
       var targetMarker;
+
+      var moveMarker = function() {
+          var match = ""; // Doesn't stop duplicates
+          var dragStatus;
+          if(targetMarker.draggable === true){
+            dragStatus = false;
+          } else { 
+            dragStatus = true;
+          }
+          match = getMarker(targetMarker);
+          targetMarker.setMap(null);
+          // fetch location data by id
+             fetchLocationById(match.id).then(function(data){
+               console.log(data);
+                setMarker(data, true);
+          }).then(function(){
+          // var index = findDuplicate(mapMarkers, match);
+          // mapMarkers = replaceInArray(mapMarkers, mapMarkers[index], match);
+          // console.log("replacing in array");
+          // console.log(mapMarkers);
+          })
+
+          // remove marker from current place in global Array of markers
+
+          // create a new marker with the same marker data
+        }
+
+        // getMarker(targetMarker) - using targetMarker, find marker data to perform front and back end updates.
+ var getMarker = function(clickedMarker) {
+   var targetObj = ""; // Doesn't stop duplicates
+          // find marker obj in marker array
+        var matchMarkerObj = function(obj) {
+            if(obj.gmObj === clickedMarker){
+              return obj;
+            }
+        }
+        targetObj = mapMarkers.filter(matchMarkerObj)[0];
+        return targetObj;
+  };
       
       var attachOptions = function(marker) {
         
-
       // Map marker needs to 
-
         marker.addListener('click', function() {
           if(infowindow) {
             infowindow.close();
@@ -319,46 +356,55 @@
           targetMarker = marker;
           var move = infowindow.content.children.namedItem('move-marker');
           move.addEventListener('click', moveMarker);
+          console.log(move);
 
         });
 
         marker.addListener('dragend', updateMapLocations); // Updates map on marker drag. To-do: create and edit/save button and toggle draggability
 
-// getMarker(targetMarker) - using targetMarker, find marker data to perform front and back end updates.
- var getMarker = function(clickedMarker) {
-          // find marker obj in marker array
-        var matchMarkerObj = function(obj) {
-            if(obj.gmObj === clickedMarker){
-              return obj;
-            }
-        }
-        var targetObj = mapMarkers.find(matchMarkerObj);
-        return targetObj;
-  };
+// // getMarker(targetMarker) - using targetMarker, find marker data to perform front and back end updates.
+//  var getMarker = function(clickedMarker) {
+//    var targetObj = ""; // Doesn't stop duplicates
+//           // find marker obj in marker array
+//         var matchMarkerObj = function(obj) {
+//             if(obj.gmObj === clickedMarker){
+//               return obj;
+//             }
+//         }
+//         targetObj = mapMarkers.filter(matchMarkerObj)[0];
+//         return targetObj;
+//         console.log("Inside getMarker" + mapMarkers.length);
+//   };
 
   // Event Listeners for moveMarker and deleteMarker
-        var moveMarker = function() {
-          var dragStatus;
-          if(targetMarker.draggable === true){
-            dragStatus = false;
-          } else { 
-            dragStatus = true;
-          }
+        // var moveMarker = function() {
+          
+        //   var match = ""; // Doesn't stop duplicates
+        //   var dragStatus;
+        //   if(targetMarker.draggable === true){
+        //     dragStatus = false;
+        //   } else { 
+        //     dragStatus = true;
+        //   }
+        //   match = getMarker(targetMarker);
+        //   targetMarker.setMap(null);
+        //   // fetch location data by id
+        //      fetchLocationById(match.id).then(function(data){
+        //        console.log(data);
+        //         setMarker(data, true);
+        //         console.log("After setMarker" + mapMarkers.length);
+        //   }).then(function(){
+        //   // var index = findDuplicate(mapMarkers, match);
+        //   // console.log("before ReplaceinArry" + mapMarkers.length);
+        //   // mapMarkers = replaceInArray(mapMarkers, mapMarkers[index], match);
+        //   // console.log("replacing in array");
+        //   console.log("set!");
+        //   })
 
-          var match = getMarker(targetMarker);
-          targetMarker.setMap(null);
-          var index = findDuplicate(mapMarkers, match);
-          replaceInArray(mapMarkers, mapMarkers[index], match);
-          console.log(mapMarkers);
-          // fetch location data by id
-             fetchLocationById(match.id).then(function(data){
-                setMarker(data, true);
-            })
+        //   // remove marker from current place in global Array of markers
 
-          // remove marker from current place in global Array of markers
-
-          // create a new marker with the same marker data
-        }
+        //   // create a new marker with the same marker data
+        // }
       }
 
 // ----- Helper methods -----
@@ -412,22 +458,26 @@ var findDuplicate = function(arr, obj) {
     };
   // indexMarkers() - store new marker Obj in global array
     var indexMarker = function(obj){
-      
-      mapMarkers.push(obj);
+      var i = findDuplicate(mapMarkers, obj);
+      if(mapMarkers[i] && mapMarkers[i].id === obj.id){
+        mapMarkers = replaceInArray(mapMarkers, mapMarkers[i], obj);
+      } else {
+        mapMarkers.push(obj);
+      }
     }
 
 // ----- END Helpers -----
 
 
 // setMarker takes in a location and creates a mapMarker object and pushes to the global array of mapMarkers
-      setMarker = function(loc, drag){
+     var setMarker = function(loc, drag){
         var draggable = drag ? drag === true : false;
         // using location data from database, create a new gmMarker
           var markerLoc = locationMarker(loc, draggable);
           attachOptions(markerLoc);
-          console.log(`${markerLoc.label.text} found at ${markerLoc.position}`);
+          //console.log(`${markerLoc.label.text} found at ${markerLoc.position}`);
           indexMarker(storeMarkerIdInObject(loc, markerLoc));
-          console.log(mapMarkers);
+          console.log(mapMarkers.length);
           };
 
 // FetchMapLocations returns a promise and then each location gets transformed into a mapMarker object
@@ -436,6 +486,7 @@ var findDuplicate = function(arr, obj) {
         })
 
       }) // end loadData
+      
      var updateLocation = function(obj) {
           $.ajax({
             url: eventLocURL + '/' + obj.id,
@@ -450,11 +501,11 @@ var findDuplicate = function(arr, obj) {
             success: function(data, response) {
           
             // See what data is coming back
-            console.log(data.id + ": " + data.title + ": " + response);
+            //console.log(data.id + ": " + data.title + ": " + response);
 
             // Close modal once successfully saved
             if (response === 'success') {
-              console.log("updated!")
+              //console.log("updated!")
             }
           }
           })
@@ -463,37 +514,12 @@ var findDuplicate = function(arr, obj) {
      // Fired when dragging location markers
      function updateMapLocations() {
           mapMarkers.forEach(updateLocation);
-//        mapMarkers.forEach(function(obj) {
-//           $.ajax({
-//             url: eventLocURL + '/' + obj.id,
-//             method: 'PATCH',
-//             dataType: 'json',
-//             data: {
-//             location: { 
-//                 latitude: obj.gmObj.getPosition().lat(), 
-//                 longitude: obj.gmObj.getPosition().lng()
-//                 }
-//             },
-//             success: function(data, response) {
-          
-//             // See what data is coming back
-//             console.log(data.id + ": " + data.title + ": " + response);
-
-//             // Close modal once successfully saved
-//             if (response === 'success') {
-//               console.log("updated!")
-//             }
-//           }
-//           })
-//          })
        };
 
-        
-
-    
-      function postMapLocation(title, loc) {
+  
+      var postMapLocation = function(title, loc) {
         if (mapMarkers.length){
-          console.log(mapMarkers[1].getPosition().lat());
+          
         }
         
         console.dir(loc);
@@ -543,7 +569,7 @@ var findDuplicate = function(arr, obj) {
       // OR Create Markers on a map, drag them all over and then save an array of markers to the event locations. 
 
 
-      // EDIT Location on MAP: Highlighted Icon and zoom, draggable w/Form and Save 
+  
 
     }; // initMap END if @event exists
 
@@ -551,7 +577,7 @@ var findDuplicate = function(arr, obj) {
     }; // initMap END if NO @event exists
 
   <% end %> // if @event
-// TO-DO: FIGURE OUT HOW TO RE-FACTOR/MODULARIZE SCRIPTS TO FIX 'Unexpected Input' Errors }.
+
 
     </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhF2K8TKtEZ04zw7i3FMKQLwvv-bWC79g&callback=initMap"></script>
