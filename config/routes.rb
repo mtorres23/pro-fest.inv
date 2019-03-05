@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :events do
       resources :locations do
         resources :orders, except: [:index, :destroy]
-        resources :items, except: [:destroy]
+        resources :transactions, except: [:destroy]
       end
     end
 
@@ -24,18 +24,10 @@ Rails.application.routes.draw do
 
   get 'faqs' => 'home_pages#faqs'
 
-    # Modal Routes
-# route to view all client's events in the modal
-get '/clients/:client_id/events#modal1' => 'events#index', as: 'client_events_modal'
-# route to view a specific client's event in the modal
-get '/clients/:client_id/events/:event_id#modal1' => 'events#show', as: 'client_event_modal'
-    # Order Routes
+# Order Routes
 # route to view details from a specific order
 get '/locations/:location_id/orders/:order_id' => 'order#show', as: 'order'
 
-# Item Routes
-# route to get all items from a specific client
-get '/clients/:client_id/items' => 'items#client_items', as: 'items_by_client'
 
 # Location Routes
 # route to get all current items in a specific location

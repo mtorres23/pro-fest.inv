@@ -7,8 +7,10 @@
   <table class = 'centered'>
     <thead>
       <tr>
-        <th>Title</th>
-        <th>Order Created</th>  
+        <th>ID</th>
+        <th>Message</th>
+        <th>Order Created</th>
+        <th>Processed at</th>
         <th>Delivery Date</th>
       </tr>
     </thead>
@@ -16,7 +18,8 @@
     <tbody>
       <% @orders.each do |order|  %>
         <tr>
-          <td><%=link_to order.content, event_location_order_path(event_id: @location.event_id, location_id: @location.id, id: order.id)%></td>
+          <td><%=order.id%></td>
+          <td><%=link_to order.message, event_location_order_path(event_id: @location.event_id, location_id: @location.id, id: order.id)%></td>
           <td><%=order.created_at.strftime("%D  %I:%M %p") %></td>
           <td><%=order.delivery_date%></td>
         </tr>

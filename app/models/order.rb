@@ -1,4 +1,4 @@
 class Order < ApplicationRecord
-	belongs_to :category
-	has_many :items
+	belongs_to :location
+	has_many :transactions
 end

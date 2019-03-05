@@ -1,9 +1,10 @@
 class Location < ApplicationRecord
 	belongs_to :event, optional: true
-	has_many :users, :foreign_key => :admin_id
+	has_many :users, :foreign_key => :location_id
+	has_one :bin, :foreign_key => :location_id
 	has_many :categories
-	has_many :orders, through: :categories
-	has_many :items, through: :orders
+	has_many :orders, :foreign_key => :location_id
+	has_many :items, through: :bin
 
 
 	attr_accessor :address

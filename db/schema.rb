@@ -10,17 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180921112530) do
+ActiveRecord::Schema.define(version: 20190305060335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
+  create_table "bins", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "qty"
+    t.datetime "last_updated"
+    t.integer  "last_order"
     t.integer  "location_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["item_id"], name: "index_bins_on_item_id", using: :btree
+    t.index ["location_id"], name: "index_bins_on_location_id", using: :btree
   end
 
   create_table "clients", force: :cascade do |t|
@@ -61,10 +65,8 @@ ActiveRecord::Schema.define(version: 20180921112530) do
     t.string   "images"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.integer  "location_id"
-    t.integer  "qty"
-    t.integer  "order_id"
     t.integer  "client_id"
+    t.index ["client_id"], name: "index_items_on_client_id", using: :btree
   end
 
   create_table "locations", force: :cascade do |t|
@@ -84,28 +86,32 @@ ActiveRecord::Schema.define(version: 20180921112530) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.text     "content"
     t.integer  "created_by"
     t.integer  "verified_by"
     t.datetime "delivery_date"
     t.float    "total_price"
     t.integer  "total_amount"
-    t.integer  "category_id"
-    t.integer  "origin_id"
-    t.integer  "destination_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.string   "role"
+    t.text     "message"
+    t.integer  "location_id"
+    t.index ["location_id"], name: "index_orders_on_location_id", using: :btree
   end
 
-  create_table "places", force: :cascade do |t|
-    t.string   "title"
-    t.text     "address"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.string   "visited_by"
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "item_id"
+    t.integer  "order_id"
+    t.integer  "origin_id"
+    t.integer  "dest_id"
+    t.string   "status"
+    t.integer  "bin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "qty"
+    t.index ["bin_id"], name: "index_transactions_on_bin_id", using: :btree
+    t.index ["item_id"], name: "index_transactions_on_item_id", using: :btree
+    t.index ["order_id"], name: "index_transactions_on_order_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -134,4 +140,11 @@ ActiveRecord::Schema.define(version: 20180921112530) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "bins", "items"
+  add_foreign_key "bins", "locations"
+  add_foreign_key "items", "clients"
+  add_foreign_key "orders", "locations"
+  add_foreign_key "transactions", "bins"
+  add_foreign_key "transactions", "items"
+  add_foreign_key "transactions", "orders"
 end
