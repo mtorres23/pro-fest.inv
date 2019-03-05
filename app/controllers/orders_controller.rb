@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   before_action :set_client
   before_action :set_location, except: [:orders_by_client, :orders_by_event]
-  before_action :set_event, only: [:orders_by_event,:edit, :update, :destroy]
+  before_action :set_event, only: [:index, :orders_by_event,:edit, :update, :destroy]
 
   def index
     @orders = @event.orders

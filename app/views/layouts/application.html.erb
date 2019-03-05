@@ -157,15 +157,17 @@
                  <option value=‘storage’>storage</option>
                  </select> </td></tr>
                  <tr><td></td><td><input id='location-submit' type='button' value='Save'/></td>
-                <td><input id='location-undo' type='button' value='Undo'/></td></tr>
+                </tr>
       </table>
-    </div>
-    <div id="message">Location saved</div>
+</div>
+
+<div id="message">Location saved</div>
+
 <div id="options">
   <br>
     <button id="move" name="move-marker" class="btn">Move</button>
     <br>
-    <button id="location-delete" class="btn">Remove</button>
+    <button id="location-delete" name="delete-marker" class="btn">Delete</button>
   </div>
    
     
@@ -209,6 +211,8 @@
           content: document.getElementById('form')
         });
 
+
+
       // Info Window for Message
        messagewindow = new google.maps.InfoWindow({
           content: document.getElementById('message')
@@ -238,9 +242,12 @@
                   icon: locIcon,
                   animation: google.maps.Animation.DROP,
                   draggable: false})
+                
+                
                 // Add Event Listener to marker when created.
                 google.maps.event.addListener(marker, 'click', function() {
                   locationInfoWindow.open(map, marker);
+                  
                   
                 });
                 google.maps.event.addListener(marker, 'dblclick', function() {
@@ -251,29 +258,9 @@
                 });
           });
 
-// TO-DO: Create mechanism to remove marker with undo button (maybe by using index)
-        function undoMarker(){
-          console.log(marker);
-        }
-        function locationRemove(){
-          console.log(marker.getPosition().lat());
-        }
+
         // Set Submit button to a variable. NOTE: use jQuery
         var locationSubmit = document.getElementById('location-submit');
-
-        // Set Submit button to a variable. NOTE: use jQuery
-        var locationUndo = document.getElementById('location-undo');
-
-        // Undo marker add
-        locationUndo.addEventListener('click', undoMarker);
-
-          // Set Submit button to a variable. NOTE: use jQuery
-        var locationDelete = document.getElementById('location-delete');
-
-        // Undo marker add
-        locationDelete.addEventListener('click', locationRemove);
-
-        var locationMoveEl = document.getElementById('move');
 
       
   <% if @event %>
@@ -300,6 +287,14 @@
         })
       }
 
+      function deleteLocation(id) {
+        return $.ajax({
+          url: eventLocURL + '/' + id,
+          method: 'DELETE',
+          dataType: 'json',
+        })
+      }
+
       $(document).ready(function loadData() {
        
   // TO-DO: Send Array of Locations To the array to create a marker for each!
@@ -320,17 +315,37 @@
              fetchLocationById(match.id).then(function(data){
                console.log(data);
                 setMarker(data, true);
-          }).then(function(){
-          // var index = findDuplicate(mapMarkers, match);
-          // mapMarkers = replaceInArray(mapMarkers, mapMarkers[index], match);
-          // console.log("replacing in array");
-          // console.log(mapMarkers);
-          })
-
-          // remove marker from current place in global Array of markers
-
-          // create a new marker with the same marker data
+          });
         }
+
+      var deleteMarker = function() {
+          var match = ""; // Doesn't stop duplicates
+          match = getMarker(targetMarker);
+
+          // erase location in database
+          try {
+            deleteLocation(match.id).then(function() {
+              var iterator = mapMarkers.entries();
+              for (let entry of iterator) {
+                if(entry[1].id === match.id){
+                   mapMarkers.splice(entry[0], 1);
+                    };
+                  }
+              }).then(function(){
+                targetMarker.setMap(null);
+              })
+          } catch(err) {
+            throw err;
+          }
+
+          // remove from marker Array
+
+
+          // remove Marker from map
+        
+        }
+
+        
 
         // getMarker(targetMarker) - using targetMarker, find marker data to perform front and back end updates.
  var getMarker = function(clickedMarker) {
@@ -346,8 +361,7 @@
   };
       
       var attachOptions = function(marker) {
-        
-      // Map marker needs to 
+      // Map marker needs to open info window with opts: move or delete
         marker.addListener('click', function() {
           if(infowindow) {
             infowindow.close();
@@ -356,55 +370,11 @@
           targetMarker = marker;
           var move = infowindow.content.children.namedItem('move-marker');
           move.addEventListener('click', moveMarker);
-          console.log(move);
-
+          var removeMarker = infowindow.content.children.namedItem('delete-marker');
+          removeMarker.addEventListener('click', deleteMarker);
         });
 
         marker.addListener('dragend', updateMapLocations); // Updates map on marker drag. To-do: create and edit/save button and toggle draggability
-
-// // getMarker(targetMarker) - using targetMarker, find marker data to perform front and back end updates.
-//  var getMarker = function(clickedMarker) {
-//    var targetObj = ""; // Doesn't stop duplicates
-//           // find marker obj in marker array
-//         var matchMarkerObj = function(obj) {
-//             if(obj.gmObj === clickedMarker){
-//               return obj;
-//             }
-//         }
-//         targetObj = mapMarkers.filter(matchMarkerObj)[0];
-//         return targetObj;
-//         console.log("Inside getMarker" + mapMarkers.length);
-//   };
-
-  // Event Listeners for moveMarker and deleteMarker
-        // var moveMarker = function() {
-          
-        //   var match = ""; // Doesn't stop duplicates
-        //   var dragStatus;
-        //   if(targetMarker.draggable === true){
-        //     dragStatus = false;
-        //   } else { 
-        //     dragStatus = true;
-        //   }
-        //   match = getMarker(targetMarker);
-        //   targetMarker.setMap(null);
-        //   // fetch location data by id
-        //      fetchLocationById(match.id).then(function(data){
-        //        console.log(data);
-        //         setMarker(data, true);
-        //         console.log("After setMarker" + mapMarkers.length);
-        //   }).then(function(){
-        //   // var index = findDuplicate(mapMarkers, match);
-        //   // console.log("before ReplaceinArry" + mapMarkers.length);
-        //   // mapMarkers = replaceInArray(mapMarkers, mapMarkers[index], match);
-        //   // console.log("replacing in array");
-        //   console.log("set!");
-        //   })
-
-        //   // remove marker from current place in global Array of markers
-
-        //   // create a new marker with the same marker data
-        // }
       }
 
 // ----- Helper methods -----
@@ -561,7 +531,6 @@ var findDuplicate = function(arr, obj) {
         } finally {
           postMapLocation(title, marker);
         }
-        
         
       } // saveData END
 

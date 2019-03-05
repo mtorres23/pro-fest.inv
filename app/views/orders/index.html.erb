@@ -1,5 +1,5 @@
 
-<%= link_to "New Order", new_api_order_path , class: 'btn btn-primary btn-lg' %>
+<%# <%= link_to "New Order", new_event_location_order_path , class: 'btn btn-primary btn-lg' %> %>
 
 
 <div class ='orders-wrapper'>
@@ -16,7 +16,7 @@
     <tbody>
       <% @orders.each do |order|  %>
         <tr>
-          <td><%= link_to order.content, api_order_path(order.id) %></td>
+          <td><%= link_to order.content, order_path(order.id) %></td>
           <td><%=order.created_at.strftime("%D  %I:%M %p") %></td>
           <td><%=order.updated_at.strftime("%D %I:%M %p") %></td>
           <td><%=order.delivery_date%></td>

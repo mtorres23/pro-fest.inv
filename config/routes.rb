@@ -6,10 +6,11 @@ Rails.application.routes.draw do
     resources :clients do
       resources :items
       resources :events
+      resources :orders, except: [:destroy]
     end
     resources :events do
       resources :locations do
-        resources :orders, except: [:destroy]
+        resources :orders, except: [:index, :destroy]
         resources :items, except: [:destroy]
       end
     end
@@ -40,7 +41,7 @@ get '/clients/:client_id/items' => 'items#client_items', as: 'items_by_client'
 # route to get all current items in a specific location
 get '/locations/:location_id/items' => 'items#location_items', as: 'location_items'
 post '/events/:event_id/locations' => 'locations#create', as: 'create_location'
-get '/locations/:location_id/orders' => 'orders#orders_by_location', as: 'location_orders'
+get '/events/:event_id/locations/:location_id/orders' => 'orders#orders_by_location', as: 'location_orders'
 get 'api/events/:event_id/locations' => 'locations#index_as_json', as: 'locations_api_index'
 get 'api/events/:event_id/locations/:id' => 'locations#location_json', as: 'location_api'
 post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_order'
