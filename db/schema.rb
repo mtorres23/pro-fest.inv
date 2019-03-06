@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190305060335) do
+ActiveRecord::Schema.define(version: 20190306031546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "bins", force: :cascade do |t|
+  create_table "bins", id: :bigserial, force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "qty"
     t.datetime "last_updated"
@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20190305060335) do
     t.index ["location_id"], name: "index_bins_on_location_id", using: :btree
   end
 
-  create_table "clients", force: :cascade do |t|
+  create_table "clients", id: :bigserial, force: :cascade do |t|
     t.string   "company_id"
     t.integer  "access_key"
     t.text     "address"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20190305060335) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "events", force: :cascade do |t|
+  create_table "events", id: :bigserial, force: :cascade do |t|
     t.string   "title"
     t.date     "start_date"
     t.date     "end_date"
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20190305060335) do
     t.integer  "admin_id"
   end
 
-  create_table "items", force: :cascade do |t|
+  create_table "items", id: :bigserial, force: :cascade do |t|
     t.string   "title"
     t.string   "upc"
     t.text     "description"
@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20190305060335) do
     t.index ["client_id"], name: "index_items_on_client_id", using: :btree
   end
 
-  create_table "locations", force: :cascade do |t|
+  create_table "locations", id: :bigserial, force: :cascade do |t|
     t.string   "title"
     t.text     "address"
     t.float    "latitude"
@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 20190305060335) do
     t.string   "loc_type"
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", id: :bigserial, force: :cascade do |t|
     t.integer  "created_by"
     t.integer  "verified_by"
     t.datetime "delivery_date"
@@ -99,7 +99,7 @@ ActiveRecord::Schema.define(version: 20190305060335) do
     t.index ["location_id"], name: "index_orders_on_location_id", using: :btree
   end
 
-  create_table "transactions", force: :cascade do |t|
+  create_table "transactions", id: :bigserial, force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "order_id"
     t.integer  "origin_id"
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 20190305060335) do
     t.index ["order_id"], name: "index_transactions_on_order_id", using: :btree
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", id: :bigserial, force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"

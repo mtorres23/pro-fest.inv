@@ -32,7 +32,7 @@ class ItemsController < ApplicationController
 
     respond_to do |format|
       if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully added.' }
+        format.html { redirect_to client_item_path(id: @item.id), notice: 'Item was successfully added.' }
         format.json { render :show, status: :created, location: @item }
       else
         format.html { render :new }
@@ -63,7 +63,7 @@ class ItemsController < ApplicationController
    @item = @client.items.find(params[:id])
     @item.destroy
     respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully removed from Inventory.' }
+      format.html { redirect_to client_items_url, notice: 'Item was successfully removed from Inventory.' }
       format.json { head :no_content }
     end
   end
