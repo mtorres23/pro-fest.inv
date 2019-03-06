@@ -1,4 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
+        <td><%= link_to 'Edit', edit_client_item_path(@item) %></td>
+        <%# <td><%= link_to 'Destroy', client_item_path(@item), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <%= link_to 'Back', client_items_path %>
+
+<header><h1 class="display-4 center"><%= @item.title %></h1></header>
+<img src='<%= @item.images%>'>
+<p>UPC: <%= @item.upc %></p>
+<p>Description: <%= @item.description %></p>
