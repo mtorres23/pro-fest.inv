@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Inventory</h1>
+
+<table>
+  <thead>
+      <tr>
+        <th>Qty</th>
+        <th>Item Name</th>
+        <th>Units</th>
+        <th></th>
+      </tr>
+    </thead>
+
+  <tbody>
+    <% @bins.each do |item| %>
+      <tr>
+        <td><%= Item.find(item.item_id).unit * item.qty %></td>
+        <td><%= Item.find(item.item_id).title %></td>
+        <td><%= Item.find(item.item_id).unit %> X <%= item.qty %></td>
+        <td><img src='<%= Item.find(item.item_id).images %>'></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Item', new_location_item_path %>
