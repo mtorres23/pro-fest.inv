@@ -3,10 +3,10 @@
   <head>
     <title>Fifo</title>
     <%= csrf_meta_tags %>
-    
+
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
-   
+
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -46,28 +46,28 @@
     <% if user_signed_in? %>
 
             <li class="waves-effect waves-light sideLinks">
-              <%= link_to 'Home', root_path, class: 'btn sideLinks'%>
+              <%= link_to 'Home', root_path, class: 'btn menu-button'%>
             </li>
             <% if current_user.is_event_admin? || current_user.is_crew? %>
             <li class="waves-effect waves-light sideLinks">
-            <%= link_to "Items", client_items_path(client_id: current_user.client_id), class: 'btn sideLinks' %>
+            <%= link_to "Items", client_items_path(client_id: current_user.client_id), class: 'btn menu-button' %>
             </li>
             <% end %>
             <li class="waves-effect waves-light sideLinks">
-              <%= link_to 'Edit account', edit_user_registration_path, target: '_self', class: 'btn sideLinks' %>
+              <%= link_to 'Edit account', edit_user_registration_path, target: '_self', class: 'btn menu-button' %>
             </li>
             <li class="waves-effect waves-light sideLinks Events">
-              <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger', class: 'btn sideLinks'  %>
+              <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger', class: 'btn menu-button'  %>
             </li>
           <li class="waves-effect waves-light sideLinks  signout">
-            <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self', class: 'btn sideLinks' %>
+            <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self', class: 'btn menu-button' %>
           </li>
           <% else %>
             <li class="waves-effect waves-light sideLinks  signup">
-            <%= link_to 'Sign Up' , new_user_registration_path, class: 'btn sideLinks' %>
+            <%= link_to 'Sign Up' , new_user_registration_path, class: 'btn menu-button' %>
             </li>
             <li class="waves-effect waves-light sideLinks  signin">
-            <%= link_to 'Sign In' ,  new_user_session_path, class: 'btn sideLinks' %>
+            <%= link_to 'Sign In' ,  new_user_session_path, class: 'btn menu-button' %>
             </li>
 
             <% end %>
@@ -170,7 +170,7 @@
     <button id="location-delete" name="delete-marker" class="btn">Delete</button>
   </div>
    
-    
+   
 <script>
 // Initializing variables
 
@@ -200,12 +200,12 @@
         console.log("Displaying Client location at: " + target);
         <% end %>
 
-        // MAP    
+        // MAP
         map = new google.maps.Map(document.getElementById('map'), {
           center: target,
           zoom: 20
         });
-      
+
        // Info Window for Form
        locationInfoWindow = new google.maps.InfoWindow({
           content: document.getElementById('form')
@@ -234,7 +234,7 @@
         };
 
 
-      // Events 
+      // Events
         google.maps.event.addListener(map, 'click', function(event) {
                 marker = new google.maps.Marker({
                   position: event.latLng,
@@ -242,19 +242,19 @@
                   icon: locIcon,
                   animation: google.maps.Animation.DROP,
                   draggable: false})
-                
-                
+
+
                 // Add Event Listener to marker when created.
                 google.maps.event.addListener(marker, 'click', function() {
                   locationInfoWindow.open(map, marker);
-                  
-                  
+
+
                 });
                 google.maps.event.addListener(marker, 'dblclick', function() {
                   console.dir(locationInfoWindow);
                   console.dir(marker);
                   marker.setMap(null);
-                  
+
                 });
           });
 
@@ -262,12 +262,12 @@
         // Set Submit button to a variable. NOTE: use jQuery
         var locationSubmit = document.getElementById('location-submit');
 
-      
+     
   <% if @event %>
 
     // Add Event Listener to button
       locationSubmit.addEventListener('click', saveMarkerLocation);
-  
+
       var eventLocURL = '/events/<%= @event.id %>/locations';
       var mapMarkers = [];
 
@@ -278,7 +278,7 @@
           dataType: 'json',
         })
       }
-      
+
       function fetchLocationById(id) {
         return $.ajax({
           url: '/api' + eventLocURL + '/' + id,
@@ -296,7 +296,7 @@
       }
 
       $(document).ready(function loadData() {
-       
+
   // TO-DO: Send Array of Locations To the array to create a marker for each!
       // var mapMarkers = [];
       var targetMarker;
@@ -306,7 +306,7 @@
           var dragStatus;
           if(targetMarker.draggable === true){
             dragStatus = false;
-          } else { 
+          } else {
             dragStatus = true;
           }
           match = getMarker(targetMarker);
@@ -342,10 +342,10 @@
 
 
           // remove Marker from map
-        
+
         }
 
-        
+
 
         // getMarker(targetMarker) - using targetMarker, find marker data to perform front and back end updates.
  var getMarker = function(clickedMarker) {
@@ -359,7 +359,7 @@
         targetObj = mapMarkers.filter(matchMarkerObj)[0];
         return targetObj;
   };
-      
+
       var attachOptions = function(marker) {
       // Map marker needs to open info window with opts: move or delete
         marker.addListener('click', function() {
@@ -418,7 +418,7 @@ var findDuplicate = function(arr, obj) {
       };
     }
   };
-  
+
   // storeMarkerIdInObject() - returns a new marker object with loc.id and markerObj
     var storeMarkerIdInObject = function(data, marker) {
       return {
@@ -456,20 +456,20 @@ var findDuplicate = function(arr, obj) {
         })
 
       }) // end loadData
-      
+
      var updateLocation = function(obj) {
           $.ajax({
             url: eventLocURL + '/' + obj.id,
             method: 'PATCH',
             dataType: 'json',
             data: {
-            location: { 
-                latitude: obj.gmObj.getPosition().lat(), 
+            location: {
+                latitude: obj.gmObj.getPosition().lat(),
                 longitude: obj.gmObj.getPosition().lng()
                 }
             },
             success: function(data, response) {
-          
+
             // See what data is coming back
             //console.log(data.id + ": " + data.title + ": " + response);
 
@@ -486,29 +486,29 @@ var findDuplicate = function(arr, obj) {
           mapMarkers.forEach(updateLocation);
        };
 
-  
+
       var postMapLocation = function(title, loc) {
         if (mapMarkers.length){
-          
+
         }
-        
+
         console.dir(loc);
         var latLng = loc.getPosition();
         var mlat = latLng.lat();
-        var mlng = latLng.lng(); 
+        var mlng = latLng.lng();
         $.ajax({
-          url: eventLocURL, 
+          url: eventLocURL,
           method: 'POST',
           dataType: 'json',
           data: {
             location: {
-                title: title, 
-                latitude: mlat, 
+                title: title,
+                latitude: mlat,
                 longitude: mlng
                 }
             },
             success: function(data, response) {
-          
+
             // See what data is coming back
             console.log(data.id + ": " + data.title + ": " + response);
 
@@ -531,14 +531,14 @@ var findDuplicate = function(arr, obj) {
         } finally {
           postMapLocation(title, marker);
         }
-        
+
       } // saveData END
 
       // To-Do: Create Multi Locations before saving AND Save All Locations into an event locations array
-      // OR Create Markers on a map, drag them all over and then save an array of markers to the event locations. 
+      // OR Create Markers on a map, drag them all over and then save an array of markers to the event locations.
 
 
-  
+
 
     }; // initMap END if @event exists
 
@@ -550,7 +550,7 @@ var findDuplicate = function(arr, obj) {
 
     </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhF2K8TKtEZ04zw7i3FMKQLwvv-bWC79g&callback=initMap"></script>
-    
+
     };
 
   <%= yield %>

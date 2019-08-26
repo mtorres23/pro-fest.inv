@@ -1,9 +1,7 @@
 @import "materialize/components/color-variables";
 $primary-color: color("blue", "lighten-2") !default;
 $secondary-color: color("yellow", "base") !default;
-@import 'materialize';
-
-
+@import "materialize";
 
 .orders-wrapper {
   height: 50vh;
@@ -26,44 +24,42 @@ $secondary-color: color("yellow", "base") !default;
 }
 
 .columnbgrnd {
-  background-color: #0043FF;
+  background-color: #0043ff;
   border: 2px solid black;
   margin-bottom: 0;
-  
 }
 
-
 .s9 {
-  background-color: #E9E8EE;
+  background-color: #e9e8ee;
 }
 
 .modal {
-  background-color: #E9E8EE;
+  background-color: #e9e8ee;
 }
 
 #modal1 img {
   background-image: url('<img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px">');
 }
 
-
 select {
   display: inherit;
 }
 
-.event-show{
-
-
+.event-show {
 }
 
 .locations-content {
-
   overflow: scroll;
 }
 
-.splash-img{
+.splash-img {
   margin-bottom: -45px;
 }
 
 .modal-close {
   left: 43%;
+}
+
+.menu-button {
+  width: 100%;
 }
