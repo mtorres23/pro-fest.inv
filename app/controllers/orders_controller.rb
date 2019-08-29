@@ -47,6 +47,7 @@ class OrdersController < ApplicationController
 
   def show
     @order = @location.orders.find(params[:id])
+    @transactions = @order.transactions
   end
 
   def update

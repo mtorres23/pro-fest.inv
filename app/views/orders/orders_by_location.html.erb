@@ -1,7 +1,7 @@
 
 <%= link_to "New Order", new_event_location_order_path(event_id: @location.event_id, location_id: @location.id), class: 'btn btn-primary btn-lg' %>
 
-
+<%= link_to 'Back To Location', event_location_path(event_id: @location.event_id, id: @location), class: 'center btn waves-effect waves-light' %>
 
 <div class ='orders-wrapper'>
   <table class = 'centered'>

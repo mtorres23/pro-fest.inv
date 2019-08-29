@@ -1,0 +1,36 @@
+<h1><%= @order.id %> : Transaction #<%= @transaction.id %></h1>
+
+
+
+
+<header><h3 class="display-4 center"><%= @order.role %> - <%= @transaction.status %></h3></header>
+
+<table class="centered highlighted">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th colspan="2">Item Title</th>
+      <th>Qty</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Created Time</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @transaction.id %></td>
+        <td colspan="2"><%= @transaction.item.title%></td>
+        <td><%= @transaction.qty %></td>
+        <td><%= @transaction.origin_id %></td>
+        <td><%= @transaction.dest_id %></td>
+        <td><%= @transaction.created_at.strftime("%I:%M%p on %m/%d/%Y") %></td>
+        <td><%= link_to 'Edit', edit_event_location_order_transaction_path(@event, @location, @order, @transaction) %></td>
+<td><%= link_to 'Destroy', event_location_order_transaction_path(@event, @location, @order, @transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  </tbody>
+</table>
+
+<%= link_to "Back", event_location_order_path(@event, @location, @order) %>

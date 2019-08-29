@@ -1,6 +1,67 @@
-<h1>Order Details</h1>
+<header>
+<h3 class="display-4 center"><%= @order.role %></h3>
+ <h5 class="display-2 center">Location: <%= @location.title %></h5>
+ <%= link_to 'Back To Location', event_location_path(event_id: @location.event_id, id: @location), class: 'right btn waves-effect waves-light' %>
+</header>
 
-<h3><%= @order.id %>: <%= @order.message %></h3>
 
 
-<%= link_to "Edit", edit_event_location_order_path %>
+<%= link_to 'Add Transaction', new_event_location_order_transaction_path(order_id: @order.id), class: 'center btn-large waves-effect waves-light' %>
+<%= link_to 'Edit Order', edit_event_location_order_path(id: @order.id), class: 'center btn-large waves-effect waves-light' %>
+
+<div class="card">
+  <div class="container">
+
+		<table class="centered highlighted">
+  			<thead>
+              <tr>
+                <div class="center">
+                    <h4>Order #<%= @order.id %> Details</h4>
+                    <br>
+                    <bold> Message: <%= @order.message %></bold:>
+                    <hr/>
+                </div>
+              </tr>
+    <tr>
+      <th>Item #</th>
+      <th>Status</th>
+      <th colspan="3">Item Title</th>
+      <th>Qty</th>
+      <th>From</th>
+      <th>To</th>
+      <th>Created Time</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transactions.each do |transaction| %>
+      <tr>
+        <td><%= transaction.id %></td>
+        <td><%= transaction.status %></td>
+        <td colspan="3"><%= link_to transaction.item.title, event_location_order_transaction_path(@event, @location, @order, transaction) %></td>
+        <td><%= transaction.qty %></td>
+        <td>
+        <% if transaction.origin_id %>
+        <%= Location.find(transaction.origin_id).title %>
+        <% else %>
+        <span>Searching..</span>
+        <% end %>
+        </td>
+        <td>
+        <% if transaction.dest_id %>
+        <%= Location.find(transaction.dest_id).title   %>
+        <% else %>
+        <span>Searching..</span>
+        <% end %>
+        </td>
+        <td><%= transaction.created_at.strftime("%I:%M%p on %m/%d/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  </div>
+</div>
+
+

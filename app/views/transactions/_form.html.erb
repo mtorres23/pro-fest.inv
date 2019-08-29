@@ -1,0 +1,40 @@
+<%= form_for [@event, @location, @order, @transaction] do |f| %>
+  <% if @transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% @transaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="form_row">
+      <%= f.label :item_id %>
+      <%= f.select(:item_id, options_for_select(@items.map{|item|[item.title, item.id]}), :include_blank => true, :required => true) %>
+  </div>
+  <div class="field">
+    <%= f.label :qty, '# of units' %>
+    <%= f.number_field :qty %>
+  </div>
+
+  <div class="form_row">
+      <%= f.label :origin_id, 'From Location' %>
+      <%= f.select(:origin_id, options_for_select(@locations.map{|location|[location.title, location.id]}), :include_blank => true)%>
+  </div>
+
+  <div class="form_row">
+      <%= f.label :dest_id, 'To Location'  %>
+      <%= f.select(:dest_id, options_for_select(@locations.map{|location|[location.title, location.id]}), :include_blank => true)%>
+  </div>
+
+  <div class="form_row">
+      <%= f.label :status %>
+      <%= f.select(:status, options_for_select(statuses), :required => true) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

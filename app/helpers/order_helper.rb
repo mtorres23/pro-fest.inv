@@ -1,7 +1,7 @@
 module OrderHelper
   def order_types
     [
-      ['Message'],
+      ['Note'],
       ['Transfer In'],
       ['Transfer Out'],
       ['Comp'],

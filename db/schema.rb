@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190306045559) do
+ActiveRecord::Schema.define(version: 20190829014106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "accounts", id: :bigserial, force: :cascade do |t|
+    t.string   "company_id"
+    t.integer  "account_access_key"
+    t.text     "address"
+    t.integer  "admin_id"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
 
   create_table "bins", id: :bigserial, force: :cascade do |t|
     t.integer  "item_id"
@@ -36,6 +47,17 @@ ActiveRecord::Schema.define(version: 20190306045559) do
     t.float    "longitude"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "name"
+    t.text     "address"
+    t.string   "phone"
+    t.string   "email"
+    t.integer  "account_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_customers_on_account_id", using: :btree
   end
 
   create_table "events", id: :bigserial, force: :cascade do |t|
@@ -100,24 +122,47 @@ ActiveRecord::Schema.define(version: 20190306045559) do
     t.index ["location_id"], name: "index_orders_on_location_id", using: :btree
   end
 
+  create_table "products", id: :bigserial, force: :cascade do |t|
+    t.string   "name"
+    t.string   "upc"
+    t.text     "description"
+    t.string   "color"
+    t.string   "size"
+    t.string   "dimensions"
+    t.string   "weight"
+    t.float    "highest_recorded_price"
+    t.float    "lowest_recorded_price"
+    t.string   "image_url"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "brand"
+    t.string   "model_number"
+    t.string   "asin"
+    t.string   "measure"
+    t.string   "unit"
+    t.integer  "units_per_item"
+    t.float    "width"
+    t.float    "length"
+    t.float    "height"
+    t.integer  "account_id"
+    t.index ["account_id"], name: "index_products_on_account_id", using: :btree
+  end
+
   create_table "transactions", id: :bigserial, force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "order_id"
     t.integer  "origin_id"
     t.integer  "dest_id"
     t.string   "status"
-    t.integer  "bin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "qty"
-    t.index ["bin_id"], name: "index_transactions_on_bin_id", using: :btree
     t.index ["item_id"], name: "index_transactions_on_item_id", using: :btree
     t.index ["order_id"], name: "index_transactions_on_order_id", using: :btree
   end
 
   create_table "users", id: :bigserial, force: :cascade do |t|
     t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -137,15 +182,17 @@ ActiveRecord::Schema.define(version: 20190306045559) do
     t.integer  "client_id"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "encrypted_password",     default: ""
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
   add_foreign_key "bins", "items"
   add_foreign_key "bins", "locations"
+  add_foreign_key "customers", "accounts"
   add_foreign_key "items", "clients"
   add_foreign_key "orders", "locations"
-  add_foreign_key "transactions", "bins"
+  add_foreign_key "products", "accounts"
   add_foreign_key "transactions", "items"
   add_foreign_key "transactions", "orders"
 end

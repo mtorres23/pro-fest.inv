@@ -30,19 +30,38 @@ User.destroy_all
 Event.destroy_all
 Location.destroy_all
 Item.destroy_all
-Category.destroy_all
+Bin.destroy_all
 Order.destroy_all
 
 
-Client.create!(id: 1, company_id: 'Premier Events', access_key: 1776, address: '1825 MacArthur Blvd NW, Atlanta, GA 30318', latitude: '', longitude: '')
-User.create!(id: 2, client_id:1, email: 'harryk@gmail.com', password: 'harryk333', encrypted_password: 'harryk333', is_event_admin: true)
-Event.create(id: 1, title: 'Music Midtown', address: 'Piedmont Park', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', client_id: 1)
-Location.create(id: 1, title: 'HQ', event_id: 1)
-Location.create(id: 2, title: 'warehouse', event_id: 1)
+Client.create!(company_id: 'Premier Events', access_key: 1776, address: '1825 MacArthur Blvd NW, Atlanta, GA 30318', latitude: '', longitude: '')
+client_id = Client.first.id
 
-Category.create(id: 1, name: 'beverages', location_id: 1)
-Order.create(id: 1, content: 'hello', category_id: 1)
-Item.create(id: 1, title: 'Bud Light', qty: 50, order_id: 1)
+Item.create(client_id: client_id, title: '50pk - 12oz Clear Plastic cups', upc: '616932448706', images: 'https://partycity6.scene7.com/is/image/PartyCity/_pdp_sq_?$_100x100_$&$product=PartyCity/259325', description: '12 oz disposable plastic cups, Value pack of 50 cups', sale_price: 8.99, unit: 50)
+item_id = Item.first.id
 
-User.create!(id: 1, client_id:1, email: 'danmilo@gmail.com', password: 'danmilo333', encrypted_password: 'danmilo333', is_event_admin: true)
-User.create!(id: 3, client_id:1, email: 'michaelt@gmail.com', password: 'michael333', encrypted_password: 'michael333', is_event_admin: true)
+Event.create(title: 'Music Midtown', address: 'Piedmont Park', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', client_id: client_id)
+event_id = Event.first.id
+
+Location.create(title: 'HQ', event_id: event_id)
+location_id = Location.first.id
+
+Location.create(title: 'warehouse', event_id: event_id)
+loc2_id = Location.second.id
+
+User.create!(client_id:client_id, email: 'harryk@gmail.com', password: 'harryk333', encrypted_password: 'harryk333', is_event_admin: true)
+user_id = User.first.id
+
+Bin.create(item_id: item_id, location_id: location_id, qty: 12)
+bin_id = Bin.first.id
+
+Bin.create(item_id: item_id, location_id: loc2_id, qty: 2)
+bin2_id = Bin.second.id
+
+Order.create(message: 'I need 200 more cocktail cups, please', created_by: user_id, location_id: loc2_id)
+order_id = Order.first.id
+
+Transaction.create(item_id: item_id, qty: 4, origin_id: location_id, dest_id: loc2_id, status: 'Pending', bin_id: loc2_id, order_id: order_id)
+transaction_id = Transaction.first.id
+# User.create!(id: 1, client_id:1, email: 'danmilo@gmail.com', password: 'danmilo333', encrypted_password: 'danmilo333', is_event_admin: true)
+# User.create!(id: 3, client_id:1, email: 'michaelt@gmail.com', password: 'michael333', encrypted_password: 'michael333', is_event_admin: true)
