@@ -236,6 +236,7 @@
 
       // Events
         google.maps.event.addListener(map, 'click', function(event) {
+          console.log(event.latLng, "Lat lng")
                 marker = new google.maps.Marker({
                   position: event.latLng,
                   map: map,
