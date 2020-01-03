@@ -61,7 +61,7 @@ bin2_id = Bin.second.id
 Order.create(message: 'I need 200 more cocktail cups, please', created_by: user_id, location_id: loc2_id)
 order_id = Order.first.id
 
-Transaction.create(item_id: item_id, qty: 4, origin_id: location_id, dest_id: loc2_id, status: 'Pending', bin_id: loc2_id, order_id: order_id)
+Transaction.create(item_id: item_id, qty: 4, origin_id: location_id, dest_id: loc2_id, status: 'Pending', order_id: order_id)
 transaction_id = Transaction.first.id
 # User.create!(id: 1, client_id:1, email: 'danmilo@gmail.com', password: 'danmilo333', encrypted_password: 'danmilo333', is_event_admin: true)
 # User.create!(id: 3, client_id:1, email: 'michaelt@gmail.com', password: 'michael333', encrypted_password: 'michael333', is_event_admin: true)
