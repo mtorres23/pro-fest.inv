@@ -24,4 +24,4 @@ tmp/*
 # Ignore application configuration
 /config/application.yml
 tmp/cache/assets/sprockets/*
-tmp/cache/assets/sprockets/v3.0/x7/x7PYh8DJvPykcEqpVab2vcY9-GFz-3cqtoMlRAu94Uc.cache
+
