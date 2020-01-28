@@ -67,9 +67,10 @@ class ClientsController < ApplicationController
     def set_client
       @client = Client.find(current_user.client_id)
     end
-    
+
     def redirect_unless_admin
-      unless user_signed_in? && current_user.id === current_user.client.admin_id
+      puts current_user.permission_level
+      unless user_signed_in? && current_user.permission_level === 2
         redirect_to :dashboard
       end
     end
