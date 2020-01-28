@@ -488,7 +488,7 @@ var findDuplicate = function(arr, obj) {
        };
 
 
-      var postMapLocation = function(title, loc) {
+      var postMapLocation = function(title, type, loc) {
         if (mapMarkers.length){
 
         }
@@ -505,13 +505,14 @@ var findDuplicate = function(arr, obj) {
             location: {
                 title: title,
                 latitude: mlat,
-                longitude: mlng
+                longitude: mlng,
+                loc_type: type
                 }
             },
             success: function(data, response) {
 
             // See what data is coming back
-            console.log(data.id + ": " + data.title + ": " + response);
+            console.log(data.id + ": " + data.title + ": " + response + ": " + data.loc_type);
 
             // Close modal once successfully saved
             if (response === 'success') {
@@ -526,11 +527,12 @@ var findDuplicate = function(arr, obj) {
       // To-Do: access marker properties and send save
         try {
           var title = document.getElementById('title').value;
+          var locType = document.getElementById('type').value;
         var url = '/events/<%= @event.id %>/locations';
         } catch(err){
           throw err;
         } finally {
-          postMapLocation(title, marker);
+          postMapLocation(title, locType, marker);
         }
 
       } // saveData END

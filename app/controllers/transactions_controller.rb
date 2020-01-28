@@ -12,7 +12,10 @@ class TransactionsController < ApplicationController
     end
 
     def show
+        @locations = Location.where(event_id: @event.id)
         @transaction = @order.transactions.find(params[:id])
+        @origin = @locations.find_by({id: @transaction.origin_id}).title if @transaction.origin_id
+        @destination = @locations.find_by({id:@transaction.dest_id}).title if @transaction.dest_id
         @item = Item.find(@transaction.item_id)
     end
 

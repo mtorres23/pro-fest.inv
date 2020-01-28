@@ -24,8 +24,8 @@
         <td><%= @transaction.id %></td>
         <td colspan="2"><%= @transaction.item.title%></td>
         <td><%= @transaction.qty %></td>
-        <td><%= @transaction.origin_id %></td>
-        <td><%= @transaction.dest_id %></td>
+        <td><%= @origin %></td>
+        <td><%= @destination %></td>
         <td><%= @transaction.created_at.strftime("%I:%M%p on %m/%d/%Y") %></td>
         <td><%= link_to 'Edit', edit_event_location_order_transaction_path(@event, @location, @order, @transaction) %></td>
 <td><%= link_to 'Destroy', event_location_order_transaction_path(@event, @location, @order, @transaction), method: :delete, data: { confirm: 'Are you sure?' } %></td>

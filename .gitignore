@@ -25,3 +25,4 @@ tmp/*
 /config/application.yml
 tmp/cache/assets/sprockets/*
 
+*.cache
