@@ -32,7 +32,7 @@ Location.destroy_all
 Item.destroy_all
 Bin.destroy_all
 Order.destroy_all
-
+Assignment.destroy_all
 
 Client.create!(company_id: 'Premier Events', access_key: 1776, address: '1825 MacArthur Blvd NW, Atlanta, GA 30318', latitude: '', longitude: '')
 client_id = Client.first.id
@@ -51,6 +51,8 @@ loc2_id = Location.second.id
 
 User.create!(client_id:client_id, email: 'harryk@gmail.com', password: 'harryk333', encrypted_password: 'harryk333')
 user_id = User.first.id
+
+Assignment.create(event_id: event_id, location_id: location_id, user_id: user_id, role: 'event_admin')
 
 Bin.create(item_id: item_id, location_id: location_id, qty: 12)
 bin_id = Bin.first.id

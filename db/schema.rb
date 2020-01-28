@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200128054139) do
+ActiveRecord::Schema.define(version: 20200128061216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,18 @@ ActiveRecord::Schema.define(version: 20200128054139) do
     t.float    "longitude"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+  end
+
+  create_table "assignments", force: :cascade do |t|
+    t.integer  "event_id"
+    t.integer  "location_id"
+    t.string   "role"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["event_id"], name: "index_assignments_on_event_id", using: :btree
+    t.index ["location_id"], name: "index_assignments_on_location_id", using: :btree
+    t.index ["user_id"], name: "index_assignments_on_user_id", using: :btree
   end
 
   create_table "bins", id: :bigserial, force: :cascade do |t|
@@ -186,6 +198,9 @@ ActiveRecord::Schema.define(version: 20200128054139) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "assignments", "events"
+  add_foreign_key "assignments", "locations"
+  add_foreign_key "assignments", "users"
   add_foreign_key "bins", "items"
   add_foreign_key "bins", "locations"
   add_foreign_key "customers", "accounts"
