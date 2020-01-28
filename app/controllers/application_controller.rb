@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   protect_from_forgery prepend: true
   before_action :set_client
- 
+
 
   def set_client
     client =  Client.first
@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
 protected
 
   def configure_permitted_parameters
-  devise_parameter_sanitizer.permit(:sign_up, keys: [:client_id])
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:client_id, :account_id, :pin_number, :permissions])
   end
 end
 

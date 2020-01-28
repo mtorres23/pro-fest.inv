@@ -69,9 +69,9 @@ class BinsController < ApplicationController
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_client
-        if current_user && current_user.is_event_admin?
+        if current_user && current_user.permission_level?
         @client = Client.find(current_user.client_id)
-        elsif current_user && current_user.is_crew?
+        elsif current_user && current_user.permission_level?
         @client = Client.find(current_user.client_id)
         else
         self.send(:set_location)
