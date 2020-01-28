@@ -7,7 +7,7 @@ class Event < ApplicationRecord
 	has_many :items, through: :bins
 
 	geocoded_by :address
-	after_validation :geocode, if: ->(obj){ obj.address.present? and obj.address_changed? }
+	after_validation :geocode, if: ->(obj){ obj.address.present? or obj.address_changed? }
 
 reverse_geocoded_by :latitude, :longitude
 after_validation :reverse_geocode
