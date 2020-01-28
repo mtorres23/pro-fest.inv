@@ -49,7 +49,7 @@ location_id = Location.first.id
 Location.create(title: 'warehouse', event_id: event_id)
 loc2_id = Location.second.id
 
-User.create!(client_id:client_id, email: 'harryk@gmail.com', password: 'harryk333', encrypted_password: 'harryk333', is_event_admin: true)
+User.create!(client_id:client_id, email: 'harryk@gmail.com', password: 'harryk333', encrypted_password: 'harryk333')
 user_id = User.first.id
 
 Bin.create(item_id: item_id, location_id: location_id, qty: 12)

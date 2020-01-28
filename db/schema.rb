@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190829014106) do
+ActiveRecord::Schema.define(version: 20200128054139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,14 +175,13 @@ ActiveRecord::Schema.define(version: 20190829014106) do
     t.datetime "updated_at",                          null: false
     t.string   "first_name"
     t.string   "last_name"
-    t.boolean  "is_event_admin"
-    t.boolean  "is_crew"
-    t.boolean  "is_tent_manager"
     t.integer  "location_id",            default: 2
     t.integer  "client_id"
-    t.float    "latitude"
-    t.float    "longitude"
     t.string   "encrypted_password",     default: ""
+    t.integer  "account_id"
+    t.integer  "permission_level"
+    t.string   "pin_number"
+    t.index ["account_id"], name: "index_users_on_account_id", using: :btree
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
@@ -195,4 +194,5 @@ ActiveRecord::Schema.define(version: 20190829014106) do
   add_foreign_key "products", "accounts"
   add_foreign_key "transactions", "items"
   add_foreign_key "transactions", "orders"
+  add_foreign_key "users", "accounts"
 end
