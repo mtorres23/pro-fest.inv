@@ -2,14 +2,14 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_client
   before_action :set_location, only: [:location_items]
-  
+
   def index
     @items = @client.items
   end
 
   def location_items
   	@items = @location.items
-  end	
+  end
 
   def show
   	@item = @client.items.find(params[:id])
@@ -71,9 +71,9 @@ class ItemsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
-      if current_user && current_user.is_event_admin?
+      if current_user && current_user.permission_level?
       @client = Client.find(current_user.client_id)
-      elsif current_user && current_user.is_crew?
+      elsif current_user && current_user.permission_level?
       @client = Client.find(current_user.client_id)
       else
       redirect_to home_pages_home_path

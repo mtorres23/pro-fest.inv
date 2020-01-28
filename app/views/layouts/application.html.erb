@@ -48,7 +48,7 @@
             <li class="waves-effect waves-light sideLinks">
               <%= link_to 'Home', root_path, class: 'btn menu-button'%>
             </li>
-            <% if current_user.is_event_admin? || current_user.is_crew? %>
+            <% if current_user.permission_level? %>
             <li class="waves-effect waves-light sideLinks">
             <%= link_to "Items", client_items_path(client_id: current_user.client_id), class: 'btn menu-button' %>
             </li>
