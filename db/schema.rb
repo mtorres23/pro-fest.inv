@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200128061216) do
+ActiveRecord::Schema.define(version: 20200204164619) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 20200128061216) do
     t.datetime "updated_at",         null: false
     t.integer  "client_id"
     t.integer  "admin_id"
+    t.integer  "account_id"
+    t.index ["account_id"], name: "index_events_on_account_id", using: :btree
   end
 
   create_table "items", id: :bigserial, force: :cascade do |t|
@@ -204,6 +206,7 @@ ActiveRecord::Schema.define(version: 20200128061216) do
   add_foreign_key "bins", "items"
   add_foreign_key "bins", "locations"
   add_foreign_key "customers", "accounts"
+  add_foreign_key "events", "accounts"
   add_foreign_key "items", "clients"
   add_foreign_key "orders", "locations"
   add_foreign_key "products", "accounts"
