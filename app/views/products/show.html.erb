@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+
+        <td><%= link_to 'Edit', edit_account_product_path(@product) %></td>
+         <td><%= link_to 'Destroy', account_product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%= link_to 'Back', account_products_path %>
+
+<header><h1 class="display-4 center"><%= @product.name %></h1></header>
+<img src='<%= @product.image_url%>'>
+<p>Unit: <%= @product.unit %></p>
+<p>UPC: <%= @product.upc %></p>
+<p>Description: <%= @product.description %></p>
