@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200206020705) do
+ActiveRecord::Schema.define(version: 20200206143439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,14 +39,12 @@ ActiveRecord::Schema.define(version: 20200206020705) do
   end
 
   create_table "bins", id: :bigserial, force: :cascade do |t|
-    t.integer  "item_id"
     t.integer  "qty"
     t.datetime "last_updated"
     t.integer  "last_order"
     t.integer  "location_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["item_id"], name: "index_bins_on_item_id", using: :btree
     t.index ["location_id"], name: "index_bins_on_location_id", using: :btree
   end
 
@@ -149,7 +147,6 @@ ActiveRecord::Schema.define(version: 20200206020705) do
   end
 
   create_table "transactions", id: :bigserial, force: :cascade do |t|
-    t.integer  "item_id"
     t.integer  "order_id"
     t.integer  "origin_id"
     t.integer  "dest_id"
@@ -157,7 +154,6 @@ ActiveRecord::Schema.define(version: 20200206020705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "qty"
-    t.index ["item_id"], name: "index_transactions_on_item_id", using: :btree
     t.index ["order_id"], name: "index_transactions_on_order_id", using: :btree
   end
 
@@ -188,13 +184,11 @@ ActiveRecord::Schema.define(version: 20200206020705) do
   add_foreign_key "assignments", "events"
   add_foreign_key "assignments", "locations"
   add_foreign_key "assignments", "users"
-  add_foreign_key "bins", "items"
   add_foreign_key "bins", "locations"
   add_foreign_key "customers", "accounts"
   add_foreign_key "events", "accounts"
   add_foreign_key "orders", "locations"
   add_foreign_key "products", "accounts"
-  add_foreign_key "transactions", "items"
   add_foreign_key "transactions", "orders"
   add_foreign_key "users", "accounts"
 end

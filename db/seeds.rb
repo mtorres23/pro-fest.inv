@@ -42,6 +42,8 @@ account_id = Account.first.id
 Product.create(account_id: account_id, name: '50pk - 12oz Clear Plastic cups', upc: '616932448706', image_url: 'https://partycity6.scene7.com/is/image/PartyCity/_pdp_sq_?$_100x100_$&$product=PartyCity/259325', description: '12 oz disposable plastic cups, Value pack of 50 cups', unit: "50")
 product_id = Product.first.id
 
+Product.create(account_id: account_id, name: 'Bar Shaker Set', upc: '755141103027', image_url: 'http://ecx.images-amazon.com/images/I/41QblGwtXsL._SL160_.jpg', description: 'Stainless Steel 3 Piece Bar Shaker Set', unit: "1")
+
 Event.create(title: 'Music Midtown', address: 'Piedmont Park Atlanta', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', account_id: account_id)
 event_id = Event.first.id
 
@@ -56,10 +58,10 @@ user_id = User.first.id
 
 Assignment.create(event_id: event_id, location_id: location_id, user_id: user_id, role: 'event_admin')
 
-Bin.create(item_id: item_id, location_id: location_id, qty: 12)
+Bin.create(location_id: location_id, qty: 12)
 bin_id = Bin.first.id
 
-Bin.create(item_id: item_id, location_id: loc2_id, qty: 2)
+Bin.create(location_id: loc2_id, qty: 2)
 bin2_id = Bin.second.id
 
 Order.create(message: 'I need 200 more cocktail cups, please', created_by: user_id, location_id: loc2_id)
