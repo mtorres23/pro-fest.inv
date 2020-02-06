@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
 
 
   def set_account
-    user =  User.find(current_user.id)
     @account = Account.first
-    if !current_user
-      @account= Account.find(current_user.id)
+    if current_user
+      @account = Account.find(current_user.id)
     end
+    user =  User.where(account_id: @account.id)
 
   end
 

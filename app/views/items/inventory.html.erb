@@ -17,7 +17,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= Product.find(item.product_id).unit * item.quantity %></td>
+        <td><%= Product.find(item.product_id).unit.to_i * item.quantity %></td>
         <td><%= Product.find(item.product_id).name %></td>
         <td><%= Product.find(item.product_id).unit %> X <%= item.quantity %></td>
         <td><img src='<%= Product.find(item.product_id).image_url %>'></td>
