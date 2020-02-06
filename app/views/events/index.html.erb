@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 
-<%= link_to 'Add New Event', new_client_event_path(client_id: @client.id), class: 'btn waves-effect waves-light' %>
+<%= link_to 'Add New Event', new_account_event_path(account_id: @account.id), class: 'btn waves-effect waves-light' %>
 <hr>
 
 
@@ -12,7 +12,7 @@
 
 <div class="carousel">
   <% @events.each do |event| %>
-    <a class="carousel-item" href="/clients/<%= @client.id %>/events/<%= event.id %>"><%= event.title %><img src="https://images.medaviebc.ca/_xs/default-event-3.png?mtime=20170831085614"></a>
+    <a class="carousel-item" href="/accounts/<%= @account.id %>/events/<%= event.id %>"><%= event.title %><img src="https://images.medaviebc.ca/_xs/default-event-3.png?mtime=20170831085614"></a>
     <% end %>
     <a class="carousel-item" href="#">Verizon Wireless Amphitheatre<img src="http://imageshack.com/a/img922/8954/sqNDhI.jpg"></a>
     <a class="carousel-item" href="#">Shaky Beats<img src="http://imageshack.com/a/img922/7828/R33rnW.jpg"></a>

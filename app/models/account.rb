@@ -1,7 +1,7 @@
 class Account < ApplicationRecord
-    has_many :users
+    has_many :users, :foreign_key => :account_id
+	has_many :events, :foreign_key => :account_id
     has_many :products
-    has_many :items
     has_many :customers
 
     attr_accessor :address

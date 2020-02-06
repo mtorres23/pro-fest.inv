@@ -50,14 +50,14 @@
             </li>
             <% if current_user.permission_level? %>
             <li class="waves-effect waves-light sideLinks">
-            <%= link_to "Items", client_items_path(client_id: current_user.client_id), class: 'btn menu-button' %>
+            <%= link_to "Products", account_products_path(account_id: current_user.account_id), class: 'btn menu-button' %>
             </li>
             <% end %>
             <li class="waves-effect waves-light sideLinks">
-              <%= link_to 'Edit account', edit_user_registration_path, target: '_self', class: 'btn menu-button' %>
+              <%= link_to 'Edit Profile', edit_user_registration_path, target: '_self', class: 'btn menu-button' %>
             </li>
             <li class="waves-effect waves-light sideLinks Events">
-              <%= link_to 'Events', client_events_path(client_id: current_user.client_id), id: 'modal-trigger', class: 'btn menu-button'  %>
+              <%= link_to 'Events', account_events_path(account_id: current_user.account_id), id: 'modal-trigger', class: 'btn menu-button'  %>
             </li>
           <li class="waves-effect waves-light sideLinks  signout">
             <%= link_to 'Sign out', destroy_user_session_path, method: 'delete', target: '_self', class: 'btn menu-button' %>
@@ -185,19 +185,19 @@
   // Initializes the map
         function initMap() {
         // Checking if this map is for an avent
-        <% if @event && @client %>
+        <% if @event && @account %>
 
-        var target = {lat: <%= @event.latitude || @client.latitude %>, lng: <%= @event.longitude || @client.longitude %>};
+        var target = {lat: <%= @event.latitude || @account.latitude %>, lng: <%= @event.longitude || @account.longitude %>};
         console.log("Displaying Current Event location at: " + target);
         // Checking if this is just account location setup
-        <% elsif @client && @location %>
+        <% elsif @account && @location %>
 
         var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
         console.log("Displaying Current location at: " + target);
         // Checking if this is the home screen
         <% else %>
-        var target = {lat: <%= @client.latitude %>, lng: <%= @client.longitude %>};
-        console.log("Displaying Client location at: " + target);
+        var target = {lat: <%= @account.latitude %>, lng: <%= @account.longitude %>};
+        console.log("Displaying Account location at: " + target);
         <% end %>
 
         // MAP

@@ -1,10 +1,10 @@
 class BinsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_client
+    before_action :set_account
     before_action :set_location
 
     def inventory
-        @items = @client.items
+        @products = @account.products
         @bins = @location.bins
     end
 
@@ -14,8 +14,8 @@ class BinsController < ApplicationController
 
     # GET /bins/new
     def new
-        @items = @client.items
-      @bin = @location.bins.new
+        @products = @account.products
+        @bin = @location.bins.new
     end
 
     # GET /bins/:id/edit
@@ -68,11 +68,11 @@ class BinsController < ApplicationController
 
     private
       # Use callbacks to share common setup or constraints between actions.
-      def set_client
+      def set_account
         if current_user && current_user.permission_level?
-        @client = Client.find(current_user.client_id)
+        @account = Account.find(current_user.account_id)
         elsif current_user && current_user.permission_level?
-        @client = Client.find(current_user.client_id)
+        @account = Account.find(current_user.account_id)
         else
         self.send(:set_location)
         @event = @location.event

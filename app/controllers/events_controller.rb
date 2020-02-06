@@ -1,23 +1,23 @@
 class EventsController < ApplicationController
-  before_action :set_client
+  before_action :set_account
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
-    @events = current_user.client.events
+    @events = current_user.account.events
     @locations = Location.all
   end
 
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = @client.events.find(params[:id])
+    @event = @account.events.find(params[:id])
   end
 
   # GET /events/new
   def new
-    @event = @client.events.new
+    @event = @account.events.new
   end
 
   # GET /events/1/edit
@@ -27,7 +27,7 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = @client.events.new(event_params)
+    @event = @account.events.new(event_params)
 
     respond_to do |format|
       if @event.save
@@ -43,7 +43,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    @event = @client.events.find(params[:id])
+    @event = @account.events.find(params[:id])
 
     respond_to do |format|
       if @event.update_attributes(event_params)
@@ -59,7 +59,7 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
-   @event = @client.events.find(params[:id])
+   @event = @account.events.find(params[:id])
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
@@ -70,16 +70,17 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = @client.events.find(params[:id])
+      @event = @account.events.find(params[:id])
     end
 
-    def set_client
-      @client = Client.find(current_user.client_id)
+    def set_account
+      @account = Account.find(current_user.account_id)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       return params.require(:event)
       .permit(:title, :start_date, :end_date, :address, :latitude, :longitude, :admin_id)
+      .merge(account_id: @account.id)
     end
 end

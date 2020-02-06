@@ -3,11 +3,13 @@ Rails.application.routes.draw do
    devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-    resources :clients do
-      resources :items
-      resources :events
-      resources :orders, except: [:create, :destroy]
-    end
+  resources :accounts do
+    resources :products
+    resources :events
+    resources :customers
+    resources :users
+  end
+
     resources :events do
       resources :locations do
         resources :orders, except: [:index, :create] do
@@ -49,8 +51,8 @@ get '/events/:event_id/locations/:location_id/orders' => 'orders#orders_by_locat
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
 # get '/events/:event_id/locations/map_edit' => 'locations#map_edit', as: 'locations_map_edit'
 
-  root to: 'clients#dashboard'
-get '*path', to: 'clients#dashboard'
+  root to: 'events#index'
+get '*path', to: 'events#index'
 
 
 end

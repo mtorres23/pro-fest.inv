@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200128061216) do
+ActiveRecord::Schema.define(version: 20200206020705) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,17 +50,6 @@ ActiveRecord::Schema.define(version: 20200128061216) do
     t.index ["location_id"], name: "index_bins_on_location_id", using: :btree
   end
 
-  create_table "clients", id: :bigserial, force: :cascade do |t|
-    t.string   "company_id"
-    t.integer  "access_key"
-    t.text     "address"
-    t.integer  "admin_id"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string   "name"
     t.text     "address"
@@ -82,8 +71,9 @@ ActiveRecord::Schema.define(version: 20200128061216) do
     t.integer  "prev_year_event_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "client_id"
     t.integer  "admin_id"
+    t.integer  "account_id"
+    t.index ["account_id"], name: "index_events_on_account_id", using: :btree
   end
 
   create_table "items", id: :bigserial, force: :cascade do |t|
@@ -99,9 +89,7 @@ ActiveRecord::Schema.define(version: 20200128061216) do
     t.string   "images"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
-    t.integer  "client_id"
     t.integer  "unit"
-    t.index ["client_id"], name: "index_items_on_client_id", using: :btree
   end
 
   create_table "locations", id: :bigserial, force: :cascade do |t|
@@ -188,7 +176,6 @@ ActiveRecord::Schema.define(version: 20200128061216) do
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "location_id",            default: 2
-    t.integer  "client_id"
     t.string   "encrypted_password",     default: ""
     t.integer  "account_id"
     t.integer  "permission_level"
@@ -204,7 +191,7 @@ ActiveRecord::Schema.define(version: 20200128061216) do
   add_foreign_key "bins", "items"
   add_foreign_key "bins", "locations"
   add_foreign_key "customers", "accounts"
-  add_foreign_key "items", "clients"
+  add_foreign_key "events", "accounts"
   add_foreign_key "orders", "locations"
   add_foreign_key "products", "accounts"
   add_foreign_key "transactions", "items"

@@ -1,5 +1,5 @@
 class LocationsController < ApplicationController
-  before_action :set_client
+  before_action :set_account
   before_action :set_event
   before_action :set_location, only: [:location_json, :show, :edit, :update, :destroy]
 
@@ -9,7 +9,7 @@ class LocationsController < ApplicationController
 # GET api/events/:event_id/locations
   def index_as_json
     @locations = @event.locations.all
-    render json: @locations 
+    render json: @locations
   end
 
   # GET api/events/:event_id/locations/:id
@@ -27,7 +27,7 @@ class LocationsController < ApplicationController
   def new
     puts @event
     puts params[:event_id]
-    @event = @client.events.find(params[:event_id])
+    @event = @account.events.find(params[:event_id])
     @location = @event.locations.new
   end
 
@@ -100,12 +100,12 @@ class LocationsController < ApplicationController
 
   private
 
-  def set_client
-    @client = Client.find(current_user.client_id)
+  def set_account
+    @account = Account.find(current_user.account_id)
   end
 
   def set_event
-      @event = @client.events.find(params[:event_id])
+      @event = @account.events.find(params[:event_id])
   end
 
   def set_location
