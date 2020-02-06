@@ -38,7 +38,7 @@
       <tr>
         <td><%= transaction.id %></td>
         <td><%= transaction.status %></td>
-        <td colspan="3"><%= link_to transaction.item.title, event_location_order_transaction_path(@event, @location, @order, transaction) %></td>
+        <td colspan="3"><%= link_to transaction.item.product.name, event_location_order_transaction_path(@event, @location, @order, transaction) %></td>
         <td><%= transaction.qty %></td>
         <td>
         <% if transaction.origin_id %>

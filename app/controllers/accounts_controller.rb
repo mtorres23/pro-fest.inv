@@ -1,13 +1,13 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account, only: [:dashboard, :show, :edit, :update, :users, :items]
+  before_action :set_account, only: [:dashboard, :show, :edit, :update, :users, :products]
   before_action :redirect_unless_admin, except: [:dashboard, :users, :products]
 
   def dashboard
     @orders = @account.orders
     @locations = @account.locations
     @events = @account.events
-    @items = @account.items
+    @products = @account.products
   end
 
 # GET /accounts/:id/users
@@ -17,7 +17,7 @@ class AccountsController < ApplicationController
 
 # GET /accounts/:id/products
   def products
-    @items = @account.products
+    @products = @account.products
   end
 
   # GET /accounts/new

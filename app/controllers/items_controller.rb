@@ -1,65 +1,65 @@
-class BinsController < ApplicationController
+class ItemsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_account
     before_action :set_location
 
     def inventory
         @products = @account.products
-        @bins = @location.bins
+        @items = @location.items
     end
 
     # def show
-    #     @item = @location.bins.find(params[:id])
+    #     @item = @location.items.find(params[:id])
     # end
 
-    # GET /bins/new
+    # GET /items/new
     def new
         @products = @account.products
-        @bin = @location.bins.new
+        @item = @location.items.new
     end
 
-    # GET /bins/:id/edit
+    # GET /items/:id/edit
     def edit
-      @bin = @location.bins.find(params[:id])
+      @item = @location.items.find(params[:id])
     end
 
-    # POST /bins
-    # POST /bins.json
+    # POST /items
+    # POST /items.json
     def create
-      @bin = @location.bins.new(bin_params)
+      @item = @location.items.new(item_params)
 
       respond_to do |format|
-        if @bin.save
-          format.html { redirect_to location_inventory_path(id: @bin.id), notice: 'Inventory was successfully added.' }
-          format.json { render :show, status: :created, location: @bin }
+        if @item.save
+          format.html { redirect_to location_inventory_path(id: @item.id), notice: 'Inventory Item was successfully added.' }
+          format.json { render :show, status: :created, location: @item }
         else
           format.html { render :new }
-          format.json { render json: @bin.errors, status: :unprocessable_entity }
+          format.json { render json: @item.errors, status: :unprocessable_entity }
         end
       end
     end
 
-    # PATCH/PUT /bins/1
-    # PATCH/PUT /bins/1.json
+    # PATCH/PUT /items/1
+    # PATCH/PUT /items/1.json
     def update_item
-      @bin = @location.bins.find(params[:id])
+      @item = @location.items.find(params[:id])
 
       respond_to do |format|
-        if @bin.update_attributes(bin_params)
-          format.html { redirect_to location_inventory_path(id: @bin.id), notice: 'Inventory was successfully updated.' }
-          format.json { render :show, status: :ok, location: @bin }
+        if @item.update_attributes(item_params)
+          format.html { redirect_to location_inventory_path(id: @item.id), notice: 'Inventory Item was successfully updated.' }
+          format.json { render :show, status: :ok, location: @item }
         else
           format.html { render :edit }
-          format.json { render json: @bin.errors, status: :unprocessable_entity }
+          format.json { render json: @item.errors, status: :unprocessable_entity }
         end
       end
     end
 
-    # DELETE /bins/1
-    # DELETE /bins/1.json
+    # DELETE /items/1
+    # DELETE /items/1.json
     def destroy
-     @bin = @location.bins.find(params[:id])
-      @bin.destroy
+     @item = @location.items.find(params[:id])
+      @item.destroy
       respond_to do |format|
         format.html { redirect_to location_url, notice: 'Item was successfully removed from Inventory.' }
         format.json { head :no_content }
@@ -86,9 +86,9 @@ class BinsController < ApplicationController
 
 
       # Never trust parameters from the scary internet, only allow the white list through.
-      def bin_params
-        return params.require(:bin)
-        .permit(:item_id, :qty)
-        .merge(location_id: @location.id )
+      def item_params
+        return params.require(:item)
+        .permit(:item_id, :quantity, :sale_price, :category, :product_id)
+        .merge(location_id: @location.id)
       end
   end

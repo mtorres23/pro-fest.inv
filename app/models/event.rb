@@ -1,10 +1,11 @@
 class Event < ApplicationRecord
 	belongs_to :account
+	belongs_to :customer
 	has_many :locations
-	has_many :bins, through: :locations
+	has_many :assignments
+	has_many :items, through: :locations
 	has_many :transactions, through: :orders
 	has_many :orders, through: :locations
-	has_many :items, through: :bins
 
 	attr_accessor :address
 	geocoded_by :address

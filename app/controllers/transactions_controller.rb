@@ -17,6 +17,7 @@ class TransactionsController < ApplicationController
         @origin = @locations.find_by({id: @transaction.origin_id}).title if @transaction.origin_id
         @destination = @locations.find_by({id:@transaction.dest_id}).title if @transaction.dest_id
         @item = Item.find(@transaction.item_id)
+        @product = Product.find(@item.product_id)
     end
 
     # GET /transactions/new
