@@ -24,19 +24,23 @@
 # 		origin_item.qty = origin_item.qty - item.qty
 # 	end
 # end
-
-Account.destroy_all
-Product.destroy_all
-User.destroy_all
-Event.destroy_all
-Location.destroy_all
+Transaction.destroy_all
 Item.destroy_all
-Order.destroy_all
+Product.destroy_all
 Assignment.destroy_all
+User.destroy_all
+Order.destroy_all
+Customer.destroy_all
+Location.destroy_all
+Event.destroy_all
+Account.destroy_all
 
 
 Account.create(company_id: 'Premier Events', account_access_key: 1776, address: '1825 MacArthur Blvd NW Atlanta GA 30318')
 account_id = Account.first.id
+
+Customer.create(name: 'Live Nation', address: '9348 Civic Centre Drive Beverly Hills, CA 90210', account_id: account_id);
+customer_id = Customer.first.id
 
 Product.create(account_id: account_id, name: '50pk - 12oz Clear Plastic cups', upc: '616932448706', image_url: 'https://partycity6.scene7.com/is/image/PartyCity/_pdp_sq_?$_100x100_$&$product=PartyCity/259325', description: '12 oz disposable plastic cups, Value pack of 50 cups', unit: "50")
 product_id = Product.first.id
@@ -44,7 +48,7 @@ product_id = Product.first.id
 Product.create(account_id: account_id, name: 'Bar Shaker Set', upc: '755141103027', image_url: 'http://ecx.images-amazon.com/images/I/41QblGwtXsL._SL160_.jpg', description: 'Stainless Steel 3 Piece Bar Shaker Set', unit: "1")
 product2_id = Product.second.id
 
-Event.create(title: 'Music Midtown', address: 'Piedmont Park Atlanta', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', account_id: account_id)
+Event.create!(title: 'Music Midtown', address: 'Piedmont Park Atlanta', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', account_id: account_id, customer_id: customer_id)
 event_id = Event.first.id
 
 Location.create(title: 'HQ', event_id: event_id)

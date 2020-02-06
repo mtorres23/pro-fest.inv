@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200206153836) do
+ActiveRecord::Schema.define(version: 20200206220546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,8 @@ ActiveRecord::Schema.define(version: 20200206153836) do
     t.integer  "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["account_id"], name: "index_customers_on_account_id", using: :btree
   end
 
@@ -69,7 +71,9 @@ ActiveRecord::Schema.define(version: 20200206153836) do
     t.datetime "updated_at",         null: false
     t.integer  "admin_id"
     t.integer  "account_id"
+    t.integer  "customer_id"
     t.index ["account_id"], name: "index_events_on_account_id", using: :btree
+    t.index ["customer_id"], name: "index_events_on_customer_id", using: :btree
   end
 
   create_table "items", id: :bigserial, force: :cascade do |t|
