@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
- 	belongs_to :client
+ 	belongs_to :account
  	belongs_to :location, optional: true
 
 

@@ -48,7 +48,7 @@ product_id = Product.first.id
 Item.create(client_id: client_id, title: '50pk - 12oz Clear Plastic cups', upc: '616932448706', images: 'https://partycity6.scene7.com/is/image/PartyCity/_pdp_sq_?$_100x100_$&$product=PartyCity/259325', description: '12 oz disposable plastic cups, Value pack of 50 cups', sale_price: 8.99, unit: 50)
 item_id = Item.first.id
 
-Event.create(title: 'Music Midtown', address: 'Piedmont Park', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', client_id: client_id)
+Event.create(title: 'Music Midtown', address: 'Piedmont Park', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', account_id: account_id)
 event_id = Event.first.id
 
 Location.create(title: 'HQ', event_id: event_id)

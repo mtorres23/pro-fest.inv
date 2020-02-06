@@ -10,11 +10,6 @@ Rails.application.routes.draw do
     resources :users
   end
 
-    # resources :clients do
-    #   resources :items
-    #   resources :events
-    #   resources :orders, except: [:create, :destroy]
-    # end
     resources :events do
       resources :locations do
         resources :orders, except: [:index, :create] do

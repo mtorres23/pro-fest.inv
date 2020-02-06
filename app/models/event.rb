@@ -1,5 +1,5 @@
 class Event < ApplicationRecord
-	belongs_to :client
+	belongs_to :account
 	has_many :locations
 	has_many :bins, through: :locations
 	has_many :transactions, through: :orders

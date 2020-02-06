@@ -1,13 +1,13 @@
 class TransactionsController < ApplicationController
     before_action :authenticate_user!
-    before_action :set_client
-    before_action :set_items
+    before_action :set_account
+    before_action :set_products
     before_action :set_event
     before_action :set_location
     before_action :set_order
 
     def get
-        @items = @client.items
+        @products = @account.products
         @transactions = @location.transactions
     end
 
@@ -77,22 +77,22 @@ class TransactionsController < ApplicationController
 
     private
       # Use callbacks to share common setup or constraints between actions.
-      def set_client
+      def set_account
         if current_user && current_user.permission_level?
-        @client = Client.find(current_user.client_id)
+        @account = Account.find(current_user.account_id)
         elsif current_user && current_user.permission_level?
-        @client = Client.find(current_user.client_id)
+        @account = Account.find(current_user.account_id)
         else
         self.send(:set_location)
         @event = @location.event
         redirect_to event_location_path(event_id: @event, id: @location)
       end
       end
-      def set_items
-        @items = Item.where(client_id: Client.first.id)
+      def set_products
+        @products = Product.where(account_id: Account.first.id)
       end
       def set_event
-        @event = @client.events.find(params[:event_id])
+        @event = @account.events.find(params[:event_id])
       end
 
       def set_location

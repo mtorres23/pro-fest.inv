@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
 
-  before_action :set_client
-  before_action :set_location, except: [:orders_by_client, :orders_by_event]
+  before_action :set_account
+  before_action :set_location, except: [:orders_by_account, :orders_by_event]
   before_action :set_event, only: [:index, :orders_by_event,:edit, :update, :destroy, :show]
 
   def index
@@ -9,8 +9,8 @@ class OrdersController < ApplicationController
     @locations = @event.locations
   end
 
-  def orders_by_client
-    @orders = @client.orders
+  def orders_by_account
+    @orders = @account.orders
   end
 
   def orders_by_event
@@ -79,8 +79,8 @@ class OrdersController < ApplicationController
     .merge(:created_by => current_user.id)
   end
 
-  def set_client
-    @client = Client.find(current_user.client_id)
+  def set_account
+    @account = Account.find(current_user.account_id)
   end
 
 
