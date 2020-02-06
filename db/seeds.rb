@@ -31,7 +31,6 @@ User.destroy_all
 Event.destroy_all
 Location.destroy_all
 Item.destroy_all
-Bin.destroy_all
 Order.destroy_all
 Assignment.destroy_all
 
@@ -43,6 +42,7 @@ Product.create(account_id: account_id, name: '50pk - 12oz Clear Plastic cups', u
 product_id = Product.first.id
 
 Product.create(account_id: account_id, name: 'Bar Shaker Set', upc: '755141103027', image_url: 'http://ecx.images-amazon.com/images/I/41QblGwtXsL._SL160_.jpg', description: 'Stainless Steel 3 Piece Bar Shaker Set', unit: "1")
+product2_id = Product.second.id
 
 Event.create(title: 'Music Midtown', address: 'Piedmont Park Atlanta', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', account_id: account_id)
 event_id = Event.first.id
@@ -58,15 +58,15 @@ user_id = User.first.id
 
 Assignment.create(event_id: event_id, location_id: location_id, user_id: user_id, role: 'event_admin')
 
-Bin.create(location_id: location_id, qty: 12)
-bin_id = Bin.first.id
+Item.create(product_id: product_id, location_id: location_id, quantity: 12, category: 'consumables')
+item_id = Item.first.id
 
-Bin.create(location_id: loc2_id, qty: 2)
-bin2_id = Bin.second.id
+Item.create(product_id: product2_id, location_id: loc2_id, quantity: 2, category: 'supplies')
+item2_id = Item.second.id
 
 Order.create(message: 'I need 200 more cocktail cups, please', created_by: user_id, location_id: loc2_id)
 order_id = Order.first.id
 
-Transaction.create(item_id: product_id, qty: 4, origin_id: location_id, dest_id: loc2_id, status: 'Pending', order_id: order_id)
+Transaction.create(item_id: item_id, qty: 4, origin_id: location_id, dest_id: loc2_id, status: 'Pending', order_id: order_id)
 transaction_id = Transaction.first.id
 

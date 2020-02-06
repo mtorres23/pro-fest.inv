@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200206143439) do
+ActiveRecord::Schema.define(version: 20200206150445) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,10 +42,8 @@ ActiveRecord::Schema.define(version: 20200206143439) do
     t.integer  "qty"
     t.datetime "last_updated"
     t.integer  "last_order"
-    t.integer  "location_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
-    t.index ["location_id"], name: "index_bins_on_location_id", using: :btree
   end
 
   create_table "customers", force: :cascade do |t|
@@ -75,19 +73,15 @@ ActiveRecord::Schema.define(version: 20200206143439) do
   end
 
   create_table "items", id: :bigserial, force: :cascade do |t|
-    t.string   "title"
-    t.string   "upc"
-    t.text     "description"
-    t.string   "color"
-    t.string   "size"
-    t.string   "dimension"
-    t.string   "weight"
     t.float    "sale_price"
-    t.float    "lowest_recorded_price"
-    t.string   "images"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.integer  "unit"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
+    t.integer  "product_id"
+    t.string   "category"
+    t.integer  "quantity"
+    t.index ["location_id"], name: "index_items_on_location_id", using: :btree
+    t.index ["product_id"], name: "index_items_on_product_id", using: :btree
   end
 
   create_table "locations", id: :bigserial, force: :cascade do |t|
@@ -184,7 +178,6 @@ ActiveRecord::Schema.define(version: 20200206143439) do
   add_foreign_key "assignments", "events"
   add_foreign_key "assignments", "locations"
   add_foreign_key "assignments", "users"
-  add_foreign_key "bins", "locations"
   add_foreign_key "customers", "accounts"
   add_foreign_key "events", "accounts"
   add_foreign_key "orders", "locations"
