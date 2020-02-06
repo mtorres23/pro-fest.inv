@@ -6,6 +6,5 @@ class AddFirstNameAndLastNameAndAuthsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :is_crew, :boolean
     add_column :users, :is_tent_manager, :boolean
     add_column :users, :event_id, :string
-    add_column :users, :client_id, :string
   end
 end
