@@ -12,7 +12,7 @@
   <% end %>
 <div class="form_row">
       <%= f.label :item_id %>
-      <%= f.select(:item_id, options_for_select(@items.map{|item|[item.title, item.id]}), :include_blank => true, :required => true) %>
+      <%= f.select(:item_id, options_for_select(@items.map{|item|[item.product.name, item.id]}), :include_blank => true, :required => true) %>
   </div>
   <div class="field">
     <%= f.label :qty, '# of units' %>

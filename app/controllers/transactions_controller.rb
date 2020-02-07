@@ -4,6 +4,7 @@ class TransactionsController < ApplicationController
     before_action :set_products
     before_action :set_event
     before_action :set_location
+    before_action :set_items
     before_action :set_order
 
     def get
@@ -17,6 +18,7 @@ class TransactionsController < ApplicationController
         @origin = @locations.find_by({id: @transaction.origin_id}).title if @transaction.origin_id
         @destination = @locations.find_by({id:@transaction.dest_id}).title if @transaction.dest_id
         @item = Item.find(@transaction.item_id)
+        @product = Product.find(@item.product_id)
     end
 
     # GET /transactions/new
@@ -97,6 +99,10 @@ class TransactionsController < ApplicationController
 
       def set_location
         @location = Location.find(params[:location_id])
+      end
+
+      def set_items
+        @items = @location.items
       end
 
       def set_order

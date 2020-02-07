@@ -37,12 +37,12 @@ post '/events/:event_id/locations' => 'locations#create', as: 'create_location'
 get 'api/events/:event_id/locations' => 'locations#index_as_json', as: 'locations_api_index'
 get 'api/events/:event_id/locations/:id' => 'locations#location_json', as: 'location_api'
 
-# LocationInventoryItems (bin) Routes
-# route to get all current items in a bin in a specific location
-get '/locations/:location_id/bins' => 'bins#inventory', as: 'location_inventory'
-get '/locations/:location_id/bins/new' => 'bins#new', as: 'new_location_item'
-post '/locations/:location_id/bins' => 'bins#create', as: 'create_location_item'
-patch '/locations/:location_id/bins/:id' => 'bins#update_item', as: 'inventory_item_edit'
+# LocationInventoryItems (item) Routes
+# route to get all current items in a item in a specific location
+get '/locations/:location_id/items' => 'items#inventory', as: 'location_inventory'
+get '/locations/:location_id/items/new' => 'items#new', as: 'new_location_item'
+post '/locations/:location_id/items' => 'items#create', as: 'create_location_item'
+patch '/locations/:location_id/items/:id' => 'items#update_item', as: 'inventory_item_edit'
 
 
 # Order Routes

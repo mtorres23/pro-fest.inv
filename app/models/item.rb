@@ -1,3 +1,4 @@
 class Item < ApplicationRecord
-	belongs_to :bin, optional: true
+	belongs_to :location
+	belongs_to :product
 end

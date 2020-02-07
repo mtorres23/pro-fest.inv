@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200206020705) do
+ActiveRecord::Schema.define(version: 20200207040028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,18 +38,6 @@ ActiveRecord::Schema.define(version: 20200206020705) do
     t.index ["user_id"], name: "index_assignments_on_user_id", using: :btree
   end
 
-  create_table "bins", id: :bigserial, force: :cascade do |t|
-    t.integer  "item_id"
-    t.integer  "qty"
-    t.datetime "last_updated"
-    t.integer  "last_order"
-    t.integer  "location_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.index ["item_id"], name: "index_bins_on_item_id", using: :btree
-    t.index ["location_id"], name: "index_bins_on_location_id", using: :btree
-  end
-
   create_table "customers", force: :cascade do |t|
     t.string   "name"
     t.text     "address"
@@ -58,6 +46,8 @@ ActiveRecord::Schema.define(version: 20200206020705) do
     t.integer  "account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float    "latitude"
+    t.float    "longitude"
     t.index ["account_id"], name: "index_customers_on_account_id", using: :btree
   end
 
@@ -73,23 +63,22 @@ ActiveRecord::Schema.define(version: 20200206020705) do
     t.datetime "updated_at",         null: false
     t.integer  "admin_id"
     t.integer  "account_id"
+    t.integer  "customer_id"
+    t.string   "photo_url"
     t.index ["account_id"], name: "index_events_on_account_id", using: :btree
+    t.index ["customer_id"], name: "index_events_on_customer_id", using: :btree
   end
 
   create_table "items", id: :bigserial, force: :cascade do |t|
-    t.string   "title"
-    t.string   "upc"
-    t.text     "description"
-    t.string   "color"
-    t.string   "size"
-    t.string   "dimension"
-    t.string   "weight"
     t.float    "sale_price"
-    t.float    "lowest_recorded_price"
-    t.string   "images"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.integer  "unit"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "location_id"
+    t.integer  "product_id"
+    t.string   "category"
+    t.integer  "quantity"
+    t.index ["location_id"], name: "index_items_on_location_id", using: :btree
+    t.index ["product_id"], name: "index_items_on_product_id", using: :btree
   end
 
   create_table "locations", id: :bigserial, force: :cascade do |t|
@@ -149,7 +138,6 @@ ActiveRecord::Schema.define(version: 20200206020705) do
   end
 
   create_table "transactions", id: :bigserial, force: :cascade do |t|
-    t.integer  "item_id"
     t.integer  "order_id"
     t.integer  "origin_id"
     t.integer  "dest_id"
@@ -157,6 +145,7 @@ ActiveRecord::Schema.define(version: 20200206020705) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "qty"
+    t.integer  "item_id"
     t.index ["item_id"], name: "index_transactions_on_item_id", using: :btree
     t.index ["order_id"], name: "index_transactions_on_order_id", using: :btree
   end
@@ -188,13 +177,10 @@ ActiveRecord::Schema.define(version: 20200206020705) do
   add_foreign_key "assignments", "events"
   add_foreign_key "assignments", "locations"
   add_foreign_key "assignments", "users"
-  add_foreign_key "bins", "items"
-  add_foreign_key "bins", "locations"
   add_foreign_key "customers", "accounts"
   add_foreign_key "events", "accounts"
   add_foreign_key "orders", "locations"
   add_foreign_key "products", "accounts"
-  add_foreign_key "transactions", "items"
   add_foreign_key "transactions", "orders"
   add_foreign_key "users", "accounts"
 end
