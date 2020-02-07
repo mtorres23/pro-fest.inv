@@ -52,9 +52,15 @@ class OrdersController < ApplicationController
 
   def update
     order = @location.orders.find(params[:id])
-    order.update(order_params)
-
-    redirect_to location_orders_path
+    respond_to do |format|
+      if order.update_attributes(order_params)
+        format.html { redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: order.id ), notice: 'Order was successfully updated.' }
+        format.json { render :show, status: :ok, location: order }
+      else
+        format.html { render :edit }
+        format.json { render json: order.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def edit
