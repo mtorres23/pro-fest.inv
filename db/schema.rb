@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200207043747) do
+ActiveRecord::Schema.define(version: 20200207050939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,15 +86,12 @@ ActiveRecord::Schema.define(version: 20200207043747) do
     t.text     "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.string   "access_code"
-    t.integer  "current_order_id"
-    t.integer  "prev_order_id"
-    t.string   "email"
-    t.integer  "admin_id"
-    t.integer  "event_id"
     t.string   "loc_type"
+    t.integer  "event_id"
+    t.index ["event_id"], name: "index_locations_on_event_id", using: :btree
   end
 
   create_table "orders", id: :bigserial, force: :cascade do |t|
