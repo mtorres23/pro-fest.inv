@@ -11,6 +11,11 @@
     </div>
   <% end %>
 
+   <div class="field">
+    <%= f.label :customer_id %><br />
+    <%= f.select :customer_id, options_for_select(Customer.all.map{|customer|[customer.name, customer.id]}), :class => 'input-field' %>
+  </div>
+
   <div class="field">
     <%= f.label :title %>
     <%= f.text_field :title %>
@@ -32,13 +37,8 @@
   </div>
 
   <div class="field">
-    <%= f.label :latitude %>
-    <%= f.text_field :latitude %>
-  </div>
-
-  <div class="field">
-    <%= f.label :longitude %>
-    <%= f.text_field :longitude %>
+    <%= f.label :photo_url %>
+    <%= f.text_field :photo_url %>
   </div>
 
   <div class="field">

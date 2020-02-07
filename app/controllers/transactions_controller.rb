@@ -4,6 +4,7 @@ class TransactionsController < ApplicationController
     before_action :set_products
     before_action :set_event
     before_action :set_location
+    before_action :set_items
     before_action :set_order
 
     def get
@@ -98,6 +99,10 @@ class TransactionsController < ApplicationController
 
       def set_location
         @location = Location.find(params[:location_id])
+      end
+
+      def set_items
+        @items = @location.items
       end
 
       def set_order
