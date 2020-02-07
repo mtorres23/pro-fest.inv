@@ -3,12 +3,14 @@ class AssignmentsController < ApplicationController
     before_action :set_users
     before_action :set_event, except: [:user_assignments]
     before_action :set_location, only: [:location_assignments]
+    before_action :set_locations, only: [:new, :edit, :create, :update]
 
     def index
         @assignments = @event.assignments
     end
   # GET /
     def user_assignments
+        @user = User.find(params[:user_id])
         @assignments = @user.assignments
     end
 
@@ -19,7 +21,7 @@ class AssignmentsController < ApplicationController
 
     # GET /
     def new
-      @assignment = @event.assignments.new
+        @assignment = @event.assignments.new
     end
 
     def create
@@ -81,7 +83,7 @@ class AssignmentsController < ApplicationController
     end
 
     def set_users
-        @users = Users.where(account_id: @account.id)
+        @users = User.where(account_id: @account.id)
     end
 
     def set_event
@@ -92,8 +94,12 @@ class AssignmentsController < ApplicationController
         @location = @event.locations.find(params[:location_id])
     end
 
+    def set_locations
+        @locations = @event.locations
+    end
+
     def assignment_params
-      return params.require(:location).permit(:role, :user_id, :location_id)
+      return params.require(:assignment).permit(:role, :user_id, :location_id)
       .merge(event_id: @event.id)
     end
   end

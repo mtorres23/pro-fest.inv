@@ -1,0 +1,5 @@
+<%= link_to "Assign Staff", new_event_assignment_path(event_id: @event.id), class: 'btn btn-primary btn-lg' %>
+
+<%= link_to 'Back To Event', event_path(id: @event.id), class: 'center btn waves-effect waves-light' %>
+
+<%= render 'list', assignments: @assignments %>
