@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200207040028) do
+ActiveRecord::Schema.define(version: 20200207043747) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,8 @@ ActiveRecord::Schema.define(version: 20200207040028) do
     t.string   "role"
     t.text     "message"
     t.integer  "location_id"
+    t.datetime "due_date"
+    t.string   "status"
     t.index ["location_id"], name: "index_orders_on_location_id", using: :btree
   end
 

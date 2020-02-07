@@ -3,12 +3,14 @@
 
 <div>
     <%= form_for @order, url: event_location_order_path(id: @order.id) do |f| %>
+
     <%= f.label :message %>
-    <br>
     <%= f.text_field :message %>
 
+    <%= f.label :status %>
+    <%= f.select(:status, options_for_select(statuses), :required => true) %>
 
-    <button class='btn' action='<%= f.submit  %>'>Update Order
-    </button>
+
+    <button class='btn' action='<%= f.submit  %>'>Update Order</button>
     <% end %>
 </div>

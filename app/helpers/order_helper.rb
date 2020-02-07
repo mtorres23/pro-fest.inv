@@ -10,6 +10,15 @@ module OrderHelper
       ['Damage'],
       ['Sale']
     ]
+  end
+
+  def statuses
+    [
+      ['Pending'],
+      ['Canceled'],
+      ['Completed'],
+      ['Verified']
+    ]
 
   end
 end

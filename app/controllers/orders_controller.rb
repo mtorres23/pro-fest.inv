@@ -75,8 +75,8 @@ class OrdersController < ApplicationController
   def order_params
 
     return params.require(:order)
-    .permit(:message, :role, :category_id, :origin_id, :destination_id)
-    .merge(:created_by => current_user.id)
+    .permit(:message, :role, :origin_id, :destination_id, :due_date, :status, :verified_by)
+    .merge(:created_by => current_user.id, location_id: @location.id)
   end
 
   def set_account
