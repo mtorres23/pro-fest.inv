@@ -13,7 +13,7 @@
 
    <div class="field">
     <%= f.label :user_id %><br />
-    <%= f.select :user_id, options_for_select(@users.map{|user|[user.first_name, user.id]}), :class => 'input-field' %>
+    <%= f.select :user_id, options_for_select(available_users(@event, @users).map{|user|[user.first_name, user.id]}), :class => 'input-field' %>
   </div>
 
   <div class="field">
