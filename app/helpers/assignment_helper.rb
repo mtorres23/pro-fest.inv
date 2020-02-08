@@ -22,5 +22,5 @@ module AssignmentHelper
 
     def available_users(event, users)
       users.select {|user| !assigned_user_ids(event).include?(user[:id])}
-  end
+    end
   end
