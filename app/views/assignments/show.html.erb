@@ -1,0 +1,25 @@
+<header><h3 class="display-4 center"><%= fullname(@assignment) %> - <%= @assignment.role %></h3></header>
+
+<table class="centered highlighted">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th colspan="2">Name</th>
+      <th>Location</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+      <tr>
+        <td><%= @assignment.id %></td>
+        <td colspan="2"><%= @assignment.user.first_name + ' ' + @assignment.user.last_name%></td>
+        <td><%= @assignment.location.title %></td>
+        <td><%= link_to 'Edit', edit_event_assignment_path(@event, @assignment) %></td>
+<td><%= link_to 'Destroy', event_assignment_path(@event, @assignment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  </tbody>
+</table>
+
+<%= link_to "Back", event_assignments_path(@event) %>

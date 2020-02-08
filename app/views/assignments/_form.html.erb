@@ -1,0 +1,39 @@
+<%= form_for [@event, @assignment] do |f| %>
+  <% if @assignment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@assignment.errors.count, "error") %> prohibited this assignment from being saved:</h2>
+
+      <ul>
+      <% @assignment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<% if @assignment.user_id %>
+   <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.select :user_id, options_for_select([@assignment.user].map{|user|[user.first_name, user.id]}), :class => 'input-field', :disabled => true %>
+  </div>
+  <% else %>
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.select :user_id, options_for_select(available_users(@event, @users).map{|user|[user.first_name, user.id]}), :class => 'input-field' %>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :location_id %><br />
+    <%= f.select :location_id, options_for_select(@locations.map{|location|[location.title, location.id]}), :class => 'input-field' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :role %><br />
+    <%= f.select :role, options_for_select(roles), :class => 'input-field' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

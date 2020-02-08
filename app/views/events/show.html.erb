@@ -1,5 +1,6 @@
 <%= link_to 'Edit', edit_event_path(@event), class:'btn waves-effect waves-light' %>
 <%= link_to 'Back', account_events_path(@event.account), class:'btn waves-effect waves-light' %>
+<%= link_to 'Staff', event_assignments_path(@event), class:'btn waves-effect waves-light right' %>
 <hr>
 
 
@@ -84,8 +85,8 @@
         <td><%= location.latitude %></td>
         <td><%= location.longitude %></td>
         <td><%= location.event.title %></td>
-        <td><%= location.current_order_id %></td>
-        <td><%= location.prev_order_id %></td>
+        <td><%= %></td>
+        <td><%=  %></td>
       </tr>
     <% end %>
 

@@ -1,0 +1,23 @@
+<div class ='assignments-wrapper'>
+  <table class = 'centered'>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th colspan="2">Name </th>
+        <th>Location Id</th>
+        <th>Event Id</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @assignments.each do |staff|  %>
+        <tr>
+          <td><%= staff.role %></td>
+          <td colspan="2"><%=link_to User.find(staff.user_id).first_name + ' ' + User.find(staff.user_id).last_name, event_assignment_path(event_id: staff.event_id, id: staff.id) %></td>
+          <td><%= staff.location_id%></td>
+          <td><%= staff.event_id %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

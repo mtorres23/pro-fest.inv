@@ -11,15 +11,22 @@ Rails.application.routes.draw do
   end
 
     resources :events do
+      resources :assignments
       resources :locations do
         resources :orders, except: [:index, :create] do
-        resources :transactions
+          resources :transactions
         end
       end
     end
 
 
+
 # Custom Routes
+
+# Assignments
+get '/accounts/:account_id/users/:user_id/assignments' => 'assignments#user_assignments', as: 'schedule'
+get '/events/:event_id/locations/:location_id/assignments' => 'assignments#location_assignments', as: 'location_assignments'
+
  # Home Routes
   get 'home' => 'home_pages#home'
 
@@ -51,7 +58,7 @@ get '/events/:event_id/locations/:location_id/orders' => 'orders#orders_by_locat
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
 # get '/events/:event_id/locations/map_edit' => 'locations#map_edit', as: 'locations_map_edit'
 
-  root to: 'events#index'
+root to: 'events#index'
 get '*path', to: 'events#index'
 
 
