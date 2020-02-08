@@ -11,10 +11,17 @@
     </div>
   <% end %>
 
+<% if @assignment.user_id %>
    <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.select :user_id, options_for_select([@assignment.user].map{|user|[user.first_name, user.id]}), :class => 'input-field', :disabled => true %>
+  </div>
+  <% else %>
+  <div class="field">
     <%= f.label :user_id %><br />
     <%= f.select :user_id, options_for_select(available_users(@event, @users).map{|user|[user.first_name, user.id]}), :class => 'input-field' %>
   </div>
+<% end %>
 
   <div class="field">
     <%= f.label :location_id %><br />
