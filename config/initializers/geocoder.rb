@@ -22,5 +22,6 @@ Geocoder.configure(
 )
 
 Geocoder.configure(
-  api_key: "AIzaSyDNVvXDU4Aqwox4qm0Og93eajvCYYrpFCQ"
+  api_key: "AIzaSyAhF2K8TKtEZ04zw7i3FMKQLwvv-bWC79g",
+  lookup: :google
 )

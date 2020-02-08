@@ -6,13 +6,6 @@ class Location < ApplicationRecord
 	has_many :orders, :foreign_key => :location_id
 	has_many :transactions, through: :orders
 
-
-	attr_accessor :address
-
-geocoded_by :address
-after_validation :geocode
-
-
-
-
+	geocoded_by :address
+	after_validation :geocode
 end

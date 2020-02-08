@@ -6,11 +6,9 @@ class Event < ApplicationRecord
 	has_many :items, through: :locations
 	has_many :transactions, through: :orders
 	has_many :orders, through: :locations
+	validates_presence_of :address
 
-	attr_accessor :address
 	geocoded_by :address
 	after_validation :geocode
-	reverse_geocoded_by :latitude, :longitude
-	after_validation :reverse_geocode
 
 end

@@ -6,7 +6,6 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = current_user.account.events
-    @locations = Location.all
   end
 
   # GET /events/1
@@ -31,8 +30,9 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to @event, notice: 'Event was successfully created.' }
+        format.html { redirect_to account_event_path(@account, @event), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
+        @event.locations.new(title: 'HQ', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'compound').save
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }
