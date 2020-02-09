@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account, only: [:dashboard, :show, :edit, :update, :users, :products]
+  before_action :set_account, except: [:index, :new, :create]
   before_action :redirect_unless_admin, except: [:dashboard, :users, :products]
 
   def dashboard
@@ -27,12 +27,13 @@ class AccountsController < ApplicationController
 
   # GET /accounts/1/edit
   def edit
+    @account
   end
 
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = current_user.account.new(account_params)
+    @account = Account.new(account_params)
 
     respond_to do |format|
       if @account.save
@@ -48,11 +49,10 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   # PATCH/PUT /accounts/1.json
   def update
-    @account = current_user.account
 
     respond_to do |format|
       if @account.update_attributes(account_params)
-        format.html { redirect_to @account, notice: 'Event was successfully updated.' }
+        format.html { redirect_to @account, notice: 'Account was successfully updated.' }
         format.json { render :show, status: :ok, location: @account }
       else
         format.html { render :edit }
@@ -65,13 +65,13 @@ class AccountsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
 
     def set_account
-      @account = Account.find(current_user.account_id)
+      @account = Account.find(params[:id])
     end
 
     def redirect_unless_admin
       puts current_user.permission_level
-      unless user_signed_in? && current_user.permission_level === 2
-        redirect_to :dashboard
+      unless user_signed_in? && current_user.permission_level > 1
+        redirect_to :events
       end
     end
 
