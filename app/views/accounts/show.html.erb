@@ -1,15 +1,14 @@
 <%= render 'slidenav' %>
 
   <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-
-
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
 
-    <h1>fifo's Front end</h1>
-    <h2>Account#show</h2>
+    <p>Account#show</p>
 
-    <%= link_to 'Events', account_events_path(account_id: current_user.account_id), class: 'btn btn-primary btn-lg' %>
+  <%= link_to 'Back', account_path(@account), class:'btn waves-effect waves-light' %>
+  <%= link_to 'Events', account_events_path(@account), class: 'btn btn-primary btn-lg center' %>
+  <%= link_to 'Edit', edit_account_path(@account), class:'btn waves-effect waves-light right' %>
 
 
 <script>
