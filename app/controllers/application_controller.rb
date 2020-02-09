@@ -5,14 +5,23 @@ class ApplicationController < ActionController::Base
   before_action :set_account
 
 
-  def set_account
-    @account = Account.first
-    if current_user
-      @account = Account.find(current_user.account_id)
-    end
-    user =  User.where(account_id: @account.id)
 
+
+  def settings
+    puts "this is settings"
+    @user = current_user
   end
+
+
+private
+
+def set_account
+  @account = Account.first
+  if current_user
+    @account = Account.find(current_user.account_id)
+  end
+  user =  User.where(account_id: @account.id)
+end
 
 protected
 
