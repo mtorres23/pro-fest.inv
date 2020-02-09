@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_account, excepy: [:index, :new, :create]
+  before_action :set_account, except: [:index, :new, :create]
   before_action :redirect_unless_admin, except: [:dashboard, :users, :products]
 
   def dashboard
@@ -49,7 +49,6 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   # PATCH/PUT /accounts/1.json
   def update
-    @account = Account
 
     respond_to do |format|
       if @account.update_attributes(account_params)

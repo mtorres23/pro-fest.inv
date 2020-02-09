@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="container">
+
+		<table class="centered highlighted">
+  			<thead>
+    <tr>
+      <th>Customer</th>
+      <th colspan="2">Address</th>
+      <th>Phone</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customers.each do |c| %>
+      <tr>
+        <td><%= link_to c.name %></td>
+        <td colspan="2"><%= c.address %></td>
+        <td><%= c.phone%></td>
+        <td><%= c.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  </div>
+</div>

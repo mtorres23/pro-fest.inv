@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
 # Custom Routes
 
+get '/customers' => 'customers#customer_index', as: 'customers'
 # Assignments
 get '/accounts/:account_id/users/:user_id/assignments' => 'assignments#user_assignments', as: 'schedule'
 get '/events/:event_id/locations/:location_id/assignments' => 'assignments#location_assignments', as: 'location_assignments'
@@ -37,7 +38,6 @@ get '/events/:event_id/locations/:location_id/assignments' => 'assignments#locat
 # Order Routes
 # route to view details from a specific order
 get '/locations/:location_id/orders/:order_id' => 'order#show', as: 'order'
-
 
 # Location Routes
 post '/events/:event_id/locations' => 'locations#create', as: 'create_location'
