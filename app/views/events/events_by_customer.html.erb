@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= link_to 'Add New Event', new_account_customer_event_path(@account, @customer), class: 'btn waves-effect waves-light' %>
+<hr>
+
+
+
+<div class="z-depth-1 indexEvent">
+<h1>Events</h1>
+</div>
+
+<%= render 'gallery', events: @events %>
+
+<br>

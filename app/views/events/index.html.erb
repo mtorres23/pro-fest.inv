@@ -10,12 +10,7 @@
 <h1>Events</h1>
 </div>
 
-<div class="carousel">
-  <% @events.each do |event| %>
-    <a class="carousel-item" href="/accounts/<%= @account.id %>/events/<%= event.id %>"><%= event.title %><img src="<%= event.photo_url %>"></a>
-    <% end %>
-
-  </div>
+<%= render 'gallery', events: @events %>
 
 <br>
 

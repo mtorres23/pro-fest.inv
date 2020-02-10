@@ -1,0 +1,65 @@
+<div class="newEventpage">
+  <h1>New Event</h1>
+</div>
+
+<%= link_to 'Back', account_customer_events_path(@account, @customer) %>
+
+
+<%= form_for([@account, @customer, @event]) do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :start_date %>
+    <%= f.text_field :start_date, class: "datepicker"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :end_date %>
+    <%= f.text_field :end_date, class: "datepicker"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :photo_url %>
+    <%= f.text_field :photo_url %>
+  </div>
+
+  <div class="field">
+    <%= f.label :admin_id %><br />
+    <%= f.select :admin_id, options_for_select(User.all.map{|user|[user.first_name, user.id]}), :class => 'input-field' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script>
+  $('.datepicker').pickadate({
+selectMonths: true, // Creates a dropdown to control month
+selectYears: 15 // Creates a dropdown of 15 years to control year
+});
+</script>
+<script>
+$(document).ready(function() {
+ $('select').material_select();
+});
+</script>

@@ -1,0 +1,49 @@
+<%= form_for([@account, @customer]) do |f| %>
+  <% if @customer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@customer.errors.count, "error") %> prohibited this customer from being saved:</h2>
+
+      <ul>
+      <% @customer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <% if @account %>
+   <div class="field">
+    <%= f.label :account_id %><br />
+    <%= f.select :account_id, options_for_select([@customer.account].map{|account|[account.company_id, account.id]}), :class => 'input-field', :disabled => true %>
+  </div>
+  <% else %>
+  <div class="field">
+    <%= f.label :account_id %><br />
+    <%= f.select :account_id, options_for_select(Account.all.map{|account|[account.company_id, account.id]}), :class => 'input-field' %>
+  </div>
+<% end %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_area :address %>
+  </div>
+
+  <div class="field">
+    <%= f.label :phone %>
+    <%= f.text_field :phone %>
+  </div>
+
+    <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

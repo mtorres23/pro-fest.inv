@@ -1,11 +1,20 @@
 class EventsController < ApplicationController
   before_action :set_account
+  before_action :set_customer, only: [:events_by_customer, :new_customer_event, :create_customer_event]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
   # GET /events.json
   def index
     @events = current_user.account.events
+  end
+
+  def events_by_customer
+    @events = @customer.events
+  end
+
+  def new_customer_event
+    @event = @customer.events.new
   end
 
   # GET /events/1
@@ -27,6 +36,22 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = @account.events.new(event_params)
+
+    respond_to do |format|
+      if @event.save
+        format.html { redirect_to account_event_path(@account, @event), notice: 'Event was successfully created.' }
+        format.json { render :show, status: :created, location: @event }
+        @event.locations.new(title: 'HQ', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'compound').save
+      else
+        format.html { render :new }
+        format.json { render json: @event.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # POST /accounts/account_id/customers/:id/events
+  def create_customer_event
+    @event = @customer.events.new(customer_event_params)
 
     respond_to do |format|
       if @event.save
@@ -77,10 +102,20 @@ class EventsController < ApplicationController
       @account = Account.find(current_user.account_id)
     end
 
+    def set_customer
+      @customer = Customer.find(params[:id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       return params.require(:event)
       .permit(:title, :start_date, :end_date, :address, :latitude, :longitude, :admin_id, :customer_id, :photo_url)
       .merge(account_id: @account.id)
+    end
+
+    def customer_event_params
+      return params.require(:event)
+      .permit(:title, :start_date, :end_date, :address, :latitude, :longitude, :admin_id, :customer_id, :photo_url)
+      .merge(account_id: @account.id, customer_id: @customer.id)
     end
 end

@@ -1,0 +1,13 @@
+<td><%= link_to 'Edit', edit_account_customer_path(@account, @customer) %></td>
+<td><%= link_to 'Destroy', account_customer_path(@account, @customer), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%= link_to 'Back', account_customers_path(@account) %>
+<%= link_to 'Customer Events', account_customer_events_path(@account, @customer), class:'btn waves-effect waves-light right' %>
+
+<header>
+    <h3 class="display-4 center"><%= @customer.name %></h3>
+
+    <p>Account: <%= @account.company_id %></p>
+</header>
+<p>Address: <%= @customer.address %></p>
+<p>Phone: <%= @customer.phone %></p>
+<p>Email: <%= @customer.email%></p>
