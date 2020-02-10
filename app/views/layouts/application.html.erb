@@ -180,7 +180,7 @@
       var messagewindow;
 
 // Check if the logged in user is an admin or a tent manager
-    <% if current_user || current_user && current_user.is_tent_manager? %> // NOTE: add the conditional checking for event admin status
+    <% if current_user || current_user && current_user.permission_level > 1 %> // NOTE: add the conditional checking for event admin status
 
   // Initializes the map
         function initMap() {
@@ -194,10 +194,22 @@
 
         var target = {lat: <%= @location.latitude %>, lng: <%= @location.longitude %>};
         console.log("Displaying Current location at: " + target);
+        // Checking if this is customer
+        <% elsif @account && @customer%>
+
+        var target = {lat: <%= @customer.latitude || @account.latitude %>, lng: <%= @customer.longitude || @account.longitude %>};
+        console.log("Displaying Current customer location at: " + target);
+        // Checking if this is the home screen
+         // Checking if this is customer
+        <% elsif @account %>
+
+        var target = {lat: <%= @account.latitude %>, lng: <%= @account.longitude %>};
+        console.log("Displaying Current account location at: " + target);
         // Checking if this is the home screen
         <% else %>
+
         var target = {lat: <%= 0.0 %>, lng: <%= 0.0 %>};
-        console.log("Displaying Account location at: " + target);
+        console.log("Default target set at: 0,0 in super admin view");
         <% end %>
 
         // MAP

@@ -58,8 +58,8 @@ get '/events/:event_id/locations/:location_id/orders' => 'orders#orders_by_locat
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
 # get '/events/:event_id/locations/map_edit' => 'locations#map_edit', as: 'locations_map_edit'
 get '/settings' => 'application#settings', as: 'settings'
-root to: 'accounts#show'
-get '*path', to: 'accounts#show'
+root to: 'application#settings'
+get '*path', to: 'application#settings' # TEMPORARY: Will have to redirect users based on admin level priveleges
 
 
 end

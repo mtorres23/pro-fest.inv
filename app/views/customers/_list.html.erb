@@ -14,7 +14,7 @@
   <tbody>
     <% @customers.each do |c| %>
       <tr>
-        <td><%= link_to c.name %></td>
+        <td><%= link_to c.name, account_customer_path(@account, c) %></td>
         <td colspan="2"><%= c.address %></td>
         <td><%= c.phone%></td>
         <td><%= c.email %></td>
