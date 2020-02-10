@@ -23,7 +23,11 @@ Rails.application.routes.draw do
 
 # Custom Routes
 
+# customer routes
 get '/customers' => 'customers#customer_index', as: 'customers'
+get '/accounts/:account_id/customers/:id/events' => 'events#events_by_customer', as: 'account_customer_events'
+get '/accounts/:account_id/customers/:id/events/new' => 'events#new_customer_event', as: 'new_account_customer_event'
+post '/accounts/:account_id/customers/:id/events' => 'events#create_customer_event', as: 'create_account_customer_event'
 # Assignments
 get '/accounts/:account_id/users/:user_id/assignments' => 'assignments#user_assignments', as: 'schedule'
 get '/events/:event_id/locations/:location_id/assignments' => 'assignments#location_assignments', as: 'location_assignments'

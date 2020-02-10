@@ -1,5 +1,5 @@
 <header><h3 class="display-4 center"><%= fullname(@assignment) %> - <%= @assignment.role %></h3></header>
-
+<%= link_to 'Schedule', schedule_path(@event.account, @assignment.user), class:'btn waves-effect waves-light right' %>
 <table class="centered highlighted">
     <thead>
     <tr>

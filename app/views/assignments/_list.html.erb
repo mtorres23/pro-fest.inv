@@ -4,8 +4,8 @@
       <tr>
         <th>ID</th>
         <th colspan="2">Name </th>
-        <th>Location Id</th>
-        <th>Event Id</th>
+        <th>Location</th>
+        <th>Event</th>
       </tr>
     </thead>
 
@@ -14,8 +14,8 @@
         <tr>
           <td><%= staff.role %></td>
           <td colspan="2"><%=link_to User.find(staff.user_id).first_name + ' ' + User.find(staff.user_id).last_name, event_assignment_path(event_id: staff.event_id, id: staff.id) %></td>
-          <td><%= staff.location_id%></td>
-          <td><%= staff.event_id %></td>
+          <td><%= Location.find(staff.location_id).title %></td>
+          <td><%= link_to Event.find(staff.event_id).title, event_assignments_path(staff.event) %></td>
         </tr>
         <% end %>
     </tbody>
