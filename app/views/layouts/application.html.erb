@@ -196,7 +196,7 @@
         console.log("Displaying Current location at: " + target);
         // Checking if this is the home screen
         <% else %>
-        var target = {lat: <%= @account.latitude %>, lng: <%= @account.longitude %>};
+        var target = {lat: <%= 0.0 %>, lng: <%= 0.0 %>};
         console.log("Displaying Account location at: " + target);
         <% end %>
 
