@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200207051456) do
+ActiveRecord::Schema.define(version: 20200211030145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -91,6 +91,7 @@ ActiveRecord::Schema.define(version: 20200207051456) do
     t.string   "access_code"
     t.string   "loc_type"
     t.integer  "event_id"
+    t.boolean  "hidden"
     t.index ["event_id"], name: "index_locations_on_event_id", using: :btree
   end
 
@@ -100,13 +101,15 @@ ActiveRecord::Schema.define(version: 20200207051456) do
     t.datetime "delivery_date"
     t.float    "total_price"
     t.integer  "total_amount"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "role"
     t.text     "message"
     t.integer  "location_id"
     t.datetime "due_date"
     t.string   "status"
+    t.integer  "assigned_to"
+    t.integer  "last_updated_by"
     t.index ["location_id"], name: "index_orders_on_location_id", using: :btree
   end
 
@@ -141,10 +144,11 @@ ActiveRecord::Schema.define(version: 20200207051456) do
     t.integer  "origin_id"
     t.integer  "dest_id"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.integer  "qty"
     t.integer  "item_id"
+    t.integer  "delivered_by"
     t.index ["item_id"], name: "index_transactions_on_item_id", using: :btree
     t.index ["order_id"], name: "index_transactions_on_order_id", using: :btree
   end
