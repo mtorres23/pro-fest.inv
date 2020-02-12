@@ -45,7 +45,7 @@ class EventsController < ApplicationController
         @event.locations.new(title: 'warehouse', latitude: @account.latitude, longitude: @account.longitude, event_id: @event.id, loc_type: 'warehouse').save
         @event.locations.new(title: 'sales', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'sales', hidden: true).save
         @event.locations.new(title: 'waste', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'waste', hidden: true).save
-        @event.locations.new(title: 'comps', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'comp', hidden: true).save
+        @event.locations.new(title: 'comps', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'comps', hidden: true).save
       else
         format.html { render :new }
         format.json { render json: @event.errors, status: :unprocessable_entity }

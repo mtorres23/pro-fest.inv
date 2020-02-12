@@ -50,6 +50,8 @@ class OrdersController < ApplicationController
   def show
     @order = @location.orders.find(params[:id])
     @transactions = @order.transactions
+    @canceled = @order.status === 'canceled'
+    @noedit = ['completed', 'verified'].include?(@order.status) or @order.role === "note"
   end
 
   def update
@@ -70,8 +72,7 @@ class OrdersController < ApplicationController
     @order = @location.orders.find(params[:id])
     # @transactions = @order.transactions
     if !invalid_transactions
-      process_transactions(@order.transactions)
-      @order.update(status: 'verified')
+      handle_order(@order)
       redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: @order.id ), notice: 'Order was successfully confirmed.'
     else
       render json: 'error: Transactions are not fulfilled', status: :bad_request
@@ -95,8 +96,8 @@ end
 
   def order_params
     return params.require(:order)
-    .permit(:message, :role, :origin_id, :destination_id, :due_date, :status, :verified_by)
-    .merge(:created_by => current_user.id, location_id: @location.id)
+    .permit(:message, :role, :origin_id, :destination_id, :due_date, :verified_by)
+    .merge(:created_by => current_user.id, location_id: @location.id, status: 'pending')
   end
 
   def set_account
