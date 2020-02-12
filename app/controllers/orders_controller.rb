@@ -1,8 +1,10 @@
 class OrdersController < ApplicationController
+  include OrderHelper
 
   before_action :set_account
   before_action :set_location, except: [:orders_by_account, :orders_by_event]
-  before_action :set_event, only: [:index, :orders_by_event,:edit, :update, :destroy, :show]
+  before_action :set_event, only: [:index, :orders_by_event,:edit, :update, :destroy, :show, :confirm]
+  before_action :invalid_transactions, only: [:confirm]
 
   def index
     @orders = @event.orders
@@ -48,6 +50,8 @@ class OrdersController < ApplicationController
   def show
     @order = @location.orders.find(params[:id])
     @transactions = @order.transactions
+    @canceled = @order.status === 'canceled'
+    @noedit = ['completed', 'verified'].include?(@order.status) or @order.role === "note"
   end
 
   def update
@@ -62,6 +66,18 @@ class OrdersController < ApplicationController
       end
     end
   end
+
+  def confirm
+
+    @order = @location.orders.find(params[:id])
+    # @transactions = @order.transactions
+    if !invalid_transactions
+      handle_order(@order)
+      redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: @order.id ), notice: 'Order was successfully confirmed.'
+    else
+      render json: 'error: Transactions are not fulfilled', status: :bad_request
+  end
+end
 
   def edit
     @order = @location.orders.find(params[:id])
@@ -79,16 +95,27 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-
     return params.require(:order)
-    .permit(:message, :role, :origin_id, :destination_id, :due_date, :status, :verified_by)
-    .merge(:created_by => current_user.id, location_id: @location.id)
+    .permit(:message, :role, :origin_id, :destination_id, :due_date, :verified_by)
+    .merge(:created_by => current_user.id, location_id: @location.id, status: 'pending')
   end
 
   def set_account
     @account = Account.find(current_user.account_id)
   end
 
+  def set_transactions
+    return Order.find(params[:id]).transactions
+  end
 
+  def invalid_transactions
+    invalid = false
+    set_transactions.each do |t|
+      if !['completed', 'canceled', 'verified'].include?(t.status)
+        invalid = true
+      end
+    end
+    return invalid
+  end
 
 end

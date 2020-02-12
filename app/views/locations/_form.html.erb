@@ -1,5 +1,5 @@
 <div class="modal-options">
-  
+
 </div>
 
 <%= form_for [@event,@location] do |f| %>
@@ -17,16 +17,16 @@
   <fieldset class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
-  
+
   <h4>Enter either address or coordinates</h4>
 
     <div class="form-control">
     <%= f.label :loc_type, "Type" %><br />
-    <%= f.select :loc_type, options_for_select(["bar","storage"], "bar"), :class => 'input-field' %>
+    <%= f.select :loc_type, options_for_select(location_types, "bar"), :class => 'input-field' %>
   </div>
   </fieldset>
 
-  <%= f.submit 'Add!', class: 'btn btn-primary' %> 
+  <%= f.submit 'Add!', class: 'btn btn-primary' %>
 <% end %>
 
 <%# To-Do: This button Must capture all data from fields above (even if empty or partial) and populate the form for the new marker %>
