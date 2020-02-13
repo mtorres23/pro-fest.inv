@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200211030145) do
+ActiveRecord::Schema.define(version: 20200213122724) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,12 +130,12 @@ ActiveRecord::Schema.define(version: 20200211030145) do
     t.string   "model_number"
     t.string   "asin"
     t.string   "measure"
-    t.string   "unit"
     t.integer  "units_per_item"
     t.float    "width"
     t.float    "length"
     t.float    "height"
     t.integer  "account_id"
+    t.float    "cost_per_unit"
     t.index ["account_id"], name: "index_products_on_account_id", using: :btree
   end
 

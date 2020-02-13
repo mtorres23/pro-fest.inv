@@ -113,6 +113,6 @@ class TransactionsController < ApplicationController
       def transaction_params
         return params.require(:transaction)
         .permit(:item_id, :dest_id, :origin_id, :status, :qty)
-        .merge(order_id: @order.id )
+        .merge(order_id: @order.id)
       end
 end

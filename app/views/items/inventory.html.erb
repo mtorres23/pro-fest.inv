@@ -8,8 +8,7 @@
   <thead>
       <tr>
         <th>Quantity</th>
-        <th>Item Name</th>
-        <th>Units</th>
+        <th colspan="2">Item Name</th>
         <th></th>
       </tr>
     </thead>
@@ -17,9 +16,8 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= Product.find(item.product_id).unit.to_i * item.quantity %></td>
-        <td><%= Product.find(item.product_id).name %></td>
-        <td><%= Product.find(item.product_id).unit %> X <%= item.quantity %></td>
+        <td><%= item.quantity %></td>
+        <td colspan="2"><%= Product.find(item.product_id).name %></td>
         <td><img src='<%= Product.find(item.product_id).image_url %>'></td>
       </tr>
     <% end %>
