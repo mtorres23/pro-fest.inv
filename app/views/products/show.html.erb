@@ -6,6 +6,8 @@
 
 <header><h1 class="display-4 center"><%= @product.name %></h1></header>
 <img src='<%= @product.image_url%>'>
-<p>Unit: <%= @product.unit %></p>
+<p>Item Cost: <%= @product.highest_recorded_price %></p>
+<p>Units Per Item: <%= @product.units_per_item %></p>
+<p>Cost per Unit: <%= @product.cost_per_unit %></p>
 <p>UPC: <%= @product.upc %></p>
 <p>Description: <%= @product.description %></p>

@@ -42,10 +42,10 @@ account_id = Account.first.id
 Customer.create(name: 'Live Nation', address: '9348 Civic Centre Drive Beverly Hills, CA 90210', account_id: account_id);
 customer_id = Customer.first.id
 
-Product.create(account_id: account_id, name: '50pk - 12oz Clear Plastic cups', upc: '616932448706', image_url: 'https://partycity6.scene7.com/is/image/PartyCity/_pdp_sq_?$_100x100_$&$product=PartyCity/259325', description: '12 oz disposable plastic cups, Value pack of 50 cups', unit: "50")
+Product.create(account_id: account_id, name: '50pk - 12oz Clear Plastic cups', upc: '616932448706', image_url: 'https://partycity6.scene7.com/is/image/PartyCity/_pdp_sq_?$_100x100_$&$product=PartyCity/259325', description: '12 oz disposable plastic cups, Value pack of 50 cups', units_per_item: 50, highest_recorded_price: 8.79 )
 product_id = Product.first.id
 
-Product.create(account_id: account_id, name: 'Bar Shaker Set', upc: '755141103027', image_url: 'http://ecx.images-amazon.com/images/I/41QblGwtXsL._SL160_.jpg', description: 'Stainless Steel 3 Piece Bar Shaker Set', unit: "1")
+Product.create(account_id: account_id, name: 'Bar Shaker Set', upc: '755141103027', image_url: 'http://ecx.images-amazon.com/images/I/41QblGwtXsL._SL160_.jpg', description: 'Stainless Steel 3 Piece Bar Shaker Set', units_per_item: 1, highest_recorded_price: 18 )
 product2_id = Product.second.id
 
 Event.create!(title: 'Music Midtown', address: 'Piedmont Park Atlanta', latitude: '', longitude: '', prev_year_event_id: '', start_date: '', end_date: '', account_id: account_id, customer_id: customer_id)

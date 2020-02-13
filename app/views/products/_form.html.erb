@@ -16,9 +16,14 @@
     <%= f.text_field :name %>
   </div>
 
+   <div class="field">
+    <%= f.label :highest_recorded_price, 'Price' %>
+    <%= f.number_field :highest_recorded_price %>
+  </div>
+
   <div class="field">
-    <%= f.label :unit %>
-    <%= f.number_field :unit %>
+    <%= f.label :units_per_item %>
+    <%= f.number_field :units_per_item %>
   </div>
 
   <div class="field">

@@ -7,6 +7,8 @@
       <tr>
         <th>Name</th>
         <th>Unit Amount</th>
+        <th>Item Cost</th>
+        <th>Cost per Unit</th>
         <th>UPC</th>
         <th>Description</th>
       </tr>
@@ -16,9 +18,11 @@
     <% @products.each do |product| %>
       <tr>
         <td><%= link_to product.name, account_product_path(id: product.id ) %></td>
-        <td><%= product.unit %></td>
+        <td><%= product.units_per_item %></td>
+        <td><%= product.highest_recorded_price %></td>
+        <td><%= product.cost_per_unit %></td>
         <td><%= product.upc %></td>
-        <td><%= product.description%></td>
+        <td colspan="2"><%= product.description%></td>
       </tr>
     <% end %>
   </tbody>

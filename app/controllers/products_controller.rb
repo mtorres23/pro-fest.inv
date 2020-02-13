@@ -79,7 +79,7 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       return params.require(:product)
-      .permit(:name, :upc, :description, :color, :size, :dimensions, :weight, :highest_recorded_price, :lowest_recorded_price, :image_url, :brand, :model_number, :asin, :measure, :unit, :unit_per_item, :width, :length, :height)
+      .permit(:name, :upc, :description, :color, :size, :dimensions, :weight, :highest_recorded_price, :lowest_recorded_price, :image_url, :brand, :model_number, :asin, :measure, :units_per_item, :width, :length, :height)
       .merge(account_id: @account.id)
     end
 end
