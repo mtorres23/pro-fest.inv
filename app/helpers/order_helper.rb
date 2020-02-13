@@ -66,7 +66,7 @@ module OrderHelper
       @destination = transaction.order.location
     when 'load_in'
       @origin = find_item_match(warehouse_location, transaction).location
-      @destination = event_locations.find(transaction.location_id)
+      @destination = event_locations.find(transaction.order.location_id)
     when 'load_out'
       @origin = transaction.order.location
       @destination = find_item_match(warehouse_location, transaction).location
