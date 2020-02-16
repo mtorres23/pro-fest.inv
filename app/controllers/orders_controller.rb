@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   before_action :set_account
   before_action :set_location, except: [:orders_by_account, :orders_by_event, :feed]
-  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :confirm, :submit]
+  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :complete, :submit]
   before_action :invalid_transactions, only: [:confirm]
 
   def index
