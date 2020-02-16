@@ -55,12 +55,12 @@ get '/locations/:location_id/items/new' => 'items#new', as: 'new_location_item'
 post '/locations/:location_id/items' => 'items#create', as: 'create_location_item'
 patch '/locations/:location_id/items/:id' => 'items#update_item', as: 'inventory_item_edit'
 
-
 # Order Routes
 post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_order'
 get '/events/:event_id/locations/:location_id/orders' => 'orders#orders_by_location', as: 'location_orders'
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
-get '/events/:event_id/feed' => 'orders#feed', as: 'event_feed'
+get '/events/:event_id/feed' => 'messages#event_feed', as: 'event_feed'
+get '/events/:event_id/locations/:id/feed' => 'messages#location_feed', as: 'location_feed'
 post '/events/:event_id/locations/:location_id/orders/:id/confirm' => 'orders#confirm', as: 'order_confirm'
 # get '/events/:event_id/locations/map_edit' => 'locations#map_edit', as: 'locations_map_edit'
 get '/settings' => 'application#settings', as: 'settings'
