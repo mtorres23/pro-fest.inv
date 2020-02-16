@@ -1,2 +1,9 @@
 <h1>Message#location_feed</h1>
-<p>Find me in app/views/message/location_feed.html.erb</p>
+<%= link_to 'Back', event_location_path(@event,@location), class:'btn waves-effect waves-light' %>
+<ul>
+<% @messages.each do |m| %>
+<li>
+</li>
+
+<%end%>
+</ul>
