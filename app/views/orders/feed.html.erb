@@ -1,0 +1,16 @@
+<%= link_to 'Back', event_path(@event), class:'btn waves-effect waves-light' %>
+<ul>
+<% @feed_orders.each do |o| %>
+<li><%= o[:text] %>
+    <% if o[:transactions]%>
+    <ul>
+        <% o[:transactions].each do |t| %>
+        <li> <%= t %></li>
+        <%end%>
+    </ul>
+    <%end%>
+
+</li>
+
+<%end%>
+</ul>

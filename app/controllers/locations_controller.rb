@@ -114,5 +114,6 @@ class LocationsController < ApplicationController
 
   def location_params
     return params.require(:location).permit(:title, :loc_type, :address, :latitude, :longitude)
+    .merge(event_id: @event.id)
   end
 end

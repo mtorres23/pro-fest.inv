@@ -35,6 +35,18 @@ module OrderHelper
     end
   end
 
+  def order_feed(orders)
+    return orders.map do |o|
+      {
+        id: o.id,
+        location_id: o.location_id,
+        event_id: o.location.event.id,
+        text: format_order(o),
+        transactions: handle_transactions(o)
+      }
+    end
+  end
+
   private
 
   def get_event_locations(transaction)
@@ -95,5 +107,70 @@ def update_inventories(t, origin, destination)
   puts 'this is the NEW destination qty: ' + find_item_match(destination, t).quantity.to_s
 end
 
+def format_order(order)
+  info = "##{order.id} [#{order.location.title}] #{order.created_at.strftime("%I:%M%p on %m/%d/%Y")} : #{order.role.upcase} by #{user_data(order.created_by)[:full_name]}: "
+  if order.role == 'note'
+    info += order.message
+  end
+  if order.status == "canceled"
+    return info += "This order has been CANCELED"
+  end
+  if order.status != 'verified'
+    return info += "This is order is #{order.status.upcase}..."
+  end
+  case order.role
+  when 'transfer'
+    info += "#{order.transactions.length} inventory item(s) included in Order#: #{} (verified by #{user_data(order.verified_by)[:full_name]})"
+  when 'sale'
+  when 'void'
+  when 'load_in'
+  when 'load_out'
+  when 'comp', 'damage', 'spill', 'return'
+  end
+  return info
+end
+
+def handle_transactions(order)
+  if order.role == "note"
+    return []
+  end
+  if order.transactions.length > 0
+    return order.transactions.map do |t|
+      format_transaction(t)
+    end
+  end
+end
+
+def format_transaction(transaction)
+  transaction_message = "(#{transaction.qty}) of item: #{product_data(transaction).name} has been "
+  case transaction.order.role
+  when 'transfer'
+    transaction_message += "transferred from #{get_event_locations(transaction).find(transaction.origin_id).title} to #{get_event_locations(transaction).find(transaction.dest_id).title}"
+  when 'load_in'
+    transaction_message += "loaded in to #{get_event_locations(transaction).find(transaction.order.location_id).title}"
+  when 'load_out'
+    transaction_message += "loaded out to WAREHOUSE"
+  when 'sale'
+    transaction_message += "sold"
+  when 'comp', 'spill', 'damaged', 'return'
+    transaction_message += "removed from inventory due to a comp reported by #{user_data(transaction.order.created_by)[:full_name]}"
+  when 'void'
+    transaction_message += "returned to inventory because of an error"
+  end
+  return transaction_message
+end
+
+def user_data(user_id)
+  user = User.find(user_id)
+  return {
+    full_name: "#{user.first_name} #{user.last_name}",
+    details:user
+  }
+end
+
+def product_data(transaction)
+  product = Product.find(transaction.item.product_id)
+  return product
+end
 
 end
