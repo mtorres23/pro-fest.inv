@@ -177,7 +177,7 @@ end
 def create_order_message(order)
   message_type = "order_#{order.status}"
   puts "creating order message"
-  message = order.messages.new(message_type: message_type, created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location.id)
+  message = order.messages.new(message_type: message_type, created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id)
   message.save
 end
 

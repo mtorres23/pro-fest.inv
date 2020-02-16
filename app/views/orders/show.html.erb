@@ -8,6 +8,7 @@
 <% if !@canceled or !@noedit %>
 <%= link_to 'Add Transaction', new_event_location_order_transaction_path(order_id: @order.id), class: 'center btn-large waves-effect waves-light' %>
 <%= link_to 'Edit Order', edit_event_location_order_path(id: @order.id), class: 'center btn-large waves-effect waves-light' %>
+<%= button_to 'Submit Request', order_submit_path(@location.event, @location, @order), method: :post, class: 'right btn waves-effect waves-light' %>
 <%end%>
 
 <tr>
@@ -70,7 +71,7 @@
 <% end %>
 
 <% if !@noedit %>
-  <%= link_to 'confirm order', order_confirm_path(@location.event, @location, @order), method: :post, class: 'right btn waves-effect waves-light' %>
+  <%= link_to 'complete order', order_complete_path(@location.event, @location, @order), method: :post, class: 'right btn waves-effect waves-light' %>
   <% end%>
 
 

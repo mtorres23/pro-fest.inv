@@ -17,8 +17,8 @@ class Message < ApplicationRecord
       self.text = info + "#{order.role.upcase} Order #{order.id} submitted by #{user_data(message.created_by)[:full_name]}"
     when 'order_submitted'
       self.text = info + "#{order.role.upcase} Order #{order.id} submitted by #{user_data(message.created_by)[:full_name]}"
-    when 'order_confirmed'
-      self.text = info + "#{order.role.upcase} Order #{order.id} confirmed by #{user_data(message.created_by)[:full_name]}"
+    when 'order_completed'
+      self.text = info + "#{order.role.upcase} Order #{order.id} completed by #{user_data(message.created_by)[:full_name]}"
     when 'order_verified'
       self.text = info + "#{order.role.upcase} Order #{order.id} verified by #{user_data(message.created_by)[:full_name]}"
     when 'order_canceled'

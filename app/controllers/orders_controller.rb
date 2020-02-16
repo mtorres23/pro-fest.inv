@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   before_action :set_account
   before_action :set_location, except: [:orders_by_account, :orders_by_event, :feed]
-  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :confirm]
+  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :confirm, :submit]
   before_action :invalid_transactions, only: [:confirm]
 
   def index
@@ -65,6 +65,7 @@ class OrdersController < ApplicationController
 
   def update
     order = @location.orders.find(params[:id])
+    order.update(status: "pending")
     respond_to do |format|
       if order.update_attributes(order_params)
           create_order_message(order)
@@ -77,17 +78,31 @@ class OrdersController < ApplicationController
     end
   end
 
-  def confirm
-
+  def complete
     @order = @location.orders.find(params[:id])
     # @transactions = @order.transactions
     if !invalid_transactions
       handle_order(@order)
-      redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: @order.id ), notice: 'Order was successfully confirmed.'
+      redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: @order.id ), notice: 'Order was successfully completed.'
     else
       render json: 'error: Transactions are not fulfilled', status: :bad_request
   end
 end
+
+def submit
+  @order = @location.orders.find(params[:id])
+  respond_to do |format|
+    if @order.update(status: "pending")
+        create_order_message(@order)
+      format.html { redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: @order.id ), notice: 'Order was successfully submitted.' }
+      format.json { render :show, status: :ok, location: order }
+    else
+      format.html { render :edit }
+      format.json { render json: order.errors, status: :unprocessable_entity }
+    end
+  end
+end
+
 
   def edit
     @order = @location.orders.find(params[:id])
