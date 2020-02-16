@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   include OrderHelper
 
   before_action :set_account
-  before_action :set_location, except: [:orders_by_account, :orders_by_event]
-  before_action :set_event, only: [:index, :orders_by_event,:edit, :update, :destroy, :show, :confirm]
+  before_action :set_location, except: [:orders_by_account, :orders_by_event, :feed]
+  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :confirm]
   before_action :invalid_transactions, only: [:confirm]
 
   def index
@@ -18,6 +18,15 @@ class OrdersController < ApplicationController
   def orders_by_event
     @orders = @event.orders
     @locations = @event.locations
+    @users = User.where(account_id: @event.account.id)
+  end
+
+  def feed
+    @orders = @event.orders
+    @locations = @event.locations
+    @users = User.where(account_id: @event.account.id)
+    @products = @account.products
+    @feed_orders = order_feed(@orders)
   end
 
   def orders_by_location
