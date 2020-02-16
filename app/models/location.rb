@@ -3,6 +3,7 @@ class Location < ApplicationRecord
 	has_many :users, :foreign_key => :location_id
 	has_many :items, :foreign_key => :location_id
 	has_many :categories
+	has_many :messages
 	has_many :orders, :foreign_key => :location_id
 	has_many :transactions, through: :orders
 
