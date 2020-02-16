@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200216204730) do
+ActiveRecord::Schema.define(version: 20200216220803) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,22 +96,20 @@ ActiveRecord::Schema.define(version: 20200216204730) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.string   "type"
     t.string   "text"
     t.integer  "min_access_level"
     t.integer  "created_by"
     t.integer  "location_id"
     t.integer  "order_id"
     t.integer  "event_id"
-    t.integer  "item_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "message_type"
+    t.integer  "item_id"
     t.integer  "transaction_id"
     t.index ["event_id"], name: "index_messages_on_event_id", using: :btree
-    t.index ["item_id"], name: "index_messages_on_item_id", using: :btree
     t.index ["location_id"], name: "index_messages_on_location_id", using: :btree
     t.index ["order_id"], name: "index_messages_on_order_id", using: :btree
-    t.index ["transaction_id"], name: "index_messages_on_transaction_id", using: :btree
   end
 
   create_table "orders", id: :bigserial, force: :cascade do |t|
@@ -201,7 +199,6 @@ ActiveRecord::Schema.define(version: 20200216204730) do
   add_foreign_key "customers", "accounts"
   add_foreign_key "events", "accounts"
   add_foreign_key "messages", "events"
-  add_foreign_key "messages", "items"
   add_foreign_key "messages", "locations"
   add_foreign_key "messages", "orders"
   add_foreign_key "orders", "locations"

@@ -67,6 +67,7 @@ class OrdersController < ApplicationController
     order = @location.orders.find(params[:id])
     respond_to do |format|
       if order.update_attributes(order_params)
+          create_order_message(order)
         format.html { redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: order.id ), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: order }
       else
@@ -105,8 +106,8 @@ end
 
   def order_params
     return params.require(:order)
-    .permit(:message, :role, :origin_id, :destination_id, :due_date, :verified_by)
-    .merge(:created_by => current_user.id, location_id: @location.id, status: 'pending')
+    .permit(:message, :role, :origin_id, :destination_id, :due_date, :verified_by, :status)
+    .merge(:created_by => current_user.id, location_id: @location.id)
   end
 
   def set_account

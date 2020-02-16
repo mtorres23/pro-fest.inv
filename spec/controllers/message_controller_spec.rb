@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe MessageController, type: :controller do
+RSpec.describe MessagesController, type: :controller do
 
   describe "GET #event_feed" do
     it "returns http success" do

@@ -15,6 +15,7 @@ module OrderHelper
 
   def statuses
     [
+      ['submitted'],
       ['pending'],
       ['canceled'],
       ['completed'],
@@ -171,6 +172,13 @@ end
 def product_data(transaction)
   product = Product.find(transaction.item.product_id)
   return product
+end
+
+def create_order_message(order)
+  message_type = "order_#{order.status}"
+  puts "creating order message"
+  message = order.messages.new(message_type: message_type, created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location.id)
+  message.save
 end
 
 end
