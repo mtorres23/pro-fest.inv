@@ -32,7 +32,8 @@ module OrderHelper
       order.transactions.each do |t|
       process_transaction(t)
       end
-      order.update(status: 'verified', verified_by: current_user.id)
+      order.update(status: 'verified', verified_by: current_user.id, assigned_to: nil)
+      order.messages.new(message_type: 'order_verified', created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id).save
     end
   end
 
