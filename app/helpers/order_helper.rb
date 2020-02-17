@@ -106,6 +106,7 @@ def update_inventories(t, origin, destination)
   dest_item.update(quantity: dest_qty + t.qty)
   puts 'this is the NEW origin qty: ' + find_item_match(origin, t).quantity.to_s
   puts 'this is the NEW destination qty: ' + find_item_match(destination, t).quantity.to_s
+  t.order.messages.new(message_type: 'inventory_updated', created_by: current_user.id, event_id: t.order.location.event.id, order_id: t.order.id, location_id: t.order.location_id, item_id: t.item.id, transaction_id: t.id).save
 end
 
 def format_order(order)

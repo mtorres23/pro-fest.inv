@@ -1,4 +1,5 @@
 class TransactionsController < ApplicationController
+  include TransactionHelper
     before_action :authenticate_user!
     before_action :set_account
     before_action :set_products
@@ -57,6 +58,7 @@ class TransactionsController < ApplicationController
 
       respond_to do |format|
         if @transaction.update_attributes(transaction_params)
+          create_transaction_message(@transaction)
           format.html { redirect_to event_location_order_transaction_path(event_id: @event.id, order_id: @order.id, id: @transaction.id), notice: 'Transaction was successfully updated.' }
           format.json { render :show, status: :ok, location: @transaction }
         else

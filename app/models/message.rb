@@ -38,6 +38,14 @@ class Message < ApplicationRecord
     when 'transaction_updated'
     transaction = Transaction.find(message.transaction_id)
     self.text = info + "Transaction# #{transaction.id} has been updated: Status = #{transaction.status}, Item: #{find_order_item(order, transaction.item_id).product.name}, Qty: #{transaction.qty}"
+  when 'inventory_updated'
+    item = Item.find(message.item_id)
+    transaction = Transaction.find(message.transaction_id)
+    origin = Location.find(transaction.origin_id)
+    destination = Location.find(transaction.dest_id)
+    origin_item = Item.find_by(location_id: transaction.origin_id)
+    dest_item = Item.find_by(location_id: transaction.dest_id)
+    self.text = info + "#{origin.title} inventory has been updated: #{origin_item.product.name} = #{origin_item.quantity}, #{destination.title} inventory has been updated: #{dest_item.product.name} = #{dest_item.quantity}"
     end
   end
 

@@ -59,7 +59,8 @@ class OrdersController < ApplicationController
   def show
     @order = @location.orders.find(params[:id])
     @transactions = @order.transactions
-    @canceled = @order.status === 'canceled'
+    @canceled = @order.status == 'canceled'
+    puts !@canceled or !@noedit
     @noedit = ['completed', 'verified'].include?(@order.status) or @order.role === "note"
   end
 
@@ -69,6 +70,12 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if order.update_attributes(order_params)
           create_order_message(order)
+          # To-do: move this into a helper method
+          if(order.status === 'canceled')
+            order.transactions.each do |t|
+              t.update(status: 'canceled')
+            end
+          end
         format.html { redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: order.id ), notice: 'Order was successfully updated.' }
         format.json { render :show, status: :ok, location: order }
       else
@@ -102,7 +109,6 @@ def submit
     end
   end
 end
-
 
   def edit
     @order = @location.orders.find(params[:id])
