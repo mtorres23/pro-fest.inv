@@ -3,7 +3,7 @@ class TransactionsController < ApplicationController
     before_action :authenticate_user!
     before_action :set_account
     before_action :set_products
-    before_action :set_event
+    before_action :set_event, except: [:item_reserve, :item_drop, :item_pickup]
     before_action :set_location
     before_action :set_items
     before_action :set_order
@@ -46,6 +46,29 @@ class TransactionsController < ApplicationController
           format.json { render :show, status: :created, location: @transaction }
         else
           format.html { render :new }
+          format.json { render json: @transaction.errors, status: :unprocessable_entity }
+        end
+      end
+    end
+
+    def find_items
+      @transaction = Transaction.find(params[:id])
+      @matching_items = Item.where(product_id: @transaction.item.product_id)
+      @pending_transactions = @event.transactions.select do |t|
+        ["pending", "in_progress"].include?(t.status) and ["transfer", "load_out"].include?(t.order.role)
+      end
+    end
+
+    def item_reserve
+      @transaction = @order.transactions.find(params[:transaction_id])
+      @item = @location.event.items.find(params[:id])
+      respond_to do |format|
+        if @transaction.update_attributes(origin_id: @item.location_id, status: "pending", dest_id: @transaction.order.location_id)
+          create_transaction_message(@transaction)
+          format.html { redirect_to event_location_order_path(event_id: @location.event.id, id: @order.id), notice: 'Items were successfully reserved for transaction.' }
+          format.json { render :show, status: :ok, location: @transaction }
+        else
+          format.html { render :edit }
           format.json { render json: @transaction.errors, status: :unprocessable_entity }
         end
       end

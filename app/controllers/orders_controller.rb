@@ -59,9 +59,9 @@ class OrdersController < ApplicationController
   def show
     @order = @location.orders.find(params[:id])
     @transactions = @order.transactions
-    @canceled = @order.status == 'canceled'
+    @canceled = @order.status == "canceled"
     puts !@canceled or !@noedit
-    @noedit = ['completed', 'verified'].include?(@order.status) or @order.role === "note"
+    @noedit = ["completed", "verified"].include?(@order.status) or @order.role == "note"
   end
 
   def update

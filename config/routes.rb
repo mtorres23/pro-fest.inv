@@ -54,7 +54,7 @@ get '/locations/:location_id/items' => 'items#inventory', as: 'location_inventor
 get '/locations/:location_id/items/new' => 'items#new', as: 'new_location_item'
 post '/locations/:location_id/items' => 'items#create', as: 'create_location_item'
 patch '/locations/:location_id/items/:id' => 'items#update_item', as: 'inventory_item_edit'
-
+get '/locations/:location_id/orders/:order_id/transactions/:transaction_id/reserve/:id' => 'transactions#item_reserve', as: 'item_reserve'
 # Order Routes
 post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_order'
 get '/events/:event_id/locations/:location_id/orders' => 'orders#orders_by_location', as: 'location_orders'
@@ -63,6 +63,9 @@ get '/events/:event_id/feed' => 'messages#event_feed', as: 'event_feed'
 get '/events/:event_id/locations/:location_id/feed' => 'messages#location_feed', as: 'location_feed'
 post '/events/:event_id/locations/:location_id/orders/:id/complete' => 'orders#complete', as: 'order_complete'
 post '/events/:event_id/locations/:location_id/orders/:id/submit' => 'orders#submit', as: 'order_submit'
+
+# Transaction
+get '/events/:event_id/locations/:location_id/orders/:order_id/transactions/:id/find_items' => 'transactions#find_items', as: 'find_items'
 
 # get '/events/:event_id/locations/map_edit' => 'locations#map_edit', as: 'locations_map_edit'
 get '/settings' => 'application#settings', as: 'settings'
