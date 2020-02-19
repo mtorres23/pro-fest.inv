@@ -1,7 +1,8 @@
 class LocationsController < ApplicationController
+  include ItemsHelper
   before_action :set_account
   before_action :set_event
-  before_action :set_location, only: [:location_json, :show, :edit, :update, :destroy]
+  before_action :set_location, only: [:location_json, :show, :edit, :update, :destroy, :pickup_order, :dropoff_order]
 
   def index
     @locations = @event.locations.all
@@ -60,7 +61,13 @@ class LocationsController < ApplicationController
     @location = @event.locations.find(params[:id])
   end
 
+  def pickup_order
+    @orders = @event.orders
+    @pickup_orders = find_matching_orders(@orders, @location)
+  end
 
+  def dropoff_order
+  end
 
  # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json

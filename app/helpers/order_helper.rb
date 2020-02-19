@@ -183,4 +183,11 @@ def create_order_message(order)
   message.save
 end
 
+def create_order_transaction_message(t, message_type)
+  puts "creating order transaction message"
+  order = t.order
+  message = order.messages.new(message_type: message_type, created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id, transaction_id: t.id, item_id: t.item_id)
+  message.save
+end
+
 end
