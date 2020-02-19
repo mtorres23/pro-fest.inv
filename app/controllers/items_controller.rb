@@ -8,7 +8,8 @@ class ItemsController < ApplicationController
         @products = @account.products
         @items = @location.items
         @orders = @location.event.orders
-        @pickup_orders = find_matching_orders(@orders, @location)
+        @pickup_orders = find_matching_orders(@orders, @location, "pickup")
+        @dropoff_orders = find_matching_orders(@orders, @location, "dropoff")
     end
 
 

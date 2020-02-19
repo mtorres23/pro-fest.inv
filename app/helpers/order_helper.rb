@@ -163,6 +163,12 @@ def format_transaction(transaction)
   return transaction_message
 end
 
+def confirm_order_check(order)
+  if order.transactions.where(status: "completed").length == order.transactions.length
+    order.update(status: "completed")
+  end
+end
+
 def user_data(user_id)
   user = User.find(user_id)
   return {

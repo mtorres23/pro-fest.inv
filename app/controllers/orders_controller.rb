@@ -134,6 +134,23 @@ def pickup
 end
 
 def dropoff
+  @destination = @event.locations.find(params[:dest])
+  @order = @location.orders.find(params[:id])
+  @dropped_off = @order.transactions.where(dest_id: @destination.id)
+  respond_to do |format|
+    if @order.update(status: "pending")
+        @dropped_off.each do |t|
+          t.update(status:"completed")
+          create_order_transaction_message(t, "item_drop_off")
+        end
+        confirm_order_check(@order)
+      format.html { redirect_to event_location_order_path(@event,@location,@order), notice: "Order was successfully dropped off at #{@destination.title}" }
+      format.json { render :show, status: :ok, location: order }
+    else
+      format.html { render :edit }
+      format.json { render json: order.errors, status: :unprocessable_entity }
+    end
+  end
 end
 
 

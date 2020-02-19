@@ -63,10 +63,12 @@ class LocationsController < ApplicationController
 
   def pickup_order
     @orders = @event.orders
-    @pickup_orders = find_matching_orders(@orders, @location)
+    @pickup_orders = find_matching_orders(@orders, @location, "pickup")
   end
 
   def dropoff_order
+    @orders = @event.orders
+    @dropoff_orders = find_matching_orders(@orders, @location, "dropoff")
   end
 
  # PATCH/PUT /locations/1
