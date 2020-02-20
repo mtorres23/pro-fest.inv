@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  include ItemsHelper
     before_action :authenticate_user!
     before_action :set_account
     before_action :set_location
@@ -6,11 +7,11 @@ class ItemsController < ApplicationController
     def inventory
         @products = @account.products
         @items = @location.items
+        @orders = @location.event.orders
+        @pickup_orders = find_matching_orders(@orders, @location, "pickup")
+        @dropoff_orders = find_matching_orders(@orders, @location, "dropoff")
     end
 
-    # def show
-    #     @item = @location.items.find(params[:id])
-    # end
 
     # GET /items/new
     def new

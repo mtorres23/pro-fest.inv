@@ -46,7 +46,7 @@
   </thead>
 
   <tbody>
-    <% @event.locations.each do |location| %>
+    <% @locations.each do |location| %>
       <tr>
         <td><%= link_to location.title, event_location_path(event_id: @event.id, id: location.id) %></td>
         <td><%= location.loc_type %></td>

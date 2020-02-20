@@ -32,7 +32,8 @@ module OrderHelper
       order.transactions.each do |t|
       process_transaction(t)
       end
-      order.update(status: 'verified', verified_by: current_user.id)
+      order.update(status: 'verified', verified_by: current_user.id, assigned_to: nil)
+      order.messages.new(message_type: 'order_verified', created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id).save
     end
   end
 
@@ -162,6 +163,12 @@ def format_transaction(transaction)
   return transaction_message
 end
 
+def confirm_order_check(order)
+  if order.transactions.where(status: "completed").length == order.transactions.length
+    order.update(status: "completed")
+  end
+end
+
 def user_data(user_id)
   user = User.find(user_id)
   return {
@@ -179,6 +186,13 @@ def create_order_message(order)
   message_type = "order_#{order.status}"
   puts "creating order message"
   message = order.messages.new(message_type: message_type, created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id)
+  message.save
+end
+
+def create_order_transaction_message(t, message_type)
+  puts "creating order transaction message"
+  order = t.order
+  message = order.messages.new(message_type: message_type, created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id, transaction_id: t.id, item_id: t.item_id)
   message.save
 end
 

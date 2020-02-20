@@ -3,7 +3,12 @@
 <h1>Inventory</h1>
 
 <%= link_to 'Back To Location', event_location_path(event_id: @location.event_id, id: @location), class: 'center btn-large waves-effect waves-light' %>
-
+<% if @pickup_orders.length > 0%>
+<%= link_to 'Pickup Order', order_pickup_path(@location.event, @location), class: 'right btn-large waves-effect waves-light' %>
+<%end%>
+<% if @dropoff_orders.length > 0%>
+<%= link_to 'Drop-off Order', order_dropoff_path(@location.event, @location), class: 'right btn-large waves-effect waves-light' %>
+<%end%>
 <table>
   <thead>
       <tr>

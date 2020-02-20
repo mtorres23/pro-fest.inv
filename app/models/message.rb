@@ -30,11 +30,15 @@ class Message < ApplicationRecord
     when 'item_pick_up'
       item = Item.find(message.item_id)
       transaction = Transaction.find(message.transaction_id)
-      self.text = info + "(#{transaction.qty}) #{item.product.name} has been picked up for Order #{order.id} by #{user_data(message.created_by)[:full_name]}"
+      origin = Location.find(transaction.origin_id)
+      destination = Location.find(transaction.dest_id)
+      self.text = info + "Order #{order.id} - #{user_data(message.created_by)[:full_name]} has picked up (#{transaction.qty}) #{item.product.name} from #{origin.title} is on the way to #{destination.title}"
     when 'item_drop_off'
       item = Item.find(message.item_id)
       transaction = Transaction.find(message.transaction_id)
-      self.text = info + "(#{transaction.qty}) #{item.product.name} has been dropped off up for Order #{order.id} by #{user_data(message.created_by)[:full_name]}"
+      origin = Location.find(transaction.origin_id)
+      destination = Location.find(transaction.dest_id)
+      self.text = info + "Order #{order.id} - #{user_data(message.created_by)[:full_name]} has dropped off (#{transaction.qty}) #{item.product.name} to #{destination.title}"
     when 'transaction_updated'
     transaction = Transaction.find(message.transaction_id)
     self.text = info + "Transaction# #{transaction.id} has been updated: Status = #{transaction.status}, Item: #{find_order_item(order, transaction.item_id).product.name}, Qty: #{transaction.qty}"

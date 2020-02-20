@@ -1,0 +1,27 @@
+
+<% orders.each do |o| %>
+    <div class="center">
+        <% if @pickup_orders %>
+            <h4>Order #<%= o.id %> for <%= o.location.title %></h4>
+            <ul>
+            <% o.transactions.where(origin_id: @location.id).each do |t| %>
+                <li>
+                <%= t.qty %> x <%= t.item.product.name %>
+                </li>
+            <% end %>
+            </ul>
+            <%= link_to "Pickup for #{o.location.title}" , event_location_order_pickup_path(@location.event, o.location, o, @location), method: :post ,data: { confirm: "Pickup all items from #{@location.title} for #{o.location.title}?" }, class: 'center btn waves-effect waves-light' %>
+
+        <% elsif @dropoff_orders %>
+            <h4>Order #<%= o.id %> for <%= o.location.title %></h4>
+            <ul>
+            <% o.transactions.where(dest_id: @location.id).each do |t| %>
+                <li>
+                <%= t.qty %> x <%= t.item.product.name %>
+                </li>
+            <% end %>
+            </ul>
+            <%= link_to "Dropoff" , event_location_order_dropoff_path(@location.event, o.location, o, @location), method: :post ,data: { confirm: "Dropoff all items to #{@location.title}?" }, class: 'center btn waves-effect waves-light' %>
+        <% end %>
+    </div>
+<% end %>

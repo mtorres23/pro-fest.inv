@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   include OrderHelper
 
   before_action :set_account
-  before_action :set_location, except: [:orders_by_account, :orders_by_event, :feed]
-  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :complete, :submit]
+  before_action :set_location, except: [:orders_by_account, :orders_by_event,:feed]
+  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :complete, :submit, :pickup, :dropoff]
   before_action :invalid_transactions, only: [:confirm]
 
   def index
@@ -59,9 +59,13 @@ class OrdersController < ApplicationController
   def show
     @order = @location.orders.find(params[:id])
     @transactions = @order.transactions
-    @canceled = @order.status == 'canceled'
+    @canceled = @order.status == "canceled"
     puts !@canceled or !@noedit
-    @noedit = ['completed', 'verified'].include?(@order.status) or @order.role === "note"
+    @noedit = ["completed", "verified"].include?(@order.status) or @order.role == "note"
+  end
+
+  def edit
+    @order = @location.orders.find(params[:id])
   end
 
   def update
@@ -110,9 +114,45 @@ def submit
   end
 end
 
-  def edit
-    @order = @location.orders.find(params[:id])
+def pickup
+  @origin = @event.locations.find(params[:origin])
+  @order = @location.orders.find(params[:id])
+  @picked_up = @order.transactions.where(origin_id: @origin.id)
+  respond_to do |format|
+    if @order.update(status: "pending", assigned_to: current_user.id)
+        @picked_up.each do |t|
+          t.update(status:"in_progress")
+          create_order_transaction_message(t, "item_pick_up")
+        end
+      format.html { redirect_to event_location_order_path(@event,@location,@order), notice: "Order was successfully pickup up from #{@origin.title}" }
+      format.json { render :show, status: :ok, location: order }
+    else
+      format.html { render :edit }
+      format.json { render json: order.errors, status: :unprocessable_entity }
+    end
   end
+end
+
+def dropoff
+  @destination = @event.locations.find(params[:dest])
+  @order = @location.orders.find(params[:id])
+  @dropped_off = @order.transactions.where(dest_id: @destination.id)
+  respond_to do |format|
+    if @order.update(status: "pending")
+        @dropped_off.each do |t|
+          t.update(status:"completed", delivered_by: current_user.id)
+          create_order_transaction_message(t, "item_drop_off")
+        end
+        confirm_order_check(@order)
+      format.html { redirect_to event_location_order_path(@event,@location,@order), notice: "Order was successfully dropped off at #{@destination.title}" }
+      format.json { render :show, status: :ok, location: order }
+    else
+      format.html { render :edit }
+      format.json { render json: order.errors, status: :unprocessable_entity }
+    end
+  end
+end
+
 
 
   private

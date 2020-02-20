@@ -20,5 +20,8 @@ module TransactionHelper
         event.locations.select{|loc| !loc[:id] == location[:id] && !loc[:hidden]}
       end
 
+      def find_reserved(transactions, item)
+        return transactions.where(origin_id: item.id)
+      end
 
   end
