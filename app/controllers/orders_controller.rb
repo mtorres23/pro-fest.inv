@@ -119,7 +119,7 @@ def pickup
   @order = @location.orders.find(params[:id])
   @picked_up = @order.transactions.where(origin_id: @origin.id)
   respond_to do |format|
-    if @order.update(status: "pending")
+    if @order.update(status: "pending", assigned_to: current_user.id)
         @picked_up.each do |t|
           t.update(status:"in_progress")
           create_order_transaction_message(t, "item_pick_up")
@@ -140,7 +140,7 @@ def dropoff
   respond_to do |format|
     if @order.update(status: "pending")
         @dropped_off.each do |t|
-          t.update(status:"completed")
+          t.update(status:"completed", delivered_by: current_user.id)
           create_order_transaction_message(t, "item_drop_off")
         end
         confirm_order_check(@order)

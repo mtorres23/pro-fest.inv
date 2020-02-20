@@ -1,4 +1,12 @@
 module ItemsHelper
+    def categories
+        [
+            ["supplies"],
+            ["drinks"],
+            ["consumables"]
+        ]
+    end
+
     def find_matching_orders(orders, location, direction)
         matches = []
         if direction == "pickup"

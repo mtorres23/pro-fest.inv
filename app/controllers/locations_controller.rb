@@ -5,11 +5,11 @@ class LocationsController < ApplicationController
   before_action :set_location, only: [:location_json, :show, :edit, :update, :destroy, :pickup_order, :dropoff_order]
 
   def index
-    @locations = @event.locations.all
+    @locations = @event.locations.where(hidden: nil)
   end
 # GET api/events/:event_id/locations
   def index_as_json
-    @locations = @event.locations.all
+    @locations = @event.locations.where(hidden: nil)
     render json: @locations
   end
 
@@ -86,7 +86,7 @@ class LocationsController < ApplicationController
     respond_to do |format|
       if @location.update_attributes(location_params)
         puts "This is what is firing"
-        format.html { redirect_to event_locations_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully updated.' }
+        format.html { redirect_to event_location_path(event_id: @location.event_id, id: @location.id), notice: 'Location was successfully updated.' }
         format.json { render json: @location, status: :ok, location: event_location_url(@location) }
       else
         format.html { render :edit }

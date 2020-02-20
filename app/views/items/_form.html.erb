@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :product_id %><br />
-    <%= f.select :product_id, options_for_select(Product.all.map{|product|[product.name, product.id]}), :class => 'input-field' %>
+    <%= f.select :product_id, options_for_select(Product.all.map{|product|[product.name, product.id]})%>
   </div>
 
   <div class="field">
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :category %>
-    <%= f.text_field :category %>
+    <%= f.select :category, options_for_select(categories), :include_blank => true%>
   </div>
 
   <div class="field">

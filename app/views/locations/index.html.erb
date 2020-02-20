@@ -14,8 +14,6 @@
       <th>Latitude</th>
       <th>Longitude</th>
       <th>Admin</th>
-      <th>Current Order</th>
-      <th>Last Order</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -29,8 +27,6 @@
         <td><%= location.latitude %></td>
         <td><%= location.longitude %></td>
         <td><%= location.event.title %></td>
-        <td><%= location.current_order_id %></td>
-        <td><%= location.prev_order_id %></td>
       </tr>
     <% end %>
   </tbody>
