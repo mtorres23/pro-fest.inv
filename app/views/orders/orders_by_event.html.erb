@@ -1,8 +1,21 @@
 
-<%= link_to "New Order", new_event_location_order_path , class: 'btn btn-primary btn-lg' %>
+<h2>Event Orders</h2>
 
 
-<% @orders.each do |order|  %>
+<% @locations.each do |l|  %>
 
-  <h3> <%=link_to order.content, event_location_order_path(event_id: @event.id, location_id: @location.id, id: order.id)%> </h3>
+<h4><%= l.title %></h4>
+<hr>
+  <% l.orders.each do |o|%>
+    <% link_to o.id, event_location_order_path(@event, o.location, o)%>
+    <ul>
+      <% o.transactions.each do |t| %>
+        <li>
+          <%= t.qty %> x <%= t.item.product.name %> from <%= @locations.find(t.origin_id).title %> to <%= @locations.find(t.dest_id).title %> <%= link_to 'Assign Order', class:'btn waves-effect waves-light' %>
+        </li>
+      <% end %>
+    </ul>
+
+  <% end %>
 <% end %>
+
