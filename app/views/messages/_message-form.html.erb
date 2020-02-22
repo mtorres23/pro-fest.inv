@@ -1,0 +1,22 @@
+<%= form_for @message, url: create_event_message_path(@event) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being assigned:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Message" , :text %><br />
+    <%= f.text_area :text %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Send Message" %>
+  </div>
+<% end %>

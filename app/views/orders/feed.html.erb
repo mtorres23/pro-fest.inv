@@ -1,4 +1,7 @@
 <%= link_to 'Back', event_path(@event), class:'btn waves-effect waves-light' %>
+
+<%= render 'message-form'%>
+<% puts "hhhwhwhwhwhhwhwhwhw"%>
 <ul>
 <% @feed_orders.each do |o| %>
 <li><%= o[:text] %>
