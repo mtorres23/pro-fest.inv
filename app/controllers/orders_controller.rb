@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   before_action :set_account
   before_action :set_location, except: [:orders_by_account, :orders_by_event,:feed, :assign_order]
-  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :complete, :submit, :pickup, :dropoff, :assign_order]
+  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :verify, :submit, :pickup, :dropoff, :assign_order]
   before_action :invalid_transactions, only: [:confirm]
 
   def index
@@ -59,8 +59,13 @@ class OrdersController < ApplicationController
     @order = @location.orders.find(params[:id])
     @transactions = @order.transactions
     @canceled = @order.status == "canceled"
-    puts !@canceled or !@noedit
-    @noedit = ["completed", "verified"].include?(@order.status) or @order.role == "note"
+    @can_edit = !["verified", "completed", "canceled"].include?(@order.status)
+    @can_submit = @order.transactions.length > 0 && @order.status == nil
+    @no_confirm = invalid_transactions || @canceled || @order.status == 'verified'
+    puts "can confirm: #{@no_confirm}"
+    puts "is editable: #{@can_edit}"
+    puts "can submit?: #{@can_submit}"
+    puts "Has Invalid Transactions: #{invalid_transactions}"
   end
 
   def edit
@@ -88,12 +93,12 @@ class OrdersController < ApplicationController
     end
   end
 
-  def complete
+  def verify
     @order = @location.orders.find(params[:id])
     # @transactions = @order.transactions
     if !invalid_transactions
       handle_order(@order)
-      redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: @order.id ), notice: 'Order was successfully completed.'
+      redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: @order.id ), notice: 'Order was successfully verified.'
     else
       render json: 'error: Transactions are not fulfilled', status: :bad_request
   end
@@ -195,7 +200,7 @@ end
   def invalid_transactions
     invalid = false
     set_transactions.each do |t|
-      if !['completed', 'canceled', 'verified'].include?(t.status)
+      if !['completed', 'verified', 'delivered'].include?(t.status)
         invalid = true
       end
     end

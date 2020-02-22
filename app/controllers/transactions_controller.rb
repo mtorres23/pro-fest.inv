@@ -24,6 +24,8 @@ class TransactionsController < ApplicationController
 
     # GET /transactions/new
     def new
+      puts @items
+      @is_new = true
       @transaction = @order.transactions.new
       @locations = Location.where(event_id: @event.id)
     end
@@ -42,6 +44,7 @@ class TransactionsController < ApplicationController
 
       respond_to do |format|
         if @transaction.save
+          back_to_pending(@transaction)
           format.html { redirect_to event_location_order_transaction_path(event_id: @event.id, order_id: @order.id, id: @transaction.id), notice: 'Transaction was successfully added to Order.' }
           format.json { render :show, status: :created, location: @transaction }
         else
@@ -64,7 +67,7 @@ class TransactionsController < ApplicationController
       @item = @location.event.items.find(params[:id])
       respond_to do |format|
         if @transaction.update_attributes(origin_id: @item.location_id, status: "pending", dest_id: @transaction.order.location_id)
-          create_transaction_message(@transaction)
+          create_transaction_message(@transaction, "transaction_updated")
           format.html { redirect_to event_location_order_path(event_id: @location.event.id, id: @order.id), notice: 'Items were successfully reserved for transaction.' }
           format.json { render :show, status: :ok, location: @transaction }
         else
@@ -81,7 +84,8 @@ class TransactionsController < ApplicationController
 
       respond_to do |format|
         if @transaction.update_attributes(transaction_params)
-          create_transaction_message(@transaction)
+          back_to_pending(@transaction)
+          create_transaction_message(@transaction, "transaction_updated")
           format.html { redirect_to event_location_order_transaction_path(event_id: @event.id, order_id: @order.id, id: @transaction.id), notice: 'Transaction was successfully updated.' }
           format.json { render :show, status: :ok, location: @transaction }
         else
@@ -132,6 +136,11 @@ class TransactionsController < ApplicationController
 
       def set_order
         @order = Order.find(params[:order_id])
+      end
+
+      def back_to_pending(transaction)
+        transaction.order.update(status: "pending")
+        create_transaction_message(transaction, "order_pending")
       end
 
       # Never trust parameters from the scary internet, only allow the white list through.

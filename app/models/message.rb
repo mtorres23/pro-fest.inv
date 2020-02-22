@@ -35,8 +35,7 @@ class Message < ApplicationRecord
       item = Item.find(message.item_id)
       transaction = Transaction.find(message.transaction_id)
       origin = Location.find(transaction.origin_id)
-      destination = Location.find(transaction.dest_id)
-      self.text = info + "Order #{order.id} - #{user_data(message.created_by)[:full_name]} has picked up (#{transaction.qty}) #{item.product.name} from #{origin.title} is on the way to #{destination.title}"
+      self.text = info + "Order #{order.id} - #{user_data(message.created_by)[:full_name]} has picked up (#{transaction.qty}) #{item.product.name} from #{origin.title}"
     when 'item_drop_off'
       item = Item.find(message.item_id)
       transaction = Transaction.find(message.transaction_id)

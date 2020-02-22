@@ -5,19 +5,21 @@
 </header>
 
 
-<% if !@canceled or !@noedit %>
+<% if @can_edit %>
 <%= link_to 'Add Transaction', new_event_location_order_transaction_path(order_id: @order.id), class: 'center btn-large waves-effect waves-light' %>
 <%= link_to 'Edit Order', edit_event_location_order_path(id: @order.id), class: 'center btn-large waves-effect waves-light' %>
+<%end%>
+
+<% if @can_submit %>
 <%= button_to 'Submit Request', order_submit_path(@location.event, @location, @order), method: :post, class: 'right btn waves-effect waves-light' %>
 <%end%>
 
 <tr>
   <div class="center">
-      <h4>Order #<%= @order.id %> Details</h4>
+      <h4>[<%= @order.status %>] Order #<%= @order.id %></h4>
       <br>
       <bold> Message: <%= @order.message %></bold>
       <br>
-      <bold> Status: <%= @order.status %></bold>
       <hr/>
   </div>
 </tr>
@@ -48,14 +50,14 @@
         <td><%= transaction.qty %></td>
         <td>
         <% if transaction.origin_id %>
-        <%= Location.find(transaction.origin_id).title %>
+        <%= link_to Location.find(transaction.origin_id).title, location_inventory_path(transaction.origin_id) %>
         <% else %>
         <span>Searching..</span>
         <% end %>
         </td>
         <td>
         <% if transaction.dest_id %>
-        <%= Location.find(transaction.dest_id).title   %>
+        <%= link_to Location.find(transaction.dest_id).title, location_inventory_path(transaction.dest_id)%>
         <% else %>
         <span>Searching..</span>
         <% end %>
@@ -90,8 +92,8 @@
 </div>
 <% end %>
 
-<% if !@canceled or !@noedit %>
-  <%= link_to 'complete order', order_complete_path(@location.event, @location, @order), method: :post, class: 'right btn waves-effect waves-light' %>
+<% if !@no_confirm %>
+  <%= link_to 'verify order', order_verify_path(@location.event, @location, @order), method: :post, class: 'right btn waves-effect waves-light' %>
   <% end %>
 
 

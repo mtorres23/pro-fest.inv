@@ -34,7 +34,7 @@ module OrderHelper
       return order.update(status: 'canceled', verified_by: current_user.id)
     else
       order.transactions.each do |t|
-      process_transaction(t)
+          process_transaction(t)
       end
       order.update(status: 'verified', verified_by: current_user.id, assigned_to: nil)
       order.messages.new(message_type: 'order_verified', created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id).save
@@ -111,6 +111,7 @@ def update_inventories(t, origin, destination)
   dest_item.update(quantity: dest_qty + t.qty)
   puts 'this is the NEW origin qty: ' + find_item_match(origin, t).quantity.to_s
   puts 'this is the NEW destination qty: ' + find_item_match(destination, t).quantity.to_s
+  t.update(status: "delivered")
   t.order.messages.new(message_type: 'inventory_updated', created_by: current_user.id, event_id: t.order.location.event.id, order_id: t.order.id, location_id: t.order.location_id, item_id: t.item.id, transaction_id: t.id).save
 end
 

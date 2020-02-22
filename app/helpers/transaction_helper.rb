@@ -5,12 +5,11 @@ module TransactionHelper
           ['in_progress'],
           ['canceled'],
           ['completed'],
-          ['verified']
+          ['delivered']
         ]
       end
 
-      def create_transaction_message(t)
-        message_type = "transaction_updated"
+      def create_transaction_message(t, message_type)
         puts "creating transaction message"
         message = t.order.messages.new(message_type: message_type, created_by: current_user.id, event_id: t.order.location.event.id, order_id: t.order.id, location_id: t.order.location_id, transaction_id: t.id)
         message.save
