@@ -6,6 +6,9 @@ class Message < ApplicationRecord
   before_validation do
     if self.text == nil
       format_message(self)
+    else
+      info = "[#{DateTime.now.strftime("%I:%M%p on %m/%d/%Y")}] => #{user_data(message.created_by)[:full_name]}: "
+      self.text = info + self.text
     end
   end
 

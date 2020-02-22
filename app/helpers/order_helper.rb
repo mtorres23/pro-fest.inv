@@ -1,13 +1,11 @@
 module OrderHelper
   def order_types
     [
-      ['note'],
       ['transfer'],
       ['comp'],
       ['spill'],
       ['return'],
       ['damage'],
-      ['sale'],
       ['load_in'],
       ['load_out']
     ]
