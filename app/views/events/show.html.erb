@@ -1,5 +1,6 @@
 <%= link_to 'Edit', edit_event_path(@event), class:'btn waves-effect waves-light' %>
 <%= link_to 'Back', account_events_path(@event.account), class:'btn waves-effect waves-light' %>
+<%= link_to 'Orders', event_orders_path(@event), class:'btn waves-effect waves-light right' %>
 <%= link_to 'Staff', event_assignments_path(@event), class:'btn waves-effect waves-light right' %>
 <div id="feed-icon" class="waves-effect waves-light right">
 <%= link_to event_feed_path(@event) do %>
@@ -34,13 +35,8 @@
     <tr>
       <th>Title</th>
       <th>Type</th>
-      <th>Address</th>
       <th>Latitude</th>
       <th >Longitude</th>
-      <th>Event</th>
-      <th>Current Order</th>
-      <th>Last Order</th>
-      <th colspan="3"></th>
 
     </tr>
   </thead>
@@ -50,12 +46,8 @@
       <tr>
         <td><%= link_to location.title, event_location_path(event_id: @event.id, id: location.id) %></td>
         <td><%= location.loc_type %></td>
-        <td><%= location.address%></td>
         <td><%= location.latitude %></td>
         <td><%= location.longitude %></td>
-        <td><%= location.event.title %></td>
-        <td><%= %></td>
-        <td><%=  %></td>
       </tr>
     <% end %>
 

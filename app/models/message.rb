@@ -23,6 +23,8 @@ class Message < ApplicationRecord
       self.text = info + "#{order.role.upcase} Order #{order.id} verified by #{user_data(message.created_by)[:full_name]}"
     when 'order_canceled'
       self.text = info + "#{order.role.upcase} Order #{order.id} canceled by #{user_data(message.created_by)[:full_name]}"
+    when 'order_assigned'
+      self.text = info + "#{user_data(order.assigned_to)[:full_name]} has been assigned to: Order #{order.id}"
     when 'item_reserved'
       item = Item.find(message.item_id)
       transaction = Transaction.find(message.transaction_id)

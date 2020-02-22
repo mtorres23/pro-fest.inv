@@ -65,6 +65,7 @@ get '/events/:event_id/locations/:id/pickup_order' => 'locations#pickup_order', 
 get '/events/:event_id/locations/:id/dropoff_order' => 'locations#dropoff_order', as: 'order_dropoff'
 post '/events/:event_id/locations/:location_id/orders/:id/complete' => 'orders#complete', as: 'order_complete'
 post '/events/:event_id/locations/:location_id/orders/:id/submit' => 'orders#submit', as: 'order_submit'
+patch '/events/:event_id/orders/:id/assign' => 'orders#assign_order', as: 'order_assign'
 post '/events/:event_id/locations/:location_id/orders/:id/pickup/:origin' => 'orders#pickup',as: 'event_location_order_pickup'
 post '/events/:event_id/locations/:location_id/orders/:id/dropoff/:dest' => 'orders#dropoff',as: 'event_location_order_dropoff'
 

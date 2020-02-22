@@ -1,8 +1,32 @@
 
-<%= link_to "New Order", new_event_location_order_path , class: 'btn btn-primary btn-lg' %>
+<h2>Event Orders</h2>
+<%= link_to 'Back', event_path(@event), class:'btn waves-effect waves-light right' %>
 
 
-<% @orders.each do |order|  %>
+<% @locations.each do |l|  %>
 
-  <h3> <%=link_to order.content, event_location_order_path(event_id: @event.id, location_id: @location.id, id: order.id)%> </h3>
+  <% if l.orders.where(role: 'transfer').length > 0 %>
+    <h4 class="center"><%= l.title %></h4>
+    <hr>
+    <div class="center">
+      <% l.orders.where(role: 'transfer').each do |o|%>
+        [<%= o.status.upcase %>] <%= link_to "Order ##{o.id}: #{o.message}", event_location_order_path(@event, o.location, o), class: 'center'%>
+        <ul>
+          <% o.transactions.each do |t| %>
+            <li>
+              <%= t.qty %> x <%= t.item.product.name %>
+            </li>
+          <% end %>
+        </ul>
+
+       <% if o.assigned_to == nil %>
+        <%= render 'assign', order: o %>
+        <% else%>
+        <strong>Assigned to: <%= @users.find(o.assigned_to).first_name %></strong>
+        <% end %>
+        <hr>
+      <% end %>
+      </div>
+  <% end %>
 <% end %>
+

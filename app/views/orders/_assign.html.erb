@@ -1,0 +1,22 @@
+<%= form_for [@event, order], url: order_assign_path(event_id:@event.id, id: order.id) do |f| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being assigned:</h2>
+
+      <ul>
+      <% order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :assigned_to %><br />
+    <%= f.select :assigned_to, options_for_select(crew_members(@event).map{|user|[user.first_name, user.id]})%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Assign to Order ##{order.id}" %>
+  </div>
+<% end %>
