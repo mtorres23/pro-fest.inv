@@ -4,7 +4,9 @@ class Message < ApplicationRecord
   belongs_to :event
   validates_presence_of :text
   before_validation do
-    format_message(self)
+    if self.text == nil
+      format_message(self)
+    end
   end
 
   def format_message(message)
