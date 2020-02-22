@@ -1,6 +1,6 @@
 @import "materialize/components/color-variables";
-$primary-color: color("blue", "lighten-2") !default;
-$secondary-color: color("yellow", "base") !default;
+$primary-color: color("#ff5b03", "orange") !default;
+$secondary-color: #ff5b03;
 @import "materialize";
 
 .orders-wrapper {
@@ -24,9 +24,10 @@ $secondary-color: color("yellow", "base") !default;
 }
 
 .columnbgrnd {
-  background-color: #0043ff;
+  background-color: #333;
   border: 2px solid black;
   margin-bottom: 0;
+  padding: 0;
 }
 
 .s9 {
@@ -62,4 +63,6 @@ select {
 
 .menu-button {
   width: 100%;
+  font-size: 2em;
+  min-height: 3em;
 }

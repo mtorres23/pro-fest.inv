@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
 
 <style>
 html {
@@ -44,6 +45,10 @@ td img {
   height: 90vh;
 /* Set up positioning */
   }
+
+.logo {
+  width: 16em;
+}
   </style>
 
   </head>
@@ -51,9 +56,13 @@ td img {
       <div class="row">
         <div class = "nav-wrapper">
         <div class="col s3 columnbgrnd" style="height: 100vh;" >
-          <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px" >
-          <a id="nav-map" class="map-toggle zwaves-effect waves-light btn"><i class="material-icons right">map</i>map</a>
-          <ul class="slide-out">
+        <div class="center">
+          <%= image_tag('fifo-logo-white.png', :class => "logo") %>
+          </div>
+          <div class="center">
+          <a id="nav-map" class="map-toggle center zwaves-effect waves-light btn"><i class="material-icons right">map</i>map</a>
+          </div>
+          <ul>
     <% if user_signed_in? %>
 
             <li class="waves-effect waves-light sideLinks">
