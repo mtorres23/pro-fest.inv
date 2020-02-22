@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   include OrderHelper
 
   before_action :set_account
-  before_action :set_location, except: [:orders_by_account, :orders_by_event,:feed]
-  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :complete, :submit, :pickup, :dropoff]
+  before_action :set_location, except: [:orders_by_account, :orders_by_event,:feed, :assign_order]
+  before_action :set_event, only: [:index, :feed, :orders_by_event,:edit, :update, :destroy, :show, :complete, :submit, :pickup, :dropoff, :assign_order]
   before_action :invalid_transactions, only: [:confirm]
 
   def index
@@ -16,8 +16,7 @@ class OrdersController < ApplicationController
   end
 
   def orders_by_event
-    @orders = @event.orders
-    @locations = @event.locations
+    @locations = @event.locations.where(hidden: nil)
     @users = User.where(account_id: @event.account.id)
   end
 
@@ -73,7 +72,7 @@ class OrdersController < ApplicationController
     order.update(status: "pending")
     respond_to do |format|
       if order.update_attributes(order_params)
-          create_order_message(order)
+          create_order_message(order, "order_pending")
           # To-do: move this into a helper method
           if(order.status === 'canceled')
             order.transactions.each do |t|
@@ -103,8 +102,8 @@ end
 def submit
   @order = @location.orders.find(params[:id])
   respond_to do |format|
-    if @order.update(status: "pending")
-        create_order_message(@order)
+    if @order.update_attributes(status: "submitted")
+        create_order_message(@order, "order_submitted")
       format.html { redirect_to event_location_order_path(event_id: @event.id, location_id: @location.id, id: @order.id ), notice: 'Order was successfully submitted.' }
       format.json { render :show, status: :ok, location: order }
     else
@@ -119,7 +118,7 @@ def pickup
   @order = @location.orders.find(params[:id])
   @picked_up = @order.transactions.where(origin_id: @origin.id)
   respond_to do |format|
-    if @order.update(status: "pending", assigned_to: current_user.id)
+    if @order.update_attributes(status: "pending", assigned_to: current_user.id)
         @picked_up.each do |t|
           t.update(status:"in_progress")
           create_order_transaction_message(t, "item_pick_up")
@@ -154,7 +153,18 @@ def dropoff
 end
 
 def assign_order
-  
+  @order = @event.orders.find(params[:id])
+  assigned = params[:order][:assigned_to]
+  respond_to do |format|
+    if @order.update_attributes(status: "pending", assigned_to: assigned)
+      create_order_message(@order, "order_assigned")
+      format.html { redirect_to event_path(@event), notice: "Order was successfully assigned to user #{assigned}" }
+      format.json { render :show, status: :ok, location: order }
+    else
+      format.html { render :edit }
+      format.json { render json: order.errors, status: :unprocessable_entity }
+    end
+  end
 end
 
 
@@ -170,7 +180,7 @@ end
 
   def order_params
     return params.require(:order)
-    .permit(:message, :role, :origin_id, :destination_id, :due_date, :verified_by, :status)
+    .permit(:message, :role, :origin_id, :destination_id, :due_date, :verified_by, :status, :assigned_to)
     .merge(:created_by => current_user.id, location_id: @location.id)
   end
 

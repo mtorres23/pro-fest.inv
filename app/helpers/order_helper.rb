@@ -23,6 +23,10 @@ module OrderHelper
     ]
   end
 
+  def crew_members(event)
+    event.account.users.where(permission_level: 2)
+  end
+
   def handle_order(order)
     if order.role == 'note'
       return order.update(status: 'verified', verified_by: current_user.id, assigned_to: current_user.id)
@@ -182,8 +186,7 @@ def product_data(transaction)
   return product
 end
 
-def create_order_message(order)
-  message_type = "order_#{order.status}"
+def create_order_message(order, message_type)
   puts "creating order message"
   message = order.messages.new(message_type: message_type, created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id)
   message.save

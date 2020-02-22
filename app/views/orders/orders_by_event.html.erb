@@ -1,21 +1,32 @@
 
 <h2>Event Orders</h2>
+<%= link_to 'Back', event_path(@event), class:'btn waves-effect waves-light right' %>
 
 
 <% @locations.each do |l|  %>
 
-<h4><%= l.title %></h4>
-<hr>
-  <% l.orders.each do |o|%>
-    <% link_to o.id, event_location_order_path(@event, o.location, o)%>
-    <ul>
-      <% o.transactions.each do |t| %>
-        <li>
-          <%= t.qty %> x <%= t.item.product.name %> from <%= @locations.find(t.origin_id).title %> to <%= @locations.find(t.dest_id).title %> <%= link_to 'Assign Order', class:'btn waves-effect waves-light' %>
-        </li>
-      <% end %>
-    </ul>
+  <% if l.orders.where(role: 'transfer').length > 0 %>
+    <h4 class="center"><%= l.title %></h4>
+    <hr>
+    <div class="center">
+      <% l.orders.where(role: 'transfer').each do |o|%>
+        [<%= o.status.upcase %>] <%= link_to "Order ##{o.id}: #{o.message}", event_location_order_path(@event, o.location, o), class: 'center'%>
+        <ul>
+          <% o.transactions.each do |t| %>
+            <li>
+              <%= t.qty %> x <%= t.item.product.name %>
+            </li>
+          <% end %>
+        </ul>
 
+       <% if o.assigned_to == nil %>
+        <%= render 'assign', order: o %>
+        <% else%>
+        <strong>Assigned to: <%= @users.find(o.assigned_to).first_name %></strong>
+        <% end %>
+        <hr>
+      <% end %>
+      </div>
   <% end %>
 <% end %>
 
