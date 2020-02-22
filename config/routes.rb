@@ -60,6 +60,7 @@ post '/locations/:location_id/orders' => 'orders#create', as: 'new_location_orde
 get '/events/:event_id/locations/:location_id/orders' => 'orders#orders_by_location', as: 'location_orders'
 get '/events/:event_id/orders' => 'orders#orders_by_event', as: 'event_orders'
 get '/events/:event_id/feed' => 'messages#event_feed', as: 'event_feed'
+post '/events/:event_id/messages' => 'messages#create', as: 'create_event_message'
 get '/events/:event_id/locations/:location_id/feed' => 'messages#location_feed', as: 'location_feed'
 get '/events/:event_id/locations/:id/pickup_order' => 'locations#pickup_order', as: 'order_pickup'
 get '/events/:event_id/locations/:id/dropoff_order' => 'locations#dropoff_order', as: 'order_dropoff'

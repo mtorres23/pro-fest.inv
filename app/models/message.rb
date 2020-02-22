@@ -1,13 +1,13 @@
 class Message < ApplicationRecord
-  belongs_to :location
-  belongs_to :order
+  belongs_to :location, optional: true
+  belongs_to :order, optional: true
   belongs_to :event
   validates_presence_of :text
   before_validation do
     if self.text == nil
       format_message(self)
     else
-      info = "[#{DateTime.now.strftime("%I:%M%p on %m/%d/%Y")}] => #{user_data(message.created_by)[:full_name]}: "
+      info = "[#{DateTime.now.strftime("%I:%M%p on %m/%d/%Y")}] => #{user_data(self.created_by)[:full_name]}: "
       self.text = info + self.text
     end
   end

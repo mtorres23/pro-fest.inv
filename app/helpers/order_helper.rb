@@ -26,9 +26,7 @@ module OrderHelper
   end
 
   def handle_order(order)
-    if order.role == 'note'
-      return order.update(status: 'verified', verified_by: current_user.id, assigned_to: current_user.id)
-    elsif order.role != 'note' and order.transactions.length == 0
+    if order.transactions.length == 0
       return order.update(status: 'canceled', verified_by: current_user.id)
     else
       order.transactions.each do |t|
@@ -115,9 +113,6 @@ end
 
 def format_order(order)
   info = "##{order.id} [#{order.location.title}] #{order.created_at.strftime("%I:%M%p on %m/%d/%Y")} : #{order.role.upcase} by #{user_data(order.created_by)[:full_name]}: "
-  if order.role == 'note'
-    info += order.message
-  end
   if order.status == "canceled"
     return info += "This order has been CANCELED"
   end
@@ -137,9 +132,6 @@ def format_order(order)
 end
 
 def handle_transactions(order)
-  if order.role == "note"
-    return []
-  end
   if order.transactions.length > 0
     return order.transactions.map do |t|
       format_transaction(t)
