@@ -29,14 +29,10 @@ pre {
 }
 
 a {
-  color: #666;
-
-  &:visited {
-    color: #666;
-  }
+  color: black;
 
   &:hover {
-    color: black;
+    color: #fff;
     background-color: #000;
   }
 }
