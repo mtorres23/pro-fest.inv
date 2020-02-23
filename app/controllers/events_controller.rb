@@ -41,7 +41,7 @@ class EventsController < ApplicationController
       if @event.save
         format.html { redirect_to account_event_path(@account, @event), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
-        @event.locations.new(title: 'Truck', latitude: @account.latitude, longitude: @account.longitude, event_id: @event.id, loc_type: 'truck').save
+        @event.locations.new(title: 'Truck', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'truck').save
         @event.locations.new(title: 'sales', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'sales', hidden: true).save
         @event.locations.new(title: 'waste', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'waste', hidden: true).save
         @event.locations.new(title: 'comps', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'comps', hidden: true).save

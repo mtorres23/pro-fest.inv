@@ -23,6 +23,7 @@ tmp/*
 
 # Ignore application configuration
 /config/application.yml
+/config/secrets.yml
 tmp/cache/assets/sprockets/*
 
 *.cache
