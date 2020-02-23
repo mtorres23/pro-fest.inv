@@ -27,7 +27,10 @@ end
 protected
   def set_api_key
     google_api_key = Rails.application.secrets.google_maps_api_key
+    puts "setting api keys"
+    puts google_api_key
     @google_api_url = "https://maps.googleapis.com/maps/api/js?key=" + google_api_key + "&callback=initMap"
+
   end
 
   def configure_permitted_parameters
