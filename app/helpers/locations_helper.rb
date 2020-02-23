@@ -2,7 +2,9 @@ module LocationsHelper
     def location_types
         [
             ["bar"],
-            ["storage"]
+            ["storage"],
+            ["compound"],
+            ["truck"]
         ]
     end
 end

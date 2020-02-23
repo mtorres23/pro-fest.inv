@@ -1,19 +1,22 @@
 $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   // $('select').material_select();
-
+  const options = {
+    dismissable: false,
+    in_duration: 200
+  };
   var $modal1 = $("#modal1");
   var $modal2 = $("#modal2");
-  $("#modal1").openModal({
-    dismissable: false
-  });
+
+  $modal1.openModal(options);
 
   var toggleMap = function() {
+    console.log($modal1);
     if ($modal1.open) {
       $modal1.closeModal();
       // $modal2.openModal();
     } else {
-      $modal1.openModal();
+      $modal1.openModal(options);
     }
   };
 
@@ -23,11 +26,9 @@ $(document).ready(function() {
 
   // Add on map
   $(".map-add").on("click", function() {
-    var locTitle = $("#location_title").val();
-    var locType = $("#location_loc_type").val();
+    var locTitle = $("#title").val();
+    var locType = $("#type").val();
     toggleMap();
-    alert("title: " + locTitle);
-    alert("type: " + locType);
 
     // Drop a large pin on the map at the center of the map...
 

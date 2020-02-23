@@ -1,27 +1,25 @@
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
+  font-family: "Roboto Mono", arial, helvetica, sans-serif;
   font-size: 13px;
-  line-height: 18px;
-  margin: 0 auto;;
+  line-height: 0.5em;
+  margin: 0 auto;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+p,
+ol,
+ul,
+td {
+  font-family: "Roboto Mono", arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
-  margin: 33px;
-}
-
-.columnbgrnd {
-  // background: #5B616A;
 }
 
 .sideLinks {
   max-width: 100%;
   width: 500px;
-  background: #FCF7F8;
+  background: #fcf7f8;
 }
 
 pre {
@@ -31,11 +29,7 @@ pre {
 }
 
 a {
-  color: #666;
-
-  &:visited {
-    color: #666;
-  }
+  color: black;
 
   &:hover {
     color: #fff;
@@ -54,7 +48,8 @@ td {
 }
 
 div {
-  &.field, &.actions {
+  &.field,
+  &.actions {
     margin-bottom: 10px;
   }
 }
@@ -105,43 +100,42 @@ label {
 // }
 
 #footer .copyright {
-		color: #aaaaaa;
-		font-family: "Raleway", Helvetica, sans-serif;
-		font-size: 0.8em;
-		font-weight: 450;
-		letter-spacing: 0.25em;
-		text-transform: uppercase;
-    text-align: center;
+  color: #aaaaaa;
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: 0.8em;
+  font-weight: 450;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .indexEvent {
   text-align: center;
-  color: #5582C1;
-  box-shadow:  0 5px #E0DFE9;
+  color: black;
+  box-shadow: 0 5px #e0dfe9;
   border-radius: 20px;
 }
 
 .modal-header {
   border: 2px solid black;
   // background-color: #0043FF;
-  background-color: yellow;
+  background-color: #333;
 }
 
 .addNewevent {
   text-align: right;
   padding-bottom: 35px;
   border-radius: 18px;
-  background-color: #FCF7F8;
+  background-color: #fcf7f8;
 }
 
 .newEventpage {
   text-align: center;
-  background-color: #EFEAEA;
-  color: #5582C1;
-  box-shadow:  0 5px #E0DFE9;
+  background-color: #efeaea;
+  color: #5582c1;
+  box-shadow: 0 5px #e0dfe9;
   border-radius: 20px;
 }
 
-#carousel {
-
+.carousel-item {
 }

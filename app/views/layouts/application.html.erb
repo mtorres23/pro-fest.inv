@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
 
 <style>
 html {
@@ -40,10 +41,14 @@ td img {
 
 #map {
 /* Set up proportionate scaling */
-  width: 74vw;
-  height: 90vh;
+  width: 75vw;
+  height: 100vh;
 /* Set up positioning */
   }
+
+.logo {
+  width: 12em;
+}
   </style>
 
   </head>
@@ -51,9 +56,13 @@ td img {
       <div class="row">
         <div class = "nav-wrapper">
         <div class="col s3 columnbgrnd" style="height: 100vh;" >
-          <img src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px" >
-          <a id="nav-map" class="map-toggle zwaves-effect waves-light btn"><i class="material-icons right">map</i>map</a>
-          <ul class="slide-out">
+        <div class="center">
+          <%= image_tag('fifo-logo-white.png', :class => "logo") %>
+          </div>
+          <div class="center">
+          <a id="nav-map" class="map-toggle center zwaves-effect waves-light btn"><i class="material-icons right">map</i>map</a>
+          </div>
+          <ul>
     <% if user_signed_in? %>
 
             <li class="waves-effect waves-light sideLinks">
@@ -151,7 +160,7 @@ td img {
         <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
-
+      <%= yield %>
       </div>
 
     </div> <!--bottom of modal2-->
@@ -160,21 +169,20 @@ td img {
 </div><!--end of col row-->
 
 
-<div id="form">
+<div id="form" class="hidden">
       <table>
       <tr><td>Location Title:</td> <td><input type='text' id='title'/> </td> </tr>
       <tr><td>Type:</td> <td><select id='type'> +
-                 <option value='bar' SELECTED>bar</option>
-                 <option value='storage'>storage</option>
-                 </select> </td></tr>
-                 <tr><td></td><td><input id='location-submit' type='button' value='Save'/></td>
-                </tr>
+         <option disabled selected value> -- select a type -- </option>
+        <option value='bar' SELECTED>bar</option>
+         <option value='storage'>storage</option>
+         </select> </td></tr>
+         <tr><td></td><td><input id='location-submit' type='button' value='Save'/></td>
+          <tr><td></td><td><input id='save-location-exit' type='button' value='Save & Exit'/></td></tr>
       </table>
 </div>
 
-<div id="message">Location saved</div>
-
-<div id="options">
+<div id="options" class="hidden">
   <br>
     <button id="move" name="move-marker" class="btn">Move</button>
     <br>
@@ -184,7 +192,6 @@ td img {
    
 <script>
 // Initializing variables
-
       var map;
       var marker;
       var locationInfoWindow;
@@ -226,8 +233,12 @@ td img {
         // MAP
         map = new google.maps.Map(document.getElementById('map'), {
           center: target,
-          zoom: 17
+          zoom: 17,
+          mapTypeId: 'terrain',
+          streetViewControl: true
         });
+
+        map.setTilt(45)
 
        // Info Window for Form
        locationInfoWindow = new google.maps.InfoWindow({
@@ -271,7 +282,7 @@ td img {
                 // Add Event Listener to marker when created.
                 google.maps.event.addListener(marker, 'click', function() {
                   locationInfoWindow.open(map, marker);
-
+                  makeVisible(document.getElementById('form'));
 
                 });
                 google.maps.event.addListener(marker, 'dblclick', function() {
@@ -285,14 +296,17 @@ td img {
 
         // Set Submit button to a variable. NOTE: use jQuery
         var locationSubmit = document.getElementById('location-submit');
+        var saveAndExit = document.getElementById('save-location-exit');
 
      
   <% if @event %>
 
     // Add Event Listener to button
       locationSubmit.addEventListener('click', saveMarkerLocation);
-
-      var eventLocURL = '/events/<%= @event.id %>/locations';
+      saveAndExit.addEventListener('click',  saveMarkerAndExit)
+      var eventId = "<%= @event.id %>";
+      var eventLocURL = `/events/${eventId}/locations`;
+      var eventURL = `/events/${eventId}`;
       var mapMarkers = [];
 
       function fetchMapLocations() {
@@ -317,6 +331,22 @@ td img {
           method: 'DELETE',
           dataType: 'json',
         })
+      }
+
+      function clearField(input) {
+        input.value = "";
+      }
+
+      function clearform(inputs){
+        inputs.forEach(clearField)
+      }
+
+      function makeVisible(el){
+        el.classList.remove('hidden');
+      }
+
+      function hideElement(el){
+        el.classList.add('hidden');
       }
 
       $(document).ready(function loadData() {
@@ -387,6 +417,7 @@ td img {
       var attachOptions = function(marker) {
       // Map marker needs to open info window with opts: move or delete
         marker.addListener('click', function() {
+          makeVisible(options)
           if(infowindow) {
             infowindow.close();
           }
@@ -403,22 +434,51 @@ td img {
 
 // ----- Helper methods -----
 
+  function pinSymbol(type) {
+    const colorsByType = {
+      bar: '#ff5b03',
+      storage: 'gray',
+      compound: 'blue',
+      truck: 'black'
+    }
+
+    const sizeByType = {
+      bar: 1,
+      compound: 2,
+      storage: 1,
+      truck: 1
+    }
+
+  return {
+    path: 'M 0,0 C -2,-20 -10,-22 -10,-30 A 10,10 0 1,1 10,-30 C 10,-22 2,-20 0,0 z',
+    fillColor: colorsByType[type],
+    fillOpacity: 1,
+    strokeColor: 'black',
+    strokeWeight: 1,
+    scale: sizeByType[type],
+    labelOrigin: { x: -10, y: 10},
+    labelClass: `map-label ${type}`
+  };
+}
+
   // googleLatLng(data) - create a google maps latlng position with location's lat and long
     var googleLatLng = function(data) {
       return new google.maps.LatLng(data.latitude, data.longitude);
     };
   // locationMarker(drag) - generate Static Map Marker (drag is a boolean representing draggable)
-    var locationMarker = function(data, drag) {
+    var locationMarker = function(data, drag, type) {
       return new google.maps.Marker({
               position: googleLatLng(data),
               label: {
                 text: data.title,
-                color: 'white',
-                fontSize: '32px',
-                fontWeight: 'bold'
+                color: 'black',
+                fontSize: '2em',
+                fontWeight: 'bold',
+                fontFamily: 'Roboto Mono'
               },
               map: map,
-              draggable: drag
+              draggable: drag,
+              icon: pinSymbol(data.loc_type)
           })
     };
 
@@ -546,19 +606,37 @@ var findDuplicate = function(arr, obj) {
         })
 
       }
+      function navigateToEvent() {
+        try {
+          window.location.replace(eventURL)
+        } catch(err){
+          throw err
+        }
+      }
+
       function saveMarkerLocation() {
       // To-Do: access marker properties and send save
         try {
-          var title = document.getElementById('title').value;
-          var locType = document.getElementById('type').value;
-        var url = '/events/<%= @event.id %>/locations';
+          var title = document.getElementById('title');
+          var locType = document.getElementById('type');
+          var titleVal = title.value;
+          var locTypeVal = locType.value;
+          var url = '/events/<%= @event.id %>/locations';
+          postMapLocation(titleVal, locTypeVal, marker);
+          clearform([title, locType]);
         } catch(err){
           throw err;
-        } finally {
-          postMapLocation(title, locType, marker);
         }
+      }
 
-      } // saveData END
+      function saveMarkerAndExit() {
+        try {
+          saveMarkerLocation();
+          navigateToEvent()
+        } catch(err) {
+          throw err;
+        }
+      }
 
       // To-Do: Create Multi Locations before saving AND Save All Locations into an event locations array
       // OR Create Markers on a map, drag them all over and then save an array of markers to the event locations.
@@ -577,13 +655,13 @@ var findDuplicate = function(arr, obj) {
     </script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhF2K8TKtEZ04zw7i3FMKQLwvv-bWC79g&callback=initMap"></script>
 
-    };
 
-  <%= yield %>
-  <% end %> // if current_user
- };
 
- };
+
+  <% end %>
+
+
+
 
   </body>
 </html>
