@@ -1,32 +1,36 @@
 
 <h2>Event Orders</h2>
-<%= link_to 'Back', event_path(@event), class:'btn waves-effect waves-light right' %>
+<%= link_to 'Back', event_path(@event), class:'btn waves-effect waves-light' %>
 
 
-<% @locations.each do |l|  %>
+  <% @locations.each do |l|  %>
 
-  <% if l.orders.where(role: 'transfer').length > 0 %>
-    <h4 class="center"><%= l.title %></h4>
-    <hr>
-    <div class="center">
-      <% l.orders.where(role: 'transfer').each do |o|%>
-        [<%= o.status.upcase %>] <%= link_to "Order ##{o.id}: #{o.message}", event_location_order_path(@event, o.location, o), class: 'center'%>
-        <ul>
-          <% o.transactions.each do |t| %>
-            <li>
-              <%= t.qty %> x <%= t.item.product.name %>
-            </li>
+    <% if l.orders.where(role: 'transfer').length > 0 %>
+      <h4 class="center"><%= l.title %></h4>
+      <hr>
+      <div class="center">
+        <% l.orders.where(role: 'transfer').each do |o|%>
+          [<%= o.status.upcase %>] <%= link_to "Order ##{o.id}: #{o.message}", event_location_order_path(@event, o.location, o), class: 'center'%>
+          <ul>
+            <% o.transactions.each do |t| %>
+              <li>
+                <%= t.qty %> x <%= t.item.product.name %>
+              </li>
+            <% end %>
+          </ul>
+
+        <% if o.assigned_to == nil %>
+          <%= render 'assign', order: o %>
+          <% else%>
+          <strong>Assigned to: <%= @users.find(o.assigned_to).first_name %></strong>
           <% end %>
-        </ul>
-
-       <% if o.assigned_to == nil %>
-        <%= render 'assign', order: o %>
-        <% else%>
-        <strong>Assigned to: <%= @users.find(o.assigned_to).first_name %></strong>
+          <hr>
         <% end %>
-        <hr>
-      <% end %>
-      </div>
+        </div>
+
+    <% else%>
+      <h6 class="center"> No Open Requests for <%= l.title %></h6>
+    <% end %>
+
   <% end %>
-<% end %>
 
