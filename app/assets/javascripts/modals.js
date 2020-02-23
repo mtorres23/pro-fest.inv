@@ -1,7 +1,7 @@
 $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   // $('select').material_select();
-  const options = {
+  var options = {
     dismissable: false,
     in_duration: 200
   };
