@@ -23,6 +23,10 @@ $secondary-color: #ff5b03;
   max-height: 20%;
 }
 
+.hidden {
+  display: none;
+}
+
 .columnbgrnd {
   background-color: #333;
   border: 2px solid black;
@@ -32,6 +36,13 @@ $secondary-color: #ff5b03;
 
 .s9 {
   background-color: #e9e8ee;
+}
+.row .col {
+  padding: 0;
+}
+
+.btn {
+  border-radius: 0;
 }
 
 .modal {
@@ -64,4 +75,27 @@ select {
 .menu-button {
   width: 100%;
   min-height: 3em;
+}
+
+.map-label {
+  color: #000;
+  background-color: white;
+  border: 1px solid #000;
+  font-family: "Lucida Grande", "Arial", sans-serif;
+  font-size: 12px;
+  text-align: center;
+  white-space: nowrap;
+  padding: 2px;
+}
+
+.map-label.bar {
+  background-color: #ff5b03;
+}
+
+.map-label.storage {
+  background-color: gray;
+}
+
+.map-label.compound {
+  background-color: blue;
 }

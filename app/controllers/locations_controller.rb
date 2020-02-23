@@ -25,13 +25,12 @@ class LocationsController < ApplicationController
     render json: @locations
   end
 
-  def new
-    puts @event
-    puts params[:event_id]
-    @event = @account.events.find(params[:event_id])
-    @map_edit = true
-    @location = @event.locations.new
-  end
+  # def new
+  #   puts @event
+  #   puts params[:event_id]
+  #   @event = @account.events.find(params[:event_id])
+  #   @location = @event.locations.new
+  # end
 
   def create
     if params[:location][:latitude] == nil
@@ -75,13 +74,6 @@ class LocationsController < ApplicationController
  # PATCH/PUT /locations/1
   # PATCH/PUT /locations/1.json
   def update
-    if params[:location][:latitude] == nil
-      params[:location][:latitude] = @event.latitude
-      puts 'Setting Location Coordinates to Event coords'
-    end
-    if params[:location][:longitude] == nil
-      params[:location][:longitude] = @event.longitude
-    end
     @location = @event.locations.find(params[:id])
 
     respond_to do |format|

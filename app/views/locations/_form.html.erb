@@ -20,7 +20,7 @@
 
     <div class="form-control">
     <%= f.label :loc_type, "Type" %><br />
-    <%= f.select :loc_type, options_for_select(location_types, "bar"), :class => 'input-field' %>
+    <%= f.select :loc_type, options_for_select(location_types), :include_blank => true, :class => 'input-field' %>
   </div>
   </fieldset>
 

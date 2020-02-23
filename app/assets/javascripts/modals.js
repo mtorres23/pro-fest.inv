@@ -8,22 +8,16 @@ $(document).ready(function() {
   var $modal1 = $("#modal1");
   var $modal2 = $("#modal2");
 
-  $("#modal1").openModal(options);
-  var overlay = $(".lean-overlay");
+  $modal1.openModal(options);
+
   var toggleMap = function() {
-    console.log($modal2);
-    if (!overlay) {
-      $modal2.closeModal();
-      $modal1.openModal();
+    console.log($modal1);
+    if ($modal1.open) {
+      $modal1.closeModal();
       // $modal2.openModal();
     } else {
-      $modal2.openModal(options);
+      $modal1.openModal(options);
     }
-  };
-
-  var toggleModals = function(x, y) {
-    x.closeModal();
-    y.openModal();
   };
 
   $(".map-toggle").on("click", function() {
@@ -35,8 +29,6 @@ $(document).ready(function() {
     var locTitle = $("#title").val();
     var locType = $("#type").val();
     toggleMap();
-    alert("title: " + locTitle);
-    alert("type: " + locType);
 
     // Drop a large pin on the map at the center of the map...
 
