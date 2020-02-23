@@ -17,13 +17,15 @@ tmp/*
 !/tmp/.keep
 
 
-# Ignore Byebug command history file.
-.byebug_history
-/node_modules
+
 
 # Ignore application configuration
-/config/application.yml
-/config/secrets.yml
+config/application.yml
+config/secrets.yml
 tmp/cache/assets/sprockets/*
 
 *.cache
+
+# Ignore Byebug command history file.
+.byebug_history
+/node_modules
