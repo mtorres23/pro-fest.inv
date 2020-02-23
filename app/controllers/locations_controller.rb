@@ -29,6 +29,7 @@ class LocationsController < ApplicationController
     puts @event
     puts params[:event_id]
     @event = @account.events.find(params[:event_id])
+    @map_edit = true
     @location = @event.locations.new
   end
 

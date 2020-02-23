@@ -160,7 +160,7 @@ td img {
         <a href="#" class="modal-action modal-close waves-effect waves-green btn-flat">Modal Header</a>
       </div>
       <div class="modal-content">
-
+      <%= yield %>
       </div>
 
     </div> <!--bottom of modal2-->
@@ -193,7 +193,6 @@ td img {
    
 <script>
 // Initializing variables
-
       var map;
       var marker;
       var locationInfoWindow;
@@ -300,8 +299,9 @@ td img {
 
     // Add Event Listener to button
       locationSubmit.addEventListener('click', saveMarkerLocation);
-
-      var eventLocURL = '/events/<%= @event.id %>/locations';
+      var eventId = "<%= @event.id %>";
+      var eventLocURL = `/events/${eventId}/locations`;
+      var eventURL = `/events/${eventId}`;
       var mapMarkers = [];
 
       function fetchMapLocations() {
@@ -555,6 +555,14 @@ var findDuplicate = function(arr, obj) {
         })
 
       }
+      function navigateToEvent() {
+        try {
+          window.location.replace(eventURL)
+        } catch(err){
+          throw err
+        }
+      }
+
       function saveMarkerLocation() {
       // To-Do: access marker properties and send save
         try {
@@ -565,6 +573,7 @@ var findDuplicate = function(arr, obj) {
           throw err;
         } finally {
           postMapLocation(title, locType, marker);
+          navigateToEvent()
         }
 
       } // saveData END
@@ -588,7 +597,7 @@ var findDuplicate = function(arr, obj) {
 
     };
 
-  <%= yield %>
+
   <% end %> // if current_user
  };
 

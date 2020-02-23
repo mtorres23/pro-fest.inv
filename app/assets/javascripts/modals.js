@@ -1,20 +1,29 @@
 $(document).ready(function() {
   // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
   // $('select').material_select();
-
+  const options = {
+    dismissable: false,
+    in_duration: 200
+  };
   var $modal1 = $("#modal1");
   var $modal2 = $("#modal2");
-  $("#modal1").openModal({
-    dismissable: false
-  });
 
+  $("#modal1").openModal(options);
+  var overlay = $(".lean-overlay");
   var toggleMap = function() {
-    if ($modal1.open) {
-      $modal1.closeModal();
+    console.log($modal2);
+    if (!overlay) {
+      $modal2.closeModal();
+      $modal1.openModal();
       // $modal2.openModal();
     } else {
-      $modal1.openModal();
+      $modal2.openModal(options);
     }
+  };
+
+  var toggleModals = function(x, y) {
+    x.closeModal();
+    y.openModal();
   };
 
   $(".map-toggle").on("click", function() {
@@ -23,8 +32,8 @@ $(document).ready(function() {
 
   // Add on map
   $(".map-add").on("click", function() {
-    var locTitle = $("#location_title").val();
-    var locType = $("#location_loc_type").val();
+    var locTitle = $("#title").val();
+    var locType = $("#type").val();
     toggleMap();
     alert("title: " + locTitle);
     alert("type: " + locType);

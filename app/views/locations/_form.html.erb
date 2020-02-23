@@ -18,8 +18,6 @@
     <%= f.label :title %>
     <%= f.text_field :title, class: "form-control" %>
 
-  <h4>Enter either address or coordinates</h4>
-
     <div class="form-control">
     <%= f.label :loc_type, "Type" %><br />
     <%= f.select :loc_type, options_for_select(location_types, "bar"), :class => 'input-field' %>
