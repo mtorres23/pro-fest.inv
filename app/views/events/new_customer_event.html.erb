@@ -25,12 +25,12 @@
 
   <div class="field">
     <%= f.label :start_date %>
-    <%= f.text_field :start_date, class: "datepicker"%>
+    <%= f.date_field :start_date %>
   </div>
 
   <div class="field">
     <%= f.label :end_date %>
-    <%= f.text_field :end_date, class: "datepicker"%>
+    <%= f.date_field :end_date%>
   </div>
 
   <div class="field">
@@ -53,13 +53,20 @@
   </div>
 <% end %>
 <script>
-  $('.datepicker').pickadate({
+  $('.datepicker-start-date').pickadate({
 selectMonths: true, // Creates a dropdown to control month
-selectYears: 15 // Creates a dropdown of 15 years to control year
+selectYears: 15,
+closeOnSelect: true  // Creates a dropdown of 15 years to control year
+});
+ $('.datepicker-end-date').pickadate({
+selectMonths: true, // Creates a dropdown to control month
+selectYears: 15,
+closeOnSelect: true  // Creates a dropdown of 15 years to control year
 });
 </script>
 <script>
+<script>
 $(document).ready(function() {
- $('select').material_select();
+ $('select').formSelect();
 });
 </script>

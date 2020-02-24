@@ -2,19 +2,26 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <div class="field">
-    <%= f.label :account_id %><br />
-    <%= f.select :account_id, options_for_select(Account.all.map{|account|[account.id]}) %>
-  </div>
 
     <div class="field">
-    <%= f.label :account_access_key %>
-    <%= text_field_tag 'account_access_key' %>
+    <%= f.label :account_id, "Account Access Invite Code"%><br />
+    <%= f.text_field :account_id, autofocus: true, :required => true %>
     </div>
+    <br />
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name, :required => true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name, :required => true %>
+  </div>
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <%= f.email_field :email, :required => true %>
   </div>
 
   <div class="field">
@@ -30,6 +37,11 @@
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <div class="field">
+    <%= f.label :pin_number %><br />
+    <%= f.text_field :pin_number, :required => true %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Sign up" %>
   </div>
@@ -39,6 +51,6 @@
 
 <script>
 $(document).ready(function() {
- $('select').material_select();
+ $('select').formSelect();
 });
 </script>

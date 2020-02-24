@@ -13,6 +13,10 @@ class ApplicationController < ActionController::Base
     @user = current_user
   end
 
+  def home
+    @nomodal = true
+  end
+
 
 private
 
@@ -21,6 +25,7 @@ def set_account
   if current_user
     @account = Account.find(current_user.account_id)
   end
+  # To-do: update so there is always an account
   user =  User.where(account_id: @account.id)
 end
 
@@ -32,7 +37,7 @@ protected
   end
 
   def configure_permitted_parameters
-  devise_parameter_sanitizer.permit(:sign_up, keys: [:account_id, :pin_number, :permissions])
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:account_id, :pin_number, :permission_level])
   end
 end
 

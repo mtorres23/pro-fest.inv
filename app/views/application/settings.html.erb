@@ -1,4 +1,6 @@
 <h1>Settings</h1>
-<%= link_to 'New Account', new_account_path , class:'btn waves-effect waves-light center' %>
+<% if current_user.permission_level > 2 %>
+    <%= link_to 'New Account', new_account_path , class:'btn-large waves-effect waves-light center' %>
+<% end %>
+<%= link_to 'Customers', customers_path, class: 'btn-large waves-effect waves-light center' %>
 
-<%= link_to 'Customers Index', customers_path, class: 'btn waves-effect waves-light center' %>

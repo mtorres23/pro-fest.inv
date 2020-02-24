@@ -27,4 +27,9 @@
   <%= f.submit 'Add!', class: 'btn btn-primary' %>
 <% end %>
 
+<script>
+$(document).ready(function() {
+ $('select').formSelect();
+});
+</script>
 <%# To-Do: This button Must capture all data from fields above (even if empty or partial) and populate the form for the new marker %>

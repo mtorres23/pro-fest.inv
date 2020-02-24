@@ -1,9 +1,13 @@
 
 
-<%= render "devise/shared/links" %>
-
-
 <h1 class="center">Welcome to<img class = 'splash-img' src="http://imageshack.com/a/img922/3479/R0MMsN.png" style="width:128px;height:128px;">
 </h1>
 
 <a class=" btn modal-action modal-close waves-effect waves-green center">Continue</a>
+<% if @nomodal %>
+<script>
+$(document).ready(function() {
+ $('#modal1').closeModal();
+});
+</script>
+<% end %>

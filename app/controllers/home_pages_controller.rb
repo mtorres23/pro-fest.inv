@@ -1,7 +1,8 @@
 class HomePagesController < ApplicationController
-  before_action :authenticate_user!, only: [:faqs]
-  
+  before_action :authenticate_user!, only: [:home]
+
   def home
+    @nomodal = true
   end
 
   def about

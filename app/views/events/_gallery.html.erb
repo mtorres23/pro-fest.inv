@@ -1,6 +1,6 @@
 <div class="carousel">
   <% @events.each do |event| %>
-    <a class="carousel-item" href="/accounts/<%= @account.id %>/events/<%= event.id %>"><%= event.title %><img src="<%= event.photo_url %>"></a>
+    <a class="carousel-item" href="/accounts/<%= @account.id %>/events/<%= event.id %>"><%= event.title %><img src="<%= event.photo_url %>" class="carousel-image"></a>
     <% end %>
 
   </div>

@@ -38,7 +38,7 @@ a {
 }
 
 th {
-  padding-bottom: 5px;
+  min-width: 10em;
 }
 
 td {
@@ -138,4 +138,10 @@ label {
 }
 
 .carousel-item {
+  min-width: 30em;
+  text-align: center;
+}
+
+.carousel-image {
+  margin-top: 1.2em;
 }
