@@ -16,12 +16,13 @@
   <%= @event.title %>
 </h3>
 <span>for <%= link_to @event.customer.name, account_customer_path(@event.account, @event.customer) %></span>
-
+<% if @event.start_date and @event.end_date %>
 <p>
   <strong>
   <%= @event.start_date.strftime("%m/%d/%Y") %> - <%= @event.end_date.strftime("%m/%d/%Y") %>
   </strong>
 </p>
+<%end%>
 </div>
 
 <h4 class='center'>Locations</h4>
