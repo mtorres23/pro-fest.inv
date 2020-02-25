@@ -27,7 +27,6 @@
 <% if @order.transactions.length > 0 %>
 <tr>
 <div class="card">
-  <div class="container">
 		<table class="centered highlighted">
   			<thead>
 
@@ -45,9 +44,13 @@
     <% @transactions.each do |transaction| %>
       <tr>
         <td><%= transaction.id %></td>
+
         <td><%= transaction.status %></td>
+
         <td colspan="3"><%= link_to transaction.item.product.name, event_location_order_transaction_path(@event, @location, @order, transaction) %></td>
+
         <td><%= transaction.qty %></td>
+
         <td>
         <% if transaction.origin_id %>
         <%= link_to Location.find(transaction.origin_id).title, location_inventory_path(transaction.origin_id) %>
@@ -55,40 +58,44 @@
         <span>Searching..</span>
         <% end %>
         </td>
+
         <td>
-        <% if transaction.dest_id %>
-        <%= link_to Location.find(transaction.dest_id).title, location_inventory_path(transaction.dest_id)%>
-        <% else %>
-        <span>Searching..</span>
+          <% if transaction.dest_id %>
+            <%= link_to Location.find(transaction.dest_id).title, location_inventory_path(transaction.dest_id)%>
+          <% else %>
+            <span>Searching..</span>
+          <% end %>
+        </td>
+
+        <td>
+          <% if @order.role == 'transfer' %>
+            <% if !transaction.origin_id.nil? and !transaction.dest_id.nil? and ["pending", "in_progress"].include?(transaction.status) %>
+              <span> Reserved <i class="fa fa-check-square-o" aria-hidden="true"></i></span>
+            <% elsif transaction.origin_id.nil? %>
+              <%= link_to find_items_path(@location.event, @location, @order, transaction), class: "zwaves-effect waves-light btn" do %>
+              <i class="fa fa-cube">Find Item</i>
+            <% end %>
+          <% end %>
         <% end %>
         </td>
+
         <td>
-        <% if @order.role == 'transfer' %>
-        <% if !transaction.origin_id.nil? and !transaction.dest_id.nil? and ["pending", "in_progress"].include?(transaction.status) %>
-          <span> Reserved <i class="fa fa-check-square-o" aria-hidden="true"></i></span>
-          <% elsif transaction.origin_id.nil? %>
-        <%= link_to find_items_path(@location.event, @location, @order, transaction), class: "zwaves-effect waves-light btn" do %>
-          <i class="fa fa-cube">Find Item</i>
-        <% end %>
-        <% end %>
-        <% end %>
+          <%= link_to edit_event_location_order_transaction_path(@event, @location, @order, transaction) do %>
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          <%end%>
         </td>
+
         <td>
-         <%= link_to edit_event_location_order_transaction_path(@event, @location, @order, transaction) do %>
-        <i class="fa fa-pencil" aria-hidden="true"></i>
-        <%end%>
+          <%= link_to event_location_order_transaction_path(@event, @location, @order, transaction), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+          <% end %>
         </td>
-        <td>
-         <%= link_to event_location_order_transaction_path(@event, @location, @order, transaction), method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <i class="fa fa-trash" aria-hidden="true"></i>
-        <% end %>
-        </td>
+
       </tr>
     <% end %>
   </tbody>
 </table>
 <br>
-  </div>
 </div>
 <% end %>
 

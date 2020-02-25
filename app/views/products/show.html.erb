@@ -4,7 +4,7 @@
          <td><%= link_to 'Destroy', account_product_path(@product), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 <%= link_to 'Back', account_products_path %>
 
-<header><h1 class="display-4 center"><%= @product.name %></h1></header>
+<header><h4 class="display-4 center"><%= @product.name %></h4></header>
 <img src='<%= @product.image_url%>'>
 <p>Item Cost: <%= @product.highest_recorded_price %></p>
 <p>Units Per Item: <%= @product.units_per_item %></p>

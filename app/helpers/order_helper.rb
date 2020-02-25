@@ -98,9 +98,9 @@ def update_inventories(t, origin, destination)
   puts t.order.role + ':' + ' Processing transaction for: ' + t.qty.to_s + ' ' + t.item.product.name + ' at ' + t.order.location.title.to_s
   origin_item = find_item_match(origin, t)
   dest_item = find_item_match(destination, t)
-  origin_qty = origin_item.quantity || 0;
+  origin_qty = origin_item.quantity ||= 0;
   puts 'this is the original origin qty: ' + origin_qty.to_s
-  dest_qty = dest_item.quantity || 0;
+  dest_qty = dest_item.quantity ||= 0;
   puts 'this is the original destination qty: ' + dest_qty.to_s
   puts 'UPDATING......'
   origin_item.update(quantity: origin_qty - t.qty)

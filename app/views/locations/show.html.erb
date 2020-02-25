@@ -4,7 +4,7 @@
 <%= link_to 'Orders', location_orders_path(event_id: @location.event_id, location_id: @location.id), class: 'right btn waves-effect waves-light' %>
 <%= link_to 'Inventory', location_inventory_path(location_id: @location.id), class: 'right btn waves-effect waves-light' %>
 
-<header><h1 class="display-4 center"><%= @location.title %></h1></header>
+<header><h4 class="display-4 center"><%= @location.title %></h4></header>
 <hr>
 <h4 class="display-4 center"><%= @location.loc_type %></h4>
 
