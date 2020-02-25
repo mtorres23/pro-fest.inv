@@ -15,7 +15,4 @@ end
 s3 = Aws::S3::Client.new
 #logs all objects to check connection
 
-s3.list_objects(bucket:'fifo-cloud').each do |response|
-    puts response.contents.map(&:key)
-  end
 puts "S3 access granted"
