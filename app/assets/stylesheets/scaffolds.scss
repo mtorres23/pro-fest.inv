@@ -91,14 +91,16 @@ div {
 
 label {
   display: block;
+  margin: 1em;
 }
 
-// #footer .icons {
-// 		color: #aaaaaa;
-//     display: inline;
-//
-// }
+form {
+  margin: 1em;
+}
 
+form textarea {
+  width: 70%;
+}
 #footer .copyright {
   color: #aaaaaa;
   font-family: "Raleway", Helvetica, sans-serif;

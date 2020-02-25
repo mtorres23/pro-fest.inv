@@ -45,6 +45,8 @@ gem 'geocoder'
 gem 'reverse_geocoder'
 gem 'stocker'
 gem "simple_calendar", "~> 2.0"
+gem 'aws-sdk', '~> 3'
+gem 'aws-sdk-s3', '~> 1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  require 'aws-sdk-s3'
   before_action :set_account
   before_action :set_customer, only: [:events_by_customer, :new_customer_event, :create_customer_event]
   before_action :set_event, only: [:show, :edit, :update, :destroy]
@@ -35,10 +36,40 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = @account.events.new(event_params)
+    file = params[:event][:photo_url]
+    public_url = nil
+    if file != nil
+    s3 = Aws::S3::Resource.new(region: 'us-east-1')
+    bucket = 'fifo-cloud'
+    # Get just the file name
+    name = file.original_filename
+    # Create the object to upload
+    obj = s3.bucket(bucket).object(name)
+    # Create the option
+    options = {
+      acl: "public-read",
+      metadata: {
+        collection: "events",
+        title: params[:event][:title]
+      }
+    }
+    obj.upload_file(file.tempfile, options)
+    public_url = s3.bucket(bucket).object(name).public_url
+  end
+
+    @event = @account.events.new(event_params(public_url))
 
     respond_to do |format|
       if @event.save
+        if public_url != nil
+        @upload = Upload.new(
+          url: public_url,
+          name: name,
+          event_id: @event.id,
+          collection: 'events',
+          account_id: @account.id
+        ).save!
+      end
         format.html { redirect_to account_event_path(@account, @event), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
         @event.locations.new(title: 'Truck', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'truck').save
@@ -54,10 +85,41 @@ class EventsController < ApplicationController
 
   # POST /accounts/account_id/customers/:id/events
   def create_customer_event
-    @event = @customer.events.new(customer_event_params)
+    file = params[:event][:photo_url]
+    public_url = nil
+    if file != nil
+    s3 = Aws::S3::Resource.new(region: 'us-east-1')
+    bucket = 'fifo-cloud'
+    # Get just the file name
+    name = file.original_filename
+    # Create the object to upload
+    obj = s3.bucket(bucket).object(name)
+    # Create the option
+    options = {
+      acl: "public-read",
+      metadata: {
+        collection: "events",
+        title: params[:event][:title]
+      }
+    }
+    obj.upload_file(file.tempfile, options)
+    public_url = s3.bucket(bucket).object(name).public_url
+  end
+    @event = @customer.events.new(customer_event_params(public_url))
 
     respond_to do |format|
       if @event.save
+
+        if public_url != nil
+        @upload = Upload.new(
+          url: public_url,
+          name: name,
+          event_id: @event.id,
+          collection: 'events',
+          account_id: @account.id
+        ).save!
+      end
+
         format.html { redirect_to account_event_path(@account, @event), notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
         @event.locations.new(title: 'HQ', latitude: @event.latitude, longitude: @event.longitude, event_id: @event.id, loc_type: 'compound').save
@@ -72,9 +134,39 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     @event = @account.events.find(params[:id])
-
+    file = params[:event][:photo_url]
+    public_url = nil
+    if file != nil
+    s3 = Aws::S3::Resource.new(region: 'us-east-1')
+    bucket = 'fifo-cloud'
+    # Get just the file name
+    name = file.original_filename
+    # Create the object to upload
+    obj = s3.bucket(bucket).object(name)
+    # Create the option
+    options = {
+      acl: "public-read",
+      metadata: {
+        collection: "events",
+        title: params[:event][:title],
+        source: @event.id.to_s
+      }
+    }
+    obj.upload_file(file.tempfile, options)
+    public_url = s3.bucket(bucket).object(name).public_url
+  end
     respond_to do |format|
-      if @event.update_attributes(event_params)
+      if @event.update_attributes!(event_params(public_url))
+
+        if public_url != nil
+        @upload = Upload.new(
+          url: public_url,
+          name: name,
+          event_id: @event.id,
+          collection: 'events',
+          account_id: @account.id
+        ).save!
+      end
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -110,15 +202,15 @@ class EventsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def event_params
+    def event_params(url)
       return params.require(:event)
       .permit(:title, :start_date, :end_date, :address, :latitude, :longitude, :admin_id, :customer_id, :photo_url)
-      .merge(account_id: @account.id)
+      .merge(account_id: @account.id, photo_url: url)
     end
 
-    def customer_event_params
+    def customer_event_params(url)
       return params.require(:event)
-      .permit(:title, :start_date, :end_date, :address, :latitude, :longitude, :admin_id, :customer_id, :photo_url)
+      .permit(:title, :start_date, :end_date, :address, :latitude, :longitude, :admin_id, :photo_url)
       .merge(account_id: @account.id, customer_id: @customer.id)
     end
 end

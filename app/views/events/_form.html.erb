@@ -38,12 +38,12 @@
 
   <div class="field">
     <%= f.label :photo_url %>
-    <%= f.text_field :photo_url %>
+    <%= f.file_field :photo_url, accept: 'image/png,image/gif,image/jpeg,image/jpg'%>
   </div>
 
   <div class="field">
-    <%= f.label :admin_id %><br />
-    <%= f.select :admin_id, options_for_select(User.all.map{|user|[user.id]}), :class => 'input-field' %>
+    <%= f.label :admin_id, "Owner" %><br />
+    <%= f.select :admin_id, options_for_select(User.all.map{|user|[user.first_name, user.id]}), :class => 'input-field' %>
   </div>
 
   <div class="actions">

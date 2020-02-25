@@ -40,11 +40,11 @@
 
   <div class="field">
     <%= f.label :photo_url %>
-    <%= f.text_field :photo_url %>
+    <%= f.file_field :photo_url, accept: 'image/png,image/gif,image/jpeg,image/jpg' %>
   </div>
 
   <div class="field">
-    <%= f.label :admin_id %><br />
+    <%= f.label :admin_id, "Owner" %><br />
     <%= f.select :admin_id, options_for_select(User.all.map{|user|[user.first_name, user.id]}), :class => 'input-field' %>
   </div>
 
@@ -52,21 +52,5 @@
     <%= f.submit %>
   </div>
 <% end %>
-<script>
-  $('.datepicker-start-date').pickadate({
-selectMonths: true, // Creates a dropdown to control month
-selectYears: 15,
-closeOnSelect: true  // Creates a dropdown of 15 years to control year
-});
- $('.datepicker-end-date').pickadate({
-selectMonths: true, // Creates a dropdown to control month
-selectYears: 15,
-closeOnSelect: true  // Creates a dropdown of 15 years to control year
-});
-</script>
-<script>
-<script>
-$(document).ready(function() {
- $('select').formSelect();
-});
-</script>
+
+
