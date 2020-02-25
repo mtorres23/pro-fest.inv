@@ -28,6 +28,7 @@
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <br>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
@@ -38,12 +39,12 @@
   </div>
 
   <div class="field">
-    <%= f.label :pin_number %><br />
-    <%= f.text_field :pin_number, :required => true %>
+    <%= f.label :pin_number, "Personal 4-digit PIN (of your choice)" %><br />
+    <%= f.password_field :pin_number, :required => true, :maxlength => 4 %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: 'right btn waves-effect waves-light'   %>
   </div>
 <% end %>
 
