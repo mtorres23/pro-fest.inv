@@ -75,8 +75,8 @@ get '/events/:event_id/locations/:location_id/orders/:order_id/transactions/:id/
 
 # get '/events/:event_id/locations/map_edit' => 'locations#map_edit', as: 'locations_map_edit'
 get '/settings' => 'application#settings', as: 'settings'
-root to: 'home_pages#home'
-get '*path', to: 'home_pages#home' # TEMPORARY: Will have to redirect users based on admin level priveleges
+root to: 'events#index'
+get '*path', to: 'application#settings' # TEMPORARY: Will have to redirect users based on admin level priveleges
 
 
 end
