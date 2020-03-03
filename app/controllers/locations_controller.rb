@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   include ItemsHelper
+  include LocationsHelper
   before_action :set_account
   before_action :set_event
   before_action :set_location, only: [:location_json, :show, :edit, :update, :destroy, :pickup_order, :dropoff_order]

@@ -1,58 +1,19 @@
 <%= link_to 'Edit', edit_event_path(@event), class:'btn waves-effect waves-light' %>
 <%= link_to 'Back', account_events_path(@event.account), class:'btn waves-effect waves-light' %>
-<%= link_to 'Requests', event_orders_path(@event), class:'btn waves-effect waves-light right' %>
-<%= link_to 'Staff', event_assignments_path(@event), class:'btn waves-effect waves-light right' %>
-<div id="feed-icon" class="waves-effect waves-light right">
-<%= link_to event_feed_path(@event) do %>
-    <%= image_tag 'https://iconsetc.com/icons-watermarks/flat-circle-white-on-orange/ocha/ocha_telecommunications-walkie-talkie/ocha_telecommunications-walkie-talkie_flat-circle-white-on-orange_512x512.png', id: 'walkie-icon' , alt: 'walkie talkie orders feed', class: 'zwaves-effect waves-light'%>
-<% end %>
-  <p>feed</p>
-</div>
-
-<div class='event-show'>
-<p id="notice"><%= notice %></p>
-<div class="center event-name">
-<h3>
-  <%= @event.title %>
-</h3>
-<span>for <%= link_to @event.customer.name, account_customer_path(@event.account, @event.customer) %></span>
-<% if @event.start_date and @event.end_date %>
-<p>
-  <strong>
-  <%= @event.start_date.strftime("%m/%d/%Y") %> - <%= @event.end_date.strftime("%m/%d/%Y") %>
-  </strong>
-</p>
-<%end%>
-</div>
-
-<h4 class='center'>Locations</h4>
-<hr>
-<a id="nav-map" class="modal-close zwaves-effect waves-light btn"><i class="material-icons right">add_location</i>Add Location</a>
-<div class="card">
-  <div class="container locations-content">
-    <table class="centered highlighted">
-        <thead>
-    <tr>
-      <th>Title</th>
-      <th>Type</th>
-      <th>Latitude</th>
-      <th >Longitude</th>
-
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @locations.each do |location| %>
-      <tr>
-        <td><%= link_to location.title, event_location_path(event_id: @event.id, id: location.id) %></td>
-        <td><%= location.loc_type %></td>
-        <td><%= location.latitude %></td>
-        <td><%= location.longitude %></td>
-      </tr>
-    <% end %>
-
-  </tbody>
-</table>
-<br>
+<div class='event-show center'>
+  <p id="notice"><%= notice %></p>
+  <div class="event-name">
+    <h3>
+      <%= @event.title %>
+    </h3>
+    <span>for <%= link_to @event.customer.name, account_customer_path(@event.account, @event.customer) %></span>
+    <% if @event.start_date and @event.end_date %>
+    <p>
+      <strong>
+      <%= @event.start_date.strftime("%m/%d/%Y") %> - <%= @event.end_date.strftime("%m/%d/%Y") %>
+      </strong>
+    </p>
+    <%end%>
+    <%= render 'eventmenu', event: @event %>
   </div>
 </div>
