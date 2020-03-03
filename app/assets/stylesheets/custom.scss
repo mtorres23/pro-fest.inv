@@ -102,3 +102,65 @@ select {
 .map-label.compound {
   background-color: blue;
 }
+body {
+  font-family: Helvetica;
+  font-size: 3em;
+}
+.tile-btn {
+  text-align: center;
+  cursor: pointer;
+  width: 11em;
+  height: 11em;
+  border-radius: 3%;
+  -webkit-box-shadow: 4px 4px 25px -3px rgba(112, 101, 112, 1);
+  -moz-box-shadow: 4px 4px 25px -3px rgba(112, 101, 112, 1);
+  box-shadow: 4px 4px 25px -3px rgba(112, 101, 112, 1);
+}
+.tile-btn:active {
+  width: 10em;
+  height: 10em;
+  -webkit-box-shadow: 4px 4px 7px -3px rgba(112, 101, 112, 1);
+  -moz-box-shadow: 4px 4px 7px -3px rgba(112, 101, 112, 1);
+  box-shadow: 4px 4px 7px -3px rgba(112, 101, 112, 1);
+  background: darkred;
+}
+
+.solid-color {
+  background: red;
+}
+.solid-color:hover {
+  background: darkred;
+}
+.location-links {
+  margin: 0.5em;
+  padding: 1.5em;
+  float: left;
+}
+.location-links a {
+  text-decoration: none;
+  color: black;
+}
+.button-image {
+  width: 100%;
+}
+.image {
+  width: 80%;
+}
+.image:active {
+  width: 75%;
+}
+a:active {
+  font-size: 0.95em;
+}
+.bar {
+  background-color: #ff5b03;
+}
+.compound {
+  background-color: blue;
+}
+.truck {
+  background-color: teal;
+}
+.storage {
+  background-color: gray;
+}

@@ -1,0 +1,21 @@
+<div class="menu-buttons">
+	<div class="tile-btn solid-color location-links">
+		<div class="button-image modal-close">
+			<a id="nav-map">
+            <img class="image" src="https://cdn3.iconfinder.com/data/icons/glypho-travel/64/map-pin-marker-plus-512.png">
+            ADD LOCATION
+            </a>
+		</div>
+	</div>
+    <% @locations.each do |location| %>
+	<div class="tile-btn solid-color location-links <%=location.loc_type%>">
+		<div class="button-image">
+            <%= link_to  event_location_path(event_id: @event.id, id: location.id) do %>
+                 <%= image_tag location_avatar(location.loc_type), class: 'image'%>
+                 <p><%= location.title %></p>
+            <% end %>
+		</div>
+	</div>
+   <% end %>
+</div>
+
