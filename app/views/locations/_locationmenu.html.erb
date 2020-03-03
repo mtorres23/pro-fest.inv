@@ -1,0 +1,27 @@
+<div class="menu-buttons center">
+
+	<div class="tile-btn event-tile event-staff location-links">
+		<div class="button-image">
+			<%= link_to location_assignments_path(@event, @location) do %>
+    			<%= image_tag location_menu_button("Staff"), class: 'image'%>
+			<p>STAFF</p>
+			<% end %>
+		</div>
+	</div>
+	<div class="tile-btn event-tile event-requests location-links">
+		<div class="button-image">
+			<%= link_to location_inventory_path(@location) do %>
+    			<%= image_tag location_menu_button("Inventory"), class: 'image'%>
+			<p>INVENTORY</p>
+			<% end %>
+		</div>
+	</div>
+	<div class="tile-btn event-tile event-locations location-links">
+		<div class="button-image">
+			<%= link_to location_orders_path(@event, @location) do %>
+    			<%= image_tag location_menu_button("Orders"), class: 'image'%>
+			<p>ORDERS</p>
+			<% end %>
+		</div>
+	</div>
+</div>

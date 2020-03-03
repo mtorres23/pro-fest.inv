@@ -1,0 +1,9 @@
+<% @events.each do |event| %>
+    <div class="event-links tile-btn">
+    <a href="/accounts/<%= @account.id %>/events/<%= event.id %>" class="poster">
+        <img class="background-image" src="<%= event.photo_url%>" alt="<%= event.title %>" />
+        <div class="title"><%=event.title%></div>
+        <div class="title"><%=event.start_date%></div>
+    </a>
+    </div>
+    <% end %>

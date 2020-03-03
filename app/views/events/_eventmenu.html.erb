@@ -1,0 +1,35 @@
+<div class="menu-buttons center">
+
+	<div class="tile-btn event-tile event-staff location-links">
+		<div class="button-image">
+			<%= link_to event_assignments_path(@event) do %>
+    			<%= image_tag 'https://cdn.iconscout.com/icon/premium/png-256-thumb/staff-9-559919.png', class: 'image'%>
+			<p>STAFF</p>
+			<% end %>
+		</div>
+	</div>
+	<div class="tile-btn event-tile event-requests location-links">
+		<div class="button-image">
+			<%= link_to event_orders_path(@event) do %>
+    			<%= image_tag 'https://png.pngtree.com/svg/20170817/cubes_1267087.png', class: 'image'%>
+			<p>REQUESTS</p>
+			<% end %>
+		</div>
+	</div>
+	<div class="tile-btn event-tile event-locations location-links">
+		<div class="button-image">
+			<%= link_to event_locations_path(@event) do %>
+    			<%= image_tag 'https://static.thenounproject.com/png/5269-200.png', class: 'image'%>
+			<p>LOCATIONS</p>
+			<% end %>
+		</div>
+	</div>
+	<div class="tile-btn event-tile event-feed location-links">
+		<div class="button-image">
+			<%= link_to event_feed_path(@event) do %>
+    			<%= image_tag 'https://c7.uihere.com/icons/494/923/724/walkie-talkie-0d4a50fc293f2a9e25b5d0a0e168e2f1.png', class: 'image'%>
+			<p>FEED</p>
+			<% end %>
+		</div>
+	</div>
+</div>

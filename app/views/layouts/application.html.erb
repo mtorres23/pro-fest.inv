@@ -11,7 +11,7 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
 
 <style>
 html {
@@ -60,7 +60,7 @@ td img {
 
 .modal-content {
   margin: 2em auto;
-  max-width: 60%;
+  max-width: 70%;
 }
   </style>
 
@@ -112,27 +112,7 @@ td img {
           <div class="footer">
 
             <section id="footer">
-              <ul class="icons text-muted">
-                <p>The FiFo Team:</p>
-                <li class="center">
-                  <a href="https://github.com/hkarambizi" class=""><i class="fa fa-github" aria-hidden="true"></i>
-                    <span class="label">Harry Karambizi
-                    </span>
-                  </a>
-                </li>
-
-                <li class="center">
-                  <a href="https://github.com/mtorres23" class=""><i class="fa fa-github" aria-hidden="true"></i>
-                    <span class="label">Michael Torres</span>
-                  </a>
-                </li>
-                <li class="center">
-                  <a href="https://github.com/ddmilo" class=""><i class="fa fa-github" aria-hidden="true"></i>
-                    <span class="label">Dan Milo</span>
-                  </a>
-                </li>
-              </ul>
-                <p class="copyright text-muted">&copy; FiFo 2017</p>
+                <p class="copyright text-muted">&copy; FiFo <%=DateTime.now.strftime("%Y")%></p>
 
 
           </section>
@@ -489,7 +469,7 @@ td img {
                 color: 'black',
                 fontSize: '2em',
                 fontWeight: 'bold',
-                fontFamily: 'Roboto Mono'
+                fontFamily: 'Comfortaa'
               },
               map: map,
               draggable: drag,
@@ -615,15 +595,16 @@ var findDuplicate = function(arr, obj) {
             // Close modal once successfully saved
             if (response === 'success') {
               locationInfoWindow.close();
+              makeVisible(messagewindow)
               messagewindow.open(map, loc);
             }
           }
         })
 
       }
-      function navigateToEvent() {
+      function navigateToLocations() {
         try {
-          window.location.replace(eventURL)
+          window.location.replace(`${eventURL}/locations`)
         } catch(err){
           throw err
         }
@@ -647,9 +628,10 @@ var findDuplicate = function(arr, obj) {
       function saveMarkerAndExit() {
         try {
           saveMarkerLocation();
-          navigateToEvent()
         } catch(err) {
           throw err;
+        } finally {
+          navigateToLocations()
         }
       }
 

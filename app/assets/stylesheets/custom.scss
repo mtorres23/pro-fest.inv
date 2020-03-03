@@ -102,34 +102,46 @@ select {
 .map-label.compound {
   background-color: blue;
 }
-body {
-  font-family: Helvetica;
-  font-size: 3em;
-}
 .tile-btn {
   text-align: center;
   cursor: pointer;
-  width: 11em;
-  height: 11em;
-  border-radius: 3%;
+  border-radius: 1%;
   -webkit-box-shadow: 4px 4px 25px -3px rgba(112, 101, 112, 1);
   -moz-box-shadow: 4px 4px 25px -3px rgba(112, 101, 112, 1);
   box-shadow: 4px 4px 25px -3px rgba(112, 101, 112, 1);
 }
+
 .tile-btn:active {
-  width: 10em;
-  height: 10em;
   -webkit-box-shadow: 4px 4px 7px -3px rgba(112, 101, 112, 1);
   -moz-box-shadow: 4px 4px 7px -3px rgba(112, 101, 112, 1);
   box-shadow: 4px 4px 7px -3px rgba(112, 101, 112, 1);
-  background: darkred;
+}
+.event-tile {
+  width: 20em;
+  height: 20em;
+}
+
+.event-tile:active {
+  width: 19em;
+  height: 19em;
+}
+
+.loc-tile {
+  width: 11em;
+  height: 11em;
+}
+
+.loc-tile:active {
+  width: 10em;
+  height: 10em;
 }
 
 .solid-color {
-  background: red;
+  background: #adaabf;
 }
+
 .solid-color:hover {
-  background: darkred;
+  background: #737180;
 }
 .location-links {
   margin: 0.5em;
@@ -144,7 +156,7 @@ body {
   width: 100%;
 }
 .image {
-  width: 80%;
+  width: 75%;
 }
 .image:active {
   width: 75%;
@@ -152,15 +164,52 @@ body {
 a:active {
   font-size: 0.95em;
 }
+.background-image {
+  height: 15em;
+  display: inline-block;
+  margin: 0;
+  overflow: hidden;
+  border-radius: 1%;
+}
+.event-links {
+  margin: 1em;
+  float: left;
+}
+.event-links a {
+  text-decoration: none;
+  color: black;
+}
+.poster {
+  align: center;
+  justify-content: center;
+}
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+}
 .bar {
-  background-color: #ff5b03;
+  background-color: #ffc603;
 }
 .compound {
-  background-color: blue;
+  background-color: #02d8e8;
 }
 .truck {
   background-color: teal;
 }
 .storage {
   background-color: gray;
+}
+.event-staff {
+  background: #ffb400;
+}
+.event-requests {
+  background: #00ccc4;
+}
+.event-locations {
+  background: #898f8f;
+}
+.event-feed {
+  background: #cc3a26;
 }
