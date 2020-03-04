@@ -37,7 +37,7 @@ protected
   end
 
   def configure_permitted_parameters
-  devise_parameter_sanitizer.permit(:sign_up, keys: [:account_id, :pin_number, :permission_level])
+  devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :account_id, :permission_level, :pin_number])
   end
 end
 
