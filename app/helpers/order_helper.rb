@@ -112,12 +112,12 @@ def update_inventories(t, origin, destination)
 end
 
 def format_order(order)
-  info = "##{order.id} [#{order.location.title}] #{order.created_at.strftime("%I:%M%p on %m/%d/%Y")} : #{order.role.upcase} by #{user_data(order.created_by)[:full_name]}: "
+  info = "##{order.id} [#{order.location.title}] #{order.created_at.strftime("%I:%M%p on %m/%d/%Y")} : #{order.role} by #{user_data(order.created_by)[:full_name]}: "
   if order.status == "canceled"
     return info += "This order has been CANCELED"
   end
   if order.status != 'verified'
-    return info += "This is order is #{order.status.upcase}..."
+    return info += "This is order is #{order.status}..."
   end
   case order.role
   when 'transfer'

@@ -10,7 +10,7 @@
       <hr>
       <div class="center">
         <% l.orders.where(role: 'transfer').each do |o|%>
-          [<%= o.status.upcase %>] <%= link_to "Order ##{o.id}: #{o.message}", event_location_order_path(@event, o.location, o), class: 'center'%>
+          [<%= o.status %>] <%= link_to "Order ##{o.id}: #{o.message}", event_location_order_path(@event, o.location, o), class: 'center'%>
           <ul>
             <% o.transactions.each do |t| %>
               <li>
