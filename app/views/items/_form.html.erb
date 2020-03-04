@@ -17,11 +17,6 @@
   </div>
 
   <div class="field">
-    <%= f.label :quantity %>
-    <%= f.number_field :quantity %>
-  </div>
-
-  <div class="field">
     <%= f.label :category %>
     <%= f.select :category, options_for_select(categories), :include_blank => true%>
   </div>

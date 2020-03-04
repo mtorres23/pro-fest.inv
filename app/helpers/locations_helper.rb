@@ -28,7 +28,7 @@ module LocationsHelper
         when "Staff"
             return 'https://cdn.iconscout.com/icon/premium/png-256-thumb/staff-9-559919.png'
         when "Orders"
-            return 'https://lh3.googleusercontent.com/proxy/bPBsVsLdZGZt2ZZl-OW3IKopdrf9qka9rl_LyDPn7FxXNL1MyaJRH-VHTof9mKk2Hyma2uooDNuIzjwI8O1N9BsyxXQoyWemKwHw6a11bvogmtzLrl0yhgUcNDUZ0ppnxSoCrfPVpW8q'
+            return 'http://icons.iconarchive.com/icons/icons8/ios7/128/Finance-Purchase-Order-icon.png'
         end
     end
 end
