@@ -39,9 +39,10 @@ $secondary-color: #ff5b03;
 .row .col {
   padding: 0;
 }
-
-.btn {
-  border-radius: 0;
+.notification {
+  position: relative;
+  top: -2.9em;
+  left: 8em;
 }
 
 .modal {
