@@ -5,19 +5,20 @@ module OrderHelper
       ['comp'],
       ['spill'],
       ['return'],
+      ['loss'],
       ['damage'],
       ['load_in'],
       ['load_out']
     ]
   end
 
-  def statuses
+  def order_statuses
     [
       ['submitted'],
       ['pending'],
       ['canceled'],
       ['completed'],
-      ['verified']
+      ['delivered']
     ]
   end
 
@@ -32,8 +33,8 @@ module OrderHelper
       order.transactions.each do |t|
           process_transaction(t)
       end
-      order.update(status: 'verified', verified_by: current_user.id, assigned_to: nil)
-      order.messages.new(message_type: 'order_verified', created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id).save
+      order.update(status: 'delivered', verified_by: current_user.id, assigned_to: nil)
+      order.messages.new(message_type: 'order_delivered', created_by: current_user.id, event_id: order.location.event.id, order_id: order.id, location_id: order.location_id).save
     end
   end
 
@@ -66,8 +67,9 @@ module OrderHelper
   def process_transaction(transaction)
     event_locations = get_event_locations(transaction)
     sales_location = get_loc_by_type('sales', event_locations)
-    warehouse_location = get_loc_by_type('warehouse', event_locations)
+    truck_location = get_loc_by_type('truck', event_locations)
     comps_location = get_loc_by_type('comps', event_locations)
+    waste_location = get_loc_by_type('waste', event_locations)
     case transaction.order.role
     when 'transfer'
       @origin = event_locations.find(transaction.origin_id)
@@ -79,12 +81,15 @@ module OrderHelper
       @origin = find_item_match(sales_location, transaction).location
       @destination = transaction.order.location
     when 'load_in'
-      @origin = find_item_match(warehouse_location, transaction).location
+      @origin = find_item_match(truck_location, transaction).location
       @destination = event_locations.find(transaction.order.location_id)
     when 'load_out'
       @origin = transaction.order.location
-      @destination = find_item_match(warehouse_location, transaction).location
-    when 'comp', 'damage', 'spill', 'return'
+      @destination = find_item_match(truck_location, transaction).location
+    when 'damage', 'spill', 'return', 'loss'
+      @origin = transaction.order.location
+      @destination = find_item_match(waste_location, transaction).location
+    when 'comp'
       @origin = transaction.order.location
       @destination = find_item_match(comps_location, transaction).location
     else
@@ -116,8 +121,8 @@ def format_order(order)
   if order.status == "canceled"
     return info += "This order has been CANCELED"
   end
-  if order.status != 'verified'
-    return info += "This is order is #{order.status}..."
+  if order.status != 'delivered'
+    return info += "This order is #{order.status}..."
   end
   case order.role
   when 'transfer'

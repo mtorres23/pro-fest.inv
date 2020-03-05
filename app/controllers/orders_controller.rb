@@ -59,9 +59,9 @@ class OrdersController < ApplicationController
     @order = @location.orders.find(params[:id])
     @transactions = @order.transactions
     @canceled = @order.status == "canceled"
-    @can_edit = !["verified", "completed", "canceled"].include?(@order.status)
+    @can_edit = !["delivered", "completed", "canceled"].include?(@order.status)
     @can_submit = @order.transactions.length > 0 && @order.status == nil
-    @no_confirm = invalid_transactions || @canceled || @order.status == 'verified'
+    @no_confirm = invalid_transactions || @canceled || @order.status == 'delivered'
     puts "can confirm: #{@no_confirm}"
     puts "is editable: #{@can_edit}"
     puts "can submit?: #{@can_submit}"
@@ -74,10 +74,11 @@ class OrdersController < ApplicationController
 
   def update
     order = @location.orders.find(params[:id])
-    order.update(status: "pending")
     respond_to do |format|
+
       if order.update_attributes(order_params)
-          create_order_message(order, "order_pending")
+
+          create_order_message(order, "order_#{order.status}")
           # To-do: move this into a helper method
           if(order.status === 'canceled')
             order.transactions.each do |t|

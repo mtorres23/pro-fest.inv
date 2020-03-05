@@ -8,7 +8,7 @@
     <%= f.text_field :message %>
 
     <%= f.label :status %>
-    <%= f.select(:status, options_for_select(statuses), :required => true) %>
+    <%= f.select(:status, options_for_select(order_statuses), :required => true) %>
 
 
     <button class='btn' action='<%= f.submit  %>'>Update Order</button>

@@ -213,3 +213,37 @@ a:active {
 .event-feed {
   background: #cc3a26;
 }
+.order-header {
+  padding: 2em;
+}
+.submitted {
+  background-color: rgb(30, 55, 212);
+}
+.pending {
+  background-color: #ff5b03;
+}
+.completed {
+  background-color: rgb(77, 21, 137);
+}
+.delivered {
+  background-color: rgb(23, 153, 33);
+}
+.canceled {
+  background-color: rgb(223, 30, 30);
+}
+.status {
+  color: white;
+  padding: 0.1em;
+  border-radius: 5%;
+  font-size: 60%;
+  vertical-align: super;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+.pending {
+  background-color: #ff5b03;
+}
+.new {
+  background-color: #ffb400;
+  border: 1px solid black;
+  color: black;
+}

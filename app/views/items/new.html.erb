@@ -1,5 +1,6 @@
-<h4>New Inventory Item</h4>
+
+<h4>Add <%= @location.title %> Inventory Item</h4>
 
 <%= render 'form', item: @item %>
 
-<%= link_to 'Back', location_inventory_path %>
+<%= link_to 'Back', location_inventory_path, class: 'left btn waves-effect waves-light' %>

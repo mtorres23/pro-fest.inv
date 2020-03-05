@@ -1,8 +1,8 @@
-<h4>Create New Order</h4>
-
-
+<%= link_to 'Back To Orders', location_orders_path(@location.event, @location), class: 'right btn waves-effect waves-light' %>
+<h4>Create New Order for <%=@location.title %></h4>
 <%= form_for [@location,@order], url: new_location_order_path do |f| %>
 <div>
+
   <div class="form_row">
       <%= f.label :role %>
       <%= f.select(:role, options_for_select(order_types), :required => true) %>
@@ -20,13 +20,13 @@
 
 
 
-  <button class='btn' action='<%= f.submit  %>'>Create Order
+  <button class='btn' action='<%= f.submit  %>'>
+    Create Order
   </button>
   <% end %>
+
 </div>
 
-<script>
-$(document).ready(function() {
- $('select').formSelect();
-});
-</script>
+
+
+
