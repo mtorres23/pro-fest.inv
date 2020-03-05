@@ -6,6 +6,7 @@ class AssignmentsController < ApplicationController
     before_action :set_locations, only: [:new, :edit, :create, :update]
 
     def index
+        @is_event = true
         @assignments = @event.assignments
     end
   # GET /
@@ -16,7 +17,8 @@ class AssignmentsController < ApplicationController
 
     # GET /
     def location_assignments
-        @assignments = @location.event.assignments
+        @is_location = true
+        @assignments = @event.assignments.where(location_id: @location.id)
     end
 
     # GET /
